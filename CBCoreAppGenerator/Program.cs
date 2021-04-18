@@ -79,10 +79,13 @@ namespace CodeGenerator
             //oCodeBooster.KeysMapper.Add("[REL_ID]", "[PERSON_ID]");                        
             #endregion
             #region Events
+
             //oCodeBooster.Methods_With_Events.Add("Edit_Car");
             //oCodeBooster.Methods_With_Events.Add("Delete_Car");
             //oCodeBooster.Methods_With_Events.Add("Edit_Uploaded_file");
             //oCodeBooster.Methods_With_Events.Add("Delete_Person");
+            oCodeBooster.Methods_With_Events.Add("Edit_Answer");
+            oCodeBooster.Methods_With_Events.Add("Edit_Question");
             #endregion
             #region Excluding Tables From 12M Hanlder
             oCodeBooster.Tables_Exluded_From_12M_Hanlder = new List<string>();

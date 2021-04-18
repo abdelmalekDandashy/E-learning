@@ -101,10 +101,16 @@ namespace BLC
         public void SubscribeToEvents()
         {
             #region Declaration And Initialization Section.
+            this.OnPostEvent_Edit_Answer += BLC_OnPostEvent_Edit_Answer;
+
+            this.OnPostEvent_Edit_Question += BLC_OnPostEvent_Edit_Question;
+            this.OnPreEvent_Edit_Question += BLC_OnPreEvent_Edit_Question;
             #endregion
             #region Body Section.
             #endregion
-        }                                                                                                                                                                 
+        }
+
+
         #endregion
         #region IDisposable Members
         public void Dispose()
@@ -186,7 +192,29 @@ namespace BLC
         }
         #endregion
         #region Events Implementation
+        private void BLC_OnPreEvent_Edit_Question(Question i_Question, Enum_EditMode i_Enum_EditMode)
+        {
+            if (i_Question.DESCRIPTION.Length < 5)
+            {
+                Console.WriteLine("dreamer");
+                throw new BLCException("question should be at least 5 characters");
 
+            }
+        }
+
+        private void BLC_OnPostEvent_Edit_Question(Question i_Question, Enum_EditMode i_Enum_EditMode)
+        {
+            if (i_Question.DESCRIPTION.Length < 5)
+            {
+            throw new NotImplementedException();
+
+            }
+        }
+
+        private void BLC_OnPostEvent_Edit_Answer(Answer i_Answer, Enum_EditMode i_Enum_EditMode)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
     #endregion
