@@ -219,38 +219,38 @@ namespace CodeGenerator
 
             // Car
             //----------------------------
-            oCodeBooster.APIMethodsSelection.Add("Edit_Answer");
-            oCodeBooster.APIMethodsSelection.Add("Delete_Answer");
-            oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_Criteria");
-            oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_OWNER_ID");
-            oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_OWNER_ID_Adv");
+            //oCodeBooster.APIMethodsSelection.Add("Edit_Answer");
+            //oCodeBooster.APIMethodsSelection.Add("Delete_Answer");
+            //oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_Criteria");
+            //oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_OWNER_ID");
+            //oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_OWNER_ID_Adv");
 
 
-            oCodeBooster.APIMethodsSelection.Add("Edit_Question");
-            oCodeBooster.APIMethodsSelection.Add("Delete_Question");
-            oCodeBooster.APIMethodsSelection.Add("Get_Question_By_Criteria");
-            oCodeBooster.APIMethodsSelection.Add("Get_Question_By_OWNER_ID");
-            oCodeBooster.APIMethodsSelection.Add("Get_Question_By_OWNER_ID_Adv");
+            //oCodeBooster.APIMethodsSelection.Add("Edit_Question");
+            //oCodeBooster.APIMethodsSelection.Add("Delete_Question");
+            //oCodeBooster.APIMethodsSelection.Add("Get_Question_By_Criteria");
+            //oCodeBooster.APIMethodsSelection.Add("Get_Question_By_OWNER_ID");
+            //oCodeBooster.APIMethodsSelection.Add("Get_Question_By_OWNER_ID_Adv");
 
-            oCodeBooster.APIMethodsSelection.Add("Edit_Category");
-            oCodeBooster.APIMethodsSelection.Add("Delete_Category");
-            oCodeBooster.APIMethodsSelection.Add("Get_Category_By_OWNER_ID");
+            //oCodeBooster.APIMethodsSelection.Add("Edit_Category");
+            //oCodeBooster.APIMethodsSelection.Add("Delete_Category");
+            //oCodeBooster.APIMethodsSelection.Add("Get_Category_By_OWNER_ID");
 
-            oCodeBooster.APIMethodsSelection.Add("Edit_Category_favorite");
-            oCodeBooster.APIMethodsSelection.Add("Get_Teacher_By_CATEGORY_ID_List");
-            oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_STUDENT_ID_List");
-            oCodeBooster.APIMethodsSelection.Add("Get_Question_By_CATEGORY_ID_List");
-            oCodeBooster.APIMethodsSelection.Add("Get_Question_By_STUDENT_ID_List");
-            oCodeBooster.APIMethodsSelection.Add("Get_Question_By_QUESTION_ID");
-            oCodeBooster.APIMethodsSelection.Add("Edit_Teacher_favorite");
+            //oCodeBooster.APIMethodsSelection.Add("Edit_Category_favorite");
+            //oCodeBooster.APIMethodsSelection.Add("Get_Teacher_By_CATEGORY_ID_List");
+            //oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_STUDENT_ID_List");
+            //oCodeBooster.APIMethodsSelection.Add("Get_Question_By_CATEGORY_ID_List");
+            //oCodeBooster.APIMethodsSelection.Add("Get_Question_By_STUDENT_ID_List");
+            //oCodeBooster.APIMethodsSelection.Add("Get_Question_By_QUESTION_ID");
+            //oCodeBooster.APIMethodsSelection.Add("Edit_Teacher_favorite");
 
-            oCodeBooster.APIMethodsSelection.Add("Edit_Student");
-            oCodeBooster.APIMethodsSelection.Add("Delete_Student");
-            oCodeBooster.APIMethodsSelection.Add("Get_Student_By_OWNER_ID");
+            //oCodeBooster.APIMethodsSelection.Add("Edit_Student");
+            //oCodeBooster.APIMethodsSelection.Add("Delete_Student");
+            //oCodeBooster.APIMethodsSelection.Add("Get_Student_By_OWNER_ID");
 
-            oCodeBooster.APIMethodsSelection.Add("Edit_Teacher");
-            oCodeBooster.APIMethodsSelection.Add("Delete_Teacher");
-            oCodeBooster.APIMethodsSelection.Add("Get_Teacher_By_OWNER_ID");
+            //oCodeBooster.APIMethodsSelection.Add("Edit_Teacher");
+            //oCodeBooster.APIMethodsSelection.Add("Delete_Teacher");
+            //oCodeBooster.APIMethodsSelection.Add("Get_Teacher_By_OWNER_ID");
             //----------------------------
 
             #endregion
