@@ -127,3 +127,47 @@ E:\Misc\CB\Training\App\CBCoreAppGenerator\obj\Debug\netcoreapp3.1\CBCoreAppGene
 E:\Misc\CB\Training\App\CBCoreAppGenerator\obj\Debug\netcoreapp3.1\CBCoreAppGenerator.dll
 E:\Misc\CB\Training\App\CBCoreAppGenerator\obj\Debug\netcoreapp3.1\CBCoreAppGenerator.pdb
 E:\Misc\CB\Training\App\CBCoreAppGenerator\obj\Debug\netcoreapp3.1\CBCoreAppGenerator.genruntimeconfig.cache
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\CBCoreAppGenerator.exe
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\CBCoreAppGenerator.dll.config
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\CBCoreAppGenerator.deps.json
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\CBCoreAppGenerator.runtimeconfig.json
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\CBCoreAppGenerator.runtimeconfig.dev.json
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\CBCoreAppGenerator.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\CBCoreAppGenerator.pdb
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\Castle.Core.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\DotNetZip.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\Mindbox.Data.Linq.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\Mindbox.Expressions.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\System.Management.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Management.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\CBCoreClient.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\CBCoreCommon.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\CBCoreProxy.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\bin\Debug\netcoreapp3.1\CoreTools.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\obj\Debug\netcoreapp3.1\CBCoreAppGenerator.csprojAssemblyReference.cache
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\obj\Debug\netcoreapp3.1\CBCoreAppGenerator.AssemblyInfoInputs.cache
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\obj\Debug\netcoreapp3.1\CBCoreAppGenerator.AssemblyInfo.cs
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\obj\Debug\netcoreapp3.1\CBCoreAppGenerator.csproj.CoreCompileInputs.cache
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\obj\Debug\netcoreapp3.1\CBCoreAppGenerator.csproj.CopyComplete
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\obj\Debug\netcoreapp3.1\CBCoreAppGenerator.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\obj\Debug\netcoreapp3.1\CBCoreAppGenerator.pdb
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\CBCoreAppGenerator\obj\Debug\netcoreapp3.1\CBCoreAppGenerator.genruntimeconfig.cache

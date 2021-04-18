@@ -7,3 +7,9 @@ D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\BLC\obj\Debug\netcoreapp3.1\BL
 D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\BLC\obj\Debug\netcoreapp3.1\BLC.csproj.CoreCompileInputs.cache
 D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\BLC\obj\Debug\netcoreapp3.1\BLC.dll
 D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\BLC\obj\Debug\netcoreapp3.1\BLC.pdb
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\BLC\bin\Debug\netcoreapp3.1\CoreCrypto.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\BLC\bin\Debug\netcoreapp3.1\CoreHasher.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\BLC\bin\Debug\netcoreapp3.1\CoreTools.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\BLC\bin\Debug\netcoreapp3.1\DALC.dll
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\BLC\bin\Debug\netcoreapp3.1\DALC.pdb
+D:\hard D\hard d 2\HARD DISK D\E-learning2021\App\BLC\obj\Debug\netcoreapp3.1\BLC.csproj.CopyComplete
