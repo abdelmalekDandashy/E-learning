@@ -1,4 +1,5 @@
 ﻿using BLC;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -40,8 +41,8 @@ namespace UnitTesting
             oQuestion.ENTRY_USER_ID = 1;
             oQuestion.TEACHER_ID = 2;
             oBLC.Edit_Question(oQuestion);
-
-            Console.WriteLine("question added");
+            var jsonString = JsonConvert.SerializeObject(oQuestion);
+            //Console.WriteLine(jsonString);
 
             //Params_Get_Question_By_QUESTION_ID oParams_Get_Question_By_QUESTION_ID = new Params_Get_Question_By_QUESTION_ID();
             //oParams_Get_Question_By_QUESTION_ID.QUESTION_ID = 39;

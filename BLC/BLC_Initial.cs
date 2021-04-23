@@ -197,7 +197,7 @@ namespace BLC
             if (i_Question.DESCRIPTION.Length < 5)
             {
                 Console.WriteLine("dreamer");
-                throw new BLCException("question should be at least 5 characters");
+                throw new BLCException("question should be at least 5 characters MF");
 
             }
         }
