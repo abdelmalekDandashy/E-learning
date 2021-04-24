@@ -65,6 +65,15 @@ public Loc_l3 My_Loc_l3 {get;set;}
 #endregion
 }
 #endregion
+#region Student
+public partial class Student
+{
+#region Advanced Properties
+public User My_User {get;set;}
+public User_type_code My_User_type_code {get;set;}
+#endregion
+}
+#endregion
 #region Address
 public partial class Address
 {
@@ -74,6 +83,16 @@ public Loc_l1 My_Loc_l1 {get;set;}
 public Loc_l2 My_Loc_l2 {get;set;}
 public Loc_l3 My_Loc_l3 {get;set;}
 public Loc_l4 My_Loc_l4 {get;set;}
+#endregion
+}
+#endregion
+#region Teacher
+public partial class Teacher
+{
+#region Advanced Properties
+public User My_User {get;set;}
+public User_type_code My_User_type_code {get;set;}
+public Category My_Category {get;set;}
 #endregion
 }
 #endregion
@@ -106,21 +125,6 @@ public Category My_Category {get;set;}
 #endregion
 #region Category
 public partial class Category
-{
-#region Advanced Properties
-#endregion
-}
-#endregion
-#region Teacher
-public partial class Teacher
-{
-#region Advanced Properties
-public Category My_Category {get;set;}
-#endregion
-}
-#endregion
-#region Student
-public partial class Student
 {
 #region Advanced Properties
 #endregion
@@ -162,6 +166,13 @@ public Teacher My_Teacher {get;set;}
 #endregion
 }
 #endregion
+#region User_type_code
+public partial class User_type_code
+{
+#region Advanced Properties
+#endregion
+}
+#endregion
 #region Person
 public partial class Person
 {
@@ -169,15 +180,16 @@ public partial class Person
 #endregion
 }
 #endregion
-#region Owner
-public partial class Owner
+#region User
+public partial class User
 {
 #region Advanced Properties
+public User_type_code My_User_type_code {get;set;}
 #endregion
 }
 #endregion
-#region User
-public partial class User
+#region Owner
+public partial class Owner
 {
 #region Advanced Properties
 #endregion

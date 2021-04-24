@@ -240,6 +240,70 @@ return oResult_Edit_Answer;
 #endregion
 }
 #endregion
+#region Edit_Category_favorite
+[HttpPost]
+[Route("Edit_Category_favorite")]
+public Result_Edit_Category_favorite Edit_Category_favorite(Category_favorite i_Category_favorite)
+{
+#region Declaration And Initialization Section.
+string i_Ticket = string.Empty;
+Result_Edit_Category_favorite oResult_Edit_Category_favorite = new Result_Edit_Category_favorite();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oBLC.Edit_Category_favorite(i_Category_favorite);
+oResult_Edit_Category_favorite.My_Category_favorite = i_Category_favorite;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Edit_Category_favorite.ExceptionMsg = string.Format("Edit_Category_favorite : {0}", ex.Message);
+}
+else
+{
+oResult_Edit_Category_favorite.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Edit_Category_favorite;
+#endregion
+}
+#endregion
 #region Edit_Question
 [HttpPost]
 [Route("Edit_Question")]
@@ -301,6 +365,70 @@ oResult_Edit_Question.ExceptionMsg = ex.Message;
 #endregion
 #region Return Section
 return oResult_Edit_Question;
+#endregion
+}
+#endregion
+#region Edit_Teacher_favorite
+[HttpPost]
+[Route("Edit_Teacher_favorite")]
+public Result_Edit_Teacher_favorite Edit_Teacher_favorite(Teacher_favorite i_Teacher_favorite)
+{
+#region Declaration And Initialization Section.
+string i_Ticket = string.Empty;
+Result_Edit_Teacher_favorite oResult_Edit_Teacher_favorite = new Result_Edit_Teacher_favorite();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oBLC.Edit_Teacher_favorite(i_Teacher_favorite);
+oResult_Edit_Teacher_favorite.My_Teacher_favorite = i_Teacher_favorite;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Edit_Teacher_favorite.ExceptionMsg = string.Format("Edit_Teacher_favorite : {0}", ex.Message);
+}
+else
+{
+oResult_Edit_Teacher_favorite.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Edit_Teacher_favorite;
 #endregion
 }
 #endregion
@@ -436,6 +564,204 @@ return oResult_Get_Answer_By_OWNER_ID;
 #endregion
 }
 #endregion
+#region Get_Answer_By_STUDENT_ID_List
+[HttpPost]
+[Route("Get_Answer_By_STUDENT_ID_List")]
+public Result_Get_Answer_By_STUDENT_ID_List Get_Answer_By_STUDENT_ID_List(Params_Get_Answer_By_STUDENT_ID_List i_Params_Get_Answer_By_STUDENT_ID_List)
+{
+#region Declaration And Initialization Section.
+List<Answer>  oReturnValue = new List<Answer> ();
+string i_Ticket = string.Empty;
+Result_Get_Answer_By_STUDENT_ID_List oResult_Get_Answer_By_STUDENT_ID_List = new Result_Get_Answer_By_STUDENT_ID_List();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_Answer_By_STUDENT_ID_List(i_Params_Get_Answer_By_STUDENT_ID_List);
+oResult_Get_Answer_By_STUDENT_ID_List.My_Result = oReturnValue;
+oResult_Get_Answer_By_STUDENT_ID_List.My_Params_Get_Answer_By_STUDENT_ID_List = i_Params_Get_Answer_By_STUDENT_ID_List;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_Answer_By_STUDENT_ID_List.ExceptionMsg = string.Format("Get_Answer_By_STUDENT_ID_List : {0}", ex.Message);
+}
+else
+{
+oResult_Get_Answer_By_STUDENT_ID_List.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_Answer_By_STUDENT_ID_List;
+#endregion
+}
+#endregion
+#region Get_Category_By_OWNER_ID
+[HttpPost]
+[Route("Get_Category_By_OWNER_ID")]
+public Result_Get_Category_By_OWNER_ID Get_Category_By_OWNER_ID(Params_Get_Category_By_OWNER_ID i_Params_Get_Category_By_OWNER_ID)
+{
+#region Declaration And Initialization Section.
+List<Category>  oReturnValue = new List<Category> ();
+string i_Ticket = string.Empty;
+Result_Get_Category_By_OWNER_ID oResult_Get_Category_By_OWNER_ID = new Result_Get_Category_By_OWNER_ID();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_Category_By_OWNER_ID(i_Params_Get_Category_By_OWNER_ID);
+oResult_Get_Category_By_OWNER_ID.My_Result = oReturnValue;
+oResult_Get_Category_By_OWNER_ID.My_Params_Get_Category_By_OWNER_ID = i_Params_Get_Category_By_OWNER_ID;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_Category_By_OWNER_ID.ExceptionMsg = string.Format("Get_Category_By_OWNER_ID : {0}", ex.Message);
+}
+else
+{
+oResult_Get_Category_By_OWNER_ID.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_Category_By_OWNER_ID;
+#endregion
+}
+#endregion
+#region Get_Question_By_CATEGORY_ID_List
+[HttpPost]
+[Route("Get_Question_By_CATEGORY_ID_List")]
+public Result_Get_Question_By_CATEGORY_ID_List Get_Question_By_CATEGORY_ID_List(Params_Get_Question_By_CATEGORY_ID_List i_Params_Get_Question_By_CATEGORY_ID_List)
+{
+#region Declaration And Initialization Section.
+List<Question>  oReturnValue = new List<Question> ();
+string i_Ticket = string.Empty;
+Result_Get_Question_By_CATEGORY_ID_List oResult_Get_Question_By_CATEGORY_ID_List = new Result_Get_Question_By_CATEGORY_ID_List();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_Question_By_CATEGORY_ID_List(i_Params_Get_Question_By_CATEGORY_ID_List);
+oResult_Get_Question_By_CATEGORY_ID_List.My_Result = oReturnValue;
+oResult_Get_Question_By_CATEGORY_ID_List.My_Params_Get_Question_By_CATEGORY_ID_List = i_Params_Get_Question_By_CATEGORY_ID_List;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_Question_By_CATEGORY_ID_List.ExceptionMsg = string.Format("Get_Question_By_CATEGORY_ID_List : {0}", ex.Message);
+}
+else
+{
+oResult_Get_Question_By_CATEGORY_ID_List.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_Question_By_CATEGORY_ID_List;
+#endregion
+}
+#endregion
 #region Get_Question_By_Criteria
 [HttpPost]
 [Route("Get_Question_By_Criteria")]
@@ -568,6 +894,336 @@ return oResult_Get_Question_By_OWNER_ID;
 #endregion
 }
 #endregion
+#region Get_Question_By_QUESTION_ID
+[HttpPost]
+[Route("Get_Question_By_QUESTION_ID")]
+public Result_Get_Question_By_QUESTION_ID Get_Question_By_QUESTION_ID(Params_Get_Question_By_QUESTION_ID i_Params_Get_Question_By_QUESTION_ID)
+{
+#region Declaration And Initialization Section.
+Question oReturnValue = new Question();
+string i_Ticket = string.Empty;
+Result_Get_Question_By_QUESTION_ID oResult_Get_Question_By_QUESTION_ID = new Result_Get_Question_By_QUESTION_ID();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_Question_By_QUESTION_ID(i_Params_Get_Question_By_QUESTION_ID);
+oResult_Get_Question_By_QUESTION_ID.My_Result = oReturnValue;
+oResult_Get_Question_By_QUESTION_ID.My_Params_Get_Question_By_QUESTION_ID = i_Params_Get_Question_By_QUESTION_ID;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_Question_By_QUESTION_ID.ExceptionMsg = string.Format("Get_Question_By_QUESTION_ID : {0}", ex.Message);
+}
+else
+{
+oResult_Get_Question_By_QUESTION_ID.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_Question_By_QUESTION_ID;
+#endregion
+}
+#endregion
+#region Get_Question_By_STUDENT_ID_List
+[HttpPost]
+[Route("Get_Question_By_STUDENT_ID_List")]
+public Result_Get_Question_By_STUDENT_ID_List Get_Question_By_STUDENT_ID_List(Params_Get_Question_By_STUDENT_ID_List i_Params_Get_Question_By_STUDENT_ID_List)
+{
+#region Declaration And Initialization Section.
+List<Question>  oReturnValue = new List<Question> ();
+string i_Ticket = string.Empty;
+Result_Get_Question_By_STUDENT_ID_List oResult_Get_Question_By_STUDENT_ID_List = new Result_Get_Question_By_STUDENT_ID_List();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_Question_By_STUDENT_ID_List(i_Params_Get_Question_By_STUDENT_ID_List);
+oResult_Get_Question_By_STUDENT_ID_List.My_Result = oReturnValue;
+oResult_Get_Question_By_STUDENT_ID_List.My_Params_Get_Question_By_STUDENT_ID_List = i_Params_Get_Question_By_STUDENT_ID_List;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_Question_By_STUDENT_ID_List.ExceptionMsg = string.Format("Get_Question_By_STUDENT_ID_List : {0}", ex.Message);
+}
+else
+{
+oResult_Get_Question_By_STUDENT_ID_List.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_Question_By_STUDENT_ID_List;
+#endregion
+}
+#endregion
+#region Get_Student_By_OWNER_ID
+[HttpPost]
+[Route("Get_Student_By_OWNER_ID")]
+public Result_Get_Student_By_OWNER_ID Get_Student_By_OWNER_ID(Params_Get_Student_By_OWNER_ID i_Params_Get_Student_By_OWNER_ID)
+{
+#region Declaration And Initialization Section.
+List<Student>  oReturnValue = new List<Student> ();
+string i_Ticket = string.Empty;
+Result_Get_Student_By_OWNER_ID oResult_Get_Student_By_OWNER_ID = new Result_Get_Student_By_OWNER_ID();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_Student_By_OWNER_ID(i_Params_Get_Student_By_OWNER_ID);
+oResult_Get_Student_By_OWNER_ID.My_Result = oReturnValue;
+oResult_Get_Student_By_OWNER_ID.My_Params_Get_Student_By_OWNER_ID = i_Params_Get_Student_By_OWNER_ID;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_Student_By_OWNER_ID.ExceptionMsg = string.Format("Get_Student_By_OWNER_ID : {0}", ex.Message);
+}
+else
+{
+oResult_Get_Student_By_OWNER_ID.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_Student_By_OWNER_ID;
+#endregion
+}
+#endregion
+#region Get_Teacher_By_CATEGORY_ID_List
+[HttpPost]
+[Route("Get_Teacher_By_CATEGORY_ID_List")]
+public Result_Get_Teacher_By_CATEGORY_ID_List Get_Teacher_By_CATEGORY_ID_List(Params_Get_Teacher_By_CATEGORY_ID_List i_Params_Get_Teacher_By_CATEGORY_ID_List)
+{
+#region Declaration And Initialization Section.
+List<Teacher>  oReturnValue = new List<Teacher> ();
+string i_Ticket = string.Empty;
+Result_Get_Teacher_By_CATEGORY_ID_List oResult_Get_Teacher_By_CATEGORY_ID_List = new Result_Get_Teacher_By_CATEGORY_ID_List();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_Teacher_By_CATEGORY_ID_List(i_Params_Get_Teacher_By_CATEGORY_ID_List);
+oResult_Get_Teacher_By_CATEGORY_ID_List.My_Result = oReturnValue;
+oResult_Get_Teacher_By_CATEGORY_ID_List.My_Params_Get_Teacher_By_CATEGORY_ID_List = i_Params_Get_Teacher_By_CATEGORY_ID_List;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_Teacher_By_CATEGORY_ID_List.ExceptionMsg = string.Format("Get_Teacher_By_CATEGORY_ID_List : {0}", ex.Message);
+}
+else
+{
+oResult_Get_Teacher_By_CATEGORY_ID_List.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_Teacher_By_CATEGORY_ID_List;
+#endregion
+}
+#endregion
+#region Get_Teacher_By_OWNER_ID
+[HttpPost]
+[Route("Get_Teacher_By_OWNER_ID")]
+public Result_Get_Teacher_By_OWNER_ID Get_Teacher_By_OWNER_ID(Params_Get_Teacher_By_OWNER_ID i_Params_Get_Teacher_By_OWNER_ID)
+{
+#region Declaration And Initialization Section.
+List<Teacher>  oReturnValue = new List<Teacher> ();
+string i_Ticket = string.Empty;
+Result_Get_Teacher_By_OWNER_ID oResult_Get_Teacher_By_OWNER_ID = new Result_Get_Teacher_By_OWNER_ID();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_Teacher_By_OWNER_ID(i_Params_Get_Teacher_By_OWNER_ID);
+oResult_Get_Teacher_By_OWNER_ID.My_Result = oReturnValue;
+oResult_Get_Teacher_By_OWNER_ID.My_Params_Get_Teacher_By_OWNER_ID = i_Params_Get_Teacher_By_OWNER_ID;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_Teacher_By_OWNER_ID.ExceptionMsg = string.Format("Get_Teacher_By_OWNER_ID : {0}", ex.Message);
+}
+else
+{
+oResult_Get_Teacher_By_OWNER_ID.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_Teacher_By_OWNER_ID;
+#endregion
+}
+#endregion
 }
 
 #region Action_Result
@@ -612,11 +1268,27 @@ public Answer My_Answer { get; set; }
 #endregion
 }
 #endregion
+#region Result_Edit_Category_favorite
+public partial class Result_Edit_Category_favorite : Action_Result
+{
+#region Properties.
+public Category_favorite My_Category_favorite { get; set; }
+#endregion
+}
+#endregion
 #region Result_Edit_Question
 public partial class Result_Edit_Question : Action_Result
 {
 #region Properties.
 public Question My_Question { get; set; }
+#endregion
+}
+#endregion
+#region Result_Edit_Teacher_favorite
+public partial class Result_Edit_Teacher_favorite : Action_Result
+{
+#region Properties.
+public Teacher_favorite My_Teacher_favorite { get; set; }
 #endregion
 }
 #endregion
@@ -638,6 +1310,33 @@ public Params_Get_Answer_By_OWNER_ID My_Params_Get_Answer_By_OWNER_ID { get; set
 #endregion
 }
 #endregion
+#region Result_Get_Answer_By_STUDENT_ID_List
+public partial class Result_Get_Answer_By_STUDENT_ID_List : Action_Result
+{
+#region Properties.
+public List<Answer>  My_Result { get; set; }
+public Params_Get_Answer_By_STUDENT_ID_List My_Params_Get_Answer_By_STUDENT_ID_List { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_Category_By_OWNER_ID
+public partial class Result_Get_Category_By_OWNER_ID : Action_Result
+{
+#region Properties.
+public List<Category>  My_Result { get; set; }
+public Params_Get_Category_By_OWNER_ID My_Params_Get_Category_By_OWNER_ID { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_Question_By_CATEGORY_ID_List
+public partial class Result_Get_Question_By_CATEGORY_ID_List : Action_Result
+{
+#region Properties.
+public List<Question>  My_Result { get; set; }
+public Params_Get_Question_By_CATEGORY_ID_List My_Params_Get_Question_By_CATEGORY_ID_List { get; set; }
+#endregion
+}
+#endregion
 #region Result_Get_Question_By_Criteria
 public partial class Result_Get_Question_By_Criteria : Action_Result
 {
@@ -653,6 +1352,51 @@ public partial class Result_Get_Question_By_OWNER_ID : Action_Result
 #region Properties.
 public List<Question>  My_Result { get; set; }
 public Params_Get_Question_By_OWNER_ID My_Params_Get_Question_By_OWNER_ID { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_Question_By_QUESTION_ID
+public partial class Result_Get_Question_By_QUESTION_ID : Action_Result
+{
+#region Properties.
+public Question My_Result { get; set; }
+public Params_Get_Question_By_QUESTION_ID My_Params_Get_Question_By_QUESTION_ID { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_Question_By_STUDENT_ID_List
+public partial class Result_Get_Question_By_STUDENT_ID_List : Action_Result
+{
+#region Properties.
+public List<Question>  My_Result { get; set; }
+public Params_Get_Question_By_STUDENT_ID_List My_Params_Get_Question_By_STUDENT_ID_List { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_Student_By_OWNER_ID
+public partial class Result_Get_Student_By_OWNER_ID : Action_Result
+{
+#region Properties.
+public List<Student>  My_Result { get; set; }
+public Params_Get_Student_By_OWNER_ID My_Params_Get_Student_By_OWNER_ID { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_Teacher_By_CATEGORY_ID_List
+public partial class Result_Get_Teacher_By_CATEGORY_ID_List : Action_Result
+{
+#region Properties.
+public List<Teacher>  My_Result { get; set; }
+public Params_Get_Teacher_By_CATEGORY_ID_List My_Params_Get_Teacher_By_CATEGORY_ID_List { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_Teacher_By_OWNER_ID
+public partial class Result_Get_Teacher_By_OWNER_ID : Action_Result
+{
+#region Properties.
+public List<Teacher>  My_Result { get; set; }
+public Params_Get_Teacher_By_OWNER_ID My_Params_Get_Teacher_By_OWNER_ID { get; set; }
 #endregion
 }
 #endregion

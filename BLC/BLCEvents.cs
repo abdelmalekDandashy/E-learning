@@ -14,7 +14,24 @@ public partial class BLC
 #region Enum_API_Method
 public enum Enum_API_Method
 {
-
+Get_Answer_By_OWNER_ID,
+Edit_Answer,
+Get_Answer_By_Criteria,
+Delete_Answer,
+Get_Answer_By_STUDENT_ID_List,
+Edit_Question,
+Get_Question_By_CATEGORY_ID_List,
+Get_Question_By_STUDENT_ID_List,
+Get_Question_By_QUESTION_ID,
+Delete_Question,
+Get_Question_By_Criteria,
+Get_Question_By_OWNER_ID,
+Edit_Category_favorite,
+Get_Category_By_OWNER_ID,
+Get_Student_By_OWNER_ID,
+Get_Teacher_By_CATEGORY_ID_List,
+Get_Teacher_By_OWNER_ID,
+Edit_Teacher_favorite
 }
 #endregion
 

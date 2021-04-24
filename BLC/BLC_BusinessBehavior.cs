@@ -619,1030 +619,6 @@ oScope.Complete();
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l4_With_Children");}
 }
 #endregion
-#region Reset_Category_favorite_By_Category
-public void Reset_Category_favorite_By_Category(Category i_Category, List<Category_favorite> i_Category_favorite_List)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Category_favorite_By_CATEGORY_ID oParams_Delete_Category_favorite_By_CATEGORY_ID = new Params_Delete_Category_favorite_By_CATEGORY_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Category_favorite_By_Category");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Existing Category_favorite
-//---------------------------------
-oParams_Delete_Category_favorite_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
-Delete_Category_favorite_By_CATEGORY_ID(oParams_Delete_Category_favorite_By_CATEGORY_ID);
-//---------------------------------
-// Edit Category_favorite
-//---------------------------------
-Edit_Category_WithCategory_favorite(i_Category, i_Category_favorite_List);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Category_favorite_By_Category");}
-}
-#endregion
-#region Reset_Category_favorite_By_Category
-public void Reset_Category_favorite_By_Category(Category i_Category, List<Category_favorite> i_Category_favorite_List_To_Delete,List<Category_favorite> i_Category_favorite_List_To_Create)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Category_favorite oParams_Delete_Category_favorite = new Params_Delete_Category_favorite();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Category_favorite_By_Category");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Specified Items 
-//---------------------------------
- if (i_Category_favorite_List_To_Delete != null)
-{
-foreach (var oRow in i_Category_favorite_List_To_Delete)
-{
-oParams_Delete_Category_favorite.CATEGORY_FAVORITE_ID = oRow.CATEGORY_FAVORITE_ID;
-Delete_Category_favorite(oParams_Delete_Category_favorite);
-}
-}
-//---------------------------------
-// Edit Category_favorite
-//---------------------------------
-Edit_Category_WithCategory_favorite(i_Category, i_Category_favorite_List_To_Create);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Category_favorite_By_Category");}
-}
-#endregion
-#region Edit_Category_With_Category_favorite(Category i_Category,List<Category_favorite> i_Category_favoriteList)
-public void Edit_Category_WithCategory_favorite(Category i_Category,List<Category_favorite> i_List_Category_favorite)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Category_WithCategory_favorite");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Category(i_Category);
-if (i_List_Category_favorite != null)
-{
-foreach(Category_favorite oCategory_favorite in i_List_Category_favorite)
-{
-oCategory_favorite.CATEGORY_ID = i_Category.CATEGORY_ID;
-Edit_Category_favorite(oCategory_favorite);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Category_WithCategory_favorite");}
-}
-#endregion
-#region Reset_Question_By_Category
-public void Reset_Question_By_Category(Category i_Category, List<Question> i_Question_List)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Question_By_CATEGORY_ID oParams_Delete_Question_By_CATEGORY_ID = new Params_Delete_Question_By_CATEGORY_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Question_By_Category");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Existing Question
-//---------------------------------
-oParams_Delete_Question_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
-Delete_Question_By_CATEGORY_ID(oParams_Delete_Question_By_CATEGORY_ID);
-//---------------------------------
-// Edit Question
-//---------------------------------
-Edit_Category_WithQuestion(i_Category, i_Question_List);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Question_By_Category");}
-}
-#endregion
-#region Reset_Question_By_Category
-public void Reset_Question_By_Category(Category i_Category, List<Question> i_Question_List_To_Delete,List<Question> i_Question_List_To_Create)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Question oParams_Delete_Question = new Params_Delete_Question();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Question_By_Category");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Specified Items 
-//---------------------------------
- if (i_Question_List_To_Delete != null)
-{
-foreach (var oRow in i_Question_List_To_Delete)
-{
-oParams_Delete_Question.QUESTION_ID = oRow.QUESTION_ID;
-Delete_Question(oParams_Delete_Question);
-}
-}
-//---------------------------------
-// Edit Question
-//---------------------------------
-Edit_Category_WithQuestion(i_Category, i_Question_List_To_Create);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Question_By_Category");}
-}
-#endregion
-#region Edit_Category_With_Question(Category i_Category,List<Question> i_QuestionList)
-public void Edit_Category_WithQuestion(Category i_Category,List<Question> i_List_Question)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Category_WithQuestion");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Category(i_Category);
-if (i_List_Question != null)
-{
-foreach(Question oQuestion in i_List_Question)
-{
-oQuestion.CATEGORY_ID = i_Category.CATEGORY_ID;
-Edit_Question(oQuestion);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Category_WithQuestion");}
-}
-#endregion
-#region Reset_Teacher_By_Category
-public void Reset_Teacher_By_Category(Category i_Category, List<Teacher> i_Teacher_List)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Teacher_By_CATEGORY_ID oParams_Delete_Teacher_By_CATEGORY_ID = new Params_Delete_Teacher_By_CATEGORY_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_By_Category");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Existing Teacher
-//---------------------------------
-oParams_Delete_Teacher_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
-Delete_Teacher_By_CATEGORY_ID(oParams_Delete_Teacher_By_CATEGORY_ID);
-//---------------------------------
-// Edit Teacher
-//---------------------------------
-Edit_Category_WithTeacher(i_Category, i_Teacher_List);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_By_Category");}
-}
-#endregion
-#region Reset_Teacher_By_Category
-public void Reset_Teacher_By_Category(Category i_Category, List<Teacher> i_Teacher_List_To_Delete,List<Teacher> i_Teacher_List_To_Create)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Teacher oParams_Delete_Teacher = new Params_Delete_Teacher();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_By_Category");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Specified Items 
-//---------------------------------
- if (i_Teacher_List_To_Delete != null)
-{
-foreach (var oRow in i_Teacher_List_To_Delete)
-{
-oParams_Delete_Teacher.TEACHER_ID = oRow.TEACHER_ID;
-Delete_Teacher(oParams_Delete_Teacher);
-}
-}
-//---------------------------------
-// Edit Teacher
-//---------------------------------
-Edit_Category_WithTeacher(i_Category, i_Teacher_List_To_Create);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_By_Category");}
-}
-#endregion
-#region Edit_Category_With_Teacher(Category i_Category,List<Teacher> i_TeacherList)
-public void Edit_Category_WithTeacher(Category i_Category,List<Teacher> i_List_Teacher)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Category_WithTeacher");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Category(i_Category);
-if (i_List_Teacher != null)
-{
-foreach(Teacher oTeacher in i_List_Teacher)
-{
-oTeacher.CATEGORY_ID = i_Category.CATEGORY_ID;
-Edit_Teacher(oTeacher);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Category_WithTeacher");}
-}
-#endregion
-#region Reset_Teacher_category_By_Category
-public void Reset_Teacher_category_By_Category(Category i_Category, List<Teacher_category> i_Teacher_category_List)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Teacher_category_By_CATEGORY_ID oParams_Delete_Teacher_category_By_CATEGORY_ID = new Params_Delete_Teacher_category_By_CATEGORY_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_category_By_Category");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Existing Teacher_category
-//---------------------------------
-oParams_Delete_Teacher_category_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
-Delete_Teacher_category_By_CATEGORY_ID(oParams_Delete_Teacher_category_By_CATEGORY_ID);
-//---------------------------------
-// Edit Teacher_category
-//---------------------------------
-Edit_Category_WithTeacher_category(i_Category, i_Teacher_category_List);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_category_By_Category");}
-}
-#endregion
-#region Reset_Teacher_category_By_Category
-public void Reset_Teacher_category_By_Category(Category i_Category, List<Teacher_category> i_Teacher_category_List_To_Delete,List<Teacher_category> i_Teacher_category_List_To_Create)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Teacher_category oParams_Delete_Teacher_category = new Params_Delete_Teacher_category();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_category_By_Category");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Specified Items 
-//---------------------------------
- if (i_Teacher_category_List_To_Delete != null)
-{
-foreach (var oRow in i_Teacher_category_List_To_Delete)
-{
-oParams_Delete_Teacher_category.TEACHER_CATEGORY_ID = oRow.TEACHER_CATEGORY_ID;
-Delete_Teacher_category(oParams_Delete_Teacher_category);
-}
-}
-//---------------------------------
-// Edit Teacher_category
-//---------------------------------
-Edit_Category_WithTeacher_category(i_Category, i_Teacher_category_List_To_Create);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_category_By_Category");}
-}
-#endregion
-#region Edit_Category_With_Teacher_category(Category i_Category,List<Teacher_category> i_Teacher_categoryList)
-public void Edit_Category_WithTeacher_category(Category i_Category,List<Teacher_category> i_List_Teacher_category)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Category_WithTeacher_category");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Category(i_Category);
-if (i_List_Teacher_category != null)
-{
-foreach(Teacher_category oTeacher_category in i_List_Teacher_category)
-{
-oTeacher_category.CATEGORY_ID = i_Category.CATEGORY_ID;
-Edit_Teacher_category(oTeacher_category);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Category_WithTeacher_category");}
-}
-#endregion
-#region Edit_Category_WithRelatedData(Category i_Category,List<Category_favorite> i_List_Category_favorite,List<Question> i_List_Question,List<Teacher> i_List_Teacher,List<Teacher_category> i_List_Teacher_category)
-public void Edit_Category_WithRelatedData(Category i_Category,List<Category_favorite> i_List_Category_favorite,List<Question> i_List_Question,List<Teacher> i_List_Teacher,List<Teacher_category> i_List_Teacher_category)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Category_WithRelatedData");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Category(i_Category);
-if (i_List_Category_favorite != null)
-{
-foreach(Category_favorite oCategory_favorite in i_List_Category_favorite)
-{
-oCategory_favorite.CATEGORY_ID = i_Category.CATEGORY_ID;
-Edit_Category_favorite(oCategory_favorite);
-}
-}
-if (i_List_Question != null)
-{
-foreach(Question oQuestion in i_List_Question)
-{
-oQuestion.CATEGORY_ID = i_Category.CATEGORY_ID;
-Edit_Question(oQuestion);
-}
-}
-if (i_List_Teacher != null)
-{
-foreach(Teacher oTeacher in i_List_Teacher)
-{
-oTeacher.CATEGORY_ID = i_Category.CATEGORY_ID;
-Edit_Teacher(oTeacher);
-}
-}
-if (i_List_Teacher_category != null)
-{
-foreach(Teacher_category oTeacher_category in i_List_Teacher_category)
-{
-oTeacher_category.CATEGORY_ID = i_Category.CATEGORY_ID;
-Edit_Teacher_category(oTeacher_category);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Category_WithRelatedData");}
-}
-#endregion
-#region Delete_Category_With_Children(Category i_Category)
-public void Delete_Category_With_Children(Category i_Category)
-{
- #region Declaration And Initialization Section.
-Params_Delete_Category oParams_Delete_Category = new Params_Delete_Category();
-Params_Delete_Category_favorite_By_CATEGORY_ID oParams_Delete_Category_favorite_By_CATEGORY_ID = new Params_Delete_Category_favorite_By_CATEGORY_ID();
-Params_Delete_Question_By_CATEGORY_ID oParams_Delete_Question_By_CATEGORY_ID = new Params_Delete_Question_By_CATEGORY_ID();
-Params_Delete_Teacher_By_CATEGORY_ID oParams_Delete_Teacher_By_CATEGORY_ID = new Params_Delete_Teacher_By_CATEGORY_ID();
-Params_Delete_Teacher_category_By_CATEGORY_ID oParams_Delete_Teacher_category_By_CATEGORY_ID = new Params_Delete_Teacher_category_By_CATEGORY_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Delete_Category_With_Children");}
- #region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-//-------------------------
-oParams_Delete_Category_favorite_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
-Delete_Category_favorite_By_CATEGORY_ID(oParams_Delete_Category_favorite_By_CATEGORY_ID);
-oParams_Delete_Question_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
-Delete_Question_By_CATEGORY_ID(oParams_Delete_Question_By_CATEGORY_ID);
-oParams_Delete_Teacher_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
-Delete_Teacher_By_CATEGORY_ID(oParams_Delete_Teacher_By_CATEGORY_ID);
-oParams_Delete_Teacher_category_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
-Delete_Teacher_category_By_CATEGORY_ID(oParams_Delete_Teacher_category_By_CATEGORY_ID);
-//-------------------------
-
-//-------------------------
-oParams_Delete_Category.CATEGORY_ID = i_Category.CATEGORY_ID;
-Delete_Category(oParams_Delete_Category);
-//-------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Delete_Category_With_Children");}
-}
-#endregion
-#region Reset_Answer_By_Teacher
-public void Reset_Answer_By_Teacher(Teacher i_Teacher, List<Answer> i_Answer_List)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Answer_By_TEACHER_ID oParams_Delete_Answer_By_TEACHER_ID = new Params_Delete_Answer_By_TEACHER_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Answer_By_Teacher");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Existing Answer
-//---------------------------------
-oParams_Delete_Answer_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
-Delete_Answer_By_TEACHER_ID(oParams_Delete_Answer_By_TEACHER_ID);
-//---------------------------------
-// Edit Answer
-//---------------------------------
-Edit_Teacher_WithAnswer(i_Teacher, i_Answer_List);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Answer_By_Teacher");}
-}
-#endregion
-#region Reset_Answer_By_Teacher
-public void Reset_Answer_By_Teacher(Teacher i_Teacher, List<Answer> i_Answer_List_To_Delete,List<Answer> i_Answer_List_To_Create)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Answer oParams_Delete_Answer = new Params_Delete_Answer();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Answer_By_Teacher");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Specified Items 
-//---------------------------------
- if (i_Answer_List_To_Delete != null)
-{
-foreach (var oRow in i_Answer_List_To_Delete)
-{
-oParams_Delete_Answer.ANSWER_ID = oRow.ANSWER_ID;
-Delete_Answer(oParams_Delete_Answer);
-}
-}
-//---------------------------------
-// Edit Answer
-//---------------------------------
-Edit_Teacher_WithAnswer(i_Teacher, i_Answer_List_To_Create);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Answer_By_Teacher");}
-}
-#endregion
-#region Edit_Teacher_With_Answer(Teacher i_Teacher,List<Answer> i_AnswerList)
-public void Edit_Teacher_WithAnswer(Teacher i_Teacher,List<Answer> i_List_Answer)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Teacher_WithAnswer");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Teacher(i_Teacher);
-if (i_List_Answer != null)
-{
-foreach(Answer oAnswer in i_List_Answer)
-{
-oAnswer.TEACHER_ID = i_Teacher.TEACHER_ID;
-Edit_Answer(oAnswer);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Teacher_WithAnswer");}
-}
-#endregion
-#region Reset_Favorite_teacher_By_Teacher
-public void Reset_Favorite_teacher_By_Teacher(Teacher i_Teacher, List<Favorite_teacher> i_Favorite_teacher_List)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Favorite_teacher_By_TEACHER_ID oParams_Delete_Favorite_teacher_By_TEACHER_ID = new Params_Delete_Favorite_teacher_By_TEACHER_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Favorite_teacher_By_Teacher");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Existing Favorite_teacher
-//---------------------------------
-oParams_Delete_Favorite_teacher_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
-Delete_Favorite_teacher_By_TEACHER_ID(oParams_Delete_Favorite_teacher_By_TEACHER_ID);
-//---------------------------------
-// Edit Favorite_teacher
-//---------------------------------
-Edit_Teacher_WithFavorite_teacher(i_Teacher, i_Favorite_teacher_List);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Favorite_teacher_By_Teacher");}
-}
-#endregion
-#region Reset_Favorite_teacher_By_Teacher
-public void Reset_Favorite_teacher_By_Teacher(Teacher i_Teacher, List<Favorite_teacher> i_Favorite_teacher_List_To_Delete,List<Favorite_teacher> i_Favorite_teacher_List_To_Create)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Favorite_teacher oParams_Delete_Favorite_teacher = new Params_Delete_Favorite_teacher();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Favorite_teacher_By_Teacher");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Specified Items 
-//---------------------------------
- if (i_Favorite_teacher_List_To_Delete != null)
-{
-foreach (var oRow in i_Favorite_teacher_List_To_Delete)
-{
-oParams_Delete_Favorite_teacher.FAVORITE_TEACHER_ID = oRow.FAVORITE_TEACHER_ID;
-Delete_Favorite_teacher(oParams_Delete_Favorite_teacher);
-}
-}
-//---------------------------------
-// Edit Favorite_teacher
-//---------------------------------
-Edit_Teacher_WithFavorite_teacher(i_Teacher, i_Favorite_teacher_List_To_Create);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Favorite_teacher_By_Teacher");}
-}
-#endregion
-#region Edit_Teacher_With_Favorite_teacher(Teacher i_Teacher,List<Favorite_teacher> i_Favorite_teacherList)
-public void Edit_Teacher_WithFavorite_teacher(Teacher i_Teacher,List<Favorite_teacher> i_List_Favorite_teacher)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Teacher_WithFavorite_teacher");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Teacher(i_Teacher);
-if (i_List_Favorite_teacher != null)
-{
-foreach(Favorite_teacher oFavorite_teacher in i_List_Favorite_teacher)
-{
-oFavorite_teacher.TEACHER_ID = i_Teacher.TEACHER_ID;
-Edit_Favorite_teacher(oFavorite_teacher);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Teacher_WithFavorite_teacher");}
-}
-#endregion
-#region Reset_Question_By_Teacher
-public void Reset_Question_By_Teacher(Teacher i_Teacher, List<Question> i_Question_List)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Question_By_TEACHER_ID oParams_Delete_Question_By_TEACHER_ID = new Params_Delete_Question_By_TEACHER_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Question_By_Teacher");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Existing Question
-//---------------------------------
-oParams_Delete_Question_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
-Delete_Question_By_TEACHER_ID(oParams_Delete_Question_By_TEACHER_ID);
-//---------------------------------
-// Edit Question
-//---------------------------------
-Edit_Teacher_WithQuestion(i_Teacher, i_Question_List);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Question_By_Teacher");}
-}
-#endregion
-#region Reset_Question_By_Teacher
-public void Reset_Question_By_Teacher(Teacher i_Teacher, List<Question> i_Question_List_To_Delete,List<Question> i_Question_List_To_Create)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Question oParams_Delete_Question = new Params_Delete_Question();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Question_By_Teacher");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Specified Items 
-//---------------------------------
- if (i_Question_List_To_Delete != null)
-{
-foreach (var oRow in i_Question_List_To_Delete)
-{
-oParams_Delete_Question.QUESTION_ID = oRow.QUESTION_ID;
-Delete_Question(oParams_Delete_Question);
-}
-}
-//---------------------------------
-// Edit Question
-//---------------------------------
-Edit_Teacher_WithQuestion(i_Teacher, i_Question_List_To_Create);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Question_By_Teacher");}
-}
-#endregion
-#region Edit_Teacher_With_Question(Teacher i_Teacher,List<Question> i_QuestionList)
-public void Edit_Teacher_WithQuestion(Teacher i_Teacher,List<Question> i_List_Question)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Teacher_WithQuestion");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Teacher(i_Teacher);
-if (i_List_Question != null)
-{
-foreach(Question oQuestion in i_List_Question)
-{
-oQuestion.TEACHER_ID = i_Teacher.TEACHER_ID;
-Edit_Question(oQuestion);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Teacher_WithQuestion");}
-}
-#endregion
-#region Reset_Teacher_category_By_Teacher
-public void Reset_Teacher_category_By_Teacher(Teacher i_Teacher, List<Teacher_category> i_Teacher_category_List)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Teacher_category_By_TEACHER_ID oParams_Delete_Teacher_category_By_TEACHER_ID = new Params_Delete_Teacher_category_By_TEACHER_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_category_By_Teacher");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Existing Teacher_category
-//---------------------------------
-oParams_Delete_Teacher_category_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
-Delete_Teacher_category_By_TEACHER_ID(oParams_Delete_Teacher_category_By_TEACHER_ID);
-//---------------------------------
-// Edit Teacher_category
-//---------------------------------
-Edit_Teacher_WithTeacher_category(i_Teacher, i_Teacher_category_List);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_category_By_Teacher");}
-}
-#endregion
-#region Reset_Teacher_category_By_Teacher
-public void Reset_Teacher_category_By_Teacher(Teacher i_Teacher, List<Teacher_category> i_Teacher_category_List_To_Delete,List<Teacher_category> i_Teacher_category_List_To_Create)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Teacher_category oParams_Delete_Teacher_category = new Params_Delete_Teacher_category();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_category_By_Teacher");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Specified Items 
-//---------------------------------
- if (i_Teacher_category_List_To_Delete != null)
-{
-foreach (var oRow in i_Teacher_category_List_To_Delete)
-{
-oParams_Delete_Teacher_category.TEACHER_CATEGORY_ID = oRow.TEACHER_CATEGORY_ID;
-Delete_Teacher_category(oParams_Delete_Teacher_category);
-}
-}
-//---------------------------------
-// Edit Teacher_category
-//---------------------------------
-Edit_Teacher_WithTeacher_category(i_Teacher, i_Teacher_category_List_To_Create);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_category_By_Teacher");}
-}
-#endregion
-#region Edit_Teacher_With_Teacher_category(Teacher i_Teacher,List<Teacher_category> i_Teacher_categoryList)
-public void Edit_Teacher_WithTeacher_category(Teacher i_Teacher,List<Teacher_category> i_List_Teacher_category)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Teacher_WithTeacher_category");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Teacher(i_Teacher);
-if (i_List_Teacher_category != null)
-{
-foreach(Teacher_category oTeacher_category in i_List_Teacher_category)
-{
-oTeacher_category.TEACHER_ID = i_Teacher.TEACHER_ID;
-Edit_Teacher_category(oTeacher_category);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Teacher_WithTeacher_category");}
-}
-#endregion
-#region Reset_Teacher_favorite_By_Teacher
-public void Reset_Teacher_favorite_By_Teacher(Teacher i_Teacher, List<Teacher_favorite> i_Teacher_favorite_List)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Teacher_favorite_By_TEACHER_ID oParams_Delete_Teacher_favorite_By_TEACHER_ID = new Params_Delete_Teacher_favorite_By_TEACHER_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_favorite_By_Teacher");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Existing Teacher_favorite
-//---------------------------------
-oParams_Delete_Teacher_favorite_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
-Delete_Teacher_favorite_By_TEACHER_ID(oParams_Delete_Teacher_favorite_By_TEACHER_ID);
-//---------------------------------
-// Edit Teacher_favorite
-//---------------------------------
-Edit_Teacher_WithTeacher_favorite(i_Teacher, i_Teacher_favorite_List);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_favorite_By_Teacher");}
-}
-#endregion
-#region Reset_Teacher_favorite_By_Teacher
-public void Reset_Teacher_favorite_By_Teacher(Teacher i_Teacher, List<Teacher_favorite> i_Teacher_favorite_List_To_Delete,List<Teacher_favorite> i_Teacher_favorite_List_To_Create)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Teacher_favorite oParams_Delete_Teacher_favorite = new Params_Delete_Teacher_favorite();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_favorite_By_Teacher");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Specified Items 
-//---------------------------------
- if (i_Teacher_favorite_List_To_Delete != null)
-{
-foreach (var oRow in i_Teacher_favorite_List_To_Delete)
-{
-oParams_Delete_Teacher_favorite.TEACHER_FAVORITE_ID = oRow.TEACHER_FAVORITE_ID;
-Delete_Teacher_favorite(oParams_Delete_Teacher_favorite);
-}
-}
-//---------------------------------
-// Edit Teacher_favorite
-//---------------------------------
-Edit_Teacher_WithTeacher_favorite(i_Teacher, i_Teacher_favorite_List_To_Create);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_favorite_By_Teacher");}
-}
-#endregion
-#region Edit_Teacher_With_Teacher_favorite(Teacher i_Teacher,List<Teacher_favorite> i_Teacher_favoriteList)
-public void Edit_Teacher_WithTeacher_favorite(Teacher i_Teacher,List<Teacher_favorite> i_List_Teacher_favorite)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Teacher_WithTeacher_favorite");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Teacher(i_Teacher);
-if (i_List_Teacher_favorite != null)
-{
-foreach(Teacher_favorite oTeacher_favorite in i_List_Teacher_favorite)
-{
-oTeacher_favorite.TEACHER_ID = i_Teacher.TEACHER_ID;
-Edit_Teacher_favorite(oTeacher_favorite);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Teacher_WithTeacher_favorite");}
-}
-#endregion
-#region Reset_Teacher_report_By_Teacher
-public void Reset_Teacher_report_By_Teacher(Teacher i_Teacher, List<Teacher_report> i_Teacher_report_List)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Teacher_report_By_TEACHER_ID oParams_Delete_Teacher_report_By_TEACHER_ID = new Params_Delete_Teacher_report_By_TEACHER_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_report_By_Teacher");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Existing Teacher_report
-//---------------------------------
-oParams_Delete_Teacher_report_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
-Delete_Teacher_report_By_TEACHER_ID(oParams_Delete_Teacher_report_By_TEACHER_ID);
-//---------------------------------
-// Edit Teacher_report
-//---------------------------------
-Edit_Teacher_WithTeacher_report(i_Teacher, i_Teacher_report_List);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_report_By_Teacher");}
-}
-#endregion
-#region Reset_Teacher_report_By_Teacher
-public void Reset_Teacher_report_By_Teacher(Teacher i_Teacher, List<Teacher_report> i_Teacher_report_List_To_Delete,List<Teacher_report> i_Teacher_report_List_To_Create)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Teacher_report oParams_Delete_Teacher_report = new Params_Delete_Teacher_report();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_report_By_Teacher");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Specified Items 
-//---------------------------------
- if (i_Teacher_report_List_To_Delete != null)
-{
-foreach (var oRow in i_Teacher_report_List_To_Delete)
-{
-oParams_Delete_Teacher_report.TEACHER_REPORT_ID = oRow.TEACHER_REPORT_ID;
-Delete_Teacher_report(oParams_Delete_Teacher_report);
-}
-}
-//---------------------------------
-// Edit Teacher_report
-//---------------------------------
-Edit_Teacher_WithTeacher_report(i_Teacher, i_Teacher_report_List_To_Create);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_report_By_Teacher");}
-}
-#endregion
-#region Edit_Teacher_With_Teacher_report(Teacher i_Teacher,List<Teacher_report> i_Teacher_reportList)
-public void Edit_Teacher_WithTeacher_report(Teacher i_Teacher,List<Teacher_report> i_List_Teacher_report)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Teacher_WithTeacher_report");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Teacher(i_Teacher);
-if (i_List_Teacher_report != null)
-{
-foreach(Teacher_report oTeacher_report in i_List_Teacher_report)
-{
-oTeacher_report.TEACHER_ID = i_Teacher.TEACHER_ID;
-Edit_Teacher_report(oTeacher_report);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Teacher_WithTeacher_report");}
-}
-#endregion
-#region Edit_Teacher_WithRelatedData(Teacher i_Teacher,List<Answer> i_List_Answer,List<Favorite_teacher> i_List_Favorite_teacher,List<Question> i_List_Question,List<Teacher_category> i_List_Teacher_category,List<Teacher_favorite> i_List_Teacher_favorite,List<Teacher_report> i_List_Teacher_report)
-public void Edit_Teacher_WithRelatedData(Teacher i_Teacher,List<Answer> i_List_Answer,List<Favorite_teacher> i_List_Favorite_teacher,List<Question> i_List_Question,List<Teacher_category> i_List_Teacher_category,List<Teacher_favorite> i_List_Teacher_favorite,List<Teacher_report> i_List_Teacher_report)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Teacher_WithRelatedData");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Teacher(i_Teacher);
-if (i_List_Answer != null)
-{
-foreach(Answer oAnswer in i_List_Answer)
-{
-oAnswer.TEACHER_ID = i_Teacher.TEACHER_ID;
-Edit_Answer(oAnswer);
-}
-}
-if (i_List_Favorite_teacher != null)
-{
-foreach(Favorite_teacher oFavorite_teacher in i_List_Favorite_teacher)
-{
-oFavorite_teacher.TEACHER_ID = i_Teacher.TEACHER_ID;
-Edit_Favorite_teacher(oFavorite_teacher);
-}
-}
-if (i_List_Question != null)
-{
-foreach(Question oQuestion in i_List_Question)
-{
-oQuestion.TEACHER_ID = i_Teacher.TEACHER_ID;
-Edit_Question(oQuestion);
-}
-}
-if (i_List_Teacher_category != null)
-{
-foreach(Teacher_category oTeacher_category in i_List_Teacher_category)
-{
-oTeacher_category.TEACHER_ID = i_Teacher.TEACHER_ID;
-Edit_Teacher_category(oTeacher_category);
-}
-}
-if (i_List_Teacher_favorite != null)
-{
-foreach(Teacher_favorite oTeacher_favorite in i_List_Teacher_favorite)
-{
-oTeacher_favorite.TEACHER_ID = i_Teacher.TEACHER_ID;
-Edit_Teacher_favorite(oTeacher_favorite);
-}
-}
-if (i_List_Teacher_report != null)
-{
-foreach(Teacher_report oTeacher_report in i_List_Teacher_report)
-{
-oTeacher_report.TEACHER_ID = i_Teacher.TEACHER_ID;
-Edit_Teacher_report(oTeacher_report);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Teacher_WithRelatedData");}
-}
-#endregion
-#region Delete_Teacher_With_Children(Teacher i_Teacher)
-public void Delete_Teacher_With_Children(Teacher i_Teacher)
-{
- #region Declaration And Initialization Section.
-Params_Delete_Teacher oParams_Delete_Teacher = new Params_Delete_Teacher();
-Params_Delete_Answer_By_TEACHER_ID oParams_Delete_Answer_By_TEACHER_ID = new Params_Delete_Answer_By_TEACHER_ID();
-Params_Delete_Favorite_teacher_By_TEACHER_ID oParams_Delete_Favorite_teacher_By_TEACHER_ID = new Params_Delete_Favorite_teacher_By_TEACHER_ID();
-Params_Delete_Question_By_TEACHER_ID oParams_Delete_Question_By_TEACHER_ID = new Params_Delete_Question_By_TEACHER_ID();
-Params_Delete_Teacher_category_By_TEACHER_ID oParams_Delete_Teacher_category_By_TEACHER_ID = new Params_Delete_Teacher_category_By_TEACHER_ID();
-Params_Delete_Teacher_favorite_By_TEACHER_ID oParams_Delete_Teacher_favorite_By_TEACHER_ID = new Params_Delete_Teacher_favorite_By_TEACHER_ID();
-Params_Delete_Teacher_report_By_TEACHER_ID oParams_Delete_Teacher_report_By_TEACHER_ID = new Params_Delete_Teacher_report_By_TEACHER_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_With_Children");}
- #region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-//-------------------------
-oParams_Delete_Answer_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
-Delete_Answer_By_TEACHER_ID(oParams_Delete_Answer_By_TEACHER_ID);
-oParams_Delete_Favorite_teacher_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
-Delete_Favorite_teacher_By_TEACHER_ID(oParams_Delete_Favorite_teacher_By_TEACHER_ID);
-oParams_Delete_Question_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
-Delete_Question_By_TEACHER_ID(oParams_Delete_Question_By_TEACHER_ID);
-oParams_Delete_Teacher_category_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
-Delete_Teacher_category_By_TEACHER_ID(oParams_Delete_Teacher_category_By_TEACHER_ID);
-oParams_Delete_Teacher_favorite_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
-Delete_Teacher_favorite_By_TEACHER_ID(oParams_Delete_Teacher_favorite_By_TEACHER_ID);
-oParams_Delete_Teacher_report_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
-Delete_Teacher_report_By_TEACHER_ID(oParams_Delete_Teacher_report_By_TEACHER_ID);
-//-------------------------
-
-//-------------------------
-oParams_Delete_Teacher.TEACHER_ID = i_Teacher.TEACHER_ID;
-Delete_Teacher(oParams_Delete_Teacher);
-//-------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_With_Children");}
-}
-#endregion
 #region Reset_Answer_By_Student
 public void Reset_Answer_By_Student(Student i_Student, List<Answer> i_Answer_List)
 {
@@ -2343,6 +1319,1030 @@ oScope.Complete();
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_Student_With_Children");}
 }
 #endregion
+#region Reset_Answer_By_Teacher
+public void Reset_Answer_By_Teacher(Teacher i_Teacher, List<Answer> i_Answer_List)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Answer_By_TEACHER_ID oParams_Delete_Answer_By_TEACHER_ID = new Params_Delete_Answer_By_TEACHER_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Answer_By_Teacher");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Existing Answer
+//---------------------------------
+oParams_Delete_Answer_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
+Delete_Answer_By_TEACHER_ID(oParams_Delete_Answer_By_TEACHER_ID);
+//---------------------------------
+// Edit Answer
+//---------------------------------
+Edit_Teacher_WithAnswer(i_Teacher, i_Answer_List);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Answer_By_Teacher");}
+}
+#endregion
+#region Reset_Answer_By_Teacher
+public void Reset_Answer_By_Teacher(Teacher i_Teacher, List<Answer> i_Answer_List_To_Delete,List<Answer> i_Answer_List_To_Create)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Answer oParams_Delete_Answer = new Params_Delete_Answer();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Answer_By_Teacher");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Specified Items 
+//---------------------------------
+ if (i_Answer_List_To_Delete != null)
+{
+foreach (var oRow in i_Answer_List_To_Delete)
+{
+oParams_Delete_Answer.ANSWER_ID = oRow.ANSWER_ID;
+Delete_Answer(oParams_Delete_Answer);
+}
+}
+//---------------------------------
+// Edit Answer
+//---------------------------------
+Edit_Teacher_WithAnswer(i_Teacher, i_Answer_List_To_Create);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Answer_By_Teacher");}
+}
+#endregion
+#region Edit_Teacher_With_Answer(Teacher i_Teacher,List<Answer> i_AnswerList)
+public void Edit_Teacher_WithAnswer(Teacher i_Teacher,List<Answer> i_List_Answer)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Teacher_WithAnswer");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_Teacher(i_Teacher);
+if (i_List_Answer != null)
+{
+foreach(Answer oAnswer in i_List_Answer)
+{
+oAnswer.TEACHER_ID = i_Teacher.TEACHER_ID;
+Edit_Answer(oAnswer);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Teacher_WithAnswer");}
+}
+#endregion
+#region Reset_Favorite_teacher_By_Teacher
+public void Reset_Favorite_teacher_By_Teacher(Teacher i_Teacher, List<Favorite_teacher> i_Favorite_teacher_List)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Favorite_teacher_By_TEACHER_ID oParams_Delete_Favorite_teacher_By_TEACHER_ID = new Params_Delete_Favorite_teacher_By_TEACHER_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Favorite_teacher_By_Teacher");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Existing Favorite_teacher
+//---------------------------------
+oParams_Delete_Favorite_teacher_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
+Delete_Favorite_teacher_By_TEACHER_ID(oParams_Delete_Favorite_teacher_By_TEACHER_ID);
+//---------------------------------
+// Edit Favorite_teacher
+//---------------------------------
+Edit_Teacher_WithFavorite_teacher(i_Teacher, i_Favorite_teacher_List);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Favorite_teacher_By_Teacher");}
+}
+#endregion
+#region Reset_Favorite_teacher_By_Teacher
+public void Reset_Favorite_teacher_By_Teacher(Teacher i_Teacher, List<Favorite_teacher> i_Favorite_teacher_List_To_Delete,List<Favorite_teacher> i_Favorite_teacher_List_To_Create)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Favorite_teacher oParams_Delete_Favorite_teacher = new Params_Delete_Favorite_teacher();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Favorite_teacher_By_Teacher");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Specified Items 
+//---------------------------------
+ if (i_Favorite_teacher_List_To_Delete != null)
+{
+foreach (var oRow in i_Favorite_teacher_List_To_Delete)
+{
+oParams_Delete_Favorite_teacher.FAVORITE_TEACHER_ID = oRow.FAVORITE_TEACHER_ID;
+Delete_Favorite_teacher(oParams_Delete_Favorite_teacher);
+}
+}
+//---------------------------------
+// Edit Favorite_teacher
+//---------------------------------
+Edit_Teacher_WithFavorite_teacher(i_Teacher, i_Favorite_teacher_List_To_Create);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Favorite_teacher_By_Teacher");}
+}
+#endregion
+#region Edit_Teacher_With_Favorite_teacher(Teacher i_Teacher,List<Favorite_teacher> i_Favorite_teacherList)
+public void Edit_Teacher_WithFavorite_teacher(Teacher i_Teacher,List<Favorite_teacher> i_List_Favorite_teacher)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Teacher_WithFavorite_teacher");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_Teacher(i_Teacher);
+if (i_List_Favorite_teacher != null)
+{
+foreach(Favorite_teacher oFavorite_teacher in i_List_Favorite_teacher)
+{
+oFavorite_teacher.TEACHER_ID = i_Teacher.TEACHER_ID;
+Edit_Favorite_teacher(oFavorite_teacher);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Teacher_WithFavorite_teacher");}
+}
+#endregion
+#region Reset_Question_By_Teacher
+public void Reset_Question_By_Teacher(Teacher i_Teacher, List<Question> i_Question_List)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Question_By_TEACHER_ID oParams_Delete_Question_By_TEACHER_ID = new Params_Delete_Question_By_TEACHER_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Question_By_Teacher");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Existing Question
+//---------------------------------
+oParams_Delete_Question_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
+Delete_Question_By_TEACHER_ID(oParams_Delete_Question_By_TEACHER_ID);
+//---------------------------------
+// Edit Question
+//---------------------------------
+Edit_Teacher_WithQuestion(i_Teacher, i_Question_List);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Question_By_Teacher");}
+}
+#endregion
+#region Reset_Question_By_Teacher
+public void Reset_Question_By_Teacher(Teacher i_Teacher, List<Question> i_Question_List_To_Delete,List<Question> i_Question_List_To_Create)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Question oParams_Delete_Question = new Params_Delete_Question();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Question_By_Teacher");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Specified Items 
+//---------------------------------
+ if (i_Question_List_To_Delete != null)
+{
+foreach (var oRow in i_Question_List_To_Delete)
+{
+oParams_Delete_Question.QUESTION_ID = oRow.QUESTION_ID;
+Delete_Question(oParams_Delete_Question);
+}
+}
+//---------------------------------
+// Edit Question
+//---------------------------------
+Edit_Teacher_WithQuestion(i_Teacher, i_Question_List_To_Create);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Question_By_Teacher");}
+}
+#endregion
+#region Edit_Teacher_With_Question(Teacher i_Teacher,List<Question> i_QuestionList)
+public void Edit_Teacher_WithQuestion(Teacher i_Teacher,List<Question> i_List_Question)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Teacher_WithQuestion");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_Teacher(i_Teacher);
+if (i_List_Question != null)
+{
+foreach(Question oQuestion in i_List_Question)
+{
+oQuestion.TEACHER_ID = i_Teacher.TEACHER_ID;
+Edit_Question(oQuestion);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Teacher_WithQuestion");}
+}
+#endregion
+#region Reset_Teacher_category_By_Teacher
+public void Reset_Teacher_category_By_Teacher(Teacher i_Teacher, List<Teacher_category> i_Teacher_category_List)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Teacher_category_By_TEACHER_ID oParams_Delete_Teacher_category_By_TEACHER_ID = new Params_Delete_Teacher_category_By_TEACHER_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_category_By_Teacher");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Existing Teacher_category
+//---------------------------------
+oParams_Delete_Teacher_category_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
+Delete_Teacher_category_By_TEACHER_ID(oParams_Delete_Teacher_category_By_TEACHER_ID);
+//---------------------------------
+// Edit Teacher_category
+//---------------------------------
+Edit_Teacher_WithTeacher_category(i_Teacher, i_Teacher_category_List);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_category_By_Teacher");}
+}
+#endregion
+#region Reset_Teacher_category_By_Teacher
+public void Reset_Teacher_category_By_Teacher(Teacher i_Teacher, List<Teacher_category> i_Teacher_category_List_To_Delete,List<Teacher_category> i_Teacher_category_List_To_Create)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Teacher_category oParams_Delete_Teacher_category = new Params_Delete_Teacher_category();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_category_By_Teacher");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Specified Items 
+//---------------------------------
+ if (i_Teacher_category_List_To_Delete != null)
+{
+foreach (var oRow in i_Teacher_category_List_To_Delete)
+{
+oParams_Delete_Teacher_category.TEACHER_CATEGORY_ID = oRow.TEACHER_CATEGORY_ID;
+Delete_Teacher_category(oParams_Delete_Teacher_category);
+}
+}
+//---------------------------------
+// Edit Teacher_category
+//---------------------------------
+Edit_Teacher_WithTeacher_category(i_Teacher, i_Teacher_category_List_To_Create);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_category_By_Teacher");}
+}
+#endregion
+#region Edit_Teacher_With_Teacher_category(Teacher i_Teacher,List<Teacher_category> i_Teacher_categoryList)
+public void Edit_Teacher_WithTeacher_category(Teacher i_Teacher,List<Teacher_category> i_List_Teacher_category)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Teacher_WithTeacher_category");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_Teacher(i_Teacher);
+if (i_List_Teacher_category != null)
+{
+foreach(Teacher_category oTeacher_category in i_List_Teacher_category)
+{
+oTeacher_category.TEACHER_ID = i_Teacher.TEACHER_ID;
+Edit_Teacher_category(oTeacher_category);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Teacher_WithTeacher_category");}
+}
+#endregion
+#region Reset_Teacher_favorite_By_Teacher
+public void Reset_Teacher_favorite_By_Teacher(Teacher i_Teacher, List<Teacher_favorite> i_Teacher_favorite_List)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Teacher_favorite_By_TEACHER_ID oParams_Delete_Teacher_favorite_By_TEACHER_ID = new Params_Delete_Teacher_favorite_By_TEACHER_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_favorite_By_Teacher");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Existing Teacher_favorite
+//---------------------------------
+oParams_Delete_Teacher_favorite_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
+Delete_Teacher_favorite_By_TEACHER_ID(oParams_Delete_Teacher_favorite_By_TEACHER_ID);
+//---------------------------------
+// Edit Teacher_favorite
+//---------------------------------
+Edit_Teacher_WithTeacher_favorite(i_Teacher, i_Teacher_favorite_List);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_favorite_By_Teacher");}
+}
+#endregion
+#region Reset_Teacher_favorite_By_Teacher
+public void Reset_Teacher_favorite_By_Teacher(Teacher i_Teacher, List<Teacher_favorite> i_Teacher_favorite_List_To_Delete,List<Teacher_favorite> i_Teacher_favorite_List_To_Create)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Teacher_favorite oParams_Delete_Teacher_favorite = new Params_Delete_Teacher_favorite();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_favorite_By_Teacher");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Specified Items 
+//---------------------------------
+ if (i_Teacher_favorite_List_To_Delete != null)
+{
+foreach (var oRow in i_Teacher_favorite_List_To_Delete)
+{
+oParams_Delete_Teacher_favorite.TEACHER_FAVORITE_ID = oRow.TEACHER_FAVORITE_ID;
+Delete_Teacher_favorite(oParams_Delete_Teacher_favorite);
+}
+}
+//---------------------------------
+// Edit Teacher_favorite
+//---------------------------------
+Edit_Teacher_WithTeacher_favorite(i_Teacher, i_Teacher_favorite_List_To_Create);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_favorite_By_Teacher");}
+}
+#endregion
+#region Edit_Teacher_With_Teacher_favorite(Teacher i_Teacher,List<Teacher_favorite> i_Teacher_favoriteList)
+public void Edit_Teacher_WithTeacher_favorite(Teacher i_Teacher,List<Teacher_favorite> i_List_Teacher_favorite)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Teacher_WithTeacher_favorite");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_Teacher(i_Teacher);
+if (i_List_Teacher_favorite != null)
+{
+foreach(Teacher_favorite oTeacher_favorite in i_List_Teacher_favorite)
+{
+oTeacher_favorite.TEACHER_ID = i_Teacher.TEACHER_ID;
+Edit_Teacher_favorite(oTeacher_favorite);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Teacher_WithTeacher_favorite");}
+}
+#endregion
+#region Reset_Teacher_report_By_Teacher
+public void Reset_Teacher_report_By_Teacher(Teacher i_Teacher, List<Teacher_report> i_Teacher_report_List)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Teacher_report_By_TEACHER_ID oParams_Delete_Teacher_report_By_TEACHER_ID = new Params_Delete_Teacher_report_By_TEACHER_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_report_By_Teacher");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Existing Teacher_report
+//---------------------------------
+oParams_Delete_Teacher_report_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
+Delete_Teacher_report_By_TEACHER_ID(oParams_Delete_Teacher_report_By_TEACHER_ID);
+//---------------------------------
+// Edit Teacher_report
+//---------------------------------
+Edit_Teacher_WithTeacher_report(i_Teacher, i_Teacher_report_List);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_report_By_Teacher");}
+}
+#endregion
+#region Reset_Teacher_report_By_Teacher
+public void Reset_Teacher_report_By_Teacher(Teacher i_Teacher, List<Teacher_report> i_Teacher_report_List_To_Delete,List<Teacher_report> i_Teacher_report_List_To_Create)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Teacher_report oParams_Delete_Teacher_report = new Params_Delete_Teacher_report();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_report_By_Teacher");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Specified Items 
+//---------------------------------
+ if (i_Teacher_report_List_To_Delete != null)
+{
+foreach (var oRow in i_Teacher_report_List_To_Delete)
+{
+oParams_Delete_Teacher_report.TEACHER_REPORT_ID = oRow.TEACHER_REPORT_ID;
+Delete_Teacher_report(oParams_Delete_Teacher_report);
+}
+}
+//---------------------------------
+// Edit Teacher_report
+//---------------------------------
+Edit_Teacher_WithTeacher_report(i_Teacher, i_Teacher_report_List_To_Create);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_report_By_Teacher");}
+}
+#endregion
+#region Edit_Teacher_With_Teacher_report(Teacher i_Teacher,List<Teacher_report> i_Teacher_reportList)
+public void Edit_Teacher_WithTeacher_report(Teacher i_Teacher,List<Teacher_report> i_List_Teacher_report)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Teacher_WithTeacher_report");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_Teacher(i_Teacher);
+if (i_List_Teacher_report != null)
+{
+foreach(Teacher_report oTeacher_report in i_List_Teacher_report)
+{
+oTeacher_report.TEACHER_ID = i_Teacher.TEACHER_ID;
+Edit_Teacher_report(oTeacher_report);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Teacher_WithTeacher_report");}
+}
+#endregion
+#region Edit_Teacher_WithRelatedData(Teacher i_Teacher,List<Answer> i_List_Answer,List<Favorite_teacher> i_List_Favorite_teacher,List<Question> i_List_Question,List<Teacher_category> i_List_Teacher_category,List<Teacher_favorite> i_List_Teacher_favorite,List<Teacher_report> i_List_Teacher_report)
+public void Edit_Teacher_WithRelatedData(Teacher i_Teacher,List<Answer> i_List_Answer,List<Favorite_teacher> i_List_Favorite_teacher,List<Question> i_List_Question,List<Teacher_category> i_List_Teacher_category,List<Teacher_favorite> i_List_Teacher_favorite,List<Teacher_report> i_List_Teacher_report)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Teacher_WithRelatedData");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_Teacher(i_Teacher);
+if (i_List_Answer != null)
+{
+foreach(Answer oAnswer in i_List_Answer)
+{
+oAnswer.TEACHER_ID = i_Teacher.TEACHER_ID;
+Edit_Answer(oAnswer);
+}
+}
+if (i_List_Favorite_teacher != null)
+{
+foreach(Favorite_teacher oFavorite_teacher in i_List_Favorite_teacher)
+{
+oFavorite_teacher.TEACHER_ID = i_Teacher.TEACHER_ID;
+Edit_Favorite_teacher(oFavorite_teacher);
+}
+}
+if (i_List_Question != null)
+{
+foreach(Question oQuestion in i_List_Question)
+{
+oQuestion.TEACHER_ID = i_Teacher.TEACHER_ID;
+Edit_Question(oQuestion);
+}
+}
+if (i_List_Teacher_category != null)
+{
+foreach(Teacher_category oTeacher_category in i_List_Teacher_category)
+{
+oTeacher_category.TEACHER_ID = i_Teacher.TEACHER_ID;
+Edit_Teacher_category(oTeacher_category);
+}
+}
+if (i_List_Teacher_favorite != null)
+{
+foreach(Teacher_favorite oTeacher_favorite in i_List_Teacher_favorite)
+{
+oTeacher_favorite.TEACHER_ID = i_Teacher.TEACHER_ID;
+Edit_Teacher_favorite(oTeacher_favorite);
+}
+}
+if (i_List_Teacher_report != null)
+{
+foreach(Teacher_report oTeacher_report in i_List_Teacher_report)
+{
+oTeacher_report.TEACHER_ID = i_Teacher.TEACHER_ID;
+Edit_Teacher_report(oTeacher_report);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Teacher_WithRelatedData");}
+}
+#endregion
+#region Delete_Teacher_With_Children(Teacher i_Teacher)
+public void Delete_Teacher_With_Children(Teacher i_Teacher)
+{
+ #region Declaration And Initialization Section.
+Params_Delete_Teacher oParams_Delete_Teacher = new Params_Delete_Teacher();
+Params_Delete_Answer_By_TEACHER_ID oParams_Delete_Answer_By_TEACHER_ID = new Params_Delete_Answer_By_TEACHER_ID();
+Params_Delete_Favorite_teacher_By_TEACHER_ID oParams_Delete_Favorite_teacher_By_TEACHER_ID = new Params_Delete_Favorite_teacher_By_TEACHER_ID();
+Params_Delete_Question_By_TEACHER_ID oParams_Delete_Question_By_TEACHER_ID = new Params_Delete_Question_By_TEACHER_ID();
+Params_Delete_Teacher_category_By_TEACHER_ID oParams_Delete_Teacher_category_By_TEACHER_ID = new Params_Delete_Teacher_category_By_TEACHER_ID();
+Params_Delete_Teacher_favorite_By_TEACHER_ID oParams_Delete_Teacher_favorite_By_TEACHER_ID = new Params_Delete_Teacher_favorite_By_TEACHER_ID();
+Params_Delete_Teacher_report_By_TEACHER_ID oParams_Delete_Teacher_report_By_TEACHER_ID = new Params_Delete_Teacher_report_By_TEACHER_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_With_Children");}
+ #region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+//-------------------------
+oParams_Delete_Answer_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
+Delete_Answer_By_TEACHER_ID(oParams_Delete_Answer_By_TEACHER_ID);
+oParams_Delete_Favorite_teacher_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
+Delete_Favorite_teacher_By_TEACHER_ID(oParams_Delete_Favorite_teacher_By_TEACHER_ID);
+oParams_Delete_Question_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
+Delete_Question_By_TEACHER_ID(oParams_Delete_Question_By_TEACHER_ID);
+oParams_Delete_Teacher_category_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
+Delete_Teacher_category_By_TEACHER_ID(oParams_Delete_Teacher_category_By_TEACHER_ID);
+oParams_Delete_Teacher_favorite_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
+Delete_Teacher_favorite_By_TEACHER_ID(oParams_Delete_Teacher_favorite_By_TEACHER_ID);
+oParams_Delete_Teacher_report_By_TEACHER_ID.TEACHER_ID = i_Teacher.TEACHER_ID;
+Delete_Teacher_report_By_TEACHER_ID(oParams_Delete_Teacher_report_By_TEACHER_ID);
+//-------------------------
+
+//-------------------------
+oParams_Delete_Teacher.TEACHER_ID = i_Teacher.TEACHER_ID;
+Delete_Teacher(oParams_Delete_Teacher);
+//-------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_With_Children");}
+}
+#endregion
+#region Reset_Category_favorite_By_Category
+public void Reset_Category_favorite_By_Category(Category i_Category, List<Category_favorite> i_Category_favorite_List)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Category_favorite_By_CATEGORY_ID oParams_Delete_Category_favorite_By_CATEGORY_ID = new Params_Delete_Category_favorite_By_CATEGORY_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Category_favorite_By_Category");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Existing Category_favorite
+//---------------------------------
+oParams_Delete_Category_favorite_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
+Delete_Category_favorite_By_CATEGORY_ID(oParams_Delete_Category_favorite_By_CATEGORY_ID);
+//---------------------------------
+// Edit Category_favorite
+//---------------------------------
+Edit_Category_WithCategory_favorite(i_Category, i_Category_favorite_List);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Category_favorite_By_Category");}
+}
+#endregion
+#region Reset_Category_favorite_By_Category
+public void Reset_Category_favorite_By_Category(Category i_Category, List<Category_favorite> i_Category_favorite_List_To_Delete,List<Category_favorite> i_Category_favorite_List_To_Create)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Category_favorite oParams_Delete_Category_favorite = new Params_Delete_Category_favorite();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Category_favorite_By_Category");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Specified Items 
+//---------------------------------
+ if (i_Category_favorite_List_To_Delete != null)
+{
+foreach (var oRow in i_Category_favorite_List_To_Delete)
+{
+oParams_Delete_Category_favorite.CATEGORY_FAVORITE_ID = oRow.CATEGORY_FAVORITE_ID;
+Delete_Category_favorite(oParams_Delete_Category_favorite);
+}
+}
+//---------------------------------
+// Edit Category_favorite
+//---------------------------------
+Edit_Category_WithCategory_favorite(i_Category, i_Category_favorite_List_To_Create);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Category_favorite_By_Category");}
+}
+#endregion
+#region Edit_Category_With_Category_favorite(Category i_Category,List<Category_favorite> i_Category_favoriteList)
+public void Edit_Category_WithCategory_favorite(Category i_Category,List<Category_favorite> i_List_Category_favorite)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Category_WithCategory_favorite");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_Category(i_Category);
+if (i_List_Category_favorite != null)
+{
+foreach(Category_favorite oCategory_favorite in i_List_Category_favorite)
+{
+oCategory_favorite.CATEGORY_ID = i_Category.CATEGORY_ID;
+Edit_Category_favorite(oCategory_favorite);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Category_WithCategory_favorite");}
+}
+#endregion
+#region Reset_Question_By_Category
+public void Reset_Question_By_Category(Category i_Category, List<Question> i_Question_List)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Question_By_CATEGORY_ID oParams_Delete_Question_By_CATEGORY_ID = new Params_Delete_Question_By_CATEGORY_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Question_By_Category");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Existing Question
+//---------------------------------
+oParams_Delete_Question_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
+Delete_Question_By_CATEGORY_ID(oParams_Delete_Question_By_CATEGORY_ID);
+//---------------------------------
+// Edit Question
+//---------------------------------
+Edit_Category_WithQuestion(i_Category, i_Question_List);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Question_By_Category");}
+}
+#endregion
+#region Reset_Question_By_Category
+public void Reset_Question_By_Category(Category i_Category, List<Question> i_Question_List_To_Delete,List<Question> i_Question_List_To_Create)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Question oParams_Delete_Question = new Params_Delete_Question();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Question_By_Category");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Specified Items 
+//---------------------------------
+ if (i_Question_List_To_Delete != null)
+{
+foreach (var oRow in i_Question_List_To_Delete)
+{
+oParams_Delete_Question.QUESTION_ID = oRow.QUESTION_ID;
+Delete_Question(oParams_Delete_Question);
+}
+}
+//---------------------------------
+// Edit Question
+//---------------------------------
+Edit_Category_WithQuestion(i_Category, i_Question_List_To_Create);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Question_By_Category");}
+}
+#endregion
+#region Edit_Category_With_Question(Category i_Category,List<Question> i_QuestionList)
+public void Edit_Category_WithQuestion(Category i_Category,List<Question> i_List_Question)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Category_WithQuestion");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_Category(i_Category);
+if (i_List_Question != null)
+{
+foreach(Question oQuestion in i_List_Question)
+{
+oQuestion.CATEGORY_ID = i_Category.CATEGORY_ID;
+Edit_Question(oQuestion);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Category_WithQuestion");}
+}
+#endregion
+#region Reset_Teacher_By_Category
+public void Reset_Teacher_By_Category(Category i_Category, List<Teacher> i_Teacher_List)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Teacher_By_CATEGORY_ID oParams_Delete_Teacher_By_CATEGORY_ID = new Params_Delete_Teacher_By_CATEGORY_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_By_Category");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Existing Teacher
+//---------------------------------
+oParams_Delete_Teacher_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
+Delete_Teacher_By_CATEGORY_ID(oParams_Delete_Teacher_By_CATEGORY_ID);
+//---------------------------------
+// Edit Teacher
+//---------------------------------
+Edit_Category_WithTeacher(i_Category, i_Teacher_List);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_By_Category");}
+}
+#endregion
+#region Reset_Teacher_By_Category
+public void Reset_Teacher_By_Category(Category i_Category, List<Teacher> i_Teacher_List_To_Delete,List<Teacher> i_Teacher_List_To_Create)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Teacher oParams_Delete_Teacher = new Params_Delete_Teacher();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_By_Category");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Specified Items 
+//---------------------------------
+ if (i_Teacher_List_To_Delete != null)
+{
+foreach (var oRow in i_Teacher_List_To_Delete)
+{
+oParams_Delete_Teacher.TEACHER_ID = oRow.TEACHER_ID;
+Delete_Teacher(oParams_Delete_Teacher);
+}
+}
+//---------------------------------
+// Edit Teacher
+//---------------------------------
+Edit_Category_WithTeacher(i_Category, i_Teacher_List_To_Create);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_By_Category");}
+}
+#endregion
+#region Edit_Category_With_Teacher(Category i_Category,List<Teacher> i_TeacherList)
+public void Edit_Category_WithTeacher(Category i_Category,List<Teacher> i_List_Teacher)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Category_WithTeacher");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_Category(i_Category);
+if (i_List_Teacher != null)
+{
+foreach(Teacher oTeacher in i_List_Teacher)
+{
+oTeacher.CATEGORY_ID = i_Category.CATEGORY_ID;
+Edit_Teacher(oTeacher);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Category_WithTeacher");}
+}
+#endregion
+#region Reset_Teacher_category_By_Category
+public void Reset_Teacher_category_By_Category(Category i_Category, List<Teacher_category> i_Teacher_category_List)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Teacher_category_By_CATEGORY_ID oParams_Delete_Teacher_category_By_CATEGORY_ID = new Params_Delete_Teacher_category_By_CATEGORY_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_category_By_Category");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Existing Teacher_category
+//---------------------------------
+oParams_Delete_Teacher_category_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
+Delete_Teacher_category_By_CATEGORY_ID(oParams_Delete_Teacher_category_By_CATEGORY_ID);
+//---------------------------------
+// Edit Teacher_category
+//---------------------------------
+Edit_Category_WithTeacher_category(i_Category, i_Teacher_category_List);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_category_By_Category");}
+}
+#endregion
+#region Reset_Teacher_category_By_Category
+public void Reset_Teacher_category_By_Category(Category i_Category, List<Teacher_category> i_Teacher_category_List_To_Delete,List<Teacher_category> i_Teacher_category_List_To_Create)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Teacher_category oParams_Delete_Teacher_category = new Params_Delete_Teacher_category();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_category_By_Category");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Specified Items 
+//---------------------------------
+ if (i_Teacher_category_List_To_Delete != null)
+{
+foreach (var oRow in i_Teacher_category_List_To_Delete)
+{
+oParams_Delete_Teacher_category.TEACHER_CATEGORY_ID = oRow.TEACHER_CATEGORY_ID;
+Delete_Teacher_category(oParams_Delete_Teacher_category);
+}
+}
+//---------------------------------
+// Edit Teacher_category
+//---------------------------------
+Edit_Category_WithTeacher_category(i_Category, i_Teacher_category_List_To_Create);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_category_By_Category");}
+}
+#endregion
+#region Edit_Category_With_Teacher_category(Category i_Category,List<Teacher_category> i_Teacher_categoryList)
+public void Edit_Category_WithTeacher_category(Category i_Category,List<Teacher_category> i_List_Teacher_category)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Category_WithTeacher_category");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_Category(i_Category);
+if (i_List_Teacher_category != null)
+{
+foreach(Teacher_category oTeacher_category in i_List_Teacher_category)
+{
+oTeacher_category.CATEGORY_ID = i_Category.CATEGORY_ID;
+Edit_Teacher_category(oTeacher_category);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Category_WithTeacher_category");}
+}
+#endregion
+#region Edit_Category_WithRelatedData(Category i_Category,List<Category_favorite> i_List_Category_favorite,List<Question> i_List_Question,List<Teacher> i_List_Teacher,List<Teacher_category> i_List_Teacher_category)
+public void Edit_Category_WithRelatedData(Category i_Category,List<Category_favorite> i_List_Category_favorite,List<Question> i_List_Question,List<Teacher> i_List_Teacher,List<Teacher_category> i_List_Teacher_category)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Category_WithRelatedData");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_Category(i_Category);
+if (i_List_Category_favorite != null)
+{
+foreach(Category_favorite oCategory_favorite in i_List_Category_favorite)
+{
+oCategory_favorite.CATEGORY_ID = i_Category.CATEGORY_ID;
+Edit_Category_favorite(oCategory_favorite);
+}
+}
+if (i_List_Question != null)
+{
+foreach(Question oQuestion in i_List_Question)
+{
+oQuestion.CATEGORY_ID = i_Category.CATEGORY_ID;
+Edit_Question(oQuestion);
+}
+}
+if (i_List_Teacher != null)
+{
+foreach(Teacher oTeacher in i_List_Teacher)
+{
+oTeacher.CATEGORY_ID = i_Category.CATEGORY_ID;
+Edit_Teacher(oTeacher);
+}
+}
+if (i_List_Teacher_category != null)
+{
+foreach(Teacher_category oTeacher_category in i_List_Teacher_category)
+{
+oTeacher_category.CATEGORY_ID = i_Category.CATEGORY_ID;
+Edit_Teacher_category(oTeacher_category);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Category_WithRelatedData");}
+}
+#endregion
+#region Delete_Category_With_Children(Category i_Category)
+public void Delete_Category_With_Children(Category i_Category)
+{
+ #region Declaration And Initialization Section.
+Params_Delete_Category oParams_Delete_Category = new Params_Delete_Category();
+Params_Delete_Category_favorite_By_CATEGORY_ID oParams_Delete_Category_favorite_By_CATEGORY_ID = new Params_Delete_Category_favorite_By_CATEGORY_ID();
+Params_Delete_Question_By_CATEGORY_ID oParams_Delete_Question_By_CATEGORY_ID = new Params_Delete_Question_By_CATEGORY_ID();
+Params_Delete_Teacher_By_CATEGORY_ID oParams_Delete_Teacher_By_CATEGORY_ID = new Params_Delete_Teacher_By_CATEGORY_ID();
+Params_Delete_Teacher_category_By_CATEGORY_ID oParams_Delete_Teacher_category_By_CATEGORY_ID = new Params_Delete_Teacher_category_By_CATEGORY_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_Category_With_Children");}
+ #region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+//-------------------------
+oParams_Delete_Category_favorite_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
+Delete_Category_favorite_By_CATEGORY_ID(oParams_Delete_Category_favorite_By_CATEGORY_ID);
+oParams_Delete_Question_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
+Delete_Question_By_CATEGORY_ID(oParams_Delete_Question_By_CATEGORY_ID);
+oParams_Delete_Teacher_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
+Delete_Teacher_By_CATEGORY_ID(oParams_Delete_Teacher_By_CATEGORY_ID);
+oParams_Delete_Teacher_category_By_CATEGORY_ID.CATEGORY_ID = i_Category.CATEGORY_ID;
+Delete_Teacher_category_By_CATEGORY_ID(oParams_Delete_Teacher_category_By_CATEGORY_ID);
+//-------------------------
+
+//-------------------------
+oParams_Delete_Category.CATEGORY_ID = i_Category.CATEGORY_ID;
+Delete_Category(oParams_Delete_Category);
+//-------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_Category_With_Children");}
+}
+#endregion
 #region Reset_Evaluation_By_Answer
 public void Reset_Evaluation_By_Answer(Answer i_Answer, List<Evaluation> i_Evaluation_List)
 {
@@ -2477,6 +2477,330 @@ oScope.Complete();
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_Answer_With_Children");}
+}
+#endregion
+#region Reset_Student_By_User_type_code
+public void Reset_Student_By_User_type_code(User_type_code i_User_type_code, List<Student> i_Student_List)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Student_By_USER_TYPE_CODE_ID oParams_Delete_Student_By_USER_TYPE_CODE_ID = new Params_Delete_Student_By_USER_TYPE_CODE_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Student_By_User_type_code");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Existing Student
+//---------------------------------
+oParams_Delete_Student_By_USER_TYPE_CODE_ID.USER_TYPE_CODE_ID = i_User_type_code.USER_TYPE_CODE_ID;
+Delete_Student_By_USER_TYPE_CODE_ID(oParams_Delete_Student_By_USER_TYPE_CODE_ID);
+//---------------------------------
+// Edit Student
+//---------------------------------
+Edit_User_type_code_WithStudent(i_User_type_code, i_Student_List);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Student_By_User_type_code");}
+}
+#endregion
+#region Reset_Student_By_User_type_code
+public void Reset_Student_By_User_type_code(User_type_code i_User_type_code, List<Student> i_Student_List_To_Delete,List<Student> i_Student_List_To_Create)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Student oParams_Delete_Student = new Params_Delete_Student();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Student_By_User_type_code");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Specified Items 
+//---------------------------------
+ if (i_Student_List_To_Delete != null)
+{
+foreach (var oRow in i_Student_List_To_Delete)
+{
+oParams_Delete_Student.STUDENT_ID = oRow.STUDENT_ID;
+Delete_Student(oParams_Delete_Student);
+}
+}
+//---------------------------------
+// Edit Student
+//---------------------------------
+Edit_User_type_code_WithStudent(i_User_type_code, i_Student_List_To_Create);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Student_By_User_type_code");}
+}
+#endregion
+#region Edit_User_type_code_With_Student(User_type_code i_User_type_code,List<Student> i_StudentList)
+public void Edit_User_type_code_WithStudent(User_type_code i_User_type_code,List<Student> i_List_Student)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_User_type_code_WithStudent");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_User_type_code(i_User_type_code);
+if (i_List_Student != null)
+{
+foreach(Student oStudent in i_List_Student)
+{
+oStudent.USER_TYPE_CODE_ID = i_User_type_code.USER_TYPE_CODE_ID;
+Edit_Student(oStudent);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_User_type_code_WithStudent");}
+}
+#endregion
+#region Reset_Teacher_By_User_type_code
+public void Reset_Teacher_By_User_type_code(User_type_code i_User_type_code, List<Teacher> i_Teacher_List)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Teacher_By_USER_TYPE_CODE_ID oParams_Delete_Teacher_By_USER_TYPE_CODE_ID = new Params_Delete_Teacher_By_USER_TYPE_CODE_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_By_User_type_code");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Existing Teacher
+//---------------------------------
+oParams_Delete_Teacher_By_USER_TYPE_CODE_ID.USER_TYPE_CODE_ID = i_User_type_code.USER_TYPE_CODE_ID;
+Delete_Teacher_By_USER_TYPE_CODE_ID(oParams_Delete_Teacher_By_USER_TYPE_CODE_ID);
+//---------------------------------
+// Edit Teacher
+//---------------------------------
+Edit_User_type_code_WithTeacher(i_User_type_code, i_Teacher_List);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_By_User_type_code");}
+}
+#endregion
+#region Reset_Teacher_By_User_type_code
+public void Reset_Teacher_By_User_type_code(User_type_code i_User_type_code, List<Teacher> i_Teacher_List_To_Delete,List<Teacher> i_Teacher_List_To_Create)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Teacher oParams_Delete_Teacher = new Params_Delete_Teacher();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Teacher_By_User_type_code");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Specified Items 
+//---------------------------------
+ if (i_Teacher_List_To_Delete != null)
+{
+foreach (var oRow in i_Teacher_List_To_Delete)
+{
+oParams_Delete_Teacher.TEACHER_ID = oRow.TEACHER_ID;
+Delete_Teacher(oParams_Delete_Teacher);
+}
+}
+//---------------------------------
+// Edit Teacher
+//---------------------------------
+Edit_User_type_code_WithTeacher(i_User_type_code, i_Teacher_List_To_Create);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Teacher_By_User_type_code");}
+}
+#endregion
+#region Edit_User_type_code_With_Teacher(User_type_code i_User_type_code,List<Teacher> i_TeacherList)
+public void Edit_User_type_code_WithTeacher(User_type_code i_User_type_code,List<Teacher> i_List_Teacher)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_User_type_code_WithTeacher");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_User_type_code(i_User_type_code);
+if (i_List_Teacher != null)
+{
+foreach(Teacher oTeacher in i_List_Teacher)
+{
+oTeacher.USER_TYPE_CODE_ID = i_User_type_code.USER_TYPE_CODE_ID;
+Edit_Teacher(oTeacher);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_User_type_code_WithTeacher");}
+}
+#endregion
+#region Reset_User_By_User_type_code
+public void Reset_User_By_User_type_code(User_type_code i_User_type_code, List<User> i_User_List)
+{
+#region Declaration And Initialization Section.
+Params_Delete_User_By_USER_TYPE_CODE_ID oParams_Delete_User_By_USER_TYPE_CODE_ID = new Params_Delete_User_By_USER_TYPE_CODE_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_User_By_User_type_code");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Existing User
+//---------------------------------
+oParams_Delete_User_By_USER_TYPE_CODE_ID.USER_TYPE_CODE_ID = i_User_type_code.USER_TYPE_CODE_ID;
+Delete_User_By_USER_TYPE_CODE_ID(oParams_Delete_User_By_USER_TYPE_CODE_ID);
+//---------------------------------
+// Edit User
+//---------------------------------
+Edit_User_type_code_WithUser(i_User_type_code, i_User_List);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_User_By_User_type_code");}
+}
+#endregion
+#region Reset_User_By_User_type_code
+public void Reset_User_By_User_type_code(User_type_code i_User_type_code, List<User> i_User_List_To_Delete,List<User> i_User_List_To_Create)
+{
+#region Declaration And Initialization Section.
+Params_Delete_User oParams_Delete_User = new Params_Delete_User();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_User_By_User_type_code");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Specified Items 
+//---------------------------------
+ if (i_User_List_To_Delete != null)
+{
+foreach (var oRow in i_User_List_To_Delete)
+{
+oParams_Delete_User.USER_ID = oRow.USER_ID;
+Delete_User(oParams_Delete_User);
+}
+}
+//---------------------------------
+// Edit User
+//---------------------------------
+Edit_User_type_code_WithUser(i_User_type_code, i_User_List_To_Create);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_User_By_User_type_code");}
+}
+#endregion
+#region Edit_User_type_code_With_User(User_type_code i_User_type_code,List<User> i_UserList)
+public void Edit_User_type_code_WithUser(User_type_code i_User_type_code,List<User> i_List_User)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_User_type_code_WithUser");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_User_type_code(i_User_type_code);
+if (i_List_User != null)
+{
+foreach(User oUser in i_List_User)
+{
+oUser.USER_TYPE_CODE_ID = i_User_type_code.USER_TYPE_CODE_ID;
+Edit_User(oUser);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_User_type_code_WithUser");}
+}
+#endregion
+#region Edit_User_type_code_WithRelatedData(User_type_code i_User_type_code,List<Student> i_List_Student,List<Teacher> i_List_Teacher,List<User> i_List_User)
+public void Edit_User_type_code_WithRelatedData(User_type_code i_User_type_code,List<Student> i_List_Student,List<Teacher> i_List_Teacher,List<User> i_List_User)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_User_type_code_WithRelatedData");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_User_type_code(i_User_type_code);
+if (i_List_Student != null)
+{
+foreach(Student oStudent in i_List_Student)
+{
+oStudent.USER_TYPE_CODE_ID = i_User_type_code.USER_TYPE_CODE_ID;
+Edit_Student(oStudent);
+}
+}
+if (i_List_Teacher != null)
+{
+foreach(Teacher oTeacher in i_List_Teacher)
+{
+oTeacher.USER_TYPE_CODE_ID = i_User_type_code.USER_TYPE_CODE_ID;
+Edit_Teacher(oTeacher);
+}
+}
+if (i_List_User != null)
+{
+foreach(User oUser in i_List_User)
+{
+oUser.USER_TYPE_CODE_ID = i_User_type_code.USER_TYPE_CODE_ID;
+Edit_User(oUser);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_User_type_code_WithRelatedData");}
+}
+#endregion
+#region Delete_User_type_code_With_Children(User_type_code i_User_type_code)
+public void Delete_User_type_code_With_Children(User_type_code i_User_type_code)
+{
+ #region Declaration And Initialization Section.
+Params_Delete_User_type_code oParams_Delete_User_type_code = new Params_Delete_User_type_code();
+Params_Delete_Student_By_USER_TYPE_CODE_ID oParams_Delete_Student_By_USER_TYPE_CODE_ID = new Params_Delete_Student_By_USER_TYPE_CODE_ID();
+Params_Delete_Teacher_By_USER_TYPE_CODE_ID oParams_Delete_Teacher_By_USER_TYPE_CODE_ID = new Params_Delete_Teacher_By_USER_TYPE_CODE_ID();
+Params_Delete_User_By_USER_TYPE_CODE_ID oParams_Delete_User_By_USER_TYPE_CODE_ID = new Params_Delete_User_By_USER_TYPE_CODE_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_type_code_With_Children");}
+ #region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+//-------------------------
+oParams_Delete_Student_By_USER_TYPE_CODE_ID.USER_TYPE_CODE_ID = i_User_type_code.USER_TYPE_CODE_ID;
+Delete_Student_By_USER_TYPE_CODE_ID(oParams_Delete_Student_By_USER_TYPE_CODE_ID);
+oParams_Delete_Teacher_By_USER_TYPE_CODE_ID.USER_TYPE_CODE_ID = i_User_type_code.USER_TYPE_CODE_ID;
+Delete_Teacher_By_USER_TYPE_CODE_ID(oParams_Delete_Teacher_By_USER_TYPE_CODE_ID);
+oParams_Delete_User_By_USER_TYPE_CODE_ID.USER_TYPE_CODE_ID = i_User_type_code.USER_TYPE_CODE_ID;
+Delete_User_By_USER_TYPE_CODE_ID(oParams_Delete_User_By_USER_TYPE_CODE_ID);
+//-------------------------
+
+//-------------------------
+oParams_Delete_User_type_code.USER_TYPE_CODE_ID = i_User_type_code.USER_TYPE_CODE_ID;
+Delete_User_type_code(oParams_Delete_User_type_code);
+//-------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_type_code_With_Children");}
 }
 #endregion
 #region Reset_Address_By_Person

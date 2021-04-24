@@ -86,6 +86,10 @@ namespace CodeGenerator
             //oCodeBooster.Methods_With_Events.Add("Delete_Person");
             oCodeBooster.Methods_With_Events.Add("Edit_Answer");
             oCodeBooster.Methods_With_Events.Add("Edit_Question");
+            oCodeBooster.Methods_With_Events.Add("Edit_Student");
+            oCodeBooster.Methods_With_Events.Add("Edit_Teacher");
+            oCodeBooster.Methods_With_Events.Add("Edit_User");
+
             #endregion
             #region Excluding Tables From 12M Hanlder
             oCodeBooster.Tables_Exluded_From_12M_Hanlder = new List<string>();
@@ -215,16 +219,32 @@ namespace CodeGenerator
             //oCodeBooster.APIMethodsSelection.Add("Get_Car_By_OWNER_ID");
             //oCodeBooster.APIMethodsSelection.Add("Authenticate");
 
-            oCodeBooster.APIMethodsSelection.Add("Edit_Answer");
-            oCodeBooster.APIMethodsSelection.Add("Delete_Answer");
-            oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_Criteria");
             oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_OWNER_ID");
+            oCodeBooster.APIMethodsSelection.Add("Edit_Answer");
+            oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_Criteria");
+            oCodeBooster.APIMethodsSelection.Add("Delete_Answer");
 
 
+
+
+            oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_STUDENT_ID_List");
             oCodeBooster.APIMethodsSelection.Add("Edit_Question");
+            oCodeBooster.APIMethodsSelection.Add("Get_Question_By_CATEGORY_ID_List");
+            oCodeBooster.APIMethodsSelection.Add("Get_Question_By_STUDENT_ID_List");
+            oCodeBooster.APIMethodsSelection.Add("Get_Question_By_QUESTION_ID");
             oCodeBooster.APIMethodsSelection.Add("Delete_Question");
             oCodeBooster.APIMethodsSelection.Add("Get_Question_By_Criteria");
             oCodeBooster.APIMethodsSelection.Add("Get_Question_By_OWNER_ID");
+            oCodeBooster.APIMethodsSelection.Add("Delete_Question");
+
+            oCodeBooster.APIMethodsSelection.Add("Edit_Category_favorite");
+            oCodeBooster.APIMethodsSelection.Add("Get_Category_By_OWNER_ID");
+
+
+            oCodeBooster.APIMethodsSelection.Add("Get_Student_By_OWNER_ID");
+            oCodeBooster.APIMethodsSelection.Add("Get_Teacher_By_CATEGORY_ID_List");
+            oCodeBooster.APIMethodsSelection.Add("Get_Teacher_By_OWNER_ID");
+            oCodeBooster.APIMethodsSelection.Add("Edit_Teacher_favorite");
 
 
             //----------------------------
@@ -243,7 +263,7 @@ namespace CodeGenerator
             //oCodeBooster.Is_MemCached_Enabled = true;
             #endregion
 
-            oCodeBoosterClient.Local_Patch_Folder = @"D:\";
+            oCodeBoosterClient.Local_Patch_Folder = @"D:\patches";
             oCodeBoosterClient.Is_Apply_CB_Rules = true;
             oCodeBoosterClient.Show_Embedded_TSql_Exceptions = false;
             oCodeBooster.Is_Profiling_Enabled = false;

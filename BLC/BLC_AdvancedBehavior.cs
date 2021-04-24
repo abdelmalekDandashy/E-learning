@@ -101,6 +101,22 @@ oTools.CopyPropValues(oDBEntry.My_Loc_l3, oLoc_l4.My_Loc_l3);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Loc_l4_By_LOC_L4_ID_Adv");}
 return oLoc_l4;
 }
+public Student Get_Student_By_STUDENT_ID_Adv(Params_Get_Student_By_STUDENT_ID i_Params_Get_Student_By_STUDENT_ID)
+{
+Student oStudent = null;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Student_By_STUDENT_ID_Adv");}
+#region Body Section.
+DALC.Student oDBEntry = _AppContext.Get_Student_By_STUDENT_ID_Adv(i_Params_Get_Student_By_STUDENT_ID.STUDENT_ID);
+oStudent = new Student();
+oTools.CopyPropValues(oDBEntry, oStudent);
+oStudent.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oStudent.My_User);
+oStudent.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oStudent.My_User_type_code);
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Student_By_STUDENT_ID_Adv");}
+return oStudent;
+}
 public Address Get_Address_By_ADDRESS_ID_Adv(Params_Get_Address_By_ADDRESS_ID i_Params_Get_Address_By_ADDRESS_ID)
 {
 Address oAddress = null;
@@ -122,6 +138,24 @@ oTools.CopyPropValues(oDBEntry.My_Loc_l4, oAddress.My_Loc_l4);
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Address_By_ADDRESS_ID_Adv");}
 return oAddress;
+}
+public Teacher Get_Teacher_By_TEACHER_ID_Adv(Params_Get_Teacher_By_TEACHER_ID i_Params_Get_Teacher_By_TEACHER_ID)
+{
+Teacher oTeacher = null;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_TEACHER_ID_Adv");}
+#region Body Section.
+DALC.Teacher oDBEntry = _AppContext.Get_Teacher_By_TEACHER_ID_Adv(i_Params_Get_Teacher_By_TEACHER_ID.TEACHER_ID);
+oTeacher = new Teacher();
+oTools.CopyPropValues(oDBEntry, oTeacher);
+oTeacher.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oTeacher.My_User);
+oTeacher.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oTeacher.My_User_type_code);
+oTeacher.My_Category = new Category();
+oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_TEACHER_ID_Adv");}
+return oTeacher;
 }
 public Teacher_report Get_Teacher_report_By_TEACHER_REPORT_ID_Adv(Params_Get_Teacher_report_By_TEACHER_REPORT_ID i_Params_Get_Teacher_report_By_TEACHER_REPORT_ID)
 {
@@ -182,20 +216,6 @@ oTools.CopyPropValues(oDBEntry, oCategory);
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Category_By_CATEGORY_ID_Adv");}
 return oCategory;
-}
-public Teacher Get_Teacher_By_TEACHER_ID_Adv(Params_Get_Teacher_By_TEACHER_ID i_Params_Get_Teacher_By_TEACHER_ID)
-{
-Teacher oTeacher = null;
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_TEACHER_ID_Adv");}
-#region Body Section.
-DALC.Teacher oDBEntry = _AppContext.Get_Teacher_By_TEACHER_ID_Adv(i_Params_Get_Teacher_By_TEACHER_ID.TEACHER_ID);
-oTeacher = new Teacher();
-oTools.CopyPropValues(oDBEntry, oTeacher);
-oTeacher.My_Category = new Category();
-oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_TEACHER_ID_Adv");}
-return oTeacher;
 }
 public Answer Get_Answer_By_ANSWER_ID_Adv(Params_Get_Answer_By_ANSWER_ID i_Params_Get_Answer_By_ANSWER_ID)
 {
@@ -261,6 +281,18 @@ oTools.CopyPropValues(oDBEntry.My_Teacher, oFavorite_teacher.My_Teacher);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Favorite_teacher_By_FAVORITE_TEACHER_ID_Adv");}
 return oFavorite_teacher;
 }
+public User_type_code Get_User_type_code_By_USER_TYPE_CODE_ID_Adv(Params_Get_User_type_code_By_USER_TYPE_CODE_ID i_Params_Get_User_type_code_By_USER_TYPE_CODE_ID)
+{
+User_type_code oUser_type_code = null;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_type_code_By_USER_TYPE_CODE_ID_Adv");}
+#region Body Section.
+DALC.User_type_code oDBEntry = _AppContext.Get_User_type_code_By_USER_TYPE_CODE_ID_Adv(i_Params_Get_User_type_code_By_USER_TYPE_CODE_ID.USER_TYPE_CODE_ID);
+oUser_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry, oUser_type_code);
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_type_code_By_USER_TYPE_CODE_ID_Adv");}
+return oUser_type_code;
+}
 public Person Get_Person_By_PERSON_ID_Adv(Params_Get_Person_By_PERSON_ID i_Params_Get_Person_By_PERSON_ID)
 {
 Person oPerson = null;
@@ -281,6 +313,8 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_USER_ID_Adv");}
 DALC.User oDBEntry = _AppContext.Get_User_By_USER_ID_Adv(i_Params_Get_User_By_USER_ID.USER_ID);
 oUser = new User();
 oTools.CopyPropValues(oDBEntry, oUser);
+oUser.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oUser.My_User_type_code);
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USER_ID_Adv");}
 return oUser;
@@ -448,6 +482,31 @@ oList.Add(oLoc_l4);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Loc_l4_By_LOC_L4_ID_List_Adv");}
 return oList;
 }
+public List<Student> Get_Student_By_STUDENT_ID_List_Adv(Params_Get_Student_By_STUDENT_ID_List i_Params_Get_Student_By_STUDENT_ID_List)
+{
+Student oStudent = null;
+List<Student> oList = new List<Student>();
+Params_Get_Student_By_STUDENT_ID_List_SP oParams_Get_Student_By_STUDENT_ID_List_SP = new Params_Get_Student_By_STUDENT_ID_List_SP();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Student_By_STUDENT_ID_List_Adv");}
+#region Body Section.
+List<DALC.Student> oList_DBEntries = _AppContext.Get_Student_By_STUDENT_ID_List_Adv(i_Params_Get_Student_By_STUDENT_ID_List.STUDENT_ID_LIST);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oStudent = new Student();
+oTools.CopyPropValues(oDBEntry, oStudent);
+oStudent.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oStudent.My_User);
+oStudent.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oStudent.My_User_type_code);
+oList.Add(oStudent);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Student_By_STUDENT_ID_List_Adv");}
+return oList;
+}
 public List<Address> Get_Address_By_ADDRESS_ID_List_Adv(Params_Get_Address_By_ADDRESS_ID_List i_Params_Get_Address_By_ADDRESS_ID_List)
 {
 Address oAddress = null;
@@ -477,6 +536,33 @@ oList.Add(oAddress);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Address_By_ADDRESS_ID_List_Adv");}
+return oList;
+}
+public List<Teacher> Get_Teacher_By_TEACHER_ID_List_Adv(Params_Get_Teacher_By_TEACHER_ID_List i_Params_Get_Teacher_By_TEACHER_ID_List)
+{
+Teacher oTeacher = null;
+List<Teacher> oList = new List<Teacher>();
+Params_Get_Teacher_By_TEACHER_ID_List_SP oParams_Get_Teacher_By_TEACHER_ID_List_SP = new Params_Get_Teacher_By_TEACHER_ID_List_SP();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_TEACHER_ID_List_Adv");}
+#region Body Section.
+List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_TEACHER_ID_List_Adv(i_Params_Get_Teacher_By_TEACHER_ID_List.TEACHER_ID_LIST);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTeacher = new Teacher();
+oTools.CopyPropValues(oDBEntry, oTeacher);
+oTeacher.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oTeacher.My_User);
+oTeacher.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oTeacher.My_User_type_code);
+oTeacher.My_Category = new Category();
+oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
+oList.Add(oTeacher);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_TEACHER_ID_List_Adv");}
 return oList;
 }
 public List<Teacher_report> Get_Teacher_report_By_TEACHER_REPORT_ID_List_Adv(Params_Get_Teacher_report_By_TEACHER_REPORT_ID_List i_Params_Get_Teacher_report_By_TEACHER_REPORT_ID_List)
@@ -573,29 +659,6 @@ oList.Add(oCategory);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Category_By_CATEGORY_ID_List_Adv");}
-return oList;
-}
-public List<Teacher> Get_Teacher_By_TEACHER_ID_List_Adv(Params_Get_Teacher_By_TEACHER_ID_List i_Params_Get_Teacher_By_TEACHER_ID_List)
-{
-Teacher oTeacher = null;
-List<Teacher> oList = new List<Teacher>();
-Params_Get_Teacher_By_TEACHER_ID_List_SP oParams_Get_Teacher_By_TEACHER_ID_List_SP = new Params_Get_Teacher_By_TEACHER_ID_List_SP();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_TEACHER_ID_List_Adv");}
-#region Body Section.
-List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_TEACHER_ID_List_Adv(i_Params_Get_Teacher_By_TEACHER_ID_List.TEACHER_ID_LIST);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oTeacher = new Teacher();
-oTools.CopyPropValues(oDBEntry, oTeacher);
-oTeacher.My_Category = new Category();
-oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
-oList.Add(oTeacher);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_TEACHER_ID_List_Adv");}
 return oList;
 }
 public List<Answer> Get_Answer_By_ANSWER_ID_List_Adv(Params_Get_Answer_By_ANSWER_ID_List i_Params_Get_Answer_By_ANSWER_ID_List)
@@ -698,6 +761,27 @@ oList.Add(oFavorite_teacher);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Favorite_teacher_By_FAVORITE_TEACHER_ID_List_Adv");}
 return oList;
 }
+public List<User_type_code> Get_User_type_code_By_USER_TYPE_CODE_ID_List_Adv(Params_Get_User_type_code_By_USER_TYPE_CODE_ID_List i_Params_Get_User_type_code_By_USER_TYPE_CODE_ID_List)
+{
+User_type_code oUser_type_code = null;
+List<User_type_code> oList = new List<User_type_code>();
+Params_Get_User_type_code_By_USER_TYPE_CODE_ID_List_SP oParams_Get_User_type_code_By_USER_TYPE_CODE_ID_List_SP = new Params_Get_User_type_code_By_USER_TYPE_CODE_ID_List_SP();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_type_code_By_USER_TYPE_CODE_ID_List_Adv");}
+#region Body Section.
+List<DALC.User_type_code> oList_DBEntries = _AppContext.Get_User_type_code_By_USER_TYPE_CODE_ID_List_Adv(i_Params_Get_User_type_code_By_USER_TYPE_CODE_ID_List.USER_TYPE_CODE_ID_LIST);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry, oUser_type_code);
+oList.Add(oUser_type_code);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_type_code_By_USER_TYPE_CODE_ID_List_Adv");}
+return oList;
+}
 public List<Person> Get_Person_By_PERSON_ID_List_Adv(Params_Get_Person_By_PERSON_ID_List i_Params_Get_Person_By_PERSON_ID_List)
 {
 Person oPerson = null;
@@ -733,6 +817,8 @@ foreach (var oDBEntry in oList_DBEntries)
 {
 oUser = new User();
 oTools.CopyPropValues(oDBEntry, oUser);
+oUser.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oUser.My_User_type_code);
 oList.Add(oUser);
 }
 }
@@ -1187,6 +1273,78 @@ oList.Add(oLoc_l4);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Loc_l4_By_OWNER_ID_Adv");}
 return oList;
 }
+public List<Student> Get_Student_By_OWNER_ID_Adv(Params_Get_Student_By_OWNER_ID i_Params_Get_Student_By_OWNER_ID)
+{
+List<Student> oList = new List<Student>();
+Student oStudent = new Student();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Student_By_OWNER_ID_Adv");}
+#region Body Section.
+List<DALC.Student> oList_DBEntries = _AppContext.Get_Student_By_OWNER_ID_Adv(i_Params_Get_Student_By_OWNER_ID.OWNER_ID);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oStudent = new Student();
+oTools.CopyPropValues(oDBEntry, oStudent);
+oStudent.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oStudent.My_User);
+oStudent.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oStudent.My_User_type_code);
+oList.Add(oStudent);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Student_By_OWNER_ID_Adv");}
+return oList;
+}
+public List<Student> Get_Student_By_USER_TYPE_CODE_ID_Adv(Params_Get_Student_By_USER_TYPE_CODE_ID i_Params_Get_Student_By_USER_TYPE_CODE_ID)
+{
+List<Student> oList = new List<Student>();
+Student oStudent = new Student();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Student_By_USER_TYPE_CODE_ID_Adv");}
+#region Body Section.
+List<DALC.Student> oList_DBEntries = _AppContext.Get_Student_By_USER_TYPE_CODE_ID_Adv(i_Params_Get_Student_By_USER_TYPE_CODE_ID.USER_TYPE_CODE_ID);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oStudent = new Student();
+oTools.CopyPropValues(oDBEntry, oStudent);
+oStudent.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oStudent.My_User);
+oStudent.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oStudent.My_User_type_code);
+oList.Add(oStudent);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Student_By_USER_TYPE_CODE_ID_Adv");}
+return oList;
+}
+public List<Student> Get_Student_By_USER_ID_Adv(Params_Get_Student_By_USER_ID i_Params_Get_Student_By_USER_ID)
+{
+List<Student> oList = new List<Student>();
+Student oStudent = new Student();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Student_By_USER_ID_Adv");}
+#region Body Section.
+List<DALC.Student> oList_DBEntries = _AppContext.Get_Student_By_USER_ID_Adv(i_Params_Get_Student_By_USER_ID.USER_ID);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oStudent = new Student();
+oTools.CopyPropValues(oDBEntry, oStudent);
+oStudent.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oStudent.My_User);
+oStudent.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oStudent.My_User_type_code);
+oList.Add(oStudent);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Student_By_USER_ID_Adv");}
+return oList;
+}
 public List<Address> Get_Address_By_PERSON_ID_Adv(Params_Get_Address_By_PERSON_ID i_Params_Get_Address_By_PERSON_ID)
 {
 List<Address> oList = new List<Address>();
@@ -1395,6 +1553,110 @@ oList.Add(oAddress);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Address_By_LOC_L4_ID_Adv");}
+return oList;
+}
+public List<Teacher> Get_Teacher_By_OWNER_ID_Adv(Params_Get_Teacher_By_OWNER_ID i_Params_Get_Teacher_By_OWNER_ID)
+{
+List<Teacher> oList = new List<Teacher>();
+Teacher oTeacher = new Teacher();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_OWNER_ID_Adv");}
+#region Body Section.
+List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_OWNER_ID_Adv(i_Params_Get_Teacher_By_OWNER_ID.OWNER_ID);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTeacher = new Teacher();
+oTools.CopyPropValues(oDBEntry, oTeacher);
+oTeacher.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oTeacher.My_User);
+oTeacher.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oTeacher.My_User_type_code);
+oTeacher.My_Category = new Category();
+oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
+oList.Add(oTeacher);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_OWNER_ID_Adv");}
+return oList;
+}
+public List<Teacher> Get_Teacher_By_CATEGORY_ID_Adv(Params_Get_Teacher_By_CATEGORY_ID i_Params_Get_Teacher_By_CATEGORY_ID)
+{
+List<Teacher> oList = new List<Teacher>();
+Teacher oTeacher = new Teacher();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_CATEGORY_ID_Adv");}
+#region Body Section.
+List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_CATEGORY_ID_Adv(i_Params_Get_Teacher_By_CATEGORY_ID.CATEGORY_ID);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTeacher = new Teacher();
+oTools.CopyPropValues(oDBEntry, oTeacher);
+oTeacher.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oTeacher.My_User);
+oTeacher.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oTeacher.My_User_type_code);
+oTeacher.My_Category = new Category();
+oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
+oList.Add(oTeacher);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_CATEGORY_ID_Adv");}
+return oList;
+}
+public List<Teacher> Get_Teacher_By_USER_TYPE_CODE_ID_Adv(Params_Get_Teacher_By_USER_TYPE_CODE_ID i_Params_Get_Teacher_By_USER_TYPE_CODE_ID)
+{
+List<Teacher> oList = new List<Teacher>();
+Teacher oTeacher = new Teacher();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_USER_TYPE_CODE_ID_Adv");}
+#region Body Section.
+List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_USER_TYPE_CODE_ID_Adv(i_Params_Get_Teacher_By_USER_TYPE_CODE_ID.USER_TYPE_CODE_ID);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTeacher = new Teacher();
+oTools.CopyPropValues(oDBEntry, oTeacher);
+oTeacher.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oTeacher.My_User);
+oTeacher.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oTeacher.My_User_type_code);
+oTeacher.My_Category = new Category();
+oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
+oList.Add(oTeacher);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_USER_TYPE_CODE_ID_Adv");}
+return oList;
+}
+public List<Teacher> Get_Teacher_By_USER_ID_Adv(Params_Get_Teacher_By_USER_ID i_Params_Get_Teacher_By_USER_ID)
+{
+List<Teacher> oList = new List<Teacher>();
+Teacher oTeacher = new Teacher();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_USER_ID_Adv");}
+#region Body Section.
+List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_USER_ID_Adv(i_Params_Get_Teacher_By_USER_ID.USER_ID);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTeacher = new Teacher();
+oTools.CopyPropValues(oDBEntry, oTeacher);
+oTeacher.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oTeacher.My_User);
+oTeacher.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oTeacher.My_User_type_code);
+oTeacher.My_Category = new Category();
+oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
+oList.Add(oTeacher);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_USER_ID_Adv");}
 return oList;
 }
 public List<Teacher_report> Get_Teacher_report_By_OWNER_ID_Adv(Params_Get_Teacher_report_By_OWNER_ID i_Params_Get_Teacher_report_By_OWNER_ID)
@@ -1631,50 +1893,6 @@ oList.Add(oCategory);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Category_By_OWNER_ID_Adv");}
-return oList;
-}
-public List<Teacher> Get_Teacher_By_OWNER_ID_Adv(Params_Get_Teacher_By_OWNER_ID i_Params_Get_Teacher_By_OWNER_ID)
-{
-List<Teacher> oList = new List<Teacher>();
-Teacher oTeacher = new Teacher();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_OWNER_ID_Adv");}
-#region Body Section.
-List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_OWNER_ID_Adv(i_Params_Get_Teacher_By_OWNER_ID.OWNER_ID);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oTeacher = new Teacher();
-oTools.CopyPropValues(oDBEntry, oTeacher);
-oTeacher.My_Category = new Category();
-oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
-oList.Add(oTeacher);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_OWNER_ID_Adv");}
-return oList;
-}
-public List<Teacher> Get_Teacher_By_CATEGORY_ID_Adv(Params_Get_Teacher_By_CATEGORY_ID i_Params_Get_Teacher_By_CATEGORY_ID)
-{
-List<Teacher> oList = new List<Teacher>();
-Teacher oTeacher = new Teacher();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_CATEGORY_ID_Adv");}
-#region Body Section.
-List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_CATEGORY_ID_Adv(i_Params_Get_Teacher_By_CATEGORY_ID.CATEGORY_ID);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oTeacher = new Teacher();
-oTools.CopyPropValues(oDBEntry, oTeacher);
-oTeacher.My_Category = new Category();
-oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
-oList.Add(oTeacher);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_CATEGORY_ID_Adv");}
 return oList;
 }
 public List<Answer> Get_Answer_By_OWNER_ID_Adv(Params_Get_Answer_By_OWNER_ID i_Params_Get_Answer_By_OWNER_ID)
@@ -1991,6 +2209,26 @@ oList.Add(oFavorite_teacher);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Favorite_teacher_By_TEACHER_ID_Adv");}
 return oList;
 }
+public List<User_type_code> Get_User_type_code_By_OWNER_ID_Adv(Params_Get_User_type_code_By_OWNER_ID i_Params_Get_User_type_code_By_OWNER_ID)
+{
+List<User_type_code> oList = new List<User_type_code>();
+User_type_code oUser_type_code = new User_type_code();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_type_code_By_OWNER_ID_Adv");}
+#region Body Section.
+List<DALC.User_type_code> oList_DBEntries = _AppContext.Get_User_type_code_By_OWNER_ID_Adv(i_Params_Get_User_type_code_By_OWNER_ID.OWNER_ID);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry, oUser_type_code);
+oList.Add(oUser_type_code);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_type_code_By_OWNER_ID_Adv");}
+return oList;
+}
 public List<Person> Get_Person_By_OWNER_ID_Adv(Params_Get_Person_By_OWNER_ID i_Params_Get_Person_By_OWNER_ID)
 {
 List<Person> oList = new List<Person>();
@@ -2024,6 +2262,8 @@ foreach (var oDBEntry in oList_DBEntries)
 {
 oUser = new User();
 oTools.CopyPropValues(oDBEntry, oUser);
+oUser.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oUser.My_User_type_code);
 oList.Add(oUser);
 }
 }
@@ -2044,11 +2284,35 @@ foreach (var oDBEntry in oList_DBEntries)
 {
 oUser = new User();
 oTools.CopyPropValues(oDBEntry, oUser);
+oUser.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oUser.My_User_type_code);
 oList.Add(oUser);
 }
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USERNAME_Adv");}
+return oList;
+}
+public List<User> Get_User_By_USER_TYPE_CODE_ID_Adv(Params_Get_User_By_USER_TYPE_CODE_ID i_Params_Get_User_By_USER_TYPE_CODE_ID)
+{
+List<User> oList = new List<User>();
+User oUser = new User();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_USER_TYPE_CODE_ID_Adv");}
+#region Body Section.
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_USER_TYPE_CODE_ID_Adv(i_Params_Get_User_By_USER_TYPE_CODE_ID.USER_TYPE_CODE_ID);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser = new User();
+oTools.CopyPropValues(oDBEntry, oUser);
+oUser.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oUser.My_User_type_code);
+oList.Add(oUser);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USER_TYPE_CODE_ID_Adv");}
 return oList;
 }
 public List<Contact> Get_Contact_By_PERSON_ID_Adv(Params_Get_Contact_By_PERSON_ID i_Params_Get_Contact_By_PERSON_ID)
@@ -2441,6 +2705,54 @@ oList.Add(oLoc_l4);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Loc_l4_By_LOC_L3_ID_List_Adv");}
 return oList;
 }
+public List<Student> Get_Student_By_USER_TYPE_CODE_ID_List_Adv(Params_Get_Student_By_USER_TYPE_CODE_ID_List i_Params_Get_Student_By_USER_TYPE_CODE_ID_List)
+{
+List<Student> oList = new List<Student>();
+Student oStudent = new Student();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Student_By_USER_TYPE_CODE_ID_List_Adv");}
+#region Body Section.
+List<DALC.Student> oList_DBEntries = _AppContext.Get_Student_By_USER_TYPE_CODE_ID_List_Adv(i_Params_Get_Student_By_USER_TYPE_CODE_ID_List.USER_TYPE_CODE_ID_LIST);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oStudent = new Student();
+oTools.CopyPropValues(oDBEntry, oStudent);
+oStudent.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oStudent.My_User);
+oStudent.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oStudent.My_User_type_code);
+oList.Add(oStudent);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Student_By_USER_TYPE_CODE_ID_List_Adv");}
+return oList;
+}
+public List<Student> Get_Student_By_USER_ID_List_Adv(Params_Get_Student_By_USER_ID_List i_Params_Get_Student_By_USER_ID_List)
+{
+List<Student> oList = new List<Student>();
+Student oStudent = new Student();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Student_By_USER_ID_List_Adv");}
+#region Body Section.
+List<DALC.Student> oList_DBEntries = _AppContext.Get_Student_By_USER_ID_List_Adv(i_Params_Get_Student_By_USER_ID_List.USER_ID_LIST);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oStudent = new Student();
+oTools.CopyPropValues(oDBEntry, oStudent);
+oStudent.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oStudent.My_User);
+oStudent.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oStudent.My_User_type_code);
+oList.Add(oStudent);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Student_By_USER_ID_List_Adv");}
+return oList;
+}
 public List<Address> Get_Address_By_PERSON_ID_List_Adv(Params_Get_Address_By_PERSON_ID_List i_Params_Get_Address_By_PERSON_ID_List)
 {
 List<Address> oList = new List<Address>();
@@ -2591,6 +2903,84 @@ oList.Add(oAddress);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Address_By_LOC_L4_ID_List_Adv");}
 return oList;
 }
+public List<Teacher> Get_Teacher_By_CATEGORY_ID_List_Adv(Params_Get_Teacher_By_CATEGORY_ID_List i_Params_Get_Teacher_By_CATEGORY_ID_List)
+{
+List<Teacher> oList = new List<Teacher>();
+Teacher oTeacher = new Teacher();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_CATEGORY_ID_List_Adv");}
+#region Body Section.
+List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_CATEGORY_ID_List_Adv(i_Params_Get_Teacher_By_CATEGORY_ID_List.CATEGORY_ID_LIST);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTeacher = new Teacher();
+oTools.CopyPropValues(oDBEntry, oTeacher);
+oTeacher.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oTeacher.My_User);
+oTeacher.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oTeacher.My_User_type_code);
+oTeacher.My_Category = new Category();
+oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
+oList.Add(oTeacher);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_CATEGORY_ID_List_Adv");}
+return oList;
+}
+public List<Teacher> Get_Teacher_By_USER_TYPE_CODE_ID_List_Adv(Params_Get_Teacher_By_USER_TYPE_CODE_ID_List i_Params_Get_Teacher_By_USER_TYPE_CODE_ID_List)
+{
+List<Teacher> oList = new List<Teacher>();
+Teacher oTeacher = new Teacher();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_USER_TYPE_CODE_ID_List_Adv");}
+#region Body Section.
+List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_USER_TYPE_CODE_ID_List_Adv(i_Params_Get_Teacher_By_USER_TYPE_CODE_ID_List.USER_TYPE_CODE_ID_LIST);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTeacher = new Teacher();
+oTools.CopyPropValues(oDBEntry, oTeacher);
+oTeacher.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oTeacher.My_User);
+oTeacher.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oTeacher.My_User_type_code);
+oTeacher.My_Category = new Category();
+oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
+oList.Add(oTeacher);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_USER_TYPE_CODE_ID_List_Adv");}
+return oList;
+}
+public List<Teacher> Get_Teacher_By_USER_ID_List_Adv(Params_Get_Teacher_By_USER_ID_List i_Params_Get_Teacher_By_USER_ID_List)
+{
+List<Teacher> oList = new List<Teacher>();
+Teacher oTeacher = new Teacher();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_USER_ID_List_Adv");}
+#region Body Section.
+List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_USER_ID_List_Adv(i_Params_Get_Teacher_By_USER_ID_List.USER_ID_LIST);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTeacher = new Teacher();
+oTools.CopyPropValues(oDBEntry, oTeacher);
+oTeacher.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oTeacher.My_User);
+oTeacher.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oTeacher.My_User_type_code);
+oTeacher.My_Category = new Category();
+oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
+oList.Add(oTeacher);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_USER_ID_List_Adv");}
+return oList;
+}
 public List<Teacher_report> Get_Teacher_report_By_TEACHER_ID_List_Adv(Params_Get_Teacher_report_By_TEACHER_ID_List i_Params_Get_Teacher_report_By_TEACHER_ID_List)
 {
 List<Teacher_report> oList = new List<Teacher_report>();
@@ -2733,28 +3123,6 @@ oList.Add(oTeacher_category);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_category_By_CATEGORY_ID_List_Adv");}
-return oList;
-}
-public List<Teacher> Get_Teacher_By_CATEGORY_ID_List_Adv(Params_Get_Teacher_By_CATEGORY_ID_List i_Params_Get_Teacher_By_CATEGORY_ID_List)
-{
-List<Teacher> oList = new List<Teacher>();
-Teacher oTeacher = new Teacher();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_CATEGORY_ID_List_Adv");}
-#region Body Section.
-List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_CATEGORY_ID_List_Adv(i_Params_Get_Teacher_By_CATEGORY_ID_List.CATEGORY_ID_LIST);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oTeacher = new Teacher();
-oTools.CopyPropValues(oDBEntry, oTeacher);
-oTeacher.My_Category = new Category();
-oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
-oList.Add(oTeacher);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_CATEGORY_ID_List_Adv");}
 return oList;
 }
 public List<Answer> Get_Answer_By_QUESTION_ID_List_Adv(Params_Get_Answer_By_QUESTION_ID_List i_Params_Get_Answer_By_QUESTION_ID_List)
@@ -2951,6 +3319,28 @@ oList.Add(oFavorite_teacher);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Favorite_teacher_By_TEACHER_ID_List_Adv");}
+return oList;
+}
+public List<User> Get_User_By_USER_TYPE_CODE_ID_List_Adv(Params_Get_User_By_USER_TYPE_CODE_ID_List i_Params_Get_User_By_USER_TYPE_CODE_ID_List)
+{
+List<User> oList = new List<User>();
+User oUser = new User();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_USER_TYPE_CODE_ID_List_Adv");}
+#region Body Section.
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_USER_TYPE_CODE_ID_List_Adv(i_Params_Get_User_By_USER_TYPE_CODE_ID_List.USER_TYPE_CODE_ID_LIST);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser = new User();
+oTools.CopyPropValues(oDBEntry, oUser);
+oUser.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oUser.My_User_type_code);
+oList.Add(oUser);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USER_TYPE_CODE_ID_List_Adv");}
 return oList;
 }
 public List<Contact> Get_Contact_By_PERSON_ID_List_Adv(Params_Get_Contact_By_PERSON_ID_List i_Params_Get_Contact_By_PERSON_ID_List)
@@ -3283,6 +3673,122 @@ i_Params_Get_Loc_l4_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Loc_l4_By_Where_Adv");}
 return oList;
 }
+public List<Student> Get_Student_By_Criteria_Adv(Params_Get_Student_By_Criteria i_Params_Get_Student_By_Criteria)
+{
+List<Student> oList = new List<Student>();
+long? tmp_TOTAL_COUNT = 0;
+Student oStudent = null;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Student_By_Criteria_Adv");}
+#region Body Section.
+if ((i_Params_Get_Student_By_Criteria.OWNER_ID == null) || (i_Params_Get_Student_By_Criteria.OWNER_ID == 0)) { i_Params_Get_Student_By_Criteria.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Student_By_Criteria.START_ROW == null) { i_Params_Get_Student_By_Criteria.START_ROW = 0; }
+if ((i_Params_Get_Student_By_Criteria.END_ROW == null) || (i_Params_Get_Student_By_Criteria.END_ROW == 0)) { i_Params_Get_Student_By_Criteria.END_ROW = 1000000; }
+List<DALC.Student> oList_DBEntries = _AppContext.Get_Student_By_Criteria_Adv(i_Params_Get_Student_By_Criteria.FIRST_NAME,i_Params_Get_Student_By_Criteria.LAST_NAME,i_Params_Get_Student_By_Criteria.EMAIL,i_Params_Get_Student_By_Criteria.OWNER_ID,i_Params_Get_Student_By_Criteria.START_ROW,i_Params_Get_Student_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oStudent = new Student();
+oTools.CopyPropValues(oDBEntry, oStudent);
+oStudent.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oStudent.My_User);
+oStudent.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oStudent.My_User_type_code);
+oList.Add(oStudent);
+}
+}
+i_Params_Get_Student_By_Criteria.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Student_By_Criteria_Adv");}
+return oList;
+}
+public List<Student> Get_Student_By_Where_Adv(Params_Get_Student_By_Where i_Params_Get_Student_By_Where)
+{
+List<Student> oList = new List<Student>();
+long? tmp_TOTAL_COUNT = 0;
+Student oStudent = null;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Student_By_Where_Adv");}
+#region Body Section.
+if ((i_Params_Get_Student_By_Where.OWNER_ID == null) || (i_Params_Get_Student_By_Where.OWNER_ID == 0)) { i_Params_Get_Student_By_Where.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Student_By_Where.START_ROW == null) { i_Params_Get_Student_By_Where.START_ROW = 0; }
+if ((i_Params_Get_Student_By_Where.END_ROW == null) || (i_Params_Get_Student_By_Where.END_ROW == 0)) { i_Params_Get_Student_By_Where.END_ROW = 1000000; }
+List<DALC.Student> oList_DBEntries = _AppContext.Get_Student_By_Where_Adv(i_Params_Get_Student_By_Where.FIRST_NAME,i_Params_Get_Student_By_Where.LAST_NAME,i_Params_Get_Student_By_Where.EMAIL,i_Params_Get_Student_By_Where.OWNER_ID,i_Params_Get_Student_By_Where.START_ROW,i_Params_Get_Student_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oStudent = new Student();
+oTools.CopyPropValues(oDBEntry, oStudent);
+oStudent.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oStudent.My_User);
+oStudent.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oStudent.My_User_type_code);
+oList.Add(oStudent);
+}
+}
+i_Params_Get_Student_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Student_By_Where_Adv");}
+return oList;
+}
+public List<Student> Get_Student_By_Criteria_Adv_V2(Params_Get_Student_By_Criteria_V2 i_Params_Get_Student_By_Criteria_V2)
+{
+List<Student> oList = new List<Student>();
+long? tmp_TOTAL_COUNT = 0;
+Student oStudent = null;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Student_By_Criteria_Adv_V2");}
+#region Body Section.
+if ((i_Params_Get_Student_By_Criteria_V2.OWNER_ID == null) || (i_Params_Get_Student_By_Criteria_V2.OWNER_ID == 0)) { i_Params_Get_Student_By_Criteria_V2.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Student_By_Criteria_V2.START_ROW == null) { i_Params_Get_Student_By_Criteria_V2.START_ROW = 0; }
+if ((i_Params_Get_Student_By_Criteria_V2.END_ROW == null) || (i_Params_Get_Student_By_Criteria_V2.END_ROW == 0)) { i_Params_Get_Student_By_Criteria_V2.END_ROW = 1000000; }
+List<DALC.Student> oList_DBEntries = _AppContext.Get_Student_By_Criteria_Adv_V2(i_Params_Get_Student_By_Criteria_V2.FIRST_NAME,i_Params_Get_Student_By_Criteria_V2.LAST_NAME,i_Params_Get_Student_By_Criteria_V2.DOB,i_Params_Get_Student_By_Criteria_V2.EMAIL,i_Params_Get_Student_By_Criteria_V2.OWNER_ID,i_Params_Get_Student_By_Criteria_V2.START_ROW,i_Params_Get_Student_By_Criteria_V2.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oStudent = new Student();
+oTools.CopyPropValues(oDBEntry, oStudent);
+oStudent.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oStudent.My_User);
+oStudent.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oStudent.My_User_type_code);
+oList.Add(oStudent);
+}
+}
+i_Params_Get_Student_By_Criteria_V2.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Student_By_Criteria_Adv_V2");}
+return oList;
+}
+public List<Student> Get_Student_By_Where_Adv_V2(Params_Get_Student_By_Where_V2 i_Params_Get_Student_By_Where_V2)
+{
+List<Student> oList = new List<Student>();
+long? tmp_TOTAL_COUNT = 0;
+Student oStudent = null;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Student_By_Where_Adv_V2");}
+#region Body Section.
+if ((i_Params_Get_Student_By_Where_V2.OWNER_ID == null) || (i_Params_Get_Student_By_Where_V2.OWNER_ID == 0)) { i_Params_Get_Student_By_Where_V2.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Student_By_Where_V2.START_ROW == null) { i_Params_Get_Student_By_Where_V2.START_ROW = 0; }
+if ((i_Params_Get_Student_By_Where_V2.END_ROW == null) || (i_Params_Get_Student_By_Where_V2.END_ROW == 0)) { i_Params_Get_Student_By_Where_V2.END_ROW = 1000000; }
+List<DALC.Student> oList_DBEntries = _AppContext.Get_Student_By_Where_Adv_V2(i_Params_Get_Student_By_Where_V2.FIRST_NAME,i_Params_Get_Student_By_Where_V2.LAST_NAME,i_Params_Get_Student_By_Where_V2.DOB,i_Params_Get_Student_By_Where_V2.EMAIL,i_Params_Get_Student_By_Where_V2.OWNER_ID,i_Params_Get_Student_By_Where_V2.START_ROW,i_Params_Get_Student_By_Where_V2.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oStudent = new Student();
+oTools.CopyPropValues(oDBEntry, oStudent);
+oStudent.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oStudent.My_User);
+oStudent.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oStudent.My_User_type_code);
+oList.Add(oStudent);
+}
+}
+i_Params_Get_Student_By_Where_V2.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Student_By_Where_Adv_V2");}
+return oList;
+}
 public List<Address> Get_Address_By_Criteria_Adv(Params_Get_Address_By_Criteria i_Params_Get_Address_By_Criteria)
 {
 List<Address> oList = new List<Address>();
@@ -3421,6 +3927,68 @@ oList.Add(oAddress);
 i_Params_Get_Address_By_Where_V2.TOTAL_COUNT = tmp_TOTAL_COUNT;
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Address_By_Where_Adv_V2");}
+return oList;
+}
+public List<Teacher> Get_Teacher_By_Criteria_Adv(Params_Get_Teacher_By_Criteria i_Params_Get_Teacher_By_Criteria)
+{
+List<Teacher> oList = new List<Teacher>();
+long? tmp_TOTAL_COUNT = 0;
+Teacher oTeacher = null;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_Criteria_Adv");}
+#region Body Section.
+if ((i_Params_Get_Teacher_By_Criteria.OWNER_ID == null) || (i_Params_Get_Teacher_By_Criteria.OWNER_ID == 0)) { i_Params_Get_Teacher_By_Criteria.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Teacher_By_Criteria.START_ROW == null) { i_Params_Get_Teacher_By_Criteria.START_ROW = 0; }
+if ((i_Params_Get_Teacher_By_Criteria.END_ROW == null) || (i_Params_Get_Teacher_By_Criteria.END_ROW == 0)) { i_Params_Get_Teacher_By_Criteria.END_ROW = 1000000; }
+List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_Criteria_Adv(i_Params_Get_Teacher_By_Criteria.FIRST_NAME,i_Params_Get_Teacher_By_Criteria.LAST_NAME,i_Params_Get_Teacher_By_Criteria.EMAIL,i_Params_Get_Teacher_By_Criteria.MOBILE,i_Params_Get_Teacher_By_Criteria.OWNER_ID,i_Params_Get_Teacher_By_Criteria.START_ROW,i_Params_Get_Teacher_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTeacher = new Teacher();
+oTools.CopyPropValues(oDBEntry, oTeacher);
+oTeacher.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oTeacher.My_User);
+oTeacher.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oTeacher.My_User_type_code);
+oTeacher.My_Category = new Category();
+oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
+oList.Add(oTeacher);
+}
+}
+i_Params_Get_Teacher_By_Criteria.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_Criteria_Adv");}
+return oList;
+}
+public List<Teacher> Get_Teacher_By_Where_Adv(Params_Get_Teacher_By_Where i_Params_Get_Teacher_By_Where)
+{
+List<Teacher> oList = new List<Teacher>();
+long? tmp_TOTAL_COUNT = 0;
+Teacher oTeacher = null;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_Where_Adv");}
+#region Body Section.
+if ((i_Params_Get_Teacher_By_Where.OWNER_ID == null) || (i_Params_Get_Teacher_By_Where.OWNER_ID == 0)) { i_Params_Get_Teacher_By_Where.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Teacher_By_Where.START_ROW == null) { i_Params_Get_Teacher_By_Where.START_ROW = 0; }
+if ((i_Params_Get_Teacher_By_Where.END_ROW == null) || (i_Params_Get_Teacher_By_Where.END_ROW == 0)) { i_Params_Get_Teacher_By_Where.END_ROW = 1000000; }
+List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_Where_Adv(i_Params_Get_Teacher_By_Where.FIRST_NAME,i_Params_Get_Teacher_By_Where.LAST_NAME,i_Params_Get_Teacher_By_Where.EMAIL,i_Params_Get_Teacher_By_Where.MOBILE,i_Params_Get_Teacher_By_Where.OWNER_ID,i_Params_Get_Teacher_By_Where.START_ROW,i_Params_Get_Teacher_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTeacher = new Teacher();
+oTools.CopyPropValues(oDBEntry, oTeacher);
+oTeacher.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oTeacher.My_User);
+oTeacher.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oTeacher.My_User_type_code);
+oTeacher.My_Category = new Category();
+oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
+oList.Add(oTeacher);
+}
+}
+i_Params_Get_Teacher_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_Where_Adv");}
 return oList;
 }
 public List<Teacher_report> Get_Teacher_report_By_Criteria_Adv(Params_Get_Teacher_report_By_Criteria i_Params_Get_Teacher_report_By_Criteria)
@@ -3645,60 +4213,6 @@ oList.Add(oCategory);
 i_Params_Get_Category_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Category_By_Where_Adv");}
-return oList;
-}
-public List<Teacher> Get_Teacher_By_Criteria_Adv(Params_Get_Teacher_By_Criteria i_Params_Get_Teacher_By_Criteria)
-{
-List<Teacher> oList = new List<Teacher>();
-long? tmp_TOTAL_COUNT = 0;
-Teacher oTeacher = null;
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_Criteria_Adv");}
-#region Body Section.
-if ((i_Params_Get_Teacher_By_Criteria.OWNER_ID == null) || (i_Params_Get_Teacher_By_Criteria.OWNER_ID == 0)) { i_Params_Get_Teacher_By_Criteria.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_Teacher_By_Criteria.START_ROW == null) { i_Params_Get_Teacher_By_Criteria.START_ROW = 0; }
-if ((i_Params_Get_Teacher_By_Criteria.END_ROW == null) || (i_Params_Get_Teacher_By_Criteria.END_ROW == 0)) { i_Params_Get_Teacher_By_Criteria.END_ROW = 1000000; }
-List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_Criteria_Adv(i_Params_Get_Teacher_By_Criteria.FIRST_NAME,i_Params_Get_Teacher_By_Criteria.LAST_NAME,i_Params_Get_Teacher_By_Criteria.EMAIL,i_Params_Get_Teacher_By_Criteria.MOBILE,i_Params_Get_Teacher_By_Criteria.OWNER_ID,i_Params_Get_Teacher_By_Criteria.START_ROW,i_Params_Get_Teacher_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oTeacher = new Teacher();
-oTools.CopyPropValues(oDBEntry, oTeacher);
-oTeacher.My_Category = new Category();
-oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
-oList.Add(oTeacher);
-}
-}
-i_Params_Get_Teacher_By_Criteria.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_Criteria_Adv");}
-return oList;
-}
-public List<Teacher> Get_Teacher_By_Where_Adv(Params_Get_Teacher_By_Where i_Params_Get_Teacher_By_Where)
-{
-List<Teacher> oList = new List<Teacher>();
-long? tmp_TOTAL_COUNT = 0;
-Teacher oTeacher = null;
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_Where_Adv");}
-#region Body Section.
-if ((i_Params_Get_Teacher_By_Where.OWNER_ID == null) || (i_Params_Get_Teacher_By_Where.OWNER_ID == 0)) { i_Params_Get_Teacher_By_Where.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_Teacher_By_Where.START_ROW == null) { i_Params_Get_Teacher_By_Where.START_ROW = 0; }
-if ((i_Params_Get_Teacher_By_Where.END_ROW == null) || (i_Params_Get_Teacher_By_Where.END_ROW == 0)) { i_Params_Get_Teacher_By_Where.END_ROW = 1000000; }
-List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_Where_Adv(i_Params_Get_Teacher_By_Where.FIRST_NAME,i_Params_Get_Teacher_By_Where.LAST_NAME,i_Params_Get_Teacher_By_Where.EMAIL,i_Params_Get_Teacher_By_Where.MOBILE,i_Params_Get_Teacher_By_Where.OWNER_ID,i_Params_Get_Teacher_By_Where.START_ROW,i_Params_Get_Teacher_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oTeacher = new Teacher();
-oTools.CopyPropValues(oDBEntry, oTeacher);
-oTeacher.My_Category = new Category();
-oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
-oList.Add(oTeacher);
-}
-}
-i_Params_Get_Teacher_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_Where_Adv");}
 return oList;
 }
 public List<Answer> Get_Answer_By_Criteria_Adv(Params_Get_Answer_By_Criteria i_Params_Get_Answer_By_Criteria)
@@ -4043,13 +4557,15 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_Criteria_Adv");}
 if ((i_Params_Get_User_By_Criteria.OWNER_ID == null) || (i_Params_Get_User_By_Criteria.OWNER_ID == 0)) { i_Params_Get_User_By_Criteria.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_User_By_Criteria.START_ROW == null) { i_Params_Get_User_By_Criteria.START_ROW = 0; }
 if ((i_Params_Get_User_By_Criteria.END_ROW == null) || (i_Params_Get_User_By_Criteria.END_ROW == 0)) { i_Params_Get_User_By_Criteria.END_ROW = 1000000; }
-List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Criteria_Adv(i_Params_Get_User_By_Criteria.USERNAME,i_Params_Get_User_By_Criteria.PASSWORD,i_Params_Get_User_By_Criteria.USER_TYPE_CODE,i_Params_Get_User_By_Criteria.OWNER_ID,i_Params_Get_User_By_Criteria.START_ROW,i_Params_Get_User_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Criteria_Adv(i_Params_Get_User_By_Criteria.USERNAME,i_Params_Get_User_By_Criteria.PASSWORD,i_Params_Get_User_By_Criteria.OWNER_ID,i_Params_Get_User_By_Criteria.START_ROW,i_Params_Get_User_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
 {
 oUser = new User();
 oTools.CopyPropValues(oDBEntry, oUser);
+oUser.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oUser.My_User_type_code);
 oList.Add(oUser);
 }
 }
@@ -4068,13 +4584,15 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_Where_Adv");}
 if ((i_Params_Get_User_By_Where.OWNER_ID == null) || (i_Params_Get_User_By_Where.OWNER_ID == 0)) { i_Params_Get_User_By_Where.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_User_By_Where.START_ROW == null) { i_Params_Get_User_By_Where.START_ROW = 0; }
 if ((i_Params_Get_User_By_Where.END_ROW == null) || (i_Params_Get_User_By_Where.END_ROW == 0)) { i_Params_Get_User_By_Where.END_ROW = 1000000; }
-List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Where_Adv(i_Params_Get_User_By_Where.USERNAME,i_Params_Get_User_By_Where.PASSWORD,i_Params_Get_User_By_Where.USER_TYPE_CODE,i_Params_Get_User_By_Where.OWNER_ID,i_Params_Get_User_By_Where.START_ROW,i_Params_Get_User_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Where_Adv(i_Params_Get_User_By_Where.USERNAME,i_Params_Get_User_By_Where.PASSWORD,i_Params_Get_User_By_Where.OWNER_ID,i_Params_Get_User_By_Where.START_ROW,i_Params_Get_User_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
 {
 oUser = new User();
 oTools.CopyPropValues(oDBEntry, oUser);
+oUser.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oUser.My_User_type_code);
 oList.Add(oUser);
 }
 }
@@ -4709,6 +5227,208 @@ i_Params_Get_Loc_l4_By_Where_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Loc_l4_By_Where_InList_Adv");}
 return oList;
 }
+public List<Student> Get_Student_By_Criteria_InList_Adv(Params_Get_Student_By_Criteria_InList i_Params_Get_Student_By_Criteria_InList)
+{
+List<Student> oList = new List<Student>();
+Student oStudent = new Student();
+long? tmp_TOTAL_COUNT = 0; 
+Params_Get_Student_By_Criteria_InList_SP oParams_Get_Student_By_Criteria_InList_SP = new Params_Get_Student_By_Criteria_InList_SP();
+Params_Get_User_By_USER_ID oParams_Get_User_By_USER_ID = new Params_Get_User_By_USER_ID();
+Params_Get_User_type_code_By_USER_TYPE_CODE_ID oParams_Get_User_type_code_By_USER_TYPE_CODE_ID = new Params_Get_User_type_code_By_USER_TYPE_CODE_ID();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Student_By_Criteria_InList_Adv");}
+#region Body Section.
+if ((i_Params_Get_Student_By_Criteria_InList.OWNER_ID == null) || (i_Params_Get_Student_By_Criteria_InList.OWNER_ID == 0)) { i_Params_Get_Student_By_Criteria_InList.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Student_By_Criteria_InList.START_ROW == null) { i_Params_Get_Student_By_Criteria_InList.START_ROW = 0; }
+if ((i_Params_Get_Student_By_Criteria_InList.END_ROW == null) || (i_Params_Get_Student_By_Criteria_InList.END_ROW == 0)) { i_Params_Get_Student_By_Criteria_InList.END_ROW = 1000000; }
+oParams_Get_Student_By_Criteria_InList_SP.OWNER_ID = i_Params_Get_Student_By_Criteria_InList.OWNER_ID;
+oParams_Get_Student_By_Criteria_InList_SP.FIRST_NAME = i_Params_Get_Student_By_Criteria_InList.FIRST_NAME;
+oParams_Get_Student_By_Criteria_InList_SP.LAST_NAME = i_Params_Get_Student_By_Criteria_InList.LAST_NAME;
+oParams_Get_Student_By_Criteria_InList_SP.EMAIL = i_Params_Get_Student_By_Criteria_InList.EMAIL;
+if ( i_Params_Get_Student_By_Criteria_InList.USER_ID_LIST == null)
+{
+i_Params_Get_Student_By_Criteria_InList.USER_ID_LIST = new List<long?>();
+}
+oParams_Get_Student_By_Criteria_InList_SP.USER_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_Student_By_Criteria_InList.USER_ID_LIST);
+if ( i_Params_Get_Student_By_Criteria_InList.USER_TYPE_CODE_ID_LIST == null)
+{
+i_Params_Get_Student_By_Criteria_InList.USER_TYPE_CODE_ID_LIST = new List<Int32?>();
+}
+oParams_Get_Student_By_Criteria_InList_SP.USER_TYPE_CODE_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Student_By_Criteria_InList.USER_TYPE_CODE_ID_LIST);
+oParams_Get_Student_By_Criteria_InList_SP.START_ROW = i_Params_Get_Student_By_Criteria_InList.START_ROW;
+oParams_Get_Student_By_Criteria_InList_SP.END_ROW = i_Params_Get_Student_By_Criteria_InList.END_ROW;
+oParams_Get_Student_By_Criteria_InList_SP.TOTAL_COUNT = i_Params_Get_Student_By_Criteria_InList.TOTAL_COUNT;
+List<DALC.Student> oList_DBEntries = _AppContext.Get_Student_By_Criteria_InList_Adv(i_Params_Get_Student_By_Criteria_InList.FIRST_NAME,i_Params_Get_Student_By_Criteria_InList.LAST_NAME,i_Params_Get_Student_By_Criteria_InList.EMAIL,i_Params_Get_Student_By_Criteria_InList.USER_ID_LIST,i_Params_Get_Student_By_Criteria_InList.USER_TYPE_CODE_ID_LIST,i_Params_Get_Student_By_Criteria_InList.OWNER_ID,i_Params_Get_Student_By_Criteria_InList.START_ROW,i_Params_Get_Student_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oStudent = new Student();
+oTools.CopyPropValues(oDBEntry, oStudent);
+oStudent.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oStudent.My_User);
+oStudent.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oStudent.My_User_type_code);
+oList.Add(oStudent);
+}
+}
+i_Params_Get_Student_By_Criteria_InList.TOTAL_COUNT = oParams_Get_Student_By_Criteria_InList_SP.TOTAL_COUNT;
+i_Params_Get_Student_By_Criteria_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Student_By_Criteria_InList_Adv");}
+return oList;
+}
+public List<Student> Get_Student_By_Where_InList_Adv(Params_Get_Student_By_Where_InList i_Params_Get_Student_By_Where_InList)
+{
+List<Student> oList = new List<Student>();
+Student oStudent = new Student();
+long? tmp_TOTAL_COUNT = 0; 
+Params_Get_Student_By_Where_InList_SP oParams_Get_Student_By_Where_InList_SP = new Params_Get_Student_By_Where_InList_SP();
+Params_Get_User_By_USER_ID oParams_Get_User_By_USER_ID = new Params_Get_User_By_USER_ID();
+Params_Get_User_type_code_By_USER_TYPE_CODE_ID oParams_Get_User_type_code_By_USER_TYPE_CODE_ID = new Params_Get_User_type_code_By_USER_TYPE_CODE_ID();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Student_By_Where_InList_Adv");}
+#region Body Section.
+if ((i_Params_Get_Student_By_Where_InList.OWNER_ID == null) || (i_Params_Get_Student_By_Where_InList.OWNER_ID == 0)) { i_Params_Get_Student_By_Where_InList.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Student_By_Where_InList.START_ROW == null) { i_Params_Get_Student_By_Where_InList.START_ROW = 0; }
+if ((i_Params_Get_Student_By_Where_InList.END_ROW == null) || (i_Params_Get_Student_By_Where_InList.END_ROW == 0)) { i_Params_Get_Student_By_Where_InList.END_ROW = 1000000; }
+oParams_Get_Student_By_Where_InList_SP.OWNER_ID = i_Params_Get_Student_By_Where_InList.OWNER_ID;
+oParams_Get_Student_By_Where_InList_SP.FIRST_NAME = i_Params_Get_Student_By_Where_InList.FIRST_NAME;
+oParams_Get_Student_By_Where_InList_SP.LAST_NAME = i_Params_Get_Student_By_Where_InList.LAST_NAME;
+oParams_Get_Student_By_Where_InList_SP.EMAIL = i_Params_Get_Student_By_Where_InList.EMAIL;
+if ( i_Params_Get_Student_By_Where_InList.USER_ID_LIST == null)
+{
+i_Params_Get_Student_By_Where_InList.USER_ID_LIST = new List<long?>();
+}
+oParams_Get_Student_By_Where_InList_SP.USER_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_Student_By_Where_InList.USER_ID_LIST);
+if ( i_Params_Get_Student_By_Where_InList.USER_TYPE_CODE_ID_LIST == null)
+{
+i_Params_Get_Student_By_Where_InList.USER_TYPE_CODE_ID_LIST = new List<Int32?>();
+}
+oParams_Get_Student_By_Where_InList_SP.USER_TYPE_CODE_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Student_By_Where_InList.USER_TYPE_CODE_ID_LIST);
+oParams_Get_Student_By_Where_InList_SP.START_ROW = i_Params_Get_Student_By_Where_InList.START_ROW;
+oParams_Get_Student_By_Where_InList_SP.END_ROW = i_Params_Get_Student_By_Where_InList.END_ROW;
+oParams_Get_Student_By_Where_InList_SP.TOTAL_COUNT = i_Params_Get_Student_By_Where_InList.TOTAL_COUNT;
+List<DALC.Student> oList_DBEntries = _AppContext.Get_Student_By_Where_InList_Adv(i_Params_Get_Student_By_Where_InList.FIRST_NAME,i_Params_Get_Student_By_Where_InList.LAST_NAME,i_Params_Get_Student_By_Where_InList.EMAIL,i_Params_Get_Student_By_Where_InList.USER_ID_LIST,i_Params_Get_Student_By_Where_InList.USER_TYPE_CODE_ID_LIST,i_Params_Get_Student_By_Where_InList.OWNER_ID,i_Params_Get_Student_By_Where_InList.START_ROW,i_Params_Get_Student_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oStudent = new Student();
+oTools.CopyPropValues(oDBEntry, oStudent);
+oStudent.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oStudent.My_User);
+oStudent.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oStudent.My_User_type_code);
+oList.Add(oStudent);
+}
+}
+i_Params_Get_Student_By_Where_InList.TOTAL_COUNT = oParams_Get_Student_By_Where_InList_SP.TOTAL_COUNT;
+i_Params_Get_Student_By_Where_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Student_By_Where_InList_Adv");}
+return oList;
+}
+public List<Student> Get_Student_By_Criteria_InList_Adv_V2(Params_Get_Student_By_Criteria_InList_V2 i_Params_Get_Student_By_Criteria_InList_V2)
+{
+List<Student> oList = new List<Student>();
+Student oStudent = new Student();
+long? tmp_TOTAL_COUNT = 0; 
+Params_Get_Student_By_Criteria_InList_SP_V2 oParams_Get_Student_By_Criteria_InList_SP_V2 = new Params_Get_Student_By_Criteria_InList_SP_V2();
+Params_Get_User_By_USER_ID oParams_Get_User_By_USER_ID = new Params_Get_User_By_USER_ID();
+Params_Get_User_type_code_By_USER_TYPE_CODE_ID oParams_Get_User_type_code_By_USER_TYPE_CODE_ID = new Params_Get_User_type_code_By_USER_TYPE_CODE_ID();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Student_By_Criteria_InList_Adv_V2");}
+#region Body Section.
+if ((i_Params_Get_Student_By_Criteria_InList_V2.OWNER_ID == null) || (i_Params_Get_Student_By_Criteria_InList_V2.OWNER_ID == 0)) { i_Params_Get_Student_By_Criteria_InList_V2.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Student_By_Criteria_InList_V2.START_ROW == null) { i_Params_Get_Student_By_Criteria_InList_V2.START_ROW = 0; }
+if ((i_Params_Get_Student_By_Criteria_InList_V2.END_ROW == null) || (i_Params_Get_Student_By_Criteria_InList_V2.END_ROW == 0)) { i_Params_Get_Student_By_Criteria_InList_V2.END_ROW = 1000000; }
+oParams_Get_Student_By_Criteria_InList_SP_V2.OWNER_ID = i_Params_Get_Student_By_Criteria_InList_V2.OWNER_ID;
+oParams_Get_Student_By_Criteria_InList_SP_V2.FIRST_NAME = i_Params_Get_Student_By_Criteria_InList_V2.FIRST_NAME;
+oParams_Get_Student_By_Criteria_InList_SP_V2.LAST_NAME = i_Params_Get_Student_By_Criteria_InList_V2.LAST_NAME;
+oParams_Get_Student_By_Criteria_InList_SP_V2.DOB = i_Params_Get_Student_By_Criteria_InList_V2.DOB;
+oParams_Get_Student_By_Criteria_InList_SP_V2.EMAIL = i_Params_Get_Student_By_Criteria_InList_V2.EMAIL;
+if ( i_Params_Get_Student_By_Criteria_InList_V2.USER_ID_LIST == null)
+{
+i_Params_Get_Student_By_Criteria_InList_V2.USER_ID_LIST = new List<long?>();
+}
+oParams_Get_Student_By_Criteria_InList_SP_V2.USER_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_Student_By_Criteria_InList_V2.USER_ID_LIST);
+if ( i_Params_Get_Student_By_Criteria_InList_V2.USER_TYPE_CODE_ID_LIST == null)
+{
+i_Params_Get_Student_By_Criteria_InList_V2.USER_TYPE_CODE_ID_LIST = new List<Int32?>();
+}
+oParams_Get_Student_By_Criteria_InList_SP_V2.USER_TYPE_CODE_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Student_By_Criteria_InList_V2.USER_TYPE_CODE_ID_LIST);
+oParams_Get_Student_By_Criteria_InList_SP_V2.START_ROW = i_Params_Get_Student_By_Criteria_InList_V2.START_ROW;
+oParams_Get_Student_By_Criteria_InList_SP_V2.END_ROW = i_Params_Get_Student_By_Criteria_InList_V2.END_ROW;
+oParams_Get_Student_By_Criteria_InList_SP_V2.TOTAL_COUNT = i_Params_Get_Student_By_Criteria_InList_V2.TOTAL_COUNT;
+List<DALC.Student> oList_DBEntries = _AppContext.Get_Student_By_Criteria_InList_Adv_V2(i_Params_Get_Student_By_Criteria_InList_V2.FIRST_NAME,i_Params_Get_Student_By_Criteria_InList_V2.LAST_NAME,i_Params_Get_Student_By_Criteria_InList_V2.DOB,i_Params_Get_Student_By_Criteria_InList_V2.EMAIL,i_Params_Get_Student_By_Criteria_InList_V2.USER_ID_LIST,i_Params_Get_Student_By_Criteria_InList_V2.USER_TYPE_CODE_ID_LIST,i_Params_Get_Student_By_Criteria_InList_V2.OWNER_ID,i_Params_Get_Student_By_Criteria_InList_V2.START_ROW,i_Params_Get_Student_By_Criteria_InList_V2.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oStudent = new Student();
+oTools.CopyPropValues(oDBEntry, oStudent);
+oStudent.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oStudent.My_User);
+oStudent.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oStudent.My_User_type_code);
+oList.Add(oStudent);
+}
+}
+i_Params_Get_Student_By_Criteria_InList_V2.TOTAL_COUNT = oParams_Get_Student_By_Criteria_InList_SP_V2.TOTAL_COUNT;
+i_Params_Get_Student_By_Criteria_InList_V2.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Student_By_Criteria_InList_Adv_V2");}
+return oList;
+}
+public List<Student> Get_Student_By_Where_InList_Adv_V2(Params_Get_Student_By_Where_InList_V2 i_Params_Get_Student_By_Where_InList_V2)
+{
+List<Student> oList = new List<Student>();
+Student oStudent = new Student();
+long? tmp_TOTAL_COUNT = 0; 
+Params_Get_Student_By_Where_InList_SP_V2 oParams_Get_Student_By_Where_InList_SP_V2 = new Params_Get_Student_By_Where_InList_SP_V2();
+Params_Get_User_By_USER_ID oParams_Get_User_By_USER_ID = new Params_Get_User_By_USER_ID();
+Params_Get_User_type_code_By_USER_TYPE_CODE_ID oParams_Get_User_type_code_By_USER_TYPE_CODE_ID = new Params_Get_User_type_code_By_USER_TYPE_CODE_ID();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Student_By_Where_InList_Adv_V2");}
+#region Body Section.
+if ((i_Params_Get_Student_By_Where_InList_V2.OWNER_ID == null) || (i_Params_Get_Student_By_Where_InList_V2.OWNER_ID == 0)) { i_Params_Get_Student_By_Where_InList_V2.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Student_By_Where_InList_V2.START_ROW == null) { i_Params_Get_Student_By_Where_InList_V2.START_ROW = 0; }
+if ((i_Params_Get_Student_By_Where_InList_V2.END_ROW == null) || (i_Params_Get_Student_By_Where_InList_V2.END_ROW == 0)) { i_Params_Get_Student_By_Where_InList_V2.END_ROW = 1000000; }
+oParams_Get_Student_By_Where_InList_SP_V2.OWNER_ID = i_Params_Get_Student_By_Where_InList_V2.OWNER_ID;
+oParams_Get_Student_By_Where_InList_SP_V2.FIRST_NAME = i_Params_Get_Student_By_Where_InList_V2.FIRST_NAME;
+oParams_Get_Student_By_Where_InList_SP_V2.LAST_NAME = i_Params_Get_Student_By_Where_InList_V2.LAST_NAME;
+oParams_Get_Student_By_Where_InList_SP_V2.DOB = i_Params_Get_Student_By_Where_InList_V2.DOB;
+oParams_Get_Student_By_Where_InList_SP_V2.EMAIL = i_Params_Get_Student_By_Where_InList_V2.EMAIL;
+if ( i_Params_Get_Student_By_Where_InList_V2.USER_ID_LIST == null)
+{
+i_Params_Get_Student_By_Where_InList_V2.USER_ID_LIST = new List<long?>();
+}
+oParams_Get_Student_By_Where_InList_SP_V2.USER_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_Student_By_Where_InList_V2.USER_ID_LIST);
+if ( i_Params_Get_Student_By_Where_InList_V2.USER_TYPE_CODE_ID_LIST == null)
+{
+i_Params_Get_Student_By_Where_InList_V2.USER_TYPE_CODE_ID_LIST = new List<Int32?>();
+}
+oParams_Get_Student_By_Where_InList_SP_V2.USER_TYPE_CODE_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Student_By_Where_InList_V2.USER_TYPE_CODE_ID_LIST);
+oParams_Get_Student_By_Where_InList_SP_V2.START_ROW = i_Params_Get_Student_By_Where_InList_V2.START_ROW;
+oParams_Get_Student_By_Where_InList_SP_V2.END_ROW = i_Params_Get_Student_By_Where_InList_V2.END_ROW;
+oParams_Get_Student_By_Where_InList_SP_V2.TOTAL_COUNT = i_Params_Get_Student_By_Where_InList_V2.TOTAL_COUNT;
+List<DALC.Student> oList_DBEntries = _AppContext.Get_Student_By_Where_InList_Adv_V2(i_Params_Get_Student_By_Where_InList_V2.FIRST_NAME,i_Params_Get_Student_By_Where_InList_V2.LAST_NAME,i_Params_Get_Student_By_Where_InList_V2.DOB,i_Params_Get_Student_By_Where_InList_V2.EMAIL,i_Params_Get_Student_By_Where_InList_V2.USER_ID_LIST,i_Params_Get_Student_By_Where_InList_V2.USER_TYPE_CODE_ID_LIST,i_Params_Get_Student_By_Where_InList_V2.OWNER_ID,i_Params_Get_Student_By_Where_InList_V2.START_ROW,i_Params_Get_Student_By_Where_InList_V2.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oStudent = new Student();
+oTools.CopyPropValues(oDBEntry, oStudent);
+oStudent.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oStudent.My_User);
+oStudent.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oStudent.My_User_type_code);
+oList.Add(oStudent);
+}
+}
+i_Params_Get_Student_By_Where_InList_V2.TOTAL_COUNT = oParams_Get_Student_By_Where_InList_SP_V2.TOTAL_COUNT;
+i_Params_Get_Student_By_Where_InList_V2.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Student_By_Where_InList_Adv_V2");}
+return oList;
+}
 public List<Address> Get_Address_By_Criteria_InList_Adv(Params_Get_Address_By_Criteria_InList i_Params_Get_Address_By_Criteria_InList)
 {
 List<Address> oList = new List<Address>();
@@ -5017,6 +5737,124 @@ i_Params_Get_Address_By_Where_InList_V2.TOTAL_COUNT = tmp_TOTAL_COUNT;
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Address_By_Where_InList_Adv_V2");}
 return oList;
 }
+public List<Teacher> Get_Teacher_By_Criteria_InList_Adv(Params_Get_Teacher_By_Criteria_InList i_Params_Get_Teacher_By_Criteria_InList)
+{
+List<Teacher> oList = new List<Teacher>();
+Teacher oTeacher = new Teacher();
+long? tmp_TOTAL_COUNT = 0; 
+Params_Get_Teacher_By_Criteria_InList_SP oParams_Get_Teacher_By_Criteria_InList_SP = new Params_Get_Teacher_By_Criteria_InList_SP();
+Params_Get_User_By_USER_ID oParams_Get_User_By_USER_ID = new Params_Get_User_By_USER_ID();
+Params_Get_User_type_code_By_USER_TYPE_CODE_ID oParams_Get_User_type_code_By_USER_TYPE_CODE_ID = new Params_Get_User_type_code_By_USER_TYPE_CODE_ID();
+Params_Get_Category_By_CATEGORY_ID oParams_Get_Category_By_CATEGORY_ID = new Params_Get_Category_By_CATEGORY_ID();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_Criteria_InList_Adv");}
+#region Body Section.
+if ((i_Params_Get_Teacher_By_Criteria_InList.OWNER_ID == null) || (i_Params_Get_Teacher_By_Criteria_InList.OWNER_ID == 0)) { i_Params_Get_Teacher_By_Criteria_InList.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Teacher_By_Criteria_InList.START_ROW == null) { i_Params_Get_Teacher_By_Criteria_InList.START_ROW = 0; }
+if ((i_Params_Get_Teacher_By_Criteria_InList.END_ROW == null) || (i_Params_Get_Teacher_By_Criteria_InList.END_ROW == 0)) { i_Params_Get_Teacher_By_Criteria_InList.END_ROW = 1000000; }
+oParams_Get_Teacher_By_Criteria_InList_SP.OWNER_ID = i_Params_Get_Teacher_By_Criteria_InList.OWNER_ID;
+oParams_Get_Teacher_By_Criteria_InList_SP.FIRST_NAME = i_Params_Get_Teacher_By_Criteria_InList.FIRST_NAME;
+oParams_Get_Teacher_By_Criteria_InList_SP.LAST_NAME = i_Params_Get_Teacher_By_Criteria_InList.LAST_NAME;
+oParams_Get_Teacher_By_Criteria_InList_SP.EMAIL = i_Params_Get_Teacher_By_Criteria_InList.EMAIL;
+oParams_Get_Teacher_By_Criteria_InList_SP.MOBILE = i_Params_Get_Teacher_By_Criteria_InList.MOBILE;
+if ( i_Params_Get_Teacher_By_Criteria_InList.USER_ID_LIST == null)
+{
+i_Params_Get_Teacher_By_Criteria_InList.USER_ID_LIST = new List<long?>();
+}
+oParams_Get_Teacher_By_Criteria_InList_SP.USER_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_Teacher_By_Criteria_InList.USER_ID_LIST);
+if ( i_Params_Get_Teacher_By_Criteria_InList.USER_TYPE_CODE_ID_LIST == null)
+{
+i_Params_Get_Teacher_By_Criteria_InList.USER_TYPE_CODE_ID_LIST = new List<Int32?>();
+}
+oParams_Get_Teacher_By_Criteria_InList_SP.USER_TYPE_CODE_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Teacher_By_Criteria_InList.USER_TYPE_CODE_ID_LIST);
+if ( i_Params_Get_Teacher_By_Criteria_InList.CATEGORY_ID_LIST == null)
+{
+i_Params_Get_Teacher_By_Criteria_InList.CATEGORY_ID_LIST = new List<Int32?>();
+}
+oParams_Get_Teacher_By_Criteria_InList_SP.CATEGORY_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Teacher_By_Criteria_InList.CATEGORY_ID_LIST);
+oParams_Get_Teacher_By_Criteria_InList_SP.START_ROW = i_Params_Get_Teacher_By_Criteria_InList.START_ROW;
+oParams_Get_Teacher_By_Criteria_InList_SP.END_ROW = i_Params_Get_Teacher_By_Criteria_InList.END_ROW;
+oParams_Get_Teacher_By_Criteria_InList_SP.TOTAL_COUNT = i_Params_Get_Teacher_By_Criteria_InList.TOTAL_COUNT;
+List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_Criteria_InList_Adv(i_Params_Get_Teacher_By_Criteria_InList.FIRST_NAME,i_Params_Get_Teacher_By_Criteria_InList.LAST_NAME,i_Params_Get_Teacher_By_Criteria_InList.EMAIL,i_Params_Get_Teacher_By_Criteria_InList.MOBILE,i_Params_Get_Teacher_By_Criteria_InList.USER_ID_LIST,i_Params_Get_Teacher_By_Criteria_InList.USER_TYPE_CODE_ID_LIST,i_Params_Get_Teacher_By_Criteria_InList.CATEGORY_ID_LIST,i_Params_Get_Teacher_By_Criteria_InList.OWNER_ID,i_Params_Get_Teacher_By_Criteria_InList.START_ROW,i_Params_Get_Teacher_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTeacher = new Teacher();
+oTools.CopyPropValues(oDBEntry, oTeacher);
+oTeacher.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oTeacher.My_User);
+oTeacher.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oTeacher.My_User_type_code);
+oTeacher.My_Category = new Category();
+oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
+oList.Add(oTeacher);
+}
+}
+i_Params_Get_Teacher_By_Criteria_InList.TOTAL_COUNT = oParams_Get_Teacher_By_Criteria_InList_SP.TOTAL_COUNT;
+i_Params_Get_Teacher_By_Criteria_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_Criteria_InList_Adv");}
+return oList;
+}
+public List<Teacher> Get_Teacher_By_Where_InList_Adv(Params_Get_Teacher_By_Where_InList i_Params_Get_Teacher_By_Where_InList)
+{
+List<Teacher> oList = new List<Teacher>();
+Teacher oTeacher = new Teacher();
+long? tmp_TOTAL_COUNT = 0; 
+Params_Get_Teacher_By_Where_InList_SP oParams_Get_Teacher_By_Where_InList_SP = new Params_Get_Teacher_By_Where_InList_SP();
+Params_Get_User_By_USER_ID oParams_Get_User_By_USER_ID = new Params_Get_User_By_USER_ID();
+Params_Get_User_type_code_By_USER_TYPE_CODE_ID oParams_Get_User_type_code_By_USER_TYPE_CODE_ID = new Params_Get_User_type_code_By_USER_TYPE_CODE_ID();
+Params_Get_Category_By_CATEGORY_ID oParams_Get_Category_By_CATEGORY_ID = new Params_Get_Category_By_CATEGORY_ID();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_Where_InList_Adv");}
+#region Body Section.
+if ((i_Params_Get_Teacher_By_Where_InList.OWNER_ID == null) || (i_Params_Get_Teacher_By_Where_InList.OWNER_ID == 0)) { i_Params_Get_Teacher_By_Where_InList.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Teacher_By_Where_InList.START_ROW == null) { i_Params_Get_Teacher_By_Where_InList.START_ROW = 0; }
+if ((i_Params_Get_Teacher_By_Where_InList.END_ROW == null) || (i_Params_Get_Teacher_By_Where_InList.END_ROW == 0)) { i_Params_Get_Teacher_By_Where_InList.END_ROW = 1000000; }
+oParams_Get_Teacher_By_Where_InList_SP.OWNER_ID = i_Params_Get_Teacher_By_Where_InList.OWNER_ID;
+oParams_Get_Teacher_By_Where_InList_SP.FIRST_NAME = i_Params_Get_Teacher_By_Where_InList.FIRST_NAME;
+oParams_Get_Teacher_By_Where_InList_SP.LAST_NAME = i_Params_Get_Teacher_By_Where_InList.LAST_NAME;
+oParams_Get_Teacher_By_Where_InList_SP.EMAIL = i_Params_Get_Teacher_By_Where_InList.EMAIL;
+oParams_Get_Teacher_By_Where_InList_SP.MOBILE = i_Params_Get_Teacher_By_Where_InList.MOBILE;
+if ( i_Params_Get_Teacher_By_Where_InList.USER_ID_LIST == null)
+{
+i_Params_Get_Teacher_By_Where_InList.USER_ID_LIST = new List<long?>();
+}
+oParams_Get_Teacher_By_Where_InList_SP.USER_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_Teacher_By_Where_InList.USER_ID_LIST);
+if ( i_Params_Get_Teacher_By_Where_InList.USER_TYPE_CODE_ID_LIST == null)
+{
+i_Params_Get_Teacher_By_Where_InList.USER_TYPE_CODE_ID_LIST = new List<Int32?>();
+}
+oParams_Get_Teacher_By_Where_InList_SP.USER_TYPE_CODE_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Teacher_By_Where_InList.USER_TYPE_CODE_ID_LIST);
+if ( i_Params_Get_Teacher_By_Where_InList.CATEGORY_ID_LIST == null)
+{
+i_Params_Get_Teacher_By_Where_InList.CATEGORY_ID_LIST = new List<Int32?>();
+}
+oParams_Get_Teacher_By_Where_InList_SP.CATEGORY_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Teacher_By_Where_InList.CATEGORY_ID_LIST);
+oParams_Get_Teacher_By_Where_InList_SP.START_ROW = i_Params_Get_Teacher_By_Where_InList.START_ROW;
+oParams_Get_Teacher_By_Where_InList_SP.END_ROW = i_Params_Get_Teacher_By_Where_InList.END_ROW;
+oParams_Get_Teacher_By_Where_InList_SP.TOTAL_COUNT = i_Params_Get_Teacher_By_Where_InList.TOTAL_COUNT;
+List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_Where_InList_Adv(i_Params_Get_Teacher_By_Where_InList.FIRST_NAME,i_Params_Get_Teacher_By_Where_InList.LAST_NAME,i_Params_Get_Teacher_By_Where_InList.EMAIL,i_Params_Get_Teacher_By_Where_InList.MOBILE,i_Params_Get_Teacher_By_Where_InList.USER_ID_LIST,i_Params_Get_Teacher_By_Where_InList.USER_TYPE_CODE_ID_LIST,i_Params_Get_Teacher_By_Where_InList.CATEGORY_ID_LIST,i_Params_Get_Teacher_By_Where_InList.OWNER_ID,i_Params_Get_Teacher_By_Where_InList.START_ROW,i_Params_Get_Teacher_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTeacher = new Teacher();
+oTools.CopyPropValues(oDBEntry, oTeacher);
+oTeacher.My_User = new User();
+oTools.CopyPropValues(oDBEntry.My_User, oTeacher.My_User);
+oTeacher.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oTeacher.My_User_type_code);
+oTeacher.My_Category = new Category();
+oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
+oList.Add(oTeacher);
+}
+}
+i_Params_Get_Teacher_By_Where_InList.TOTAL_COUNT = oParams_Get_Teacher_By_Where_InList_SP.TOTAL_COUNT;
+i_Params_Get_Teacher_By_Where_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_Where_InList_Adv");}
+return oList;
+}
 public List<Teacher_report> Get_Teacher_report_By_Criteria_InList_Adv(Params_Get_Teacher_report_By_Criteria_InList i_Params_Get_Teacher_report_By_Criteria_InList)
 {
 List<Teacher_report> oList = new List<Teacher_report>();
@@ -5303,92 +6141,6 @@ i_Params_Get_Teacher_category_By_Where_InList.TOTAL_COUNT = oParams_Get_Teacher_
 i_Params_Get_Teacher_category_By_Where_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_category_By_Where_InList_Adv");}
-return oList;
-}
-public List<Teacher> Get_Teacher_By_Criteria_InList_Adv(Params_Get_Teacher_By_Criteria_InList i_Params_Get_Teacher_By_Criteria_InList)
-{
-List<Teacher> oList = new List<Teacher>();
-Teacher oTeacher = new Teacher();
-long? tmp_TOTAL_COUNT = 0; 
-Params_Get_Teacher_By_Criteria_InList_SP oParams_Get_Teacher_By_Criteria_InList_SP = new Params_Get_Teacher_By_Criteria_InList_SP();
-Params_Get_Category_By_CATEGORY_ID oParams_Get_Category_By_CATEGORY_ID = new Params_Get_Category_By_CATEGORY_ID();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_Criteria_InList_Adv");}
-#region Body Section.
-if ((i_Params_Get_Teacher_By_Criteria_InList.OWNER_ID == null) || (i_Params_Get_Teacher_By_Criteria_InList.OWNER_ID == 0)) { i_Params_Get_Teacher_By_Criteria_InList.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_Teacher_By_Criteria_InList.START_ROW == null) { i_Params_Get_Teacher_By_Criteria_InList.START_ROW = 0; }
-if ((i_Params_Get_Teacher_By_Criteria_InList.END_ROW == null) || (i_Params_Get_Teacher_By_Criteria_InList.END_ROW == 0)) { i_Params_Get_Teacher_By_Criteria_InList.END_ROW = 1000000; }
-oParams_Get_Teacher_By_Criteria_InList_SP.OWNER_ID = i_Params_Get_Teacher_By_Criteria_InList.OWNER_ID;
-oParams_Get_Teacher_By_Criteria_InList_SP.FIRST_NAME = i_Params_Get_Teacher_By_Criteria_InList.FIRST_NAME;
-oParams_Get_Teacher_By_Criteria_InList_SP.LAST_NAME = i_Params_Get_Teacher_By_Criteria_InList.LAST_NAME;
-oParams_Get_Teacher_By_Criteria_InList_SP.EMAIL = i_Params_Get_Teacher_By_Criteria_InList.EMAIL;
-oParams_Get_Teacher_By_Criteria_InList_SP.MOBILE = i_Params_Get_Teacher_By_Criteria_InList.MOBILE;
-if ( i_Params_Get_Teacher_By_Criteria_InList.CATEGORY_ID_LIST == null)
-{
-i_Params_Get_Teacher_By_Criteria_InList.CATEGORY_ID_LIST = new List<Int32?>();
-}
-oParams_Get_Teacher_By_Criteria_InList_SP.CATEGORY_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Teacher_By_Criteria_InList.CATEGORY_ID_LIST);
-oParams_Get_Teacher_By_Criteria_InList_SP.START_ROW = i_Params_Get_Teacher_By_Criteria_InList.START_ROW;
-oParams_Get_Teacher_By_Criteria_InList_SP.END_ROW = i_Params_Get_Teacher_By_Criteria_InList.END_ROW;
-oParams_Get_Teacher_By_Criteria_InList_SP.TOTAL_COUNT = i_Params_Get_Teacher_By_Criteria_InList.TOTAL_COUNT;
-List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_Criteria_InList_Adv(i_Params_Get_Teacher_By_Criteria_InList.FIRST_NAME,i_Params_Get_Teacher_By_Criteria_InList.LAST_NAME,i_Params_Get_Teacher_By_Criteria_InList.EMAIL,i_Params_Get_Teacher_By_Criteria_InList.MOBILE,i_Params_Get_Teacher_By_Criteria_InList.CATEGORY_ID_LIST,i_Params_Get_Teacher_By_Criteria_InList.OWNER_ID,i_Params_Get_Teacher_By_Criteria_InList.START_ROW,i_Params_Get_Teacher_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oTeacher = new Teacher();
-oTools.CopyPropValues(oDBEntry, oTeacher);
-oTeacher.My_Category = new Category();
-oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
-oList.Add(oTeacher);
-}
-}
-i_Params_Get_Teacher_By_Criteria_InList.TOTAL_COUNT = oParams_Get_Teacher_By_Criteria_InList_SP.TOTAL_COUNT;
-i_Params_Get_Teacher_By_Criteria_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_Criteria_InList_Adv");}
-return oList;
-}
-public List<Teacher> Get_Teacher_By_Where_InList_Adv(Params_Get_Teacher_By_Where_InList i_Params_Get_Teacher_By_Where_InList)
-{
-List<Teacher> oList = new List<Teacher>();
-Teacher oTeacher = new Teacher();
-long? tmp_TOTAL_COUNT = 0; 
-Params_Get_Teacher_By_Where_InList_SP oParams_Get_Teacher_By_Where_InList_SP = new Params_Get_Teacher_By_Where_InList_SP();
-Params_Get_Category_By_CATEGORY_ID oParams_Get_Category_By_CATEGORY_ID = new Params_Get_Category_By_CATEGORY_ID();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Teacher_By_Where_InList_Adv");}
-#region Body Section.
-if ((i_Params_Get_Teacher_By_Where_InList.OWNER_ID == null) || (i_Params_Get_Teacher_By_Where_InList.OWNER_ID == 0)) { i_Params_Get_Teacher_By_Where_InList.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_Teacher_By_Where_InList.START_ROW == null) { i_Params_Get_Teacher_By_Where_InList.START_ROW = 0; }
-if ((i_Params_Get_Teacher_By_Where_InList.END_ROW == null) || (i_Params_Get_Teacher_By_Where_InList.END_ROW == 0)) { i_Params_Get_Teacher_By_Where_InList.END_ROW = 1000000; }
-oParams_Get_Teacher_By_Where_InList_SP.OWNER_ID = i_Params_Get_Teacher_By_Where_InList.OWNER_ID;
-oParams_Get_Teacher_By_Where_InList_SP.FIRST_NAME = i_Params_Get_Teacher_By_Where_InList.FIRST_NAME;
-oParams_Get_Teacher_By_Where_InList_SP.LAST_NAME = i_Params_Get_Teacher_By_Where_InList.LAST_NAME;
-oParams_Get_Teacher_By_Where_InList_SP.EMAIL = i_Params_Get_Teacher_By_Where_InList.EMAIL;
-oParams_Get_Teacher_By_Where_InList_SP.MOBILE = i_Params_Get_Teacher_By_Where_InList.MOBILE;
-if ( i_Params_Get_Teacher_By_Where_InList.CATEGORY_ID_LIST == null)
-{
-i_Params_Get_Teacher_By_Where_InList.CATEGORY_ID_LIST = new List<Int32?>();
-}
-oParams_Get_Teacher_By_Where_InList_SP.CATEGORY_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Teacher_By_Where_InList.CATEGORY_ID_LIST);
-oParams_Get_Teacher_By_Where_InList_SP.START_ROW = i_Params_Get_Teacher_By_Where_InList.START_ROW;
-oParams_Get_Teacher_By_Where_InList_SP.END_ROW = i_Params_Get_Teacher_By_Where_InList.END_ROW;
-oParams_Get_Teacher_By_Where_InList_SP.TOTAL_COUNT = i_Params_Get_Teacher_By_Where_InList.TOTAL_COUNT;
-List<DALC.Teacher> oList_DBEntries = _AppContext.Get_Teacher_By_Where_InList_Adv(i_Params_Get_Teacher_By_Where_InList.FIRST_NAME,i_Params_Get_Teacher_By_Where_InList.LAST_NAME,i_Params_Get_Teacher_By_Where_InList.EMAIL,i_Params_Get_Teacher_By_Where_InList.MOBILE,i_Params_Get_Teacher_By_Where_InList.CATEGORY_ID_LIST,i_Params_Get_Teacher_By_Where_InList.OWNER_ID,i_Params_Get_Teacher_By_Where_InList.START_ROW,i_Params_Get_Teacher_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oTeacher = new Teacher();
-oTools.CopyPropValues(oDBEntry, oTeacher);
-oTeacher.My_Category = new Category();
-oTools.CopyPropValues(oDBEntry.My_Category, oTeacher.My_Category);
-oList.Add(oTeacher);
-}
-}
-i_Params_Get_Teacher_By_Where_InList.TOTAL_COUNT = oParams_Get_Teacher_By_Where_InList_SP.TOTAL_COUNT;
-i_Params_Get_Teacher_By_Where_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Teacher_By_Where_InList_Adv");}
 return oList;
 }
 public List<Answer> Get_Answer_By_Criteria_InList_Adv(Params_Get_Answer_By_Criteria_InList i_Params_Get_Answer_By_Criteria_InList)
@@ -5773,6 +6525,88 @@ i_Params_Get_Favorite_teacher_By_Where_InList.TOTAL_COUNT = oParams_Get_Favorite
 i_Params_Get_Favorite_teacher_By_Where_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Favorite_teacher_By_Where_InList_Adv");}
+return oList;
+}
+public List<User> Get_User_By_Criteria_InList_Adv(Params_Get_User_By_Criteria_InList i_Params_Get_User_By_Criteria_InList)
+{
+List<User> oList = new List<User>();
+User oUser = new User();
+long? tmp_TOTAL_COUNT = 0; 
+Params_Get_User_By_Criteria_InList_SP oParams_Get_User_By_Criteria_InList_SP = new Params_Get_User_By_Criteria_InList_SP();
+Params_Get_User_type_code_By_USER_TYPE_CODE_ID oParams_Get_User_type_code_By_USER_TYPE_CODE_ID = new Params_Get_User_type_code_By_USER_TYPE_CODE_ID();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_Criteria_InList_Adv");}
+#region Body Section.
+if ((i_Params_Get_User_By_Criteria_InList.OWNER_ID == null) || (i_Params_Get_User_By_Criteria_InList.OWNER_ID == 0)) { i_Params_Get_User_By_Criteria_InList.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_User_By_Criteria_InList.START_ROW == null) { i_Params_Get_User_By_Criteria_InList.START_ROW = 0; }
+if ((i_Params_Get_User_By_Criteria_InList.END_ROW == null) || (i_Params_Get_User_By_Criteria_InList.END_ROW == 0)) { i_Params_Get_User_By_Criteria_InList.END_ROW = 1000000; }
+oParams_Get_User_By_Criteria_InList_SP.OWNER_ID = i_Params_Get_User_By_Criteria_InList.OWNER_ID;
+oParams_Get_User_By_Criteria_InList_SP.USERNAME = i_Params_Get_User_By_Criteria_InList.USERNAME;
+oParams_Get_User_By_Criteria_InList_SP.PASSWORD = i_Params_Get_User_By_Criteria_InList.PASSWORD;
+if ( i_Params_Get_User_By_Criteria_InList.USER_TYPE_CODE_ID_LIST == null)
+{
+i_Params_Get_User_By_Criteria_InList.USER_TYPE_CODE_ID_LIST = new List<Int32?>();
+}
+oParams_Get_User_By_Criteria_InList_SP.USER_TYPE_CODE_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_User_By_Criteria_InList.USER_TYPE_CODE_ID_LIST);
+oParams_Get_User_By_Criteria_InList_SP.START_ROW = i_Params_Get_User_By_Criteria_InList.START_ROW;
+oParams_Get_User_By_Criteria_InList_SP.END_ROW = i_Params_Get_User_By_Criteria_InList.END_ROW;
+oParams_Get_User_By_Criteria_InList_SP.TOTAL_COUNT = i_Params_Get_User_By_Criteria_InList.TOTAL_COUNT;
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Criteria_InList_Adv(i_Params_Get_User_By_Criteria_InList.USERNAME,i_Params_Get_User_By_Criteria_InList.PASSWORD,i_Params_Get_User_By_Criteria_InList.USER_TYPE_CODE_ID_LIST,i_Params_Get_User_By_Criteria_InList.OWNER_ID,i_Params_Get_User_By_Criteria_InList.START_ROW,i_Params_Get_User_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser = new User();
+oTools.CopyPropValues(oDBEntry, oUser);
+oUser.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oUser.My_User_type_code);
+oList.Add(oUser);
+}
+}
+i_Params_Get_User_By_Criteria_InList.TOTAL_COUNT = oParams_Get_User_By_Criteria_InList_SP.TOTAL_COUNT;
+i_Params_Get_User_By_Criteria_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_Criteria_InList_Adv");}
+return oList;
+}
+public List<User> Get_User_By_Where_InList_Adv(Params_Get_User_By_Where_InList i_Params_Get_User_By_Where_InList)
+{
+List<User> oList = new List<User>();
+User oUser = new User();
+long? tmp_TOTAL_COUNT = 0; 
+Params_Get_User_By_Where_InList_SP oParams_Get_User_By_Where_InList_SP = new Params_Get_User_By_Where_InList_SP();
+Params_Get_User_type_code_By_USER_TYPE_CODE_ID oParams_Get_User_type_code_By_USER_TYPE_CODE_ID = new Params_Get_User_type_code_By_USER_TYPE_CODE_ID();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_Where_InList_Adv");}
+#region Body Section.
+if ((i_Params_Get_User_By_Where_InList.OWNER_ID == null) || (i_Params_Get_User_By_Where_InList.OWNER_ID == 0)) { i_Params_Get_User_By_Where_InList.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_User_By_Where_InList.START_ROW == null) { i_Params_Get_User_By_Where_InList.START_ROW = 0; }
+if ((i_Params_Get_User_By_Where_InList.END_ROW == null) || (i_Params_Get_User_By_Where_InList.END_ROW == 0)) { i_Params_Get_User_By_Where_InList.END_ROW = 1000000; }
+oParams_Get_User_By_Where_InList_SP.OWNER_ID = i_Params_Get_User_By_Where_InList.OWNER_ID;
+oParams_Get_User_By_Where_InList_SP.USERNAME = i_Params_Get_User_By_Where_InList.USERNAME;
+oParams_Get_User_By_Where_InList_SP.PASSWORD = i_Params_Get_User_By_Where_InList.PASSWORD;
+if ( i_Params_Get_User_By_Where_InList.USER_TYPE_CODE_ID_LIST == null)
+{
+i_Params_Get_User_By_Where_InList.USER_TYPE_CODE_ID_LIST = new List<Int32?>();
+}
+oParams_Get_User_By_Where_InList_SP.USER_TYPE_CODE_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_User_By_Where_InList.USER_TYPE_CODE_ID_LIST);
+oParams_Get_User_By_Where_InList_SP.START_ROW = i_Params_Get_User_By_Where_InList.START_ROW;
+oParams_Get_User_By_Where_InList_SP.END_ROW = i_Params_Get_User_By_Where_InList.END_ROW;
+oParams_Get_User_By_Where_InList_SP.TOTAL_COUNT = i_Params_Get_User_By_Where_InList.TOTAL_COUNT;
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Where_InList_Adv(i_Params_Get_User_By_Where_InList.USERNAME,i_Params_Get_User_By_Where_InList.PASSWORD,i_Params_Get_User_By_Where_InList.USER_TYPE_CODE_ID_LIST,i_Params_Get_User_By_Where_InList.OWNER_ID,i_Params_Get_User_By_Where_InList.START_ROW,i_Params_Get_User_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser = new User();
+oTools.CopyPropValues(oDBEntry, oUser);
+oUser.My_User_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry.My_User_type_code, oUser.My_User_type_code);
+oList.Add(oUser);
+}
+}
+i_Params_Get_User_By_Where_InList.TOTAL_COUNT = oParams_Get_User_By_Where_InList_SP.TOTAL_COUNT;
+i_Params_Get_User_By_Where_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_Where_InList_Adv");}
 return oList;
 }
 public List<Contact> Get_Contact_By_Criteria_InList_Adv(Params_Get_Contact_By_Criteria_InList i_Params_Get_Contact_By_Criteria_InList)
