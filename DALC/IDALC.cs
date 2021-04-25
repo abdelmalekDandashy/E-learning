@@ -635,6 +635,8 @@ List<Question_token> Get_Question_token_By_Criteria ( string PART, Int32? OWNER_
 List<Question_token> Get_Question_token_By_Where ( string PART, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Favorite_teacher> Get_Favorite_teacher_By_Criteria ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Favorite_teacher> Get_Favorite_teacher_By_Where ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User_type_code> Get_User_type_code_By_Criteria ( string USER_TYPE_CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User_type_code> Get_User_type_code_By_Where ( string USER_TYPE_CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Person> Get_Person_By_Criteria ( string FIRST_NAME, string LAST_NAME, string FATHER_NAME, string MOTHER_NAME, string TITLE_CODE, string GENDER_CODE, string RELIGION_CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Person> Get_Person_By_Where ( string FIRST_NAME, string LAST_NAME, string FATHER_NAME, string MOTHER_NAME, string TITLE_CODE, string GENDER_CODE, string RELIGION_CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Person> Get_Person_By_Criteria_V2 ( string FIRST_NAME, string LAST_NAME, string FATHER_NAME, string MOTHER_NAME, string TITLE_CODE, string GENDER_CODE, string RELIGION_CODE, string BIRTH_DATE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
@@ -687,6 +689,8 @@ List<Question_token> Get_Question_token_By_Criteria_Adv ( string PART, Int32? OW
 List<Question_token> Get_Question_token_By_Where_Adv ( string PART, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Favorite_teacher> Get_Favorite_teacher_By_Criteria_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Favorite_teacher> Get_Favorite_teacher_By_Where_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User_type_code> Get_User_type_code_By_Criteria_Adv ( string USER_TYPE_CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User_type_code> Get_User_type_code_By_Where_Adv ( string USER_TYPE_CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Person> Get_Person_By_Criteria_Adv ( string FIRST_NAME, string LAST_NAME, string FATHER_NAME, string MOTHER_NAME, string TITLE_CODE, string GENDER_CODE, string RELIGION_CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Person> Get_Person_By_Where_Adv ( string FIRST_NAME, string LAST_NAME, string FATHER_NAME, string MOTHER_NAME, string TITLE_CODE, string GENDER_CODE, string RELIGION_CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Person> Get_Person_By_Criteria_Adv_V2 ( string FIRST_NAME, string LAST_NAME, string FATHER_NAME, string MOTHER_NAME, string TITLE_CODE, string GENDER_CODE, string RELIGION_CODE, string BIRTH_DATE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
@@ -916,6 +920,7 @@ List<dynamic> UP_BULK_UPSERT_TEACHER_CATEGORY ( string JSON_CONTENT);
 List<dynamic> UP_BULK_UPSERT_TEACHER_FAVORITE ( string JSON_CONTENT);
 List<dynamic> UP_BULK_UPSERT_TEACHER_REPORT ( string JSON_CONTENT);
 List<dynamic> UP_BULK_UPSERT_USER ( string JSON_CONTENT);
+List<dynamic> UP_BULK_UPSERT_USER_TYPE_CODE ( string JSON_CONTENT);
 List<dynamic> UP_CHANGE_IS_ANSWERED_TO_TRUE ( Int32? QUESTION_ID);
 List<dynamic> UP_CHANGE_IS_BLOCKED_TO_TRUE ( Int32? STUDENT_ID);
 List<dynamic> UP_CHECK_USER_EXISTENCE ( Int32? OWNER_ID, string USERNAME,ref  bool? EXISTS);

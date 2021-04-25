@@ -27,21 +27,36 @@ namespace UnitTesting
             Tools.Tools oTools = new Tools.Tools();
             #endregion
 
-            Question oQuestion = new Question();
-            oTools.SetPropertiesDefaultValue(oQuestion);
+            //Question oQuestion = new Question();
+            //oTools.SetPropertiesDefaultValue(oQuestion);
 
-            oQuestion.QUESTION_ID = -1;
-            oQuestion.CATEGORY_ID = 1;
-            oQuestion.DESCRIPTION = "1233";
-            oQuestion.STUDENT_ID = 1;
-            oQuestion.IS_ANSWERED = true;
-            oQuestion.IS_PUBLIC = true;
-            oQuestion.IS_SELF_CLOSED = false;
-            oQuestion.OWNER_ID = 1;
-            oQuestion.ENTRY_USER_ID = 1;
-            oQuestion.TEACHER_ID = 2;
-            oBLC.Edit_Question(oQuestion);
-            var jsonString = JsonConvert.SerializeObject(oQuestion);
+            //oQuestion.QUESTION_ID = -1;
+            //oQuestion.CATEGORY_ID = 1;
+            //oQuestion.DESCRIPTION = "1233";
+            //oQuestion.STUDENT_ID = 1;
+            //oQuestion.IS_ANSWERED = true;
+            //oQuestion.IS_PUBLIC = true;
+            //oQuestion.IS_SELF_CLOSED = false;
+            //oQuestion.OWNER_ID = 1;
+            //oQuestion.ENTRY_USER_ID = 1;
+            //oQuestion.TEACHER_ID = 2;
+            //oBLC.Edit_Question(oQuestion);
+            //var jsonString = JsonConvert.SerializeObject(oQuestion);
+
+            User oUser = new User();
+            oTools.SetPropertiesDefaultValue(oUser);
+            oUser.USER_ID = -1;
+            oUser.OWNER_ID = 1;
+            oUser.IS_ACTIVE = true;
+            oUser.USERNAME = "rafik";
+            oUser.PASSWORD = "asadhkajshdk";
+            oUser.USER_TYPE_CODE_ID = 2;
+            //oBLC.Edit_User(oUser);
+            var jsonString = JsonConvert.SerializeObject(oUser);
+            Console.WriteLine(jsonString);
+            Console.WriteLine("user added");
+            
+
             //Console.WriteLine(jsonString);
 
             //Params_Get_Question_By_QUESTION_ID oParams_Get_Question_By_QUESTION_ID = new Params_Get_Question_By_QUESTION_ID();

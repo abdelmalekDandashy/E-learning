@@ -1317,6 +1317,26 @@ public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
 }
+public partial class Params_Get_User_type_code_By_Criteria
+{
+
+public Int32? OWNER_ID {get;set;}
+public string USER_TYPE_CODE {get;set;}
+public string DESCRIPTION {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_type_code_By_Where
+{
+
+public Int32? OWNER_ID {get;set;}
+public string USER_TYPE_CODE {get;set;}
+public string DESCRIPTION {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
 public partial class Params_Get_Person_By_Criteria
 {
 

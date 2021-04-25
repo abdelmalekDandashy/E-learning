@@ -119,6 +119,38 @@ return Is_Exists;
 #endregion
 }
 #endregion
+#region Check_User_Uniqueness_Violation
+public bool Check_User_Uniqueness_Violation(User i_User)
+{
+#region Declaration And Initialization Section.
+bool Is_Exists = false;
+var oQuery = from oItem_Row in _AppContext.Get_User_By_OWNER_ID(this.OwnerID)
+select oItem_Row;
+#endregion
+#region Body Section.
+// Creating New Record
+if (i_User.USER_ID == -1)
+{
+oQuery = from oItem_Row in _AppContext.Get_User_By_OWNER_ID(this.OwnerID)
+where ((oItem_Row.USERNAME == i_User.USERNAME))
+select oItem_Row;
+}
+else // Editing Already Existing Record.
+{
+oQuery = from oItem_Row in _AppContext.Get_User_By_OWNER_ID(this.OwnerID)
+where ((oItem_Row.USERNAME == i_User.USERNAME)) && (oItem_Row.USER_ID != i_User.USER_ID)
+select oItem_Row;
+}
+if (oQuery.Count() > 0)
+{
+Is_Exists = true;
+}
+#endregion
+#region Return Section
+return Is_Exists;
+#endregion
+}
+#endregion
 #region Check_Contact_Uniqueness_Violation
 public bool Check_Contact_Uniqueness_Violation(Contact i_Contact)
 {

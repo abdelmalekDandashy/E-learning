@@ -3797,6 +3797,56 @@ i_Params_Get_Favorite_teacher_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Favorite_teacher_By_Where");}
 return oList;
 }
+public List<User_type_code> Get_User_type_code_By_Criteria(Params_Get_User_type_code_By_Criteria i_Params_Get_User_type_code_By_Criteria)
+{
+List<User_type_code> oList = new List<User_type_code>();
+User_type_code oUser_type_code = new User_type_code();
+long? tmp_TOTAL_COUNT = 0;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_type_code_By_Criteria");}
+#region Body Section.
+if ((i_Params_Get_User_type_code_By_Criteria.OWNER_ID == null) || (i_Params_Get_User_type_code_By_Criteria.OWNER_ID == 0)) { i_Params_Get_User_type_code_By_Criteria.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_User_type_code_By_Criteria.START_ROW == null) { i_Params_Get_User_type_code_By_Criteria.START_ROW = 0; }
+if ((i_Params_Get_User_type_code_By_Criteria.END_ROW == null) || (i_Params_Get_User_type_code_By_Criteria.END_ROW == 0)) { i_Params_Get_User_type_code_By_Criteria.END_ROW = 1000000; }
+List<DALC.User_type_code> oList_DBEntries = _AppContext.Get_User_type_code_By_Criteria(i_Params_Get_User_type_code_By_Criteria.USER_TYPE_CODE,i_Params_Get_User_type_code_By_Criteria.DESCRIPTION,i_Params_Get_User_type_code_By_Criteria.OWNER_ID,i_Params_Get_User_type_code_By_Criteria.START_ROW,i_Params_Get_User_type_code_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry, oUser_type_code);
+oList.Add(oUser_type_code);
+}
+}
+i_Params_Get_User_type_code_By_Criteria.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_type_code_By_Criteria");}
+return oList;
+}
+public List<User_type_code> Get_User_type_code_By_Where(Params_Get_User_type_code_By_Where i_Params_Get_User_type_code_By_Where)
+{
+List<User_type_code> oList = new List<User_type_code>();
+User_type_code oUser_type_code = new User_type_code();
+long? tmp_TOTAL_COUNT = 0;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_type_code_By_Where");}
+#region Body Section.
+if ((i_Params_Get_User_type_code_By_Where.OWNER_ID == null) || (i_Params_Get_User_type_code_By_Where.OWNER_ID == 0)) { i_Params_Get_User_type_code_By_Where.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_User_type_code_By_Where.START_ROW == null) { i_Params_Get_User_type_code_By_Where.START_ROW = 0; }
+if ((i_Params_Get_User_type_code_By_Where.END_ROW == null) || (i_Params_Get_User_type_code_By_Where.END_ROW == 0)) { i_Params_Get_User_type_code_By_Where.END_ROW = 1000000; }
+List<DALC.User_type_code> oList_DBEntries = _AppContext.Get_User_type_code_By_Where(i_Params_Get_User_type_code_By_Where.USER_TYPE_CODE,i_Params_Get_User_type_code_By_Where.DESCRIPTION,i_Params_Get_User_type_code_By_Where.OWNER_ID,i_Params_Get_User_type_code_By_Where.START_ROW,i_Params_Get_User_type_code_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry, oUser_type_code);
+oList.Add(oUser_type_code);
+}
+}
+i_Params_Get_User_type_code_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_type_code_By_Where");}
+return oList;
+}
 public List<Person> Get_Person_By_Criteria(Params_Get_Person_By_Criteria i_Params_Get_Person_By_Criteria)
 {
 List<Person> oList = new List<Person>();
@@ -6162,9 +6212,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l4");}
 }
 public void Delete_Student(Params_Delete_Student i_Params_Delete_Student)
 {
+Params_Get_Student_By_STUDENT_ID oParams_Get_Student_By_STUDENT_ID = new Params_Get_Student_By_STUDENT_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Student");}
 #region Body Section.
 try
+{
+oParams_Get_Student_By_STUDENT_ID.STUDENT_ID = i_Params_Delete_Student.STUDENT_ID;
+_Student = Get_Student_By_STUDENT_ID_Adv(oParams_Get_Student_By_STUDENT_ID);
+if (_Student != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6175,6 +6230,7 @@ return;
 }
 _AppContext.Delete_Student(i_Params_Delete_Student.STUDENT_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6607,9 +6663,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Favorite_teacher");
 }
 public void Delete_User_type_code(Params_Delete_User_type_code i_Params_Delete_User_type_code)
 {
+Params_Get_User_type_code_By_USER_TYPE_CODE_ID oParams_Get_User_type_code_By_USER_TYPE_CODE_ID = new Params_Get_User_type_code_By_USER_TYPE_CODE_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_type_code");}
 #region Body Section.
 try
+{
+oParams_Get_User_type_code_By_USER_TYPE_CODE_ID.USER_TYPE_CODE_ID = i_Params_Delete_User_type_code.USER_TYPE_CODE_ID;
+_User_type_code = Get_User_type_code_By_USER_TYPE_CODE_ID_Adv(oParams_Get_User_type_code_By_USER_TYPE_CODE_ID);
+if (_User_type_code != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6620,6 +6681,7 @@ return;
 }
 _AppContext.Delete_User_type_code(i_Params_Delete_User_type_code.USER_TYPE_CODE_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -7474,6 +7536,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l4_By_OWNER_ID"
 }
 public void Delete_Student_By_OWNER_ID(Params_Delete_Student_By_OWNER_ID i_Params_Delete_Student_By_OWNER_ID)
 {
+Params_Get_Student_By_OWNER_ID oParams_Get_Student_By_OWNER_ID = new Params_Get_Student_By_OWNER_ID();
+List<Student> _List_Student = new List<Student>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Student_By_OWNER_ID");}
 #region Body Section.
 try
@@ -7509,6 +7573,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Student_By_OWNER_ID
 }
 public void Delete_Student_By_USER_TYPE_CODE_ID(Params_Delete_Student_By_USER_TYPE_CODE_ID i_Params_Delete_Student_By_USER_TYPE_CODE_ID)
 {
+Params_Get_Student_By_USER_TYPE_CODE_ID oParams_Get_Student_By_USER_TYPE_CODE_ID = new Params_Get_Student_By_USER_TYPE_CODE_ID();
+List<Student> _List_Student = new List<Student>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Student_By_USER_TYPE_CODE_ID");}
 #region Body Section.
 try
@@ -7544,6 +7610,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Student_By_USER_TYP
 }
 public void Delete_Student_By_USER_ID(Params_Delete_Student_By_USER_ID i_Params_Delete_Student_By_USER_ID)
 {
+Params_Get_Student_By_USER_ID oParams_Get_Student_By_USER_ID = new Params_Get_Student_By_USER_ID();
+List<Student> _List_Student = new List<Student>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Student_By_USER_ID");}
 #region Body Section.
 try
@@ -7912,6 +7980,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_By_CATEGORY
 }
 public void Delete_Teacher_By_USER_TYPE_CODE_ID(Params_Delete_Teacher_By_USER_TYPE_CODE_ID i_Params_Delete_Teacher_By_USER_TYPE_CODE_ID)
 {
+Params_Get_Teacher_By_USER_TYPE_CODE_ID oParams_Get_Teacher_By_USER_TYPE_CODE_ID = new Params_Get_Teacher_By_USER_TYPE_CODE_ID();
+List<Teacher> _List_Teacher = new List<Teacher>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_By_USER_TYPE_CODE_ID");}
 #region Body Section.
 try
@@ -7947,6 +8017,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_By_USER_TYP
 }
 public void Delete_Teacher_By_USER_ID(Params_Delete_Teacher_By_USER_ID i_Params_Delete_Teacher_By_USER_ID)
 {
+Params_Get_Teacher_By_USER_ID oParams_Get_Teacher_By_USER_ID = new Params_Get_Teacher_By_USER_ID();
+List<Teacher> _List_Teacher = new List<Teacher>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_By_USER_ID");}
 #region Body Section.
 try
@@ -8833,6 +8905,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Favorite_teacher_By
 }
 public void Delete_User_type_code_By_OWNER_ID(Params_Delete_User_type_code_By_OWNER_ID i_Params_Delete_User_type_code_By_OWNER_ID)
 {
+Params_Get_User_type_code_By_OWNER_ID oParams_Get_User_type_code_By_OWNER_ID = new Params_Get_User_type_code_By_OWNER_ID();
+List<User_type_code> _List_User_type_code = new List<User_type_code>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_type_code_By_OWNER_ID");}
 #region Body Section.
 try
@@ -8979,6 +9053,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_By_USERNAME");
 }
 public void Delete_User_By_USER_TYPE_CODE_ID(Params_Delete_User_By_USER_TYPE_CODE_ID i_Params_Delete_User_By_USER_TYPE_CODE_ID)
 {
+Params_Get_User_By_USER_TYPE_CODE_ID oParams_Get_User_By_USER_TYPE_CODE_ID = new Params_Get_User_By_USER_TYPE_CODE_ID();
+List<User> _List_User = new List<User>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_By_USER_TYPE_CODE_ID");}
 #region Body Section.
 try
@@ -9517,6 +9593,12 @@ i_Student.ENTRY_DATE    = oTools.GetDateString(DateTime.Today);
 i_Student.OWNER_ID      = this.OwnerID;
 using (TransactionScope oScope = new TransactionScope())
 {
+#region PreEvent_Edit_Student
+if (OnPreEvent_Edit_Student != null)
+{
+OnPreEvent_Edit_Student(i_Student,oEditMode_Flag);
+}
+#endregion
 if (_Stop_Edit_Student_Execution)
 {
 _Stop_Edit_Student_Execution = false;
@@ -9536,6 +9618,12 @@ i_Student.STUDENT_ID
 ,i_Student.ENTRY_DATE
 ,i_Student.OWNER_ID
 );
+#region PostEvent_Edit_Student
+if (OnPostEvent_Edit_Student != null)
+{
+OnPostEvent_Edit_Student(i_Student,oEditMode_Flag);
+}
+#endregion
 oScope.Complete();
 }
 #endregion
@@ -9601,6 +9689,12 @@ i_Teacher.ENTRY_DATE    = oTools.GetDateString(DateTime.Today);
 i_Teacher.OWNER_ID      = this.OwnerID;
 using (TransactionScope oScope = new TransactionScope())
 {
+#region PreEvent_Edit_Teacher
+if (OnPreEvent_Edit_Teacher != null)
+{
+OnPreEvent_Edit_Teacher(i_Teacher,oEditMode_Flag);
+}
+#endregion
 if (_Stop_Edit_Teacher_Execution)
 {
 _Stop_Edit_Teacher_Execution = false;
@@ -9623,6 +9717,12 @@ i_Teacher.TEACHER_ID
 ,i_Teacher.ENTRY_DATE
 ,i_Teacher.OWNER_ID
 );
+#region PostEvent_Edit_Teacher
+if (OnPostEvent_Edit_Teacher != null)
+{
+OnPostEvent_Edit_Teacher(i_Teacher,oEditMode_Flag);
+}
+#endregion
 oScope.Complete();
 }
 #endregion
@@ -10009,6 +10109,12 @@ i_User.ENTRY_DATE    = oTools.GetDateString(DateTime.Today);
 i_User.OWNER_ID      = this.OwnerID;
 using (TransactionScope oScope = new TransactionScope())
 {
+#region PreEvent_Edit_User
+if (OnPreEvent_Edit_User != null)
+{
+OnPreEvent_Edit_User(i_User,oEditMode_Flag);
+}
+#endregion
 if (_Stop_Edit_User_Execution)
 {
 _Stop_Edit_User_Execution = false;
@@ -10024,6 +10130,12 @@ i_User.USER_ID
 ,i_User.IS_ACTIVE
 ,i_User.ENTRY_DATE
 );
+#region PostEvent_Edit_User
+if (OnPostEvent_Edit_User != null)
+{
+OnPostEvent_Edit_User(i_User,oEditMode_Flag);
+}
+#endregion
 oScope.Complete();
 }
 #endregion

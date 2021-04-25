@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace BLC
@@ -105,10 +106,16 @@ namespace BLC
 
             this.OnPostEvent_Edit_Question += BLC_OnPostEvent_Edit_Question;
             this.OnPreEvent_Edit_Question += BLC_OnPreEvent_Edit_Question;
+
+            this.OnPreEvent_Edit_User += BLC_OnPreEvent_Edit_User;
+            this.OnPreEvent_Edit_Teacher += BLC_OnPreEvent_Edit_Teacher;
+            this.OnPreEvent_Edit_Student += BLC_OnPreEvent_Edit_Student;
             #endregion
             #region Body Section.
             #endregion
         }
+
+
 
 
         #endregion
@@ -211,9 +218,72 @@ namespace BLC
             }
         }
 
+
         private void BLC_OnPostEvent_Edit_Answer(Answer i_Answer, Enum_EditMode i_Enum_EditMode)
         {
             throw new NotImplementedException();
+        }
+
+        private void BLC_OnPreEvent_Edit_Student(Student i_Student, Enum_EditMode i_Enum_EditMode)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BLC_OnPreEvent_Edit_Teacher(Teacher i_Teacher, Enum_EditMode i_Enum_EditMode)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BLC_OnPreEvent_Edit_User(User i_User, Enum_EditMode i_Enum_EditMode)
+        {
+           
+
+            //Checks if username is available
+            var result = _AppContext.Get_User_By_USERNAME(i_User.USERNAME);
+            if ((result != null) && (!result.Any()))
+            {
+                
+            }
+            else
+                    {
+                        Console.WriteLine("user already Exists");
+                        throw new BLCException("user already Exists");
+                    }
+
+            //minimum lenght of username
+            if (i_User.USERNAME.Length < 3)
+            {
+                Console.WriteLine("usernma must be at least 3 characters ");
+                throw new BLCException("usernma must be at least 3 characters ");
+            }
+
+
+            //USERNAME regex (letters and numbers only)
+            string usernamePattern = "^[a-zA-Z0-9]+$";
+            Regex usernameRg = new Regex(usernamePattern);
+           
+            if(usernameRg.Matches(i_User.USERNAME).Count < 1)
+            {
+                Console.WriteLine("ivalid username, username should only contains letters, numbers");
+                throw new BLCException("ivalid username, username should only contains letters, numbers");
+            }
+
+
+            //password regex (letters and numbers only)
+            var hasNumber = new Regex(@"[0-9]+");
+            var hasUpperChar = new Regex(@"[A-Z]+");
+            var hasMinimum8Chars = new Regex(@".{8,}");
+
+            var isValidated = hasNumber.IsMatch(i_User.PASSWORD) && hasUpperChar.IsMatch(i_User.PASSWORD) && hasMinimum8Chars.IsMatch(i_User.PASSWORD);
+
+            if (!isValidated) {
+                Console.WriteLine("ivalid password synatx, password should be at least 8 characters, contains at least one uppercase letter, number and special character");
+                throw new BLCException("ivalid password synatx, password should be at least 8 characters, contains at least one uppercase letter, number and special character");
+            }
+
+
+
+
         }
         #endregion
     }

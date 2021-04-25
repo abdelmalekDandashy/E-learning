@@ -247,6 +247,9 @@ namespace CodeGenerator
             oCodeBooster.APIMethodsSelection.Add("Edit_Teacher_favorite");
 
 
+            oCodeBooster.APIMethodsSelection.Add("Get_User_By_OWNER_ID");
+            oCodeBooster.APIMethodsSelection.Add("Delete_User");
+            oCodeBooster.APIMethodsSelection.Add("Edit_User");
             //----------------------------
 
             #endregion

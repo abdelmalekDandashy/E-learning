@@ -5172,6 +5172,36 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
+public List<User_type_code> Get_User_type_code_By_Criteria ( string USER_TYPE_CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_type_code> oList = new List<User_type_code>();
+dynamic p = new ExpandoObject();
+p.USER_TYPE_CODE = USER_TYPE_CODE; p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_TYPE_CODE_BY_CRITERIA", p);
+if (R != null) {foreach (var X in R) {
+User_type_code o = new User_type_code();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User_type_code> Get_User_type_code_By_Where ( string USER_TYPE_CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_type_code> oList = new List<User_type_code>();
+dynamic p = new ExpandoObject();
+p.USER_TYPE_CODE = USER_TYPE_CODE; p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_TYPE_CODE_BY_WHERE", p);
+if (R != null) {foreach (var X in R) {
+User_type_code o = new User_type_code();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
 public List<Person> Get_Person_By_Criteria ( string FIRST_NAME, string LAST_NAME, string FATHER_NAME, string MOTHER_NAME, string TITLE_CODE, string GENDER_CODE, string RELIGION_CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Person> oList = new List<Person>();
@@ -6078,6 +6108,36 @@ o.My_Student = new Student();
 o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
 o.My_Teacher = new Teacher();
 o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User_type_code> Get_User_type_code_By_Criteria_Adv ( string USER_TYPE_CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_type_code> oList = new List<User_type_code>();
+dynamic p = new ExpandoObject();
+p.USER_TYPE_CODE = USER_TYPE_CODE; p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_TYPE_CODE_BY_CRITERIA_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_type_code o = new User_type_code();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User_type_code> Get_User_type_code_By_Where_Adv ( string USER_TYPE_CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_type_code> oList = new List<User_type_code>();
+dynamic p = new ExpandoObject();
+p.USER_TYPE_CODE = USER_TYPE_CODE; p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_TYPE_CODE_BY_WHERE_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_type_code o = new User_type_code();
+oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
 }
@@ -8485,7 +8545,7 @@ p.JSON_CONTENT = JSON_CONTENT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_STUDENT", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.STUDENT_ID = GV<Int32>(X["STUDENT_ID"]);o.FIRST_NAME = GV<String>(X["FIRST_NAME"]);o.LAST_NAME = GV<String>(X["LAST_NAME"]);o.DOB = GV<String>(X["DOB"]);o.EMAIL = GV<String>(X["EMAIL"]);o.IS_BLOCKED = GV<Boolean>(X["IS_BLOCKED"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);
+o.STUDENT_ID = GV<Int32>(X["STUDENT_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.FIRST_NAME = GV<String>(X["FIRST_NAME"]);o.LAST_NAME = GV<String>(X["LAST_NAME"]);o.USER_TYPE_CODE_ID = GV<Int32>(X["USER_TYPE_CODE_ID"]);o.DOB = GV<String>(X["DOB"]);o.EMAIL = GV<String>(X["EMAIL"]);o.IS_BLOCKED = GV<Boolean>(X["IS_BLOCKED"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -8513,7 +8573,7 @@ p.JSON_CONTENT = JSON_CONTENT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_TEACHER", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.TEACHER_ID = GV<Int32>(X["TEACHER_ID"]);o.FIRST_NAME = GV<String>(X["FIRST_NAME"]);o.LAST_NAME = GV<String>(X["LAST_NAME"]);o.IS_VALID = GV<Boolean>(X["IS_VALID"]);o.EMAIL = GV<String>(X["EMAIL"]);o.MOBILE = GV<String>(X["MOBILE"]);o.SCORE = GV<Int32>(X["SCORE"]);o.IS_BLOCKED = GV<Boolean>(X["IS_BLOCKED"]);o.CATEGORY_ID = GV<Int32>(X["CATEGORY_ID"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);
+o.TEACHER_ID = GV<Int32>(X["TEACHER_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.FIRST_NAME = GV<String>(X["FIRST_NAME"]);o.LAST_NAME = GV<String>(X["LAST_NAME"]);o.IS_VALID = GV<Boolean>(X["IS_VALID"]);o.EMAIL = GV<String>(X["EMAIL"]);o.MOBILE = GV<String>(X["MOBILE"]);o.USER_TYPE_CODE_ID = GV<Int32>(X["USER_TYPE_CODE_ID"]);o.SCORE = GV<Int32>(X["SCORE"]);o.IS_BLOCKED = GV<Boolean>(X["IS_BLOCKED"]);o.CATEGORY_ID = GV<Int32>(X["CATEGORY_ID"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -8569,7 +8629,21 @@ p.JSON_CONTENT = JSON_CONTENT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_USER", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.USER_TYPE_CODE = GV<String>(X["USER_TYPE_CODE"]);o.IS_ACTIVE = GV<Boolean>(X["IS_ACTIVE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
+o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.USER_TYPE_CODE_ID = GV<Int32>(X["USER_TYPE_CODE_ID"]);o.IS_ACTIVE = GV<Boolean>(X["IS_ACTIVE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<dynamic> UP_BULK_UPSERT_USER_TYPE_CODE ( string JSON_CONTENT)
+{
+List<dynamic> oList = new List<dynamic>();
+dynamic p = new ExpandoObject();
+p.JSON_CONTENT = JSON_CONTENT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_USER_TYPE_CODE", p);
+if (R != null) {foreach (var X in R) {
+dynamic o = new ExpandoObject();
+o.USER_TYPE_CODE_ID = GV<Int32>(X["USER_TYPE_CODE_ID"]);o.USER_TYPE_CODE = GV<String>(X["USER_TYPE_CODE"]);o.DESCRIPTION = GV<String>(X["DESCRIPTION"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);
 oList.Add(o);
 }
 }

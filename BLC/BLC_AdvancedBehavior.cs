@@ -4447,6 +4447,56 @@ i_Params_Get_Favorite_teacher_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Favorite_teacher_By_Where_Adv");}
 return oList;
 }
+public List<User_type_code> Get_User_type_code_By_Criteria_Adv(Params_Get_User_type_code_By_Criteria i_Params_Get_User_type_code_By_Criteria)
+{
+List<User_type_code> oList = new List<User_type_code>();
+long? tmp_TOTAL_COUNT = 0;
+User_type_code oUser_type_code = null;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_type_code_By_Criteria_Adv");}
+#region Body Section.
+if ((i_Params_Get_User_type_code_By_Criteria.OWNER_ID == null) || (i_Params_Get_User_type_code_By_Criteria.OWNER_ID == 0)) { i_Params_Get_User_type_code_By_Criteria.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_User_type_code_By_Criteria.START_ROW == null) { i_Params_Get_User_type_code_By_Criteria.START_ROW = 0; }
+if ((i_Params_Get_User_type_code_By_Criteria.END_ROW == null) || (i_Params_Get_User_type_code_By_Criteria.END_ROW == 0)) { i_Params_Get_User_type_code_By_Criteria.END_ROW = 1000000; }
+List<DALC.User_type_code> oList_DBEntries = _AppContext.Get_User_type_code_By_Criteria_Adv(i_Params_Get_User_type_code_By_Criteria.USER_TYPE_CODE,i_Params_Get_User_type_code_By_Criteria.DESCRIPTION,i_Params_Get_User_type_code_By_Criteria.OWNER_ID,i_Params_Get_User_type_code_By_Criteria.START_ROW,i_Params_Get_User_type_code_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry, oUser_type_code);
+oList.Add(oUser_type_code);
+}
+}
+i_Params_Get_User_type_code_By_Criteria.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_type_code_By_Criteria_Adv");}
+return oList;
+}
+public List<User_type_code> Get_User_type_code_By_Where_Adv(Params_Get_User_type_code_By_Where i_Params_Get_User_type_code_By_Where)
+{
+List<User_type_code> oList = new List<User_type_code>();
+long? tmp_TOTAL_COUNT = 0;
+User_type_code oUser_type_code = null;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_type_code_By_Where_Adv");}
+#region Body Section.
+if ((i_Params_Get_User_type_code_By_Where.OWNER_ID == null) || (i_Params_Get_User_type_code_By_Where.OWNER_ID == 0)) { i_Params_Get_User_type_code_By_Where.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_User_type_code_By_Where.START_ROW == null) { i_Params_Get_User_type_code_By_Where.START_ROW = 0; }
+if ((i_Params_Get_User_type_code_By_Where.END_ROW == null) || (i_Params_Get_User_type_code_By_Where.END_ROW == 0)) { i_Params_Get_User_type_code_By_Where.END_ROW = 1000000; }
+List<DALC.User_type_code> oList_DBEntries = _AppContext.Get_User_type_code_By_Where_Adv(i_Params_Get_User_type_code_By_Where.USER_TYPE_CODE,i_Params_Get_User_type_code_By_Where.DESCRIPTION,i_Params_Get_User_type_code_By_Where.OWNER_ID,i_Params_Get_User_type_code_By_Where.START_ROW,i_Params_Get_User_type_code_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser_type_code = new User_type_code();
+oTools.CopyPropValues(oDBEntry, oUser_type_code);
+oList.Add(oUser_type_code);
+}
+}
+i_Params_Get_User_type_code_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_type_code_By_Where_Adv");}
+return oList;
+}
 public List<Person> Get_Person_By_Criteria_Adv(Params_Get_Person_By_Criteria i_Params_Get_Person_By_Criteria)
 {
 List<Person> oList = new List<Person>();
