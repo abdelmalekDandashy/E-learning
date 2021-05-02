@@ -8812,6 +8812,34 @@ oList.Add(o);
 }
 return oList;
 }
+public List<dynamic> UP_Get_Student_By_Email ( string EMAIL)
+{
+List<dynamic> oList = new List<dynamic>();
+dynamic p = new ExpandoObject();
+p.EMAIL = EMAIL;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_Get_Student_By_Email", p);
+if (R != null) {foreach (var X in R) {
+dynamic o = new ExpandoObject();
+o.STUDENT_ID = GV<Int32>(X["STUDENT_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.FIRST_NAME = GV<String>(X["FIRST_NAME"]);o.LAST_NAME = GV<String>(X["LAST_NAME"]);o.USER_TYPE_CODE_ID = GV<Int32>(X["USER_TYPE_CODE_ID"]);o.DOB = GV<String>(X["DOB"]);o.EMAIL = GV<String>(X["EMAIL"]);o.IS_BLOCKED = GV<Boolean>(X["IS_BLOCKED"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.FTS = GV<String>(X["FTS"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<dynamic> UP_Get_Teacher_By_Email ( string EMAIL)
+{
+List<dynamic> oList = new List<dynamic>();
+dynamic p = new ExpandoObject();
+p.EMAIL = EMAIL;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_Get_Teacher_By_Email", p);
+if (R != null) {foreach (var X in R) {
+dynamic o = new ExpandoObject();
+o.TEACHER_ID = GV<Int32>(X["TEACHER_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.FIRST_NAME = GV<String>(X["FIRST_NAME"]);o.LAST_NAME = GV<String>(X["LAST_NAME"]);o.IS_VALID = GV<Boolean>(X["IS_VALID"]);o.EMAIL = GV<String>(X["EMAIL"]);o.MOBILE = GV<String>(X["MOBILE"]);o.USER_TYPE_CODE_ID = GV<Int32>(X["USER_TYPE_CODE_ID"]);o.SCORE = GV<Int32>(X["SCORE"]);o.IS_BLOCKED = GV<Boolean>(X["IS_BLOCKED"]);o.CATEGORY_ID = GV<Int32>(X["CATEGORY_ID"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.FTS = GV<String>(X["FTS"]);
+oList.Add(o);
+}
+}
+return oList;
+}
 public List<dynamic> UP_GET_USER_BY_CREDENTIALS ( Int32? OWNER_ID, string USERNAME, string PASSWORD)
 {
 List<dynamic> oList = new List<dynamic>();

@@ -177,8 +177,30 @@ namespace BLC
             #endregion
         }
         #endregion
-        #endregion        
+
+        #region getTeacherByEmail
+
+        //public Teacher Get_Teacher_By_Email(Params_Get_Teacher_By_Email oParams_Get_Teacher_By_Email)
+        //{
+        //    List < dynamic>  oTeacher = null;
+        //    oTeacher = _AppContext.UP_Get_Teacher_By_Email(oParams_Get_Teacher_By_Email.EMAIL);
+
+
+
+
+        //    return oTeacher;
+        //}
+
+        #endregion
+        #endregion
     }
+    //public class Params_Get_Teacher_By_Email
+    //{
+    //    #region Properties
+    //    public string EMAIL { get; set; }
+
+    //    #endregion
+    //}
     #region Business Entities
     #region Setup
     #region SetupEntry

@@ -225,7 +225,7 @@ namespace CodeGenerator
             oCodeBooster.APIMethodsSelection.Add("Delete_Answer");
 
 
-
+            
 
             oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_STUDENT_ID_List");
             oCodeBooster.APIMethodsSelection.Add("Edit_Question");
@@ -242,11 +242,15 @@ namespace CodeGenerator
 
 
             oCodeBooster.APIMethodsSelection.Add("Get_Student_By_OWNER_ID");
+            oCodeBooster.APIMethodsSelection.Add("Get_Student_By_STUDENT_ID_Adv");
             oCodeBooster.APIMethodsSelection.Add("Get_Teacher_By_CATEGORY_ID_List");
             oCodeBooster.APIMethodsSelection.Add("Get_Teacher_By_OWNER_ID");
+            oCodeBooster.APIMethodsSelection.Add("Get_Teacher_By_TEACHER_ID_Adv");
             oCodeBooster.APIMethodsSelection.Add("Edit_Teacher_favorite");
 
-
+            
+            oCodeBooster.APIMethodsSelection.Add("Get_User_By_USER_ID_Adv");
+            oCodeBooster.APIMethodsSelection.Add("Get_User_By_USER_ID");
             oCodeBooster.APIMethodsSelection.Add("Get_User_By_OWNER_ID");
             oCodeBooster.APIMethodsSelection.Add("Delete_User");
             oCodeBooster.APIMethodsSelection.Add("Edit_User");
@@ -298,8 +302,8 @@ namespace CodeGenerator
                     //oCodeBooster.List_Reset_Topology.Add(new Reset_Topology() { ParentTable = "[TBL_PERSONS]", ChildTables = new List<string>() { "[TBL_ADDRES]", "[TBL_CONTACT]" } });
 
                     oCodeBooster.List_Eager_Loading = new List<Eager_Loading>();
-                    //oCodeBooster.List_Eager_Loading.Add(new Eager_Loading() { Method_Name = "Get_Ac_By_AC_ID_Adv", ParentTable = "[TBL_AC]", ChildTables = new List<string>() { "[TBL_AC_AMENITY]", "[TBL_AC_CARD]", "[TBL_AC_CONTACT]", "[TBL_AC_IMAGE]", "[TBL_AC_SLIDE]","[TBL_AC_SOCIAL]", "[TBL_AC_HWS_INFO]", "[TBL_AC_HWS_XPAGE]", "[TBL_AC_PICKUP]", "[TBL_AC_THEME]", "[TBL_AC_DESCRIPTION]", "[TBL_AC_GW]" } });
-
+                    //oCodeBooster.List_Eager_Loading.Add(new Eager_Loading() { Method_Name = "Get_Ac_By_AC_ID_Adv", ParentTable = "[TBL_AC]", ChildTables = new List<string>() { "[TBL_AC_GW]" } });
+                    //oCodeBooster.List_Eager_Loading.Add(new Eager_Loading() { Method_Name = "Get_Ac_By_AC_ID_Adv", ParentTable = "[TBL_AC]", ChildTables = new List<string>() { "[TBL_AC_GW]" } });
                     #region One2Many
                     oCodeBooster.List_Inheritance = new List<Inheritance>();
                     //oCodeBooster.List_Inheritance.Add(new Inheritance() { ParentTable = "[TBL_PERSON]", ChildTable = "[TBL_ADDRESS]", RelationField = "[PERSON_ID]", RelationType = "12M" });                    

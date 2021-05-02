@@ -43,19 +43,27 @@ namespace UnitTesting
             //oBLC.Edit_Question(oQuestion);
             //var jsonString = JsonConvert.SerializeObject(oQuestion);
 
-            User oUser = new User();
-            oTools.SetPropertiesDefaultValue(oUser);
-            oUser.USER_ID = -1;
-            oUser.OWNER_ID = 1;
-            oUser.IS_ACTIVE = true;
-            oUser.USERNAME = "rafik";
-            oUser.PASSWORD = "asadhkajshdk";
-            oUser.USER_TYPE_CODE_ID = 2;
-            //oBLC.Edit_User(oUser);
-            var jsonString = JsonConvert.SerializeObject(oUser);
-            Console.WriteLine(jsonString);
-            Console.WriteLine("user added");
+            //User oUser = new User();
+            //oTools.SetPropertiesDefaultValue(oUser);
+            //oUser.USER_ID = -1;
+            //oUser.OWNER_ID = 1;
+            //oUser.IS_ACTIVE = true;
+            //oUser.USERNAME = "rafik";
+            //oUser.PASSWORD = "asadhkajshdk";
+            //oUser.USER_TYPE_CODE_ID = 2;
+            ////oBLC.Edit_User(oUser);
+            //var jsonString = JsonConvert.SerializeObject(oUser);
+            //Console.WriteLine(jsonString);
+            //Console.WriteLine("user added");
+
+
+            //List<dynamic> oTeachers = null;
+            ////DALC.IDALC _AppContext = null;
             
+            //var Email = "sami@gmail.com";
+            //oTeachers = _AppContext.UP_Get_Teacher_By_Email(Email);
+            //Console.WriteLine(oTeachers);
+            //Console.WriteLine(oTeachers);
 
             //Console.WriteLine(jsonString);
 

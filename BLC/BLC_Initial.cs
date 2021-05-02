@@ -240,6 +240,8 @@ namespace BLC
 
             //Checks if username is available
             var result = _AppContext.Get_User_By_USERNAME(i_User.USERNAME);
+
+            //if username from DB == username coming from interface: do nothing
             if ((result != null) && (!result.Any()))
             {
                 
@@ -264,8 +266,8 @@ namespace BLC
            
             if(usernameRg.Matches(i_User.USERNAME).Count < 1)
             {
-                Console.WriteLine("ivalid username, username should only contains letters, numbers");
-                throw new BLCException("ivalid username, username should only contains letters, numbers");
+                Console.WriteLine("invalid username, username should only contains letters, numbers");
+                throw new BLCException("invalid username, username should only contains letters, numbers");
             }
 
 
@@ -277,8 +279,8 @@ namespace BLC
             var isValidated = hasNumber.IsMatch(i_User.PASSWORD) && hasUpperChar.IsMatch(i_User.PASSWORD) && hasMinimum8Chars.IsMatch(i_User.PASSWORD);
 
             if (!isValidated) {
-                Console.WriteLine("ivalid password synatx, password should be at least 8 characters, contains at least one uppercase letter, number and special character");
-                throw new BLCException("ivalid password synatx, password should be at least 8 characters, contains at least one uppercase letter, number and special character");
+                Console.WriteLine("invalid password synatx, password should be at least 8 characters, contains at least one uppercase letter, number and special character");
+                throw new BLCException("invalid password synatx, password should be at least 8 characters, contains at least one uppercase letter, number and special character");
             }
 
 
