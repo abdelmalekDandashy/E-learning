@@ -246,7 +246,9 @@ namespace CodeGenerator
             oCodeBooster.APIMethodsSelection.Add("Get_Teacher_By_CATEGORY_ID_List");
             oCodeBooster.APIMethodsSelection.Add("Get_Teacher_By_OWNER_ID");
             oCodeBooster.APIMethodsSelection.Add("Get_Teacher_By_TEACHER_ID_Adv");
+            oCodeBooster.APIMethodsSelection.Add("Get_Teacher_By_USER_ID_List");
             oCodeBooster.APIMethodsSelection.Add("Edit_Teacher_favorite");
+
 
             
             oCodeBooster.APIMethodsSelection.Add("Get_User_By_USER_ID_Adv");
@@ -254,6 +256,7 @@ namespace CodeGenerator
             oCodeBooster.APIMethodsSelection.Add("Get_User_By_OWNER_ID");
             oCodeBooster.APIMethodsSelection.Add("Delete_User");
             oCodeBooster.APIMethodsSelection.Add("Edit_User");
+            oCodeBooster.APIMethodsSelection.Add("Authenticate");
             //----------------------------
 
             #endregion

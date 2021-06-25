@@ -62,6 +62,11 @@ namespace BLC
         #endregion
         #endregion
         #endregion
+
+        #region get everything about teacher
+
+        #endregion
+
         #region Ticket
         #region ResolveTicket
         public Dictionary<string, string> ResolveTicket(string i_Input)
@@ -178,29 +183,62 @@ namespace BLC
         }
         #endregion
 
-        #region getTeacherByEmail
-
-        //public Teacher Get_Teacher_By_Email(Params_Get_Teacher_By_Email oParams_Get_Teacher_By_Email)
-        //{
-        //    List < dynamic>  oTeacher = null;
-        //    oTeacher = _AppContext.UP_Get_Teacher_By_Email(oParams_Get_Teacher_By_Email.EMAIL);
 
 
+        public User Authenticate(Params_Authenticate i_Params_Authenticate)
+        {
+            #region declaration
+            
+            User oUser = new User();
+            #endregion
 
+            List<dynamic> oList = _AppContext.UP_Get_User_By_Email(i_Params_Authenticate.EMAIL);
+            if ((oList != null) && (oList.Count > 0))
+            {   
+                if (i_Params_Authenticate.PASSWORD == oList[0].PASSWORD)
+                {
+                    oUser.USER_ID = oList[0].USER_ID;
+                    oUser.OWNER_ID = oList[0].OWNER_ID;
+                    oUser.USERNAME = oList[0].USERNAME;
+                    oUser.EMAIL = oList[0].EMAIL;
+                    oUser.MOBILE = oList[0].MOBILE;
+                    oUser.FIRST_NAME = oList[0].FIRST_NAME;
+                    oUser.LAST_NAME = oList[0].LAST_NAME;
+                    oUser.DOB = oList[0].DOB;
+                    //oUser.My_User_type_code = oList[0].My_User_type_code;
 
-        //    return oTeacher;
-        //}
+                    var MinutesEplapsedSinceMidnight = (long?)(DateTime.Now - DateTime.Today).TotalMinutes;
+                    var TicketText = string.Format
+                        (
+                        "USER_ID:{0}[~!@]OWNER_ID:{1}[~!@]START_DATE:{2}[~!@]START_MINUTE:{3}[~!@]SESSION_PERIOD:{4}",
+                        oUser.USER_ID,
+                        oUser.OWNER_ID,
+                        oTools.GetDateString(DateTime.Today),
+                        MinutesEplapsedSinceMidnight.ToString(),
+                        60
+                        );
+                    oUser.myTicket = TicketText;
+                }
+                else
+                {
+                    throw new BLCException(GetMessageContent(Enum_BR_Codes.BR_0002));
+                }
+
+            }
+            else
+            {
+                throw new BLCException(GetMessageContent(Enum_BR_Codes.BR_9999));
+            }
+
+            return oUser;
+
+        }
 
         #endregion
-        #endregion
+
     }
-    //public class Params_Get_Teacher_By_Email
-    //{
-    //    #region Properties
-    //    public string EMAIL { get; set; }
 
-    //    #endregion
-    //}
+
     #region Business Entities
     #region Setup
     #region SetupEntry
@@ -233,7 +271,19 @@ namespace BLC
     {
         public string My_URL { get; set; }
     }
+    public partial class User
+    {
+        public string myTicket { get; set; }
+    }
     #endregion
+    public class Params_Authenticate
+    {
+        #region Properties
+        public string EMAIL { get; set; }
+        public string PASSWORD { get; set; }
+
+        #endregion
+    }
     #endregion
 }
 

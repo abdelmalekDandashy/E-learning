@@ -59,7 +59,7 @@ namespace UnitTesting
 
             //List<dynamic> oTeachers = null;
             ////DALC.IDALC _AppContext = null;
-            
+
             //var Email = "sami@gmail.com";
             //oTeachers = _AppContext.UP_Get_Teacher_By_Email(Email);
             //Console.WriteLine(oTeachers);
@@ -74,6 +74,13 @@ namespace UnitTesting
             //Console.WriteLine(oQuestion.DESCRIPTION);
 
 
+            List<long?> numberList = new List<long?> {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            Params_Get_Teacher_By_USER_ID_List oParams_Get_Teacher_By_USER_ID_List = new Params_Get_Teacher_By_USER_ID_List();
+            oParams_Get_Teacher_By_USER_ID_List.USER_ID_LIST = numberList;
+            Console.WriteLine(oParams_Get_Teacher_By_USER_ID_List);
+            List<Teacher> oListTeacher = new List<Teacher> { };
+            oListTeacher = oBLC.Get_Teacher_By_USER_ID_List(oParams_Get_Teacher_By_USER_ID_List);
+            Console.WriteLine(oListTeacher);
             //oQuestion.DESCRIPTION = "new desc5";
             //oBLC.Edit_Question(oQuestion);
 
@@ -86,6 +93,13 @@ namespace UnitTesting
             //oStudent.EMAIL = "dandasheh6@gmail.com";
             //oBLC.Edit_Student(oStudent);
             //Console.WriteLine("done");
+
+            Params_Authenticate oParams_Authenticate = new Params_Authenticate();
+            oParams_Authenticate.EMAIL = "email3@gmail.com";
+            oParams_Authenticate.PASSWORD = "malek";
+
+            var result = oBLC.Authenticate(oParams_Authenticate);
+            Console.WriteLine(result);
 
 
 

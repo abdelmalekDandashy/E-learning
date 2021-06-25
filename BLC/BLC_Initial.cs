@@ -21,7 +21,8 @@ namespace BLC
         {
             BR_9999,  // Invalid Credentials
             BR_0000,  // Uniqueness Violation                      
-            BR_0001   // Password should be at least 4 characters 
+            BR_0001,  // Password should be at least 4 characters 
+            BR_0002  //Password is not correct
         }
         public enum Enum_EditMode
         {
@@ -236,52 +237,73 @@ namespace BLC
 
         private void BLC_OnPreEvent_Edit_User(User i_User, Enum_EditMode i_Enum_EditMode)
         {
-           
-
-            //Checks if username is available
-            var result = _AppContext.Get_User_By_USERNAME(i_User.USERNAME);
-
-            //if username from DB == username coming from interface: do nothing
-            if ((result != null) && (!result.Any()))
+            if (i_Enum_EditMode == Enum_EditMode.Add)
             {
-                
-            }
-            else
+
+                #region checks for username
+                //Checks if username is available
+                var result = _AppContext.Get_User_By_USERNAME(i_User.USERNAME);
+
+                //if username from DB == username coming from interface: do nothing
+                if (result.Count != 0)
+                {   
+                    if (result[0].USERNAME == i_User.USERNAME)
                     {
-                        Console.WriteLine("user already Exists");
-                        throw new BLCException("user already Exists");
+                        Console.WriteLine("username already Exists");
+                        throw new BLCException("username already Exists");
                     }
+                    
+                }
 
-            //minimum lenght of username
-            if (i_User.USERNAME.Length < 3)
-            {
-                Console.WriteLine("usernma must be at least 3 characters ");
-                throw new BLCException("usernma must be at least 3 characters ");
+                //minimum lenght of username
+                if (i_User.USERNAME.Length < 3)
+                {
+                    Console.WriteLine("usernma must be at least 3 characters ");
+                    throw new BLCException("usernma must be at least 3 characters ");
+                }
+
+
+                //USERNAME regex (letters and numbers only)
+                string usernamePattern = "^[a-zA-Z0-9]+$";
+                Regex usernameRg = new Regex(usernamePattern);
+
+                if (usernameRg.Matches(i_User.USERNAME).Count < 1)
+                {
+                    Console.WriteLine("invalid username, username should only contains letters, numbers");
+                    throw new BLCException("invalid username, username should only contains letters, numbers");
+                }
+                #endregion
+                #region checks for password
+                //password regex (letters and numbers only)
+                var hasNumber = new Regex(@"[0-9]+");
+                var hasUpperChar = new Regex(@"[A-Z]+");
+                var hasMinimum8Chars = new Regex(@".{8,}");
+
+                var isValidated = hasNumber.IsMatch(i_User.PASSWORD) && hasUpperChar.IsMatch(i_User.PASSWORD) && hasMinimum8Chars.IsMatch(i_User.PASSWORD);
+
+                if (!isValidated)
+                {
+                    Console.WriteLine("invalid password synatx, password should be at least 8 characters, contains at least one uppercase letter, number and special character");
+                    throw new BLCException("invalid password synatx, password should be at least 8 characters, contains at least one uppercase letter, number and special character");
+                }
+                #endregion
+                #region checks for Email
+                if (result.Count == 0)
+                {
+                    var EmailResult = _AppContext.UP_Get_User_By_Email(i_User.EMAIL);
+                    Console.WriteLine(EmailResult);
+
+                    if (EmailResult.Count != 0) {
+                        throw new BLCException("Email already exists");
+                    }
+                }
+                #endregion
+
+
+
             }
 
 
-            //USERNAME regex (letters and numbers only)
-            string usernamePattern = "^[a-zA-Z0-9]+$";
-            Regex usernameRg = new Regex(usernamePattern);
-           
-            if(usernameRg.Matches(i_User.USERNAME).Count < 1)
-            {
-                Console.WriteLine("invalid username, username should only contains letters, numbers");
-                throw new BLCException("invalid username, username should only contains letters, numbers");
-            }
-
-
-            //password regex (letters and numbers only)
-            var hasNumber = new Regex(@"[0-9]+");
-            var hasUpperChar = new Regex(@"[A-Z]+");
-            var hasMinimum8Chars = new Regex(@".{8,}");
-
-            var isValidated = hasNumber.IsMatch(i_User.PASSWORD) && hasUpperChar.IsMatch(i_User.PASSWORD) && hasMinimum8Chars.IsMatch(i_User.PASSWORD);
-
-            if (!isValidated) {
-                Console.WriteLine("invalid password synatx, password should be at least 8 characters, contains at least one uppercase letter, number and special character");
-                throw new BLCException("invalid password synatx, password should be at least 8 characters, contains at least one uppercase letter, number and special character");
-            }
 
 
 

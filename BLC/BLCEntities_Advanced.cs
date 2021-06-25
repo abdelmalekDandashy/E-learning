@@ -123,6 +123,14 @@ public Category My_Category {get;set;}
 #endregion
 }
 #endregion
+#region User
+public partial class User
+{
+#region Advanced Properties
+public User_type_code My_User_type_code {get;set;}
+#endregion
+}
+#endregion
 #region Category
 public partial class Category
 {
@@ -177,14 +185,6 @@ public partial class User_type_code
 public partial class Person
 {
 #region Advanced Properties
-#endregion
-}
-#endregion
-#region User
-public partial class User
-{
-#region Advanced Properties
-public User_type_code My_User_type_code {get;set;}
 #endregion
 }
 #endregion

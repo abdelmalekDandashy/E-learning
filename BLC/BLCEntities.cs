@@ -120,6 +120,15 @@ public Int32? TEACHER_CATEGORY_ID {get;set;}
 #endregion
 }
 #endregion
+#region Params_Get_User_By_USER_ID
+public partial class Params_Get_User_By_USER_ID
+{
+#region Properties
+public long? USER_ID {get;set;}
+
+#endregion
+}
+#endregion
 #region Params_Get_Category_By_CATEGORY_ID
 public partial class Params_Get_Category_By_CATEGORY_ID
 {
@@ -179,15 +188,6 @@ public partial class Params_Get_Person_By_PERSON_ID
 {
 #region Properties
 public long? PERSON_ID {get;set;}
-
-#endregion
-}
-#endregion
-#region Params_Get_User_By_USER_ID
-public partial class Params_Get_User_By_USER_ID
-{
-#region Properties
-public long? USER_ID {get;set;}
 
 #endregion
 }
@@ -327,6 +327,15 @@ public partial class Params_Get_Teacher_category_By_TEACHER_CATEGORY_ID_List_SP
 public string TEACHER_CATEGORY_ID_LIST {get;set;}
 
 }
+public partial class Params_Get_User_By_USER_ID_List
+{
+public List<long?> USER_ID_LIST {get;set;}
+}
+public partial class Params_Get_User_By_USER_ID_List_SP
+{
+public string USER_ID_LIST {get;set;}
+
+}
 public partial class Params_Get_Category_By_CATEGORY_ID_List
 {
 public List<Int32?> CATEGORY_ID_LIST {get;set;}
@@ -388,15 +397,6 @@ public List<long?> PERSON_ID_LIST {get;set;}
 public partial class Params_Get_Person_By_PERSON_ID_List_SP
 {
 public string PERSON_ID_LIST {get;set;}
-
-}
-public partial class Params_Get_User_By_USER_ID_List
-{
-public List<long?> USER_ID_LIST {get;set;}
-}
-public partial class Params_Get_User_By_USER_ID_List_SP
-{
-public string USER_ID_LIST {get;set;}
 
 }
 public partial class Params_Get_Owner_By_OWNER_ID_List
@@ -633,6 +633,21 @@ public partial class Params_Get_Teacher_category_By_CATEGORY_ID
 public Int32? CATEGORY_ID {get;set;}
 
 }
+public partial class Params_Get_User_By_OWNER_ID
+{
+public Int32? OWNER_ID {get;set;}
+
+}
+public partial class Params_Get_User_By_USERNAME
+{
+public string USERNAME {get;set;}
+
+}
+public partial class Params_Get_User_By_USER_TYPE_CODE_ID
+{
+public Int32? USER_TYPE_CODE_ID {get;set;}
+
+}
 public partial class Params_Get_Category_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
@@ -711,21 +726,6 @@ public Int32? OWNER_ID {get;set;}
 public partial class Params_Get_Person_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
-
-}
-public partial class Params_Get_User_By_OWNER_ID
-{
-public Int32? OWNER_ID {get;set;}
-
-}
-public partial class Params_Get_User_By_USERNAME
-{
-public string USERNAME {get;set;}
-
-}
-public partial class Params_Get_User_By_USER_TYPE_CODE_ID
-{
-public Int32? USER_TYPE_CODE_ID {get;set;}
 
 }
 public partial class Params_Get_Contact_By_PERSON_ID
@@ -896,6 +896,11 @@ public partial class Params_Get_Teacher_category_By_CATEGORY_ID_List
 public List<Int32?> CATEGORY_ID_LIST {get;set;}
 
 }
+public partial class Params_Get_User_By_USER_TYPE_CODE_ID_List
+{
+public List<Int32?> USER_TYPE_CODE_ID_LIST {get;set;}
+
+}
 public partial class Params_Get_Answer_By_QUESTION_ID_List
 {
 public List<Int32?> QUESTION_ID_LIST {get;set;}
@@ -934,11 +939,6 @@ public List<Int32?> STUDENT_ID_LIST {get;set;}
 public partial class Params_Get_Favorite_teacher_By_TEACHER_ID_List
 {
 public List<Int32?> TEACHER_ID_LIST {get;set;}
-
-}
-public partial class Params_Get_User_By_USER_TYPE_CODE_ID_List
-{
-public List<Int32?> USER_TYPE_CODE_ID_LIST {get;set;}
 
 }
 public partial class Params_Get_Contact_By_PERSON_ID_List
@@ -1049,9 +1049,7 @@ public partial class Params_Get_Student_By_Criteria
 {
 
 public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string EMAIL {get;set;}
+public string DESCRIPTION {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1060,33 +1058,7 @@ public partial class Params_Get_Student_By_Where
 {
 
 public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string EMAIL {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Student_By_Criteria_V2
-{
-
-public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string DOB {get;set;}
-public string EMAIL {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Student_By_Where_V2
-{
-
-public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string DOB {get;set;}
-public string EMAIL {get;set;}
+public string DESCRIPTION {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1151,10 +1123,7 @@ public partial class Params_Get_Teacher_By_Criteria
 {
 
 public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string EMAIL {get;set;}
-public string MOBILE {get;set;}
+public string DESCRIPTION {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1163,10 +1132,7 @@ public partial class Params_Get_Teacher_By_Where
 {
 
 public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string EMAIL {get;set;}
-public string MOBILE {get;set;}
+public string DESCRIPTION {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1221,6 +1187,64 @@ public partial class Params_Get_Teacher_category_By_Where
 
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_By_Criteria
+{
+
+public Int32? OWNER_ID {get;set;}
+public string USERNAME {get;set;}
+public string PASSWORD {get;set;}
+public string EMAIL {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
+public string MOBILE {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_By_Where
+{
+
+public Int32? OWNER_ID {get;set;}
+public string USERNAME {get;set;}
+public string PASSWORD {get;set;}
+public string EMAIL {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
+public string MOBILE {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_By_Criteria_V2
+{
+
+public Int32? OWNER_ID {get;set;}
+public string USERNAME {get;set;}
+public string PASSWORD {get;set;}
+public string EMAIL {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
+public string MOBILE {get;set;}
+public string DOB {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_By_Where_V2
+{
+
+public Int32? OWNER_ID {get;set;}
+public string USERNAME {get;set;}
+public string PASSWORD {get;set;}
+public string EMAIL {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
+public string MOBILE {get;set;}
+public string DOB {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1399,26 +1423,6 @@ public string GENDER_CODE {get;set;}
 public string RELIGION_CODE {get;set;}
 public string BIRTH_DATE {get;set;}
 public string DESCRIPTION {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_User_By_Criteria
-{
-
-public Int32? OWNER_ID {get;set;}
-public string USERNAME {get;set;}
-public string PASSWORD {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_User_By_Where
-{
-
-public Int32? OWNER_ID {get;set;}
-public string USERNAME {get;set;}
-public string PASSWORD {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1745,9 +1749,7 @@ public partial class Params_Get_Student_By_Criteria_InList
 {
 
 public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string EMAIL {get;set;}
+public string DESCRIPTION {get;set;}
 public List<long?> USER_ID_LIST {get;set;}
 public List<Int32?> USER_TYPE_CODE_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
@@ -1757,9 +1759,7 @@ public long? TOTAL_COUNT {get;set;}
 public partial class Params_Get_Student_By_Criteria_InList_SP
 {
 public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string EMAIL {get;set;}
+public string DESCRIPTION {get;set;}
 public string USER_ID_LIST {get;set;}
 public string USER_TYPE_CODE_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
@@ -1770,9 +1770,7 @@ public partial class Params_Get_Student_By_Where_InList
 {
 
 public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string EMAIL {get;set;}
+public string DESCRIPTION {get;set;}
 public List<long?> USER_ID_LIST {get;set;}
 public List<Int32?> USER_TYPE_CODE_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
@@ -1782,63 +1780,7 @@ public long? TOTAL_COUNT {get;set;}
 public partial class Params_Get_Student_By_Where_InList_SP
 {
 public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string EMAIL {get;set;}
-public string USER_ID_LIST {get;set;}
-public string USER_TYPE_CODE_ID_LIST {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Student_By_Criteria_InList_V2
-{
-
-public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string DOB {get;set;}
-public string EMAIL {get;set;}
-public List<long?> USER_ID_LIST {get;set;}
-public List<Int32?> USER_TYPE_CODE_ID_LIST {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Student_By_Criteria_InList_SP_V2
-{
-public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string DOB {get;set;}
-public string EMAIL {get;set;}
-public string USER_ID_LIST {get;set;}
-public string USER_TYPE_CODE_ID_LIST {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Student_By_Where_InList_V2
-{
-
-public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string DOB {get;set;}
-public string EMAIL {get;set;}
-public List<long?> USER_ID_LIST {get;set;}
-public List<Int32?> USER_TYPE_CODE_ID_LIST {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Student_By_Where_InList_SP_V2
-{
-public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string DOB {get;set;}
-public string EMAIL {get;set;}
+public string DESCRIPTION {get;set;}
 public string USER_ID_LIST {get;set;}
 public string USER_TYPE_CODE_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
@@ -1997,10 +1939,7 @@ public partial class Params_Get_Teacher_By_Criteria_InList
 {
 
 public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string EMAIL {get;set;}
-public string MOBILE {get;set;}
+public string DESCRIPTION {get;set;}
 public List<long?> USER_ID_LIST {get;set;}
 public List<Int32?> USER_TYPE_CODE_ID_LIST {get;set;}
 public List<Int32?> CATEGORY_ID_LIST {get;set;}
@@ -2011,10 +1950,7 @@ public long? TOTAL_COUNT {get;set;}
 public partial class Params_Get_Teacher_By_Criteria_InList_SP
 {
 public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string EMAIL {get;set;}
-public string MOBILE {get;set;}
+public string DESCRIPTION {get;set;}
 public string USER_ID_LIST {get;set;}
 public string USER_TYPE_CODE_ID_LIST {get;set;}
 public string CATEGORY_ID_LIST {get;set;}
@@ -2026,10 +1962,7 @@ public partial class Params_Get_Teacher_By_Where_InList
 {
 
 public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string EMAIL {get;set;}
-public string MOBILE {get;set;}
+public string DESCRIPTION {get;set;}
 public List<long?> USER_ID_LIST {get;set;}
 public List<Int32?> USER_TYPE_CODE_ID_LIST {get;set;}
 public List<Int32?> CATEGORY_ID_LIST {get;set;}
@@ -2040,10 +1973,7 @@ public long? TOTAL_COUNT {get;set;}
 public partial class Params_Get_Teacher_By_Where_InList_SP
 {
 public Int32? OWNER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
-public string EMAIL {get;set;}
-public string MOBILE {get;set;}
+public string DESCRIPTION {get;set;}
 public string USER_ID_LIST {get;set;}
 public string USER_TYPE_CODE_ID_LIST {get;set;}
 public string CATEGORY_ID_LIST {get;set;}
@@ -2173,6 +2103,126 @@ public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
 public string TEACHER_ID_LIST {get;set;}
 public string CATEGORY_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_By_Criteria_InList
+{
+
+public Int32? OWNER_ID {get;set;}
+public string USERNAME {get;set;}
+public string PASSWORD {get;set;}
+public string EMAIL {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
+public string MOBILE {get;set;}
+public List<Int32?> USER_TYPE_CODE_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_By_Criteria_InList_SP
+{
+public Int32? OWNER_ID {get;set;}
+public string USERNAME {get;set;}
+public string PASSWORD {get;set;}
+public string EMAIL {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
+public string MOBILE {get;set;}
+public string USER_TYPE_CODE_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_By_Where_InList
+{
+
+public Int32? OWNER_ID {get;set;}
+public string USERNAME {get;set;}
+public string PASSWORD {get;set;}
+public string EMAIL {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
+public string MOBILE {get;set;}
+public List<Int32?> USER_TYPE_CODE_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_By_Where_InList_SP
+{
+public Int32? OWNER_ID {get;set;}
+public string USERNAME {get;set;}
+public string PASSWORD {get;set;}
+public string EMAIL {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
+public string MOBILE {get;set;}
+public string USER_TYPE_CODE_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_By_Criteria_InList_V2
+{
+
+public Int32? OWNER_ID {get;set;}
+public string USERNAME {get;set;}
+public string PASSWORD {get;set;}
+public string EMAIL {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
+public string MOBILE {get;set;}
+public string DOB {get;set;}
+public List<Int32?> USER_TYPE_CODE_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_By_Criteria_InList_SP_V2
+{
+public Int32? OWNER_ID {get;set;}
+public string USERNAME {get;set;}
+public string PASSWORD {get;set;}
+public string EMAIL {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
+public string MOBILE {get;set;}
+public string DOB {get;set;}
+public string USER_TYPE_CODE_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_By_Where_InList_V2
+{
+
+public Int32? OWNER_ID {get;set;}
+public string USERNAME {get;set;}
+public string PASSWORD {get;set;}
+public string EMAIL {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
+public string MOBILE {get;set;}
+public string DOB {get;set;}
+public List<Int32?> USER_TYPE_CODE_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_By_Where_InList_SP_V2
+{
+public Int32? OWNER_ID {get;set;}
+public string USERNAME {get;set;}
+public string PASSWORD {get;set;}
+public string EMAIL {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
+public string MOBILE {get;set;}
+public string DOB {get;set;}
+public string USER_TYPE_CODE_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -2341,48 +2391,6 @@ public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
 public string STUDENT_ID_LIST {get;set;}
 public string TEACHER_ID_LIST {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_User_By_Criteria_InList
-{
-
-public Int32? OWNER_ID {get;set;}
-public string USERNAME {get;set;}
-public string PASSWORD {get;set;}
-public List<Int32?> USER_TYPE_CODE_ID_LIST {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_User_By_Criteria_InList_SP
-{
-public Int32? OWNER_ID {get;set;}
-public string USERNAME {get;set;}
-public string PASSWORD {get;set;}
-public string USER_TYPE_CODE_ID_LIST {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_User_By_Where_InList
-{
-
-public Int32? OWNER_ID {get;set;}
-public string USERNAME {get;set;}
-public string PASSWORD {get;set;}
-public List<Int32?> USER_TYPE_CODE_ID_LIST {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_User_By_Where_InList_SP
-{
-public Int32? OWNER_ID {get;set;}
-public string USERNAME {get;set;}
-public string PASSWORD {get;set;}
-public string USER_TYPE_CODE_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -2563,6 +2571,14 @@ public Int32? TEACHER_CATEGORY_ID {get;set;}
 #endregion
 }
 #endregion
+#region Params_Delete_User
+public partial class Params_Delete_User
+{
+#region Properties
+public long? USER_ID {get;set;}
+#endregion
+}
+#endregion
 #region Params_Delete_Category
 public partial class Params_Delete_Category
 {
@@ -2616,14 +2632,6 @@ public partial class Params_Delete_Person
 {
 #region Properties
 public long? PERSON_ID {get;set;}
-#endregion
-}
-#endregion
-#region Params_Delete_User
-public partial class Params_Delete_User
-{
-#region Properties
-public long? USER_ID {get;set;}
 #endregion
 }
 #endregion
@@ -2818,6 +2826,18 @@ public partial class Params_Delete_Teacher_category_By_CATEGORY_ID
 {
 public Int32? CATEGORY_ID {get;set;}
 }
+public partial class Params_Delete_User_By_OWNER_ID
+{
+public Int32? OWNER_ID {get;set;}
+}
+public partial class Params_Delete_User_By_USERNAME
+{
+public string USERNAME {get;set;}
+}
+public partial class Params_Delete_User_By_USER_TYPE_CODE_ID
+{
+public Int32? USER_TYPE_CODE_ID {get;set;}
+}
 public partial class Params_Delete_Category_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
@@ -2881,18 +2901,6 @@ public Int32? OWNER_ID {get;set;}
 public partial class Params_Delete_Person_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
-}
-public partial class Params_Delete_User_By_OWNER_ID
-{
-public Int32? OWNER_ID {get;set;}
-}
-public partial class Params_Delete_User_By_USERNAME
-{
-public string USERNAME {get;set;}
-}
-public partial class Params_Delete_User_By_USER_TYPE_CODE_ID
-{
-public Int32? USER_TYPE_CODE_ID {get;set;}
 }
 public partial class Params_Delete_Contact_By_PERSON_ID
 {
@@ -2990,15 +2998,12 @@ public partial class Student
 {
 public Int32? STUDENT_ID {get;set;}
 public long? USER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
 public Int32? USER_TYPE_CODE_ID {get;set;}
-public string DOB {get;set;}
-public string EMAIL {get;set;}
 public bool? IS_BLOCKED {get;set;}
 public long? ENTRY_USER_ID {get;set;}
 public string ENTRY_DATE {get;set;}
 public Int32? OWNER_ID {get;set;}
+public string DESCRIPTION {get;set;}
 }
 public partial class Address
 {
@@ -3024,11 +3029,7 @@ public partial class Teacher
 {
 public Int32? TEACHER_ID {get;set;}
 public long? USER_ID {get;set;}
-public string FIRST_NAME {get;set;}
-public string LAST_NAME {get;set;}
 public bool? IS_VALID {get;set;}
-public string EMAIL {get;set;}
-public string MOBILE {get;set;}
 public Int32? USER_TYPE_CODE_ID {get;set;}
 public Int32? SCORE {get;set;}
 public bool? IS_BLOCKED {get;set;}
@@ -3036,6 +3037,7 @@ public Int32? CATEGORY_ID {get;set;}
 public long? ENTRY_USER_ID {get;set;}
 public string ENTRY_DATE {get;set;}
 public Int32? OWNER_ID {get;set;}
+public string DESCRIPTION {get;set;}
 }
 public partial class Teacher_report
 {
@@ -3066,6 +3068,21 @@ public string DESCRIPTION {get;set;}
 public long? ENTRY_USER_ID {get;set;}
 public string ENTRY_DATE {get;set;}
 public Int32? OWNER_ID {get;set;}
+}
+public partial class User
+{
+public long? USER_ID {get;set;}
+public Int32? OWNER_ID {get;set;}
+public string USERNAME {get;set;}
+public string PASSWORD {get;set;}
+public string EMAIL {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
+public string MOBILE {get;set;}
+public string DOB {get;set;}
+public Int32? USER_TYPE_CODE_ID {get;set;}
+public bool? IS_ACTIVE {get;set;}
+public string ENTRY_DATE {get;set;}
 }
 public partial class Category
 {
@@ -3140,16 +3157,6 @@ public bool? IS_BLOCKED {get;set;}
 public string DESCRIPTION {get;set;}
 public Int32? OWNER_ID {get;set;}
 public long? ENTRY_USER_ID {get;set;}
-public string ENTRY_DATE {get;set;}
-}
-public partial class User
-{
-public long? USER_ID {get;set;}
-public Int32? OWNER_ID {get;set;}
-public string USERNAME {get;set;}
-public string PASSWORD {get;set;}
-public Int32? USER_TYPE_CODE_ID {get;set;}
-public bool? IS_ACTIVE {get;set;}
 public string ENTRY_DATE {get;set;}
 }
 public partial class Owner
@@ -3291,6 +3298,15 @@ public List<Teacher_category> My_List_To_Delete { get; set; }
 #endregion
 }
 #endregion
+#region Params_Edit_User_List
+public partial class Params_Edit_User_List
+{
+#region Properties
+public List<User> My_List_To_Edit { get; set; }
+public List<User> My_List_To_Delete { get; set; }
+#endregion
+}
+#endregion
 #region Params_Edit_Category_List
 public partial class Params_Edit_Category_List
 {
@@ -3351,15 +3367,6 @@ public partial class Params_Edit_Person_List
 #region Properties
 public List<Person> My_List_To_Edit { get; set; }
 public List<Person> My_List_To_Delete { get; set; }
-#endregion
-}
-#endregion
-#region Params_Edit_User_List
-public partial class Params_Edit_User_List
-{
-#region Properties
-public List<User> My_List_To_Edit { get; set; }
-public List<User> My_List_To_Delete { get; set; }
 #endregion
 }
 #endregion

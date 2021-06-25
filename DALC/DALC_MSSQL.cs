@@ -140,6 +140,18 @@ oTools.CopyPropValues_FromDataRecord(R, o);
 }
 return o;
 }
+public User Get_User_By_USER_ID ( long? USER_ID)
+{
+User o = new User();
+dynamic p = new ExpandoObject();
+p.USER_ID = USER_ID;
+IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_USER_BY_USER_ID", p);
+var R = Q.FirstOrDefault();
+if (R != null){
+oTools.CopyPropValues_FromDataRecord(R, o);
+}
+return o;
+}
 public Category Get_Category_By_CATEGORY_ID ( Int32? CATEGORY_ID)
 {
 Category o = new Category();
@@ -224,18 +236,6 @@ oTools.CopyPropValues_FromDataRecord(R, o);
 }
 return o;
 }
-public User Get_User_By_USER_ID ( long? USER_ID)
-{
-User o = new User();
-dynamic p = new ExpandoObject();
-p.USER_ID = USER_ID;
-IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_USER_BY_USER_ID", p);
-var R = Q.FirstOrDefault();
-if (R != null){
-oTools.CopyPropValues_FromDataRecord(R, o);
-}
-return o;
-}
 public Owner Get_Owner_By_OWNER_ID ( Int32? OWNER_ID)
 {
 Owner o = new Owner();
@@ -294,7 +294,7 @@ var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(R["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(R["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(R["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(R["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(R["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(R["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(R["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(R["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(R["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(R["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(R["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(R["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(R["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(R["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(R["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(R["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(R["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(R["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(R["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(R["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(R["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(R["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(R["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(R["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(R["T_CATEGORY_OWNER_ID"]);
 }
@@ -324,7 +324,7 @@ var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(R["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(R["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(R["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(R["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(R["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(R["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(R["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(R["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(R["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(R["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(R["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(R["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(R["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(R["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(R["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(R["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(R["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(R["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(R["T_STUDENT_DESCRIPTION"]);
 o.My_Answer = new Answer();
 o.My_Answer.ANSWER_ID = GV<Int32>(R["T_ANSWER_ANSWER_ID"]);o.My_Answer.QUESTION_ID = GV<Int32>(R["T_ANSWER_QUESTION_ID"]);o.My_Answer.TEACHER_ID = GV<Int32>(R["T_ANSWER_TEACHER_ID"]);o.My_Answer.STUDENT_ID = GV<Int32>(R["T_ANSWER_STUDENT_ID"]);o.My_Answer.DESCRIPTION = GV<String>(R["T_ANSWER_DESCRIPTION"]);o.My_Answer.ENTRY_USER_ID = GV<Int64>(R["T_ANSWER_ENTRY_USER_ID"]);o.My_Answer.ENTRY_DATE = GV<String>(R["T_ANSWER_ENTRY_DATE"]);o.My_Answer.OWNER_ID = GV<Int32>(R["T_ANSWER_OWNER_ID"]);
 }
@@ -340,11 +340,11 @@ var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(R["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(R["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(R["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(R["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(R["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(R["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(R["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(R["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(R["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(R["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(R["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(R["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(R["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(R["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(R["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(R["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(R["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(R["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(R["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(R["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(R["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(R["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(R["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(R["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(R["T_CATEGORY_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(R["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(R["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(R["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(R["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(R["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(R["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(R["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(R["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(R["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(R["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(R["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(R["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(R["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(R["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(R["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(R["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(R["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(R["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(R["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(R["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(R["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(R["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(R["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(R["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(R["T_TEACHER_DESCRIPTION"]);
 }
 return o;
 }
@@ -372,7 +372,7 @@ var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(R["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(R["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(R["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(R["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(R["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(R["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(R["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(R["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(R["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(R["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(R["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(R["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(R["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(R["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(R["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(R["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(R["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(R["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(R["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(R["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(R["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(R["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(R["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(R["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(R["T_USER_TYPE_CODE_OWNER_ID"]);
 }
@@ -410,7 +410,7 @@ var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(R["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(R["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(R["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(R["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(R["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(R["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(R["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(R["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(R["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(R["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(R["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(R["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(R["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(R["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(R["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(R["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(R["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(R["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(R["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(R["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(R["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(R["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(R["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(R["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(R["T_USER_TYPE_CODE_OWNER_ID"]);
 o.My_Category = new Category();
@@ -428,9 +428,9 @@ var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(R["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(R["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(R["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(R["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(R["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(R["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(R["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(R["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(R["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(R["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(R["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(R["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(R["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(R["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(R["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(R["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(R["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(R["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(R["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(R["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(R["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(R["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(R["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(R["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(R["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(R["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(R["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(R["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(R["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(R["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(R["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(R["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(R["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(R["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(R["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(R["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(R["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(R["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(R["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(R["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(R["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(R["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(R["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(R["T_STUDENT_DESCRIPTION"]);
 }
 return o;
 }
@@ -444,9 +444,9 @@ var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(R["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(R["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(R["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(R["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(R["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(R["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(R["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(R["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(R["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(R["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(R["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(R["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(R["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(R["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(R["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(R["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(R["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(R["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(R["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(R["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(R["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(R["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(R["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(R["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(R["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(R["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(R["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(R["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(R["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(R["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(R["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(R["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(R["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(R["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(R["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(R["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(R["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(R["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(R["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(R["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(R["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(R["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(R["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(R["T_TEACHER_DESCRIPTION"]);
 }
 return o;
 }
@@ -460,9 +460,23 @@ var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(R["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(R["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(R["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(R["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(R["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(R["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(R["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(R["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(R["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(R["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(R["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(R["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(R["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(R["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(R["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(R["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(R["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(R["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(R["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(R["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(R["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(R["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(R["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(R["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(R["T_TEACHER_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(R["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(R["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(R["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(R["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(R["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(R["T_CATEGORY_OWNER_ID"]);
+}
+return o;
+}
+public User Get_User_By_USER_ID_Adv ( long? USER_ID)
+{
+User o = new User();
+dynamic p = new ExpandoObject();
+p.USER_ID = USER_ID;
+IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_USER_BY_USER_ID_ADV", p);
+var R = Q.FirstOrDefault();
+if (R != null){
+oTools.CopyPropValues_FromDataRecord(R, o);
+o.My_User_type_code = new User_type_code();
+o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(R["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(R["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(R["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(R["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(R["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(R["T_USER_TYPE_CODE_OWNER_ID"]);
 }
 return o;
 }
@@ -490,9 +504,9 @@ oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_Question = new Question();
 o.My_Question.QUESTION_ID = GV<Int32>(R["T_QUESTION_QUESTION_ID"]);o.My_Question.STUDENT_ID = GV<Int32>(R["T_QUESTION_STUDENT_ID"]);o.My_Question.CATEGORY_ID = GV<Int32>(R["T_QUESTION_CATEGORY_ID"]);o.My_Question.TEACHER_ID = GV<Int32>(R["T_QUESTION_TEACHER_ID"]);o.My_Question.DESCRIPTION = GV<String>(R["T_QUESTION_DESCRIPTION"]);o.My_Question.IS_ANSWERED = GV<Boolean>(R["T_QUESTION_IS_ANSWERED"]);o.My_Question.IS_PUBLIC = GV<Boolean>(R["T_QUESTION_IS_PUBLIC"]);o.My_Question.IS_SELF_CLOSED = GV<Boolean>(R["T_QUESTION_IS_SELF_CLOSED"]);o.My_Question.ENTRY_USER_ID = GV<Int64>(R["T_QUESTION_ENTRY_USER_ID"]);o.My_Question.ENTRY_DATE = GV<String>(R["T_QUESTION_ENTRY_DATE"]);o.My_Question.OWNER_ID = GV<Int32>(R["T_QUESTION_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(R["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(R["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(R["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(R["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(R["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(R["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(R["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(R["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(R["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(R["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(R["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(R["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(R["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(R["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(R["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(R["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(R["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(R["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(R["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(R["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(R["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(R["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(R["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(R["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(R["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(R["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(R["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(R["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(R["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(R["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(R["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(R["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(R["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(R["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(R["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(R["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(R["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(R["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(R["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(R["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(R["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(R["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(R["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(R["T_STUDENT_DESCRIPTION"]);
 }
 return o;
 }
@@ -506,9 +520,9 @@ var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_Reported_by_student = new Student();
-o.My_Reported_by_student.STUDENT_ID = GV<Int32>(R["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(R["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.FIRST_NAME = GV<String>(R["T_REPORTED_BY_STUDENT_FIRST_NAME"]);o.My_Reported_by_student.LAST_NAME = GV<String>(R["T_REPORTED_BY_STUDENT_LAST_NAME"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(R["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.DOB = GV<String>(R["T_REPORTED_BY_STUDENT_DOB"]);o.My_Reported_by_student.EMAIL = GV<String>(R["T_REPORTED_BY_STUDENT_EMAIL"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(R["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(R["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(R["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(R["T_REPORTED_BY_STUDENT_OWNER_ID"]);
+o.My_Reported_by_student.STUDENT_ID = GV<Int32>(R["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(R["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(R["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(R["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(R["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(R["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(R["T_REPORTED_BY_STUDENT_OWNER_ID"]);o.My_Reported_by_student.DESCRIPTION = GV<String>(R["T_REPORTED_BY_STUDENT_DESCRIPTION"]);
 o.My_Reported_student = new Student();
-o.My_Reported_student.STUDENT_ID = GV<Int32>(R["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(R["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.FIRST_NAME = GV<String>(R["T_REPORTED_STUDENT_FIRST_NAME"]);o.My_Reported_student.LAST_NAME = GV<String>(R["T_REPORTED_STUDENT_LAST_NAME"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(R["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.DOB = GV<String>(R["T_REPORTED_STUDENT_DOB"]);o.My_Reported_student.EMAIL = GV<String>(R["T_REPORTED_STUDENT_EMAIL"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(R["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(R["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(R["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(R["T_REPORTED_STUDENT_OWNER_ID"]);
+o.My_Reported_student.STUDENT_ID = GV<Int32>(R["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(R["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(R["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(R["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(R["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(R["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(R["T_REPORTED_STUDENT_OWNER_ID"]);o.My_Reported_student.DESCRIPTION = GV<String>(R["T_REPORTED_STUDENT_DESCRIPTION"]);
 }
 return o;
 }
@@ -536,9 +550,9 @@ var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(R["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(R["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(R["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(R["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(R["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(R["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(R["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(R["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(R["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(R["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(R["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(R["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(R["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(R["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(R["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(R["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(R["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(R["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(R["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(R["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(R["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(R["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(R["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(R["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(R["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(R["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(R["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(R["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(R["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(R["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(R["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(R["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(R["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(R["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(R["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(R["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(R["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(R["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(R["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(R["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(R["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(R["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(R["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(R["T_TEACHER_DESCRIPTION"]);
 }
 return o;
 }
@@ -563,20 +577,6 @@ IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_PERSON_BY_PERSON_ID_ADV
 var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
-}
-return o;
-}
-public User Get_User_By_USER_ID_Adv ( long? USER_ID)
-{
-User o = new User();
-dynamic p = new ExpandoObject();
-p.USER_ID = USER_ID;
-IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_USER_BY_USER_ID_ADV", p);
-var R = Q.FirstOrDefault();
-if (R != null){
-oTools.CopyPropValues_FromDataRecord(R, o);
-o.My_User_type_code = new User_type_code();
-o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(R["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(R["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(R["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(R["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(R["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(R["T_USER_TYPE_CODE_OWNER_ID"]);
 }
 return o;
 }
@@ -774,6 +774,20 @@ oList.Add(o);
 }
 return oList;
 }
+public List<User> Get_User_By_USER_ID_List ( List<long?> USER_ID_LIST)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_ID_LIST", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
 public List<Category> Get_Category_By_CATEGORY_ID_List ( List<Int32?> CATEGORY_ID_LIST)
 {
 List<Category> oList = new List<Category>();
@@ -872,20 +886,6 @@ oList.Add(o);
 }
 return oList;
 }
-public List<User> Get_User_By_USER_ID_List ( List<long?> USER_ID_LIST)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_ID_LIST", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
 public List<Owner> Get_Owner_By_OWNER_ID_List ( List<Int32?> OWNER_ID_LIST)
 {
 List<Owner> oList = new List<Owner>();
@@ -952,7 +952,7 @@ if (R != null) {foreach (var X in R) {
 Category_favorite o = new Category_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 oList.Add(o);
@@ -986,7 +986,7 @@ if (R != null) {foreach (var X in R) {
 Evaluation o = new Evaluation();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Answer = new Answer();
 o.My_Answer.ANSWER_ID = GV<Int32>(X["T_ANSWER_ANSWER_ID"]);o.My_Answer.QUESTION_ID = GV<Int32>(X["T_ANSWER_QUESTION_ID"]);o.My_Answer.TEACHER_ID = GV<Int32>(X["T_ANSWER_TEACHER_ID"]);o.My_Answer.STUDENT_ID = GV<Int32>(X["T_ANSWER_STUDENT_ID"]);o.My_Answer.DESCRIPTION = GV<String>(X["T_ANSWER_DESCRIPTION"]);o.My_Answer.ENTRY_USER_ID = GV<Int64>(X["T_ANSWER_ENTRY_USER_ID"]);o.My_Answer.ENTRY_DATE = GV<String>(X["T_ANSWER_ENTRY_DATE"]);o.My_Answer.OWNER_ID = GV<Int32>(X["T_ANSWER_OWNER_ID"]);
 oList.Add(o);
@@ -1004,11 +1004,11 @@ if (R != null) {foreach (var X in R) {
 Question o = new Question();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -1040,7 +1040,7 @@ if (R != null) {foreach (var X in R) {
 Student o = new Student();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 oList.Add(o);
@@ -1082,7 +1082,7 @@ if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 o.My_Category = new Category();
@@ -1102,9 +1102,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_report o = new Teacher_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -1120,9 +1120,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_favorite o = new Teacher_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -1138,9 +1138,25 @@ if (R != null) {foreach (var X in R) {
 Teacher_category o = new Teacher_category();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User> Get_User_By_USER_ID_List_Adv ( List<long?> USER_ID_LIST)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_ID_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User_type_code = new User_type_code();
+o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -1172,9 +1188,9 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Question = new Question();
 o.My_Question.QUESTION_ID = GV<Int32>(X["T_QUESTION_QUESTION_ID"]);o.My_Question.STUDENT_ID = GV<Int32>(X["T_QUESTION_STUDENT_ID"]);o.My_Question.CATEGORY_ID = GV<Int32>(X["T_QUESTION_CATEGORY_ID"]);o.My_Question.TEACHER_ID = GV<Int32>(X["T_QUESTION_TEACHER_ID"]);o.My_Question.DESCRIPTION = GV<String>(X["T_QUESTION_DESCRIPTION"]);o.My_Question.IS_ANSWERED = GV<Boolean>(X["T_QUESTION_IS_ANSWERED"]);o.My_Question.IS_PUBLIC = GV<Boolean>(X["T_QUESTION_IS_PUBLIC"]);o.My_Question.IS_SELF_CLOSED = GV<Boolean>(X["T_QUESTION_IS_SELF_CLOSED"]);o.My_Question.ENTRY_USER_ID = GV<Int64>(X["T_QUESTION_ENTRY_USER_ID"]);o.My_Question.ENTRY_DATE = GV<String>(X["T_QUESTION_ENTRY_DATE"]);o.My_Question.OWNER_ID = GV<Int32>(X["T_QUESTION_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -1190,9 +1206,9 @@ if (R != null) {foreach (var X in R) {
 Student_report o = new Student_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Reported_by_student = new Student();
-o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.FIRST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_FIRST_NAME"]);o.My_Reported_by_student.LAST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_LAST_NAME"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.DOB = GV<String>(X["T_REPORTED_BY_STUDENT_DOB"]);o.My_Reported_by_student.EMAIL = GV<String>(X["T_REPORTED_BY_STUDENT_EMAIL"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);
+o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);o.My_Reported_by_student.DESCRIPTION = GV<String>(X["T_REPORTED_BY_STUDENT_DESCRIPTION"]);
 o.My_Reported_student = new Student();
-o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.FIRST_NAME = GV<String>(X["T_REPORTED_STUDENT_FIRST_NAME"]);o.My_Reported_student.LAST_NAME = GV<String>(X["T_REPORTED_STUDENT_LAST_NAME"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.DOB = GV<String>(X["T_REPORTED_STUDENT_DOB"]);o.My_Reported_student.EMAIL = GV<String>(X["T_REPORTED_STUDENT_EMAIL"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);
+o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);o.My_Reported_student.DESCRIPTION = GV<String>(X["T_REPORTED_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -1224,9 +1240,9 @@ if (R != null) {foreach (var X in R) {
 Favorite_teacher o = new Favorite_teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -1255,22 +1271,6 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PERSON_BY_PERSON_ID_LIS
 if (R != null) {foreach (var X in R) {
 Person o = new Person();
 oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<User> Get_User_By_USER_ID_List_Adv ( List<long?> USER_ID_LIST)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_ID_LIST_ADV", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_User_type_code = new User_type_code();
-o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -1868,6 +1868,48 @@ oList.Add(o);
 }
 return oList;
 }
+public List<User> Get_User_By_OWNER_ID ( Int32? OWNER_ID)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.OWNER_ID = OWNER_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_OWNER_ID", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User> Get_User_By_USERNAME ( string USERNAME)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USERNAME", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User> Get_User_By_USER_TYPE_CODE_ID ( Int32? USER_TYPE_CODE_ID)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USER_TYPE_CODE_ID = USER_TYPE_CODE_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_TYPE_CODE_ID", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
 public List<Category> Get_Category_By_OWNER_ID ( Int32? OWNER_ID)
 {
 List<Category> oList = new List<Category>();
@@ -2092,48 +2134,6 @@ oList.Add(o);
 }
 return oList;
 }
-public List<User> Get_User_By_OWNER_ID ( Int32? OWNER_ID)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.OWNER_ID = OWNER_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_OWNER_ID", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<User> Get_User_By_USERNAME ( string USERNAME)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USERNAME", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<User> Get_User_By_USER_TYPE_CODE_ID ( Int32? USER_TYPE_CODE_ID)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USER_TYPE_CODE_ID = USER_TYPE_CODE_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_TYPE_CODE_ID", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
 public List<Contact> Get_Contact_By_PERSON_ID ( long? PERSON_ID)
 {
 List<Contact> oList = new List<Contact>();
@@ -2256,7 +2256,7 @@ if (R != null) {foreach (var X in R) {
 Category_favorite o = new Category_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 oList.Add(o);
@@ -2274,7 +2274,7 @@ if (R != null) {foreach (var X in R) {
 Category_favorite o = new Category_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 oList.Add(o);
@@ -2292,7 +2292,7 @@ if (R != null) {foreach (var X in R) {
 Category_favorite o = new Category_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 oList.Add(o);
@@ -2358,7 +2358,7 @@ if (R != null) {foreach (var X in R) {
 Evaluation o = new Evaluation();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Answer = new Answer();
 o.My_Answer.ANSWER_ID = GV<Int32>(X["T_ANSWER_ANSWER_ID"]);o.My_Answer.QUESTION_ID = GV<Int32>(X["T_ANSWER_QUESTION_ID"]);o.My_Answer.TEACHER_ID = GV<Int32>(X["T_ANSWER_TEACHER_ID"]);o.My_Answer.STUDENT_ID = GV<Int32>(X["T_ANSWER_STUDENT_ID"]);o.My_Answer.DESCRIPTION = GV<String>(X["T_ANSWER_DESCRIPTION"]);o.My_Answer.ENTRY_USER_ID = GV<Int64>(X["T_ANSWER_ENTRY_USER_ID"]);o.My_Answer.ENTRY_DATE = GV<String>(X["T_ANSWER_ENTRY_DATE"]);o.My_Answer.OWNER_ID = GV<Int32>(X["T_ANSWER_OWNER_ID"]);
 oList.Add(o);
@@ -2376,7 +2376,7 @@ if (R != null) {foreach (var X in R) {
 Evaluation o = new Evaluation();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Answer = new Answer();
 o.My_Answer.ANSWER_ID = GV<Int32>(X["T_ANSWER_ANSWER_ID"]);o.My_Answer.QUESTION_ID = GV<Int32>(X["T_ANSWER_QUESTION_ID"]);o.My_Answer.TEACHER_ID = GV<Int32>(X["T_ANSWER_TEACHER_ID"]);o.My_Answer.STUDENT_ID = GV<Int32>(X["T_ANSWER_STUDENT_ID"]);o.My_Answer.DESCRIPTION = GV<String>(X["T_ANSWER_DESCRIPTION"]);o.My_Answer.ENTRY_USER_ID = GV<Int64>(X["T_ANSWER_ENTRY_USER_ID"]);o.My_Answer.ENTRY_DATE = GV<String>(X["T_ANSWER_ENTRY_DATE"]);o.My_Answer.OWNER_ID = GV<Int32>(X["T_ANSWER_OWNER_ID"]);
 oList.Add(o);
@@ -2394,7 +2394,7 @@ if (R != null) {foreach (var X in R) {
 Evaluation o = new Evaluation();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Answer = new Answer();
 o.My_Answer.ANSWER_ID = GV<Int32>(X["T_ANSWER_ANSWER_ID"]);o.My_Answer.QUESTION_ID = GV<Int32>(X["T_ANSWER_QUESTION_ID"]);o.My_Answer.TEACHER_ID = GV<Int32>(X["T_ANSWER_TEACHER_ID"]);o.My_Answer.STUDENT_ID = GV<Int32>(X["T_ANSWER_STUDENT_ID"]);o.My_Answer.DESCRIPTION = GV<String>(X["T_ANSWER_DESCRIPTION"]);o.My_Answer.ENTRY_USER_ID = GV<Int64>(X["T_ANSWER_ENTRY_USER_ID"]);o.My_Answer.ENTRY_DATE = GV<String>(X["T_ANSWER_ENTRY_DATE"]);o.My_Answer.OWNER_ID = GV<Int32>(X["T_ANSWER_OWNER_ID"]);
 oList.Add(o);
@@ -2412,11 +2412,11 @@ if (R != null) {foreach (var X in R) {
 Question o = new Question();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -2432,11 +2432,11 @@ if (R != null) {foreach (var X in R) {
 Question o = new Question();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -2452,11 +2452,11 @@ if (R != null) {foreach (var X in R) {
 Question o = new Question();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -2472,11 +2472,11 @@ if (R != null) {foreach (var X in R) {
 Question o = new Question();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -2540,7 +2540,7 @@ if (R != null) {foreach (var X in R) {
 Student o = new Student();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 oList.Add(o);
@@ -2558,7 +2558,7 @@ if (R != null) {foreach (var X in R) {
 Student o = new Student();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 oList.Add(o);
@@ -2576,7 +2576,7 @@ if (R != null) {foreach (var X in R) {
 Student o = new Student();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 oList.Add(o);
@@ -2762,7 +2762,7 @@ if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 o.My_Category = new Category();
@@ -2782,7 +2782,7 @@ if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 o.My_Category = new Category();
@@ -2802,7 +2802,7 @@ if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 o.My_Category = new Category();
@@ -2822,7 +2822,7 @@ if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 o.My_Category = new Category();
@@ -2842,9 +2842,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_report o = new Teacher_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -2860,9 +2860,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_report o = new Teacher_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -2878,9 +2878,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_report o = new Teacher_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -2896,9 +2896,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_favorite o = new Teacher_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -2914,9 +2914,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_favorite o = new Teacher_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -2932,9 +2932,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_favorite o = new Teacher_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -2950,7 +2950,7 @@ if (R != null) {foreach (var X in R) {
 Teacher_category o = new Teacher_category();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 oList.Add(o);
@@ -2968,7 +2968,7 @@ if (R != null) {foreach (var X in R) {
 Teacher_category o = new Teacher_category();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 oList.Add(o);
@@ -2986,9 +2986,57 @@ if (R != null) {foreach (var X in R) {
 Teacher_category o = new Teacher_category();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User> Get_User_By_OWNER_ID_Adv ( Int32? OWNER_ID)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.OWNER_ID = OWNER_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_OWNER_ID_ADV", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User_type_code = new User_type_code();
+o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User> Get_User_By_USERNAME_Adv ( string USERNAME)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USERNAME_ADV", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User_type_code = new User_type_code();
+o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User> Get_User_By_USER_TYPE_CODE_ID_Adv ( Int32? USER_TYPE_CODE_ID)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USER_TYPE_CODE_ID = USER_TYPE_CODE_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_TYPE_CODE_ID_ADV", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User_type_code = new User_type_code();
+o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -3020,9 +3068,9 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Question = new Question();
 o.My_Question.QUESTION_ID = GV<Int32>(X["T_QUESTION_QUESTION_ID"]);o.My_Question.STUDENT_ID = GV<Int32>(X["T_QUESTION_STUDENT_ID"]);o.My_Question.CATEGORY_ID = GV<Int32>(X["T_QUESTION_CATEGORY_ID"]);o.My_Question.TEACHER_ID = GV<Int32>(X["T_QUESTION_TEACHER_ID"]);o.My_Question.DESCRIPTION = GV<String>(X["T_QUESTION_DESCRIPTION"]);o.My_Question.IS_ANSWERED = GV<Boolean>(X["T_QUESTION_IS_ANSWERED"]);o.My_Question.IS_PUBLIC = GV<Boolean>(X["T_QUESTION_IS_PUBLIC"]);o.My_Question.IS_SELF_CLOSED = GV<Boolean>(X["T_QUESTION_IS_SELF_CLOSED"]);o.My_Question.ENTRY_USER_ID = GV<Int64>(X["T_QUESTION_ENTRY_USER_ID"]);o.My_Question.ENTRY_DATE = GV<String>(X["T_QUESTION_ENTRY_DATE"]);o.My_Question.OWNER_ID = GV<Int32>(X["T_QUESTION_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -3040,9 +3088,9 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Question = new Question();
 o.My_Question.QUESTION_ID = GV<Int32>(X["T_QUESTION_QUESTION_ID"]);o.My_Question.STUDENT_ID = GV<Int32>(X["T_QUESTION_STUDENT_ID"]);o.My_Question.CATEGORY_ID = GV<Int32>(X["T_QUESTION_CATEGORY_ID"]);o.My_Question.TEACHER_ID = GV<Int32>(X["T_QUESTION_TEACHER_ID"]);o.My_Question.DESCRIPTION = GV<String>(X["T_QUESTION_DESCRIPTION"]);o.My_Question.IS_ANSWERED = GV<Boolean>(X["T_QUESTION_IS_ANSWERED"]);o.My_Question.IS_PUBLIC = GV<Boolean>(X["T_QUESTION_IS_PUBLIC"]);o.My_Question.IS_SELF_CLOSED = GV<Boolean>(X["T_QUESTION_IS_SELF_CLOSED"]);o.My_Question.ENTRY_USER_ID = GV<Int64>(X["T_QUESTION_ENTRY_USER_ID"]);o.My_Question.ENTRY_DATE = GV<String>(X["T_QUESTION_ENTRY_DATE"]);o.My_Question.OWNER_ID = GV<Int32>(X["T_QUESTION_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -3060,9 +3108,9 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Question = new Question();
 o.My_Question.QUESTION_ID = GV<Int32>(X["T_QUESTION_QUESTION_ID"]);o.My_Question.STUDENT_ID = GV<Int32>(X["T_QUESTION_STUDENT_ID"]);o.My_Question.CATEGORY_ID = GV<Int32>(X["T_QUESTION_CATEGORY_ID"]);o.My_Question.TEACHER_ID = GV<Int32>(X["T_QUESTION_TEACHER_ID"]);o.My_Question.DESCRIPTION = GV<String>(X["T_QUESTION_DESCRIPTION"]);o.My_Question.IS_ANSWERED = GV<Boolean>(X["T_QUESTION_IS_ANSWERED"]);o.My_Question.IS_PUBLIC = GV<Boolean>(X["T_QUESTION_IS_PUBLIC"]);o.My_Question.IS_SELF_CLOSED = GV<Boolean>(X["T_QUESTION_IS_SELF_CLOSED"]);o.My_Question.ENTRY_USER_ID = GV<Int64>(X["T_QUESTION_ENTRY_USER_ID"]);o.My_Question.ENTRY_DATE = GV<String>(X["T_QUESTION_ENTRY_DATE"]);o.My_Question.OWNER_ID = GV<Int32>(X["T_QUESTION_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -3080,9 +3128,9 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Question = new Question();
 o.My_Question.QUESTION_ID = GV<Int32>(X["T_QUESTION_QUESTION_ID"]);o.My_Question.STUDENT_ID = GV<Int32>(X["T_QUESTION_STUDENT_ID"]);o.My_Question.CATEGORY_ID = GV<Int32>(X["T_QUESTION_CATEGORY_ID"]);o.My_Question.TEACHER_ID = GV<Int32>(X["T_QUESTION_TEACHER_ID"]);o.My_Question.DESCRIPTION = GV<String>(X["T_QUESTION_DESCRIPTION"]);o.My_Question.IS_ANSWERED = GV<Boolean>(X["T_QUESTION_IS_ANSWERED"]);o.My_Question.IS_PUBLIC = GV<Boolean>(X["T_QUESTION_IS_PUBLIC"]);o.My_Question.IS_SELF_CLOSED = GV<Boolean>(X["T_QUESTION_IS_SELF_CLOSED"]);o.My_Question.ENTRY_USER_ID = GV<Int64>(X["T_QUESTION_ENTRY_USER_ID"]);o.My_Question.ENTRY_DATE = GV<String>(X["T_QUESTION_ENTRY_DATE"]);o.My_Question.OWNER_ID = GV<Int32>(X["T_QUESTION_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -3098,9 +3146,9 @@ if (R != null) {foreach (var X in R) {
 Student_report o = new Student_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Reported_by_student = new Student();
-o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.FIRST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_FIRST_NAME"]);o.My_Reported_by_student.LAST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_LAST_NAME"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.DOB = GV<String>(X["T_REPORTED_BY_STUDENT_DOB"]);o.My_Reported_by_student.EMAIL = GV<String>(X["T_REPORTED_BY_STUDENT_EMAIL"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);
+o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);o.My_Reported_by_student.DESCRIPTION = GV<String>(X["T_REPORTED_BY_STUDENT_DESCRIPTION"]);
 o.My_Reported_student = new Student();
-o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.FIRST_NAME = GV<String>(X["T_REPORTED_STUDENT_FIRST_NAME"]);o.My_Reported_student.LAST_NAME = GV<String>(X["T_REPORTED_STUDENT_LAST_NAME"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.DOB = GV<String>(X["T_REPORTED_STUDENT_DOB"]);o.My_Reported_student.EMAIL = GV<String>(X["T_REPORTED_STUDENT_EMAIL"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);
+o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);o.My_Reported_student.DESCRIPTION = GV<String>(X["T_REPORTED_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -3116,9 +3164,9 @@ if (R != null) {foreach (var X in R) {
 Student_report o = new Student_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Reported_by_student = new Student();
-o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.FIRST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_FIRST_NAME"]);o.My_Reported_by_student.LAST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_LAST_NAME"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.DOB = GV<String>(X["T_REPORTED_BY_STUDENT_DOB"]);o.My_Reported_by_student.EMAIL = GV<String>(X["T_REPORTED_BY_STUDENT_EMAIL"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);
+o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);o.My_Reported_by_student.DESCRIPTION = GV<String>(X["T_REPORTED_BY_STUDENT_DESCRIPTION"]);
 o.My_Reported_student = new Student();
-o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.FIRST_NAME = GV<String>(X["T_REPORTED_STUDENT_FIRST_NAME"]);o.My_Reported_student.LAST_NAME = GV<String>(X["T_REPORTED_STUDENT_LAST_NAME"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.DOB = GV<String>(X["T_REPORTED_STUDENT_DOB"]);o.My_Reported_student.EMAIL = GV<String>(X["T_REPORTED_STUDENT_EMAIL"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);
+o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);o.My_Reported_student.DESCRIPTION = GV<String>(X["T_REPORTED_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -3134,9 +3182,9 @@ if (R != null) {foreach (var X in R) {
 Student_report o = new Student_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Reported_by_student = new Student();
-o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.FIRST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_FIRST_NAME"]);o.My_Reported_by_student.LAST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_LAST_NAME"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.DOB = GV<String>(X["T_REPORTED_BY_STUDENT_DOB"]);o.My_Reported_by_student.EMAIL = GV<String>(X["T_REPORTED_BY_STUDENT_EMAIL"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);
+o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);o.My_Reported_by_student.DESCRIPTION = GV<String>(X["T_REPORTED_BY_STUDENT_DESCRIPTION"]);
 o.My_Reported_student = new Student();
-o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.FIRST_NAME = GV<String>(X["T_REPORTED_STUDENT_FIRST_NAME"]);o.My_Reported_student.LAST_NAME = GV<String>(X["T_REPORTED_STUDENT_LAST_NAME"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.DOB = GV<String>(X["T_REPORTED_STUDENT_DOB"]);o.My_Reported_student.EMAIL = GV<String>(X["T_REPORTED_STUDENT_EMAIL"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);
+o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);o.My_Reported_student.DESCRIPTION = GV<String>(X["T_REPORTED_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -3200,9 +3248,9 @@ if (R != null) {foreach (var X in R) {
 Favorite_teacher o = new Favorite_teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -3218,9 +3266,9 @@ if (R != null) {foreach (var X in R) {
 Favorite_teacher o = new Favorite_teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -3236,9 +3284,9 @@ if (R != null) {foreach (var X in R) {
 Favorite_teacher o = new Favorite_teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -3267,54 +3315,6 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PERSON_BY_OWNER_ID_ADV"
 if (R != null) {foreach (var X in R) {
 Person o = new Person();
 oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<User> Get_User_By_OWNER_ID_Adv ( Int32? OWNER_ID)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.OWNER_ID = OWNER_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_OWNER_ID_ADV", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_User_type_code = new User_type_code();
-o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<User> Get_User_By_USERNAME_Adv ( string USERNAME)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USERNAME_ADV", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_User_type_code = new User_type_code();
-o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<User> Get_User_By_USER_TYPE_CODE_ID_Adv ( Int32? USER_TYPE_CODE_ID)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USER_TYPE_CODE_ID = USER_TYPE_CODE_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_TYPE_CODE_ID_ADV", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_User_type_code = new User_type_code();
-o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -3794,6 +3794,20 @@ oList.Add(o);
 }
 return oList;
 }
+public List<User> Get_User_By_USER_TYPE_CODE_ID_List ( List<Int32?> USER_TYPE_CODE_ID_LIST)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_TYPE_CODE_ID_LIST", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
 public List<Answer> Get_Answer_By_QUESTION_ID_List ( List<Int32?> QUESTION_ID_LIST)
 {
 List<Answer> oList = new List<Answer>();
@@ -3906,20 +3920,6 @@ oList.Add(o);
 }
 return oList;
 }
-public List<User> Get_User_By_USER_TYPE_CODE_ID_List ( List<Int32?> USER_TYPE_CODE_ID_LIST)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_TYPE_CODE_ID_LIST", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
 public List<Contact> Get_Contact_By_PERSON_ID_List ( List<long?> PERSON_ID_LIST)
 {
 List<Contact> oList = new List<Contact>();
@@ -3958,7 +3958,7 @@ if (R != null) {foreach (var X in R) {
 Category_favorite o = new Category_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 oList.Add(o);
@@ -3976,7 +3976,7 @@ if (R != null) {foreach (var X in R) {
 Category_favorite o = new Category_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 oList.Add(o);
@@ -4010,7 +4010,7 @@ if (R != null) {foreach (var X in R) {
 Evaluation o = new Evaluation();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Answer = new Answer();
 o.My_Answer.ANSWER_ID = GV<Int32>(X["T_ANSWER_ANSWER_ID"]);o.My_Answer.QUESTION_ID = GV<Int32>(X["T_ANSWER_QUESTION_ID"]);o.My_Answer.TEACHER_ID = GV<Int32>(X["T_ANSWER_TEACHER_ID"]);o.My_Answer.STUDENT_ID = GV<Int32>(X["T_ANSWER_STUDENT_ID"]);o.My_Answer.DESCRIPTION = GV<String>(X["T_ANSWER_DESCRIPTION"]);o.My_Answer.ENTRY_USER_ID = GV<Int64>(X["T_ANSWER_ENTRY_USER_ID"]);o.My_Answer.ENTRY_DATE = GV<String>(X["T_ANSWER_ENTRY_DATE"]);o.My_Answer.OWNER_ID = GV<Int32>(X["T_ANSWER_OWNER_ID"]);
 oList.Add(o);
@@ -4028,7 +4028,7 @@ if (R != null) {foreach (var X in R) {
 Evaluation o = new Evaluation();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Answer = new Answer();
 o.My_Answer.ANSWER_ID = GV<Int32>(X["T_ANSWER_ANSWER_ID"]);o.My_Answer.QUESTION_ID = GV<Int32>(X["T_ANSWER_QUESTION_ID"]);o.My_Answer.TEACHER_ID = GV<Int32>(X["T_ANSWER_TEACHER_ID"]);o.My_Answer.STUDENT_ID = GV<Int32>(X["T_ANSWER_STUDENT_ID"]);o.My_Answer.DESCRIPTION = GV<String>(X["T_ANSWER_DESCRIPTION"]);o.My_Answer.ENTRY_USER_ID = GV<Int64>(X["T_ANSWER_ENTRY_USER_ID"]);o.My_Answer.ENTRY_DATE = GV<String>(X["T_ANSWER_ENTRY_DATE"]);o.My_Answer.OWNER_ID = GV<Int32>(X["T_ANSWER_OWNER_ID"]);
 oList.Add(o);
@@ -4046,11 +4046,11 @@ if (R != null) {foreach (var X in R) {
 Question o = new Question();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -4066,11 +4066,11 @@ if (R != null) {foreach (var X in R) {
 Question o = new Question();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -4086,11 +4086,11 @@ if (R != null) {foreach (var X in R) {
 Question o = new Question();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -4122,7 +4122,7 @@ if (R != null) {foreach (var X in R) {
 Student o = new Student();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 oList.Add(o);
@@ -4140,7 +4140,7 @@ if (R != null) {foreach (var X in R) {
 Student o = new Student();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 oList.Add(o);
@@ -4278,7 +4278,7 @@ if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 o.My_Category = new Category();
@@ -4298,7 +4298,7 @@ if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 o.My_Category = new Category();
@@ -4318,7 +4318,7 @@ if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 o.My_Category = new Category();
@@ -4338,9 +4338,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_report o = new Teacher_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -4356,9 +4356,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_report o = new Teacher_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -4374,9 +4374,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_favorite o = new Teacher_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -4392,9 +4392,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_favorite o = new Teacher_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -4410,7 +4410,7 @@ if (R != null) {foreach (var X in R) {
 Teacher_category o = new Teacher_category();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 oList.Add(o);
@@ -4428,9 +4428,25 @@ if (R != null) {foreach (var X in R) {
 Teacher_category o = new Teacher_category();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User> Get_User_By_USER_TYPE_CODE_ID_List_Adv ( List<Int32?> USER_TYPE_CODE_ID_LIST)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_TYPE_CODE_ID_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User_type_code = new User_type_code();
+o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -4448,9 +4464,9 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Question = new Question();
 o.My_Question.QUESTION_ID = GV<Int32>(X["T_QUESTION_QUESTION_ID"]);o.My_Question.STUDENT_ID = GV<Int32>(X["T_QUESTION_STUDENT_ID"]);o.My_Question.CATEGORY_ID = GV<Int32>(X["T_QUESTION_CATEGORY_ID"]);o.My_Question.TEACHER_ID = GV<Int32>(X["T_QUESTION_TEACHER_ID"]);o.My_Question.DESCRIPTION = GV<String>(X["T_QUESTION_DESCRIPTION"]);o.My_Question.IS_ANSWERED = GV<Boolean>(X["T_QUESTION_IS_ANSWERED"]);o.My_Question.IS_PUBLIC = GV<Boolean>(X["T_QUESTION_IS_PUBLIC"]);o.My_Question.IS_SELF_CLOSED = GV<Boolean>(X["T_QUESTION_IS_SELF_CLOSED"]);o.My_Question.ENTRY_USER_ID = GV<Int64>(X["T_QUESTION_ENTRY_USER_ID"]);o.My_Question.ENTRY_DATE = GV<String>(X["T_QUESTION_ENTRY_DATE"]);o.My_Question.OWNER_ID = GV<Int32>(X["T_QUESTION_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -4468,9 +4484,9 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Question = new Question();
 o.My_Question.QUESTION_ID = GV<Int32>(X["T_QUESTION_QUESTION_ID"]);o.My_Question.STUDENT_ID = GV<Int32>(X["T_QUESTION_STUDENT_ID"]);o.My_Question.CATEGORY_ID = GV<Int32>(X["T_QUESTION_CATEGORY_ID"]);o.My_Question.TEACHER_ID = GV<Int32>(X["T_QUESTION_TEACHER_ID"]);o.My_Question.DESCRIPTION = GV<String>(X["T_QUESTION_DESCRIPTION"]);o.My_Question.IS_ANSWERED = GV<Boolean>(X["T_QUESTION_IS_ANSWERED"]);o.My_Question.IS_PUBLIC = GV<Boolean>(X["T_QUESTION_IS_PUBLIC"]);o.My_Question.IS_SELF_CLOSED = GV<Boolean>(X["T_QUESTION_IS_SELF_CLOSED"]);o.My_Question.ENTRY_USER_ID = GV<Int64>(X["T_QUESTION_ENTRY_USER_ID"]);o.My_Question.ENTRY_DATE = GV<String>(X["T_QUESTION_ENTRY_DATE"]);o.My_Question.OWNER_ID = GV<Int32>(X["T_QUESTION_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -4488,9 +4504,9 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Question = new Question();
 o.My_Question.QUESTION_ID = GV<Int32>(X["T_QUESTION_QUESTION_ID"]);o.My_Question.STUDENT_ID = GV<Int32>(X["T_QUESTION_STUDENT_ID"]);o.My_Question.CATEGORY_ID = GV<Int32>(X["T_QUESTION_CATEGORY_ID"]);o.My_Question.TEACHER_ID = GV<Int32>(X["T_QUESTION_TEACHER_ID"]);o.My_Question.DESCRIPTION = GV<String>(X["T_QUESTION_DESCRIPTION"]);o.My_Question.IS_ANSWERED = GV<Boolean>(X["T_QUESTION_IS_ANSWERED"]);o.My_Question.IS_PUBLIC = GV<Boolean>(X["T_QUESTION_IS_PUBLIC"]);o.My_Question.IS_SELF_CLOSED = GV<Boolean>(X["T_QUESTION_IS_SELF_CLOSED"]);o.My_Question.ENTRY_USER_ID = GV<Int64>(X["T_QUESTION_ENTRY_USER_ID"]);o.My_Question.ENTRY_DATE = GV<String>(X["T_QUESTION_ENTRY_DATE"]);o.My_Question.OWNER_ID = GV<Int32>(X["T_QUESTION_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -4506,9 +4522,9 @@ if (R != null) {foreach (var X in R) {
 Student_report o = new Student_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Reported_by_student = new Student();
-o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.FIRST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_FIRST_NAME"]);o.My_Reported_by_student.LAST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_LAST_NAME"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.DOB = GV<String>(X["T_REPORTED_BY_STUDENT_DOB"]);o.My_Reported_by_student.EMAIL = GV<String>(X["T_REPORTED_BY_STUDENT_EMAIL"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);
+o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);o.My_Reported_by_student.DESCRIPTION = GV<String>(X["T_REPORTED_BY_STUDENT_DESCRIPTION"]);
 o.My_Reported_student = new Student();
-o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.FIRST_NAME = GV<String>(X["T_REPORTED_STUDENT_FIRST_NAME"]);o.My_Reported_student.LAST_NAME = GV<String>(X["T_REPORTED_STUDENT_LAST_NAME"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.DOB = GV<String>(X["T_REPORTED_STUDENT_DOB"]);o.My_Reported_student.EMAIL = GV<String>(X["T_REPORTED_STUDENT_EMAIL"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);
+o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);o.My_Reported_student.DESCRIPTION = GV<String>(X["T_REPORTED_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -4524,9 +4540,9 @@ if (R != null) {foreach (var X in R) {
 Student_report o = new Student_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Reported_by_student = new Student();
-o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.FIRST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_FIRST_NAME"]);o.My_Reported_by_student.LAST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_LAST_NAME"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.DOB = GV<String>(X["T_REPORTED_BY_STUDENT_DOB"]);o.My_Reported_by_student.EMAIL = GV<String>(X["T_REPORTED_BY_STUDENT_EMAIL"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);
+o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);o.My_Reported_by_student.DESCRIPTION = GV<String>(X["T_REPORTED_BY_STUDENT_DESCRIPTION"]);
 o.My_Reported_student = new Student();
-o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.FIRST_NAME = GV<String>(X["T_REPORTED_STUDENT_FIRST_NAME"]);o.My_Reported_student.LAST_NAME = GV<String>(X["T_REPORTED_STUDENT_LAST_NAME"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.DOB = GV<String>(X["T_REPORTED_STUDENT_DOB"]);o.My_Reported_student.EMAIL = GV<String>(X["T_REPORTED_STUDENT_EMAIL"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);
+o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);o.My_Reported_student.DESCRIPTION = GV<String>(X["T_REPORTED_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -4558,9 +4574,9 @@ if (R != null) {foreach (var X in R) {
 Favorite_teacher o = new Favorite_teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -4576,25 +4592,9 @@ if (R != null) {foreach (var X in R) {
 Favorite_teacher o = new Favorite_teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<User> Get_User_By_USER_TYPE_CODE_ID_List_Adv ( List<Int32?> USER_TYPE_CODE_ID_LIST)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_TYPE_CODE_ID_LIST_ADV", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_User_type_code = new User_type_code();
-o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -4782,11 +4782,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Student> Get_Student_By_Criteria ( string FIRST_NAME, string LAST_NAME, string EMAIL, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Student> Get_Student_By_Criteria ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Student> oList = new List<Student>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_CRITERIA", p);
 if (R != null) {foreach (var X in R) {
 Student o = new Student();
@@ -4797,42 +4797,12 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Student> Get_Student_By_Where ( string FIRST_NAME, string LAST_NAME, string EMAIL, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Student> Get_Student_By_Where ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Student> oList = new List<Student>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_WHERE", p);
-if (R != null) {foreach (var X in R) {
-Student o = new Student();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Student> Get_Student_By_Criteria_V2 ( string FIRST_NAME, string LAST_NAME, string DOB, string EMAIL, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Student> oList = new List<Student>();
-dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.DOB = DOB; p.EMAIL = EMAIL; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_CRITERIA_V2", p);
-if (R != null) {foreach (var X in R) {
-Student o = new Student();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Student> Get_Student_By_Where_V2 ( string FIRST_NAME, string LAST_NAME, string DOB, string EMAIL, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Student> oList = new List<Student>();
-dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.DOB = DOB; p.EMAIL = EMAIL; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_WHERE_V2", p);
 if (R != null) {foreach (var X in R) {
 Student o = new Student();
 oTools.CopyPropValues_FromDataRecord(X, o);
@@ -4902,11 +4872,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Teacher> Get_Teacher_By_Criteria ( string FIRST_NAME, string LAST_NAME, string EMAIL, string MOBILE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Teacher> Get_Teacher_By_Criteria ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Teacher> oList = new List<Teacher>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.MOBILE = MOBILE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TEACHER_BY_CRITERIA", p);
 if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
@@ -4917,11 +4887,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Teacher> Get_Teacher_By_Where ( string FIRST_NAME, string LAST_NAME, string EMAIL, string MOBILE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Teacher> Get_Teacher_By_Where ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Teacher> oList = new List<Teacher>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.MOBILE = MOBILE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TEACHER_BY_WHERE", p);
 if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
@@ -5015,6 +4985,66 @@ p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.E
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TEACHER_CATEGORY_BY_WHERE", p);
 if (R != null) {foreach (var X in R) {
 Teacher_category o = new Teacher_category();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Criteria ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Where ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Criteria_V2 ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, string DOB, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.DOB = DOB; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA_V2", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Where_V2 ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, string DOB, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.DOB = DOB; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE_V2", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -5262,36 +5292,6 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<User> Get_User_By_Criteria ( string USERNAME, string PASSWORD, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<User> Get_User_By_Where ( string USERNAME, string PASSWORD, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
 public List<Owner> Get_Owner_By_Criteria ( string CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Owner> oList = new List<Owner>();
@@ -5452,7 +5452,7 @@ if (R != null) {foreach (var X in R) {
 Category_favorite o = new Category_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 oList.Add(o);
@@ -5471,7 +5471,7 @@ if (R != null) {foreach (var X in R) {
 Category_favorite o = new Category_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 oList.Add(o);
@@ -5524,7 +5524,7 @@ if (R != null) {foreach (var X in R) {
 Evaluation o = new Evaluation();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Answer = new Answer();
 o.My_Answer.ANSWER_ID = GV<Int32>(X["T_ANSWER_ANSWER_ID"]);o.My_Answer.QUESTION_ID = GV<Int32>(X["T_ANSWER_QUESTION_ID"]);o.My_Answer.TEACHER_ID = GV<Int32>(X["T_ANSWER_TEACHER_ID"]);o.My_Answer.STUDENT_ID = GV<Int32>(X["T_ANSWER_STUDENT_ID"]);o.My_Answer.DESCRIPTION = GV<String>(X["T_ANSWER_DESCRIPTION"]);o.My_Answer.ENTRY_USER_ID = GV<Int64>(X["T_ANSWER_ENTRY_USER_ID"]);o.My_Answer.ENTRY_DATE = GV<String>(X["T_ANSWER_ENTRY_DATE"]);o.My_Answer.OWNER_ID = GV<Int32>(X["T_ANSWER_OWNER_ID"]);
 oList.Add(o);
@@ -5543,7 +5543,7 @@ if (R != null) {foreach (var X in R) {
 Evaluation o = new Evaluation();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Answer = new Answer();
 o.My_Answer.ANSWER_ID = GV<Int32>(X["T_ANSWER_ANSWER_ID"]);o.My_Answer.QUESTION_ID = GV<Int32>(X["T_ANSWER_QUESTION_ID"]);o.My_Answer.TEACHER_ID = GV<Int32>(X["T_ANSWER_TEACHER_ID"]);o.My_Answer.STUDENT_ID = GV<Int32>(X["T_ANSWER_STUDENT_ID"]);o.My_Answer.DESCRIPTION = GV<String>(X["T_ANSWER_DESCRIPTION"]);o.My_Answer.ENTRY_USER_ID = GV<Int64>(X["T_ANSWER_ENTRY_USER_ID"]);o.My_Answer.ENTRY_DATE = GV<String>(X["T_ANSWER_ENTRY_DATE"]);o.My_Answer.OWNER_ID = GV<Int32>(X["T_ANSWER_OWNER_ID"]);
 oList.Add(o);
@@ -5562,11 +5562,11 @@ if (R != null) {foreach (var X in R) {
 Question o = new Question();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -5583,11 +5583,11 @@ if (R != null) {foreach (var X in R) {
 Question o = new Question();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -5628,17 +5628,17 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Student> Get_Student_By_Criteria_Adv ( string FIRST_NAME, string LAST_NAME, string EMAIL, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Student> Get_Student_By_Criteria_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Student> oList = new List<Student>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_CRITERIA_ADV", p);
 if (R != null) {foreach (var X in R) {
 Student o = new Student();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 oList.Add(o);
@@ -5647,49 +5647,19 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Student> Get_Student_By_Where_Adv ( string FIRST_NAME, string LAST_NAME, string EMAIL, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Student> Get_Student_By_Where_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Student> oList = new List<Student>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_WHERE_ADV", p);
 if (R != null) {foreach (var X in R) {
 Student o = new Student();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Student> Get_Student_By_Criteria_Adv_V2 ( string FIRST_NAME, string LAST_NAME, string DOB, string EMAIL, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Student> oList = new List<Student>();
-dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.DOB = DOB; p.EMAIL = EMAIL; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_CRITERIA_ADV_V2", p);
-if (R != null) {foreach (var X in R) {
-Student o = new Student();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Student> Get_Student_By_Where_Adv_V2 ( string FIRST_NAME, string LAST_NAME, string DOB, string EMAIL, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Student> oList = new List<Student>();
-dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.DOB = DOB; p.EMAIL = EMAIL; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_WHERE_ADV_V2", p);
-if (R != null) {foreach (var X in R) {
-Student o = new Student();
-oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
 }
@@ -5776,17 +5746,17 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Teacher> Get_Teacher_By_Criteria_Adv ( string FIRST_NAME, string LAST_NAME, string EMAIL, string MOBILE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Teacher> Get_Teacher_By_Criteria_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Teacher> oList = new List<Teacher>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.MOBILE = MOBILE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TEACHER_BY_CRITERIA_ADV", p);
 if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 o.My_Category = new Category();
@@ -5797,17 +5767,17 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Teacher> Get_Teacher_By_Where_Adv ( string FIRST_NAME, string LAST_NAME, string EMAIL, string MOBILE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Teacher> Get_Teacher_By_Where_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Teacher> oList = new List<Teacher>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.MOBILE = MOBILE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TEACHER_BY_WHERE_ADV", p);
 if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 o.My_Category = new Category();
@@ -5828,9 +5798,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_report o = new Teacher_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -5847,9 +5817,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_report o = new Teacher_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -5866,9 +5836,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_favorite o = new Teacher_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -5885,9 +5855,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_favorite o = new Teacher_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -5904,7 +5874,7 @@ if (R != null) {foreach (var X in R) {
 Teacher_category o = new Teacher_category();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 oList.Add(o);
@@ -5923,9 +5893,73 @@ if (R != null) {foreach (var X in R) {
 Teacher_category o = new Teacher_category();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Criteria_Adv ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA_ADV", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User_type_code = new User_type_code();
+o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Where_Adv ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE_ADV", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User_type_code = new User_type_code();
+o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Criteria_Adv_V2 ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, string DOB, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.DOB = DOB; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA_ADV_V2", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Where_Adv_V2 ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, string DOB, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.DOB = DOB; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE_ADV_V2", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
 }
@@ -5974,9 +6008,9 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Question = new Question();
 o.My_Question.QUESTION_ID = GV<Int32>(X["T_QUESTION_QUESTION_ID"]);o.My_Question.STUDENT_ID = GV<Int32>(X["T_QUESTION_STUDENT_ID"]);o.My_Question.CATEGORY_ID = GV<Int32>(X["T_QUESTION_CATEGORY_ID"]);o.My_Question.TEACHER_ID = GV<Int32>(X["T_QUESTION_TEACHER_ID"]);o.My_Question.DESCRIPTION = GV<String>(X["T_QUESTION_DESCRIPTION"]);o.My_Question.IS_ANSWERED = GV<Boolean>(X["T_QUESTION_IS_ANSWERED"]);o.My_Question.IS_PUBLIC = GV<Boolean>(X["T_QUESTION_IS_PUBLIC"]);o.My_Question.IS_SELF_CLOSED = GV<Boolean>(X["T_QUESTION_IS_SELF_CLOSED"]);o.My_Question.ENTRY_USER_ID = GV<Int64>(X["T_QUESTION_ENTRY_USER_ID"]);o.My_Question.ENTRY_DATE = GV<String>(X["T_QUESTION_ENTRY_DATE"]);o.My_Question.OWNER_ID = GV<Int32>(X["T_QUESTION_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -5995,9 +6029,9 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Question = new Question();
 o.My_Question.QUESTION_ID = GV<Int32>(X["T_QUESTION_QUESTION_ID"]);o.My_Question.STUDENT_ID = GV<Int32>(X["T_QUESTION_STUDENT_ID"]);o.My_Question.CATEGORY_ID = GV<Int32>(X["T_QUESTION_CATEGORY_ID"]);o.My_Question.TEACHER_ID = GV<Int32>(X["T_QUESTION_TEACHER_ID"]);o.My_Question.DESCRIPTION = GV<String>(X["T_QUESTION_DESCRIPTION"]);o.My_Question.IS_ANSWERED = GV<Boolean>(X["T_QUESTION_IS_ANSWERED"]);o.My_Question.IS_PUBLIC = GV<Boolean>(X["T_QUESTION_IS_PUBLIC"]);o.My_Question.IS_SELF_CLOSED = GV<Boolean>(X["T_QUESTION_IS_SELF_CLOSED"]);o.My_Question.ENTRY_USER_ID = GV<Int64>(X["T_QUESTION_ENTRY_USER_ID"]);o.My_Question.ENTRY_DATE = GV<String>(X["T_QUESTION_ENTRY_DATE"]);o.My_Question.OWNER_ID = GV<Int32>(X["T_QUESTION_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -6014,9 +6048,9 @@ if (R != null) {foreach (var X in R) {
 Student_report o = new Student_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Reported_by_student = new Student();
-o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.FIRST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_FIRST_NAME"]);o.My_Reported_by_student.LAST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_LAST_NAME"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.DOB = GV<String>(X["T_REPORTED_BY_STUDENT_DOB"]);o.My_Reported_by_student.EMAIL = GV<String>(X["T_REPORTED_BY_STUDENT_EMAIL"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);
+o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);o.My_Reported_by_student.DESCRIPTION = GV<String>(X["T_REPORTED_BY_STUDENT_DESCRIPTION"]);
 o.My_Reported_student = new Student();
-o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.FIRST_NAME = GV<String>(X["T_REPORTED_STUDENT_FIRST_NAME"]);o.My_Reported_student.LAST_NAME = GV<String>(X["T_REPORTED_STUDENT_LAST_NAME"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.DOB = GV<String>(X["T_REPORTED_STUDENT_DOB"]);o.My_Reported_student.EMAIL = GV<String>(X["T_REPORTED_STUDENT_EMAIL"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);
+o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);o.My_Reported_student.DESCRIPTION = GV<String>(X["T_REPORTED_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -6033,9 +6067,9 @@ if (R != null) {foreach (var X in R) {
 Student_report o = new Student_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Reported_by_student = new Student();
-o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.FIRST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_FIRST_NAME"]);o.My_Reported_by_student.LAST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_LAST_NAME"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.DOB = GV<String>(X["T_REPORTED_BY_STUDENT_DOB"]);o.My_Reported_by_student.EMAIL = GV<String>(X["T_REPORTED_BY_STUDENT_EMAIL"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);
+o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);o.My_Reported_by_student.DESCRIPTION = GV<String>(X["T_REPORTED_BY_STUDENT_DESCRIPTION"]);
 o.My_Reported_student = new Student();
-o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.FIRST_NAME = GV<String>(X["T_REPORTED_STUDENT_FIRST_NAME"]);o.My_Reported_student.LAST_NAME = GV<String>(X["T_REPORTED_STUDENT_LAST_NAME"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.DOB = GV<String>(X["T_REPORTED_STUDENT_DOB"]);o.My_Reported_student.EMAIL = GV<String>(X["T_REPORTED_STUDENT_EMAIL"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);
+o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);o.My_Reported_student.DESCRIPTION = GV<String>(X["T_REPORTED_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -6086,9 +6120,9 @@ if (R != null) {foreach (var X in R) {
 Favorite_teacher o = new Favorite_teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -6105,9 +6139,9 @@ if (R != null) {foreach (var X in R) {
 Favorite_teacher o = new Favorite_teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -6198,40 +6232,6 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PERSON_BY_WHERE_ADV_V2"
 if (R != null) {foreach (var X in R) {
 Person o = new Person();
 oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<User> Get_User_By_Criteria_Adv ( string USERNAME, string PASSWORD, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA_ADV", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_User_type_code = new User_type_code();
-o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<User> Get_User_By_Where_Adv ( string USERNAME, string PASSWORD, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE_ADV", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_User_type_code = new User_type_code();
-o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -6486,11 +6486,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Student> Get_Student_By_Criteria_InList ( string FIRST_NAME, string LAST_NAME, string EMAIL, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Student> Get_Student_By_Criteria_InList ( string DESCRIPTION, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Student> oList = new List<Student>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_CRITERIA_IN_LIST", p);
 if (R != null) {foreach (var X in R) {
 Student o = new Student();
@@ -6501,42 +6501,12 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Student> Get_Student_By_Where_InList ( string FIRST_NAME, string LAST_NAME, string EMAIL, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Student> Get_Student_By_Where_InList ( string DESCRIPTION, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Student> oList = new List<Student>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_WHERE_IN_LIST", p);
-if (R != null) {foreach (var X in R) {
-Student o = new Student();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Student> Get_Student_By_Criteria_InList_V2 ( string FIRST_NAME, string LAST_NAME, string DOB, string EMAIL, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Student> oList = new List<Student>();
-dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.DOB = DOB; p.EMAIL = EMAIL; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_CRITERIA_IN_LIST_V2", p);
-if (R != null) {foreach (var X in R) {
-Student o = new Student();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Student> Get_Student_By_Where_InList_V2 ( string FIRST_NAME, string LAST_NAME, string DOB, string EMAIL, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Student> oList = new List<Student>();
-dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.DOB = DOB; p.EMAIL = EMAIL; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_WHERE_IN_LIST_V2", p);
 if (R != null) {foreach (var X in R) {
 Student o = new Student();
 oTools.CopyPropValues_FromDataRecord(X, o);
@@ -6606,11 +6576,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Teacher> Get_Teacher_By_Criteria_InList ( string FIRST_NAME, string LAST_NAME, string EMAIL, string MOBILE, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, List<Int32?> CATEGORY_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Teacher> Get_Teacher_By_Criteria_InList ( string DESCRIPTION, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, List<Int32?> CATEGORY_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Teacher> oList = new List<Teacher>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.MOBILE = MOBILE; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TEACHER_BY_CRITERIA_IN_LIST", p);
 if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
@@ -6621,11 +6591,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Teacher> Get_Teacher_By_Where_InList ( string FIRST_NAME, string LAST_NAME, string EMAIL, string MOBILE, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, List<Int32?> CATEGORY_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Teacher> Get_Teacher_By_Where_InList ( string DESCRIPTION, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, List<Int32?> CATEGORY_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Teacher> oList = new List<Teacher>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.MOBILE = MOBILE; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TEACHER_BY_WHERE_IN_LIST", p);
 if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
@@ -6719,6 +6689,66 @@ p.DESCRIPTION = DESCRIPTION; p.TEACHER_ID_LIST = string.Join(",", TEACHER_ID_LIS
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TEACHER_CATEGORY_BY_WHERE_IN_LIST", p);
 if (R != null) {foreach (var X in R) {
 Teacher_category o = new Teacher_category();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Criteria_InList ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA_IN_LIST", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Where_InList ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE_IN_LIST", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Criteria_InList_V2 ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, string DOB, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.DOB = DOB; p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA_IN_LIST_V2", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Where_InList_V2 ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, string DOB, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.DOB = DOB; p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE_IN_LIST_V2", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -6846,36 +6876,6 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<User> Get_User_By_Criteria_InList ( string USERNAME, string PASSWORD, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA_IN_LIST", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<User> Get_User_By_Where_InList ( string USERNAME, string PASSWORD, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE_IN_LIST", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
 public List<Contact> Get_Contact_By_Criteria_InList ( string CONTACT_TYPE_CODE, string CONTACT, string DESCRIPTION, List<long?> PERSON_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Contact> oList = new List<Contact>();
@@ -6946,7 +6946,7 @@ if (R != null) {foreach (var X in R) {
 Category_favorite o = new Category_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 oList.Add(o);
@@ -6965,7 +6965,7 @@ if (R != null) {foreach (var X in R) {
 Category_favorite o = new Category_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 oList.Add(o);
@@ -7018,7 +7018,7 @@ if (R != null) {foreach (var X in R) {
 Evaluation o = new Evaluation();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Answer = new Answer();
 o.My_Answer.ANSWER_ID = GV<Int32>(X["T_ANSWER_ANSWER_ID"]);o.My_Answer.QUESTION_ID = GV<Int32>(X["T_ANSWER_QUESTION_ID"]);o.My_Answer.TEACHER_ID = GV<Int32>(X["T_ANSWER_TEACHER_ID"]);o.My_Answer.STUDENT_ID = GV<Int32>(X["T_ANSWER_STUDENT_ID"]);o.My_Answer.DESCRIPTION = GV<String>(X["T_ANSWER_DESCRIPTION"]);o.My_Answer.ENTRY_USER_ID = GV<Int64>(X["T_ANSWER_ENTRY_USER_ID"]);o.My_Answer.ENTRY_DATE = GV<String>(X["T_ANSWER_ENTRY_DATE"]);o.My_Answer.OWNER_ID = GV<Int32>(X["T_ANSWER_OWNER_ID"]);
 oList.Add(o);
@@ -7037,7 +7037,7 @@ if (R != null) {foreach (var X in R) {
 Evaluation o = new Evaluation();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Answer = new Answer();
 o.My_Answer.ANSWER_ID = GV<Int32>(X["T_ANSWER_ANSWER_ID"]);o.My_Answer.QUESTION_ID = GV<Int32>(X["T_ANSWER_QUESTION_ID"]);o.My_Answer.TEACHER_ID = GV<Int32>(X["T_ANSWER_TEACHER_ID"]);o.My_Answer.STUDENT_ID = GV<Int32>(X["T_ANSWER_STUDENT_ID"]);o.My_Answer.DESCRIPTION = GV<String>(X["T_ANSWER_DESCRIPTION"]);o.My_Answer.ENTRY_USER_ID = GV<Int64>(X["T_ANSWER_ENTRY_USER_ID"]);o.My_Answer.ENTRY_DATE = GV<String>(X["T_ANSWER_ENTRY_DATE"]);o.My_Answer.OWNER_ID = GV<Int32>(X["T_ANSWER_OWNER_ID"]);
 oList.Add(o);
@@ -7056,11 +7056,11 @@ if (R != null) {foreach (var X in R) {
 Question o = new Question();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -7077,11 +7077,11 @@ if (R != null) {foreach (var X in R) {
 Question o = new Question();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -7122,17 +7122,17 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Student> Get_Student_By_Criteria_InList_Adv ( string FIRST_NAME, string LAST_NAME, string EMAIL, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Student> Get_Student_By_Criteria_InList_Adv ( string DESCRIPTION, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Student> oList = new List<Student>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_CRITERIA_IN_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
 Student o = new Student();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 oList.Add(o);
@@ -7141,49 +7141,19 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Student> Get_Student_By_Where_InList_Adv ( string FIRST_NAME, string LAST_NAME, string EMAIL, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Student> Get_Student_By_Where_InList_Adv ( string DESCRIPTION, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Student> oList = new List<Student>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_WHERE_IN_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
 Student o = new Student();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Student> Get_Student_By_Criteria_InList_Adv_V2 ( string FIRST_NAME, string LAST_NAME, string DOB, string EMAIL, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Student> oList = new List<Student>();
-dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.DOB = DOB; p.EMAIL = EMAIL; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_CRITERIA_IN_LIST_ADV_V2", p);
-if (R != null) {foreach (var X in R) {
-Student o = new Student();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Student> Get_Student_By_Where_InList_Adv_V2 ( string FIRST_NAME, string LAST_NAME, string DOB, string EMAIL, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Student> oList = new List<Student>();
-dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.DOB = DOB; p.EMAIL = EMAIL; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_STUDENT_BY_WHERE_IN_LIST_ADV_V2", p);
-if (R != null) {foreach (var X in R) {
-Student o = new Student();
-oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
 }
@@ -7270,17 +7240,17 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Teacher> Get_Teacher_By_Criteria_InList_Adv ( string FIRST_NAME, string LAST_NAME, string EMAIL, string MOBILE, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, List<Int32?> CATEGORY_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Teacher> Get_Teacher_By_Criteria_InList_Adv ( string DESCRIPTION, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, List<Int32?> CATEGORY_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Teacher> oList = new List<Teacher>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.MOBILE = MOBILE; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TEACHER_BY_CRITERIA_IN_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 o.My_Category = new Category();
@@ -7291,17 +7261,17 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Teacher> Get_Teacher_By_Where_InList_Adv ( string FIRST_NAME, string LAST_NAME, string EMAIL, string MOBILE, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, List<Int32?> CATEGORY_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Teacher> Get_Teacher_By_Where_InList_Adv ( string DESCRIPTION, List<long?> USER_ID_LIST, List<Int32?> USER_TYPE_CODE_ID_LIST, List<Int32?> CATEGORY_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Teacher> oList = new List<Teacher>();
 dynamic p = new ExpandoObject();
-p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.EMAIL = EMAIL; p.MOBILE = MOBILE; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TEACHER_BY_WHERE_IN_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
 Teacher o = new Teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.MOBILE = GV<String>(X["T_USER_MOBILE"]);o.My_User.DOB = GV<String>(X["T_USER_DOB"]);o.My_User.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_USER_TYPE_CODE_ID"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_User_type_code = new User_type_code();
 o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
 o.My_Category = new Category();
@@ -7322,9 +7292,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_report o = new Teacher_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -7341,9 +7311,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_report o = new Teacher_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -7360,9 +7330,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_favorite o = new Teacher_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -7379,9 +7349,9 @@ if (R != null) {foreach (var X in R) {
 Teacher_favorite o = new Teacher_favorite();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -7398,7 +7368,7 @@ if (R != null) {foreach (var X in R) {
 Teacher_category o = new Teacher_category();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 oList.Add(o);
@@ -7417,9 +7387,73 @@ if (R != null) {foreach (var X in R) {
 Teacher_category o = new Teacher_category();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.DESCRIPTION = GV<String>(X["T_CATEGORY_DESCRIPTION"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Criteria_InList_Adv ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA_IN_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User_type_code = new User_type_code();
+o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Where_InList_Adv ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE_IN_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User_type_code = new User_type_code();
+o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Criteria_InList_Adv_V2 ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, string DOB, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.DOB = DOB; p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA_IN_LIST_ADV_V2", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User> Get_User_By_Where_InList_Adv_V2 ( string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, string DOB, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.EMAIL = EMAIL; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.MOBILE = MOBILE; p.DOB = DOB; p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE_IN_LIST_ADV_V2", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
 }
@@ -7438,9 +7472,9 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Question = new Question();
 o.My_Question.QUESTION_ID = GV<Int32>(X["T_QUESTION_QUESTION_ID"]);o.My_Question.STUDENT_ID = GV<Int32>(X["T_QUESTION_STUDENT_ID"]);o.My_Question.CATEGORY_ID = GV<Int32>(X["T_QUESTION_CATEGORY_ID"]);o.My_Question.TEACHER_ID = GV<Int32>(X["T_QUESTION_TEACHER_ID"]);o.My_Question.DESCRIPTION = GV<String>(X["T_QUESTION_DESCRIPTION"]);o.My_Question.IS_ANSWERED = GV<Boolean>(X["T_QUESTION_IS_ANSWERED"]);o.My_Question.IS_PUBLIC = GV<Boolean>(X["T_QUESTION_IS_PUBLIC"]);o.My_Question.IS_SELF_CLOSED = GV<Boolean>(X["T_QUESTION_IS_SELF_CLOSED"]);o.My_Question.ENTRY_USER_ID = GV<Int64>(X["T_QUESTION_ENTRY_USER_ID"]);o.My_Question.ENTRY_DATE = GV<String>(X["T_QUESTION_ENTRY_DATE"]);o.My_Question.OWNER_ID = GV<Int32>(X["T_QUESTION_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -7459,9 +7493,9 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Question = new Question();
 o.My_Question.QUESTION_ID = GV<Int32>(X["T_QUESTION_QUESTION_ID"]);o.My_Question.STUDENT_ID = GV<Int32>(X["T_QUESTION_STUDENT_ID"]);o.My_Question.CATEGORY_ID = GV<Int32>(X["T_QUESTION_CATEGORY_ID"]);o.My_Question.TEACHER_ID = GV<Int32>(X["T_QUESTION_TEACHER_ID"]);o.My_Question.DESCRIPTION = GV<String>(X["T_QUESTION_DESCRIPTION"]);o.My_Question.IS_ANSWERED = GV<Boolean>(X["T_QUESTION_IS_ANSWERED"]);o.My_Question.IS_PUBLIC = GV<Boolean>(X["T_QUESTION_IS_PUBLIC"]);o.My_Question.IS_SELF_CLOSED = GV<Boolean>(X["T_QUESTION_IS_SELF_CLOSED"]);o.My_Question.ENTRY_USER_ID = GV<Int64>(X["T_QUESTION_ENTRY_USER_ID"]);o.My_Question.ENTRY_DATE = GV<String>(X["T_QUESTION_ENTRY_DATE"]);o.My_Question.OWNER_ID = GV<Int32>(X["T_QUESTION_OWNER_ID"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -7478,9 +7512,9 @@ if (R != null) {foreach (var X in R) {
 Student_report o = new Student_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Reported_by_student = new Student();
-o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.FIRST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_FIRST_NAME"]);o.My_Reported_by_student.LAST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_LAST_NAME"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.DOB = GV<String>(X["T_REPORTED_BY_STUDENT_DOB"]);o.My_Reported_by_student.EMAIL = GV<String>(X["T_REPORTED_BY_STUDENT_EMAIL"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);
+o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);o.My_Reported_by_student.DESCRIPTION = GV<String>(X["T_REPORTED_BY_STUDENT_DESCRIPTION"]);
 o.My_Reported_student = new Student();
-o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.FIRST_NAME = GV<String>(X["T_REPORTED_STUDENT_FIRST_NAME"]);o.My_Reported_student.LAST_NAME = GV<String>(X["T_REPORTED_STUDENT_LAST_NAME"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.DOB = GV<String>(X["T_REPORTED_STUDENT_DOB"]);o.My_Reported_student.EMAIL = GV<String>(X["T_REPORTED_STUDENT_EMAIL"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);
+o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);o.My_Reported_student.DESCRIPTION = GV<String>(X["T_REPORTED_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -7497,9 +7531,9 @@ if (R != null) {foreach (var X in R) {
 Student_report o = new Student_report();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Reported_by_student = new Student();
-o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.FIRST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_FIRST_NAME"]);o.My_Reported_by_student.LAST_NAME = GV<String>(X["T_REPORTED_BY_STUDENT_LAST_NAME"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.DOB = GV<String>(X["T_REPORTED_BY_STUDENT_DOB"]);o.My_Reported_by_student.EMAIL = GV<String>(X["T_REPORTED_BY_STUDENT_EMAIL"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);
+o.My_Reported_by_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_STUDENT_ID"]);o.My_Reported_by_student.USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_USER_ID"]);o.My_Reported_by_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_by_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_BY_STUDENT_IS_BLOCKED"]);o.My_Reported_by_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_BY_STUDENT_ENTRY_USER_ID"]);o.My_Reported_by_student.ENTRY_DATE = GV<String>(X["T_REPORTED_BY_STUDENT_ENTRY_DATE"]);o.My_Reported_by_student.OWNER_ID = GV<Int32>(X["T_REPORTED_BY_STUDENT_OWNER_ID"]);o.My_Reported_by_student.DESCRIPTION = GV<String>(X["T_REPORTED_BY_STUDENT_DESCRIPTION"]);
 o.My_Reported_student = new Student();
-o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.FIRST_NAME = GV<String>(X["T_REPORTED_STUDENT_FIRST_NAME"]);o.My_Reported_student.LAST_NAME = GV<String>(X["T_REPORTED_STUDENT_LAST_NAME"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.DOB = GV<String>(X["T_REPORTED_STUDENT_DOB"]);o.My_Reported_student.EMAIL = GV<String>(X["T_REPORTED_STUDENT_EMAIL"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);
+o.My_Reported_student.STUDENT_ID = GV<Int32>(X["T_REPORTED_STUDENT_STUDENT_ID"]);o.My_Reported_student.USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_USER_ID"]);o.My_Reported_student.USER_TYPE_CODE_ID = GV<Int32>(X["T_REPORTED_STUDENT_USER_TYPE_CODE_ID"]);o.My_Reported_student.IS_BLOCKED = GV<Boolean>(X["T_REPORTED_STUDENT_IS_BLOCKED"]);o.My_Reported_student.ENTRY_USER_ID = GV<Int64>(X["T_REPORTED_STUDENT_ENTRY_USER_ID"]);o.My_Reported_student.ENTRY_DATE = GV<String>(X["T_REPORTED_STUDENT_ENTRY_DATE"]);o.My_Reported_student.OWNER_ID = GV<Int32>(X["T_REPORTED_STUDENT_OWNER_ID"]);o.My_Reported_student.DESCRIPTION = GV<String>(X["T_REPORTED_STUDENT_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -7550,9 +7584,9 @@ if (R != null) {foreach (var X in R) {
 Favorite_teacher o = new Favorite_teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -7569,43 +7603,9 @@ if (R != null) {foreach (var X in R) {
 Favorite_teacher o = new Favorite_teacher();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Student = new Student();
-o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.FIRST_NAME = GV<String>(X["T_STUDENT_FIRST_NAME"]);o.My_Student.LAST_NAME = GV<String>(X["T_STUDENT_LAST_NAME"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.DOB = GV<String>(X["T_STUDENT_DOB"]);o.My_Student.EMAIL = GV<String>(X["T_STUDENT_EMAIL"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);
+o.My_Student.STUDENT_ID = GV<Int32>(X["T_STUDENT_STUDENT_ID"]);o.My_Student.USER_ID = GV<Int64>(X["T_STUDENT_USER_ID"]);o.My_Student.USER_TYPE_CODE_ID = GV<Int32>(X["T_STUDENT_USER_TYPE_CODE_ID"]);o.My_Student.IS_BLOCKED = GV<Boolean>(X["T_STUDENT_IS_BLOCKED"]);o.My_Student.ENTRY_USER_ID = GV<Int64>(X["T_STUDENT_ENTRY_USER_ID"]);o.My_Student.ENTRY_DATE = GV<String>(X["T_STUDENT_ENTRY_DATE"]);o.My_Student.OWNER_ID = GV<Int32>(X["T_STUDENT_OWNER_ID"]);o.My_Student.DESCRIPTION = GV<String>(X["T_STUDENT_DESCRIPTION"]);
 o.My_Teacher = new Teacher();
-o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.FIRST_NAME = GV<String>(X["T_TEACHER_FIRST_NAME"]);o.My_Teacher.LAST_NAME = GV<String>(X["T_TEACHER_LAST_NAME"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.EMAIL = GV<String>(X["T_TEACHER_EMAIL"]);o.My_Teacher.MOBILE = GV<String>(X["T_TEACHER_MOBILE"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<User> Get_User_By_Criteria_InList_Adv ( string USERNAME, string PASSWORD, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA_IN_LIST_ADV", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_User_type_code = new User_type_code();
-o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<User> Get_User_By_Where_InList_Adv ( string USERNAME, string PASSWORD, List<Int32?> USER_TYPE_CODE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<User> oList = new List<User>();
-dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.USER_TYPE_CODE_ID_LIST = string.Join(",", USER_TYPE_CODE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE_IN_LIST_ADV", p);
-if (R != null) {foreach (var X in R) {
-User o = new User();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_User_type_code = new User_type_code();
-o.My_User_type_code.USER_TYPE_CODE_ID = GV<Int32>(X["T_USER_TYPE_CODE_USER_TYPE_CODE_ID"]);o.My_User_type_code.USER_TYPE_CODE = GV<String>(X["T_USER_TYPE_CODE_USER_TYPE_CODE"]);o.My_User_type_code.DESCRIPTION = GV<String>(X["T_USER_TYPE_CODE_DESCRIPTION"]);o.My_User_type_code.ENTRY_USER_ID = GV<Int64>(X["T_USER_TYPE_CODE_ENTRY_USER_ID"]);o.My_User_type_code.ENTRY_DATE = GV<String>(X["T_USER_TYPE_CODE_ENTRY_DATE"]);o.My_User_type_code.OWNER_ID = GV<Int32>(X["T_USER_TYPE_CODE_OWNER_ID"]);
+o.My_Teacher.TEACHER_ID = GV<Int32>(X["T_TEACHER_TEACHER_ID"]);o.My_Teacher.USER_ID = GV<Int64>(X["T_TEACHER_USER_ID"]);o.My_Teacher.IS_VALID = GV<Boolean>(X["T_TEACHER_IS_VALID"]);o.My_Teacher.USER_TYPE_CODE_ID = GV<Int32>(X["T_TEACHER_USER_TYPE_CODE_ID"]);o.My_Teacher.SCORE = GV<Int32>(X["T_TEACHER_SCORE"]);o.My_Teacher.IS_BLOCKED = GV<Boolean>(X["T_TEACHER_IS_BLOCKED"]);o.My_Teacher.CATEGORY_ID = GV<Int32>(X["T_TEACHER_CATEGORY_ID"]);o.My_Teacher.ENTRY_USER_ID = GV<Int64>(X["T_TEACHER_ENTRY_USER_ID"]);o.My_Teacher.ENTRY_DATE = GV<String>(X["T_TEACHER_ENTRY_DATE"]);o.My_Teacher.OWNER_ID = GV<Int32>(X["T_TEACHER_OWNER_ID"]);o.My_Teacher.DESCRIPTION = GV<String>(X["T_TEACHER_DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -7735,6 +7735,11 @@ public void Delete_Teacher_category ( Int32? TEACHER_CATEGORY_ID)
 var p = new { TEACHER_CATEGORY_ID = TEACHER_CATEGORY_ID };
 ExecuteDelete("UPG_DELETE_TEACHER_CATEGORY", p);
 }
+public void Delete_User ( long? USER_ID)
+{
+var p = new { USER_ID = USER_ID };
+ExecuteDelete("UPG_DELETE_USER", p);
+}
 public void Delete_Category ( Int32? CATEGORY_ID)
 {
 var p = new { CATEGORY_ID = CATEGORY_ID };
@@ -7769,11 +7774,6 @@ public void Delete_Person ( long? PERSON_ID)
 {
 var p = new { PERSON_ID = PERSON_ID };
 ExecuteDelete("UPG_DELETE_PERSON", p);
-}
-public void Delete_User ( long? USER_ID)
-{
-var p = new { USER_ID = USER_ID };
-ExecuteDelete("UPG_DELETE_USER", p);
 }
 public void Delete_Owner ( Int32? OWNER_ID)
 {
@@ -7990,6 +7990,21 @@ public void Delete_Teacher_category_By_CATEGORY_ID ( Int32? CATEGORY_ID)
 var p = new { CATEGORY_ID = CATEGORY_ID };
 ExecuteDelete("UPG_DELETE_TEACHER_CATEGORY_BY_CATEGORY_ID", p);
 }
+public void Delete_User_By_OWNER_ID ( Int32? OWNER_ID)
+{
+var p = new { OWNER_ID = OWNER_ID };
+ExecuteDelete("UPG_DELETE_USER_BY_OWNER_ID", p);
+}
+public void Delete_User_By_USERNAME ( string USERNAME)
+{
+var p = new { USERNAME = USERNAME };
+ExecuteDelete("UPG_DELETE_USER_BY_USERNAME", p);
+}
+public void Delete_User_By_USER_TYPE_CODE_ID ( Int32? USER_TYPE_CODE_ID)
+{
+var p = new { USER_TYPE_CODE_ID = USER_TYPE_CODE_ID };
+ExecuteDelete("UPG_DELETE_USER_BY_USER_TYPE_CODE_ID", p);
+}
 public void Delete_Category_By_OWNER_ID ( Int32? OWNER_ID)
 {
 var p = new { OWNER_ID = OWNER_ID };
@@ -8070,21 +8085,6 @@ public void Delete_Person_By_OWNER_ID ( Int32? OWNER_ID)
 var p = new { OWNER_ID = OWNER_ID };
 ExecuteDelete("UPG_DELETE_PERSON_BY_OWNER_ID", p);
 }
-public void Delete_User_By_OWNER_ID ( Int32? OWNER_ID)
-{
-var p = new { OWNER_ID = OWNER_ID };
-ExecuteDelete("UPG_DELETE_USER_BY_OWNER_ID", p);
-}
-public void Delete_User_By_USERNAME ( string USERNAME)
-{
-var p = new { USERNAME = USERNAME };
-ExecuteDelete("UPG_DELETE_USER_BY_USERNAME", p);
-}
-public void Delete_User_By_USER_TYPE_CODE_ID ( Int32? USER_TYPE_CODE_ID)
-{
-var p = new { USER_TYPE_CODE_ID = USER_TYPE_CODE_ID };
-ExecuteDelete("UPG_DELETE_USER_BY_USER_TYPE_CODE_ID", p);
-}
 public void Delete_Contact_By_PERSON_ID ( long? PERSON_ID)
 {
 var p = new { PERSON_ID = PERSON_ID };
@@ -8160,10 +8160,10 @@ oLoc_l4.LOC_L4_ID = LOC_L4_ID;oLoc_l4.CODE = CODE;oLoc_l4.DESCRIPTION = DESCRIPT
 ExecuteEdit("UPG_EDIT_LOC_L4", oLoc_l4, "LOC_L4_ID");
 return oLoc_l4.LOC_L4_ID;
 }
-public Int32? Edit_Student ( Int32? STUDENT_ID, long? USER_ID, string FIRST_NAME, string LAST_NAME, Int32? USER_TYPE_CODE_ID, string DOB, string EMAIL, bool? IS_BLOCKED, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID)
+public Int32? Edit_Student ( Int32? STUDENT_ID, long? USER_ID, Int32? USER_TYPE_CODE_ID, bool? IS_BLOCKED, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION)
 {
 Student oStudent = new Student();
-oStudent.STUDENT_ID = STUDENT_ID;oStudent.USER_ID = USER_ID;oStudent.FIRST_NAME = FIRST_NAME;oStudent.LAST_NAME = LAST_NAME;oStudent.USER_TYPE_CODE_ID = USER_TYPE_CODE_ID;oStudent.DOB = DOB;oStudent.EMAIL = EMAIL;oStudent.IS_BLOCKED = IS_BLOCKED;oStudent.ENTRY_USER_ID = ENTRY_USER_ID;oStudent.ENTRY_DATE = ENTRY_DATE;oStudent.OWNER_ID = OWNER_ID;
+oStudent.STUDENT_ID = STUDENT_ID;oStudent.USER_ID = USER_ID;oStudent.USER_TYPE_CODE_ID = USER_TYPE_CODE_ID;oStudent.IS_BLOCKED = IS_BLOCKED;oStudent.ENTRY_USER_ID = ENTRY_USER_ID;oStudent.ENTRY_DATE = ENTRY_DATE;oStudent.OWNER_ID = OWNER_ID;oStudent.DESCRIPTION = DESCRIPTION;
 ExecuteEdit("UPG_EDIT_STUDENT", oStudent, "STUDENT_ID");
 return oStudent.STUDENT_ID;
 }
@@ -8174,10 +8174,10 @@ oAddress.ADDRESS_ID = ADDRESS_ID;oAddress.PERSON_ID = PERSON_ID;oAddress.ADDRESS
 ExecuteEdit("UPG_EDIT_ADDRESS", oAddress, "ADDRESS_ID");
 return oAddress.ADDRESS_ID;
 }
-public Int32? Edit_Teacher ( Int32? TEACHER_ID, long? USER_ID, string FIRST_NAME, string LAST_NAME, bool? IS_VALID, string EMAIL, string MOBILE, Int32? USER_TYPE_CODE_ID, Int32? SCORE, bool? IS_BLOCKED, Int32? CATEGORY_ID, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID)
+public Int32? Edit_Teacher ( Int32? TEACHER_ID, long? USER_ID, bool? IS_VALID, Int32? USER_TYPE_CODE_ID, Int32? SCORE, bool? IS_BLOCKED, Int32? CATEGORY_ID, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION)
 {
 Teacher oTeacher = new Teacher();
-oTeacher.TEACHER_ID = TEACHER_ID;oTeacher.USER_ID = USER_ID;oTeacher.FIRST_NAME = FIRST_NAME;oTeacher.LAST_NAME = LAST_NAME;oTeacher.IS_VALID = IS_VALID;oTeacher.EMAIL = EMAIL;oTeacher.MOBILE = MOBILE;oTeacher.USER_TYPE_CODE_ID = USER_TYPE_CODE_ID;oTeacher.SCORE = SCORE;oTeacher.IS_BLOCKED = IS_BLOCKED;oTeacher.CATEGORY_ID = CATEGORY_ID;oTeacher.ENTRY_USER_ID = ENTRY_USER_ID;oTeacher.ENTRY_DATE = ENTRY_DATE;oTeacher.OWNER_ID = OWNER_ID;
+oTeacher.TEACHER_ID = TEACHER_ID;oTeacher.USER_ID = USER_ID;oTeacher.IS_VALID = IS_VALID;oTeacher.USER_TYPE_CODE_ID = USER_TYPE_CODE_ID;oTeacher.SCORE = SCORE;oTeacher.IS_BLOCKED = IS_BLOCKED;oTeacher.CATEGORY_ID = CATEGORY_ID;oTeacher.ENTRY_USER_ID = ENTRY_USER_ID;oTeacher.ENTRY_DATE = ENTRY_DATE;oTeacher.OWNER_ID = OWNER_ID;oTeacher.DESCRIPTION = DESCRIPTION;
 ExecuteEdit("UPG_EDIT_TEACHER", oTeacher, "TEACHER_ID");
 return oTeacher.TEACHER_ID;
 }
@@ -8201,6 +8201,13 @@ Teacher_category oTeacher_category = new Teacher_category();
 oTeacher_category.TEACHER_CATEGORY_ID = TEACHER_CATEGORY_ID;oTeacher_category.TEACHER_ID = TEACHER_ID;oTeacher_category.CATEGORY_ID = CATEGORY_ID;oTeacher_category.DESCRIPTION = DESCRIPTION;oTeacher_category.ENTRY_USER_ID = ENTRY_USER_ID;oTeacher_category.ENTRY_DATE = ENTRY_DATE;oTeacher_category.OWNER_ID = OWNER_ID;
 ExecuteEdit("UPG_EDIT_TEACHER_CATEGORY", oTeacher_category, "TEACHER_CATEGORY_ID");
 return oTeacher_category.TEACHER_CATEGORY_ID;
+}
+public long? Edit_User ( long? USER_ID, Int32? OWNER_ID, string USERNAME, string PASSWORD, string EMAIL, string FIRST_NAME, string LAST_NAME, string MOBILE, string DOB, Int32? USER_TYPE_CODE_ID, bool? IS_ACTIVE, string ENTRY_DATE)
+{
+User oUser = new User();
+oUser.USER_ID = USER_ID;oUser.OWNER_ID = OWNER_ID;oUser.USERNAME = USERNAME;oUser.PASSWORD = PASSWORD;oUser.EMAIL = EMAIL;oUser.FIRST_NAME = FIRST_NAME;oUser.LAST_NAME = LAST_NAME;oUser.MOBILE = MOBILE;oUser.DOB = DOB;oUser.USER_TYPE_CODE_ID = USER_TYPE_CODE_ID;oUser.IS_ACTIVE = IS_ACTIVE;oUser.ENTRY_DATE = ENTRY_DATE;
+ExecuteEdit("UPG_EDIT_USER", oUser, "USER_ID");
+return oUser.USER_ID;
 }
 public Int32? Edit_Category ( Int32? CATEGORY_ID, string NAME, string DESCRIPTION, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID)
 {
@@ -8250,13 +8257,6 @@ Person oPerson = new Person();
 oPerson.PERSON_ID = PERSON_ID;oPerson.FIRST_NAME = FIRST_NAME;oPerson.LAST_NAME = LAST_NAME;oPerson.FATHER_NAME = FATHER_NAME;oPerson.MOTHER_NAME = MOTHER_NAME;oPerson.TITLE_CODE = TITLE_CODE;oPerson.GENDER_CODE = GENDER_CODE;oPerson.RELIGION_CODE = RELIGION_CODE;oPerson.BIRTH_DATE = BIRTH_DATE;oPerson.IS_BLOCKED = IS_BLOCKED;oPerson.DESCRIPTION = DESCRIPTION;oPerson.OWNER_ID = OWNER_ID;oPerson.ENTRY_USER_ID = ENTRY_USER_ID;oPerson.ENTRY_DATE = ENTRY_DATE;
 ExecuteEdit("UPG_EDIT_PERSON", oPerson, "PERSON_ID");
 return oPerson.PERSON_ID;
-}
-public long? Edit_User ( long? USER_ID, Int32? OWNER_ID, string USERNAME, string PASSWORD, Int32? USER_TYPE_CODE_ID, bool? IS_ACTIVE, string ENTRY_DATE)
-{
-User oUser = new User();
-oUser.USER_ID = USER_ID;oUser.OWNER_ID = OWNER_ID;oUser.USERNAME = USERNAME;oUser.PASSWORD = PASSWORD;oUser.USER_TYPE_CODE_ID = USER_TYPE_CODE_ID;oUser.IS_ACTIVE = IS_ACTIVE;oUser.ENTRY_DATE = ENTRY_DATE;
-ExecuteEdit("UPG_EDIT_USER", oUser, "USER_ID");
-return oUser.USER_ID;
 }
 public Int32? Edit_Owner ( Int32? OWNER_ID, string CODE, string MAINTENANCE_DUE_DATE, string DESCRIPTION, string ENTRY_DATE)
 {
@@ -8545,7 +8545,7 @@ p.JSON_CONTENT = JSON_CONTENT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_STUDENT", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.STUDENT_ID = GV<Int32>(X["STUDENT_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.FIRST_NAME = GV<String>(X["FIRST_NAME"]);o.LAST_NAME = GV<String>(X["LAST_NAME"]);o.USER_TYPE_CODE_ID = GV<Int32>(X["USER_TYPE_CODE_ID"]);o.DOB = GV<String>(X["DOB"]);o.EMAIL = GV<String>(X["EMAIL"]);o.IS_BLOCKED = GV<Boolean>(X["IS_BLOCKED"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);
+o.STUDENT_ID = GV<Int32>(X["STUDENT_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.USER_TYPE_CODE_ID = GV<Int32>(X["USER_TYPE_CODE_ID"]);o.IS_BLOCKED = GV<Boolean>(X["IS_BLOCKED"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.DESCRIPTION = GV<String>(X["DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -8573,7 +8573,7 @@ p.JSON_CONTENT = JSON_CONTENT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_TEACHER", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.TEACHER_ID = GV<Int32>(X["TEACHER_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.FIRST_NAME = GV<String>(X["FIRST_NAME"]);o.LAST_NAME = GV<String>(X["LAST_NAME"]);o.IS_VALID = GV<Boolean>(X["IS_VALID"]);o.EMAIL = GV<String>(X["EMAIL"]);o.MOBILE = GV<String>(X["MOBILE"]);o.USER_TYPE_CODE_ID = GV<Int32>(X["USER_TYPE_CODE_ID"]);o.SCORE = GV<Int32>(X["SCORE"]);o.IS_BLOCKED = GV<Boolean>(X["IS_BLOCKED"]);o.CATEGORY_ID = GV<Int32>(X["CATEGORY_ID"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);
+o.TEACHER_ID = GV<Int32>(X["TEACHER_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.IS_VALID = GV<Boolean>(X["IS_VALID"]);o.USER_TYPE_CODE_ID = GV<Int32>(X["USER_TYPE_CODE_ID"]);o.SCORE = GV<Int32>(X["SCORE"]);o.IS_BLOCKED = GV<Boolean>(X["IS_BLOCKED"]);o.CATEGORY_ID = GV<Int32>(X["CATEGORY_ID"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.DESCRIPTION = GV<String>(X["DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -8629,7 +8629,7 @@ p.JSON_CONTENT = JSON_CONTENT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_USER", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.USER_TYPE_CODE_ID = GV<Int32>(X["USER_TYPE_CODE_ID"]);o.IS_ACTIVE = GV<Boolean>(X["IS_ACTIVE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
+o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.EMAIL = GV<String>(X["EMAIL"]);o.FIRST_NAME = GV<String>(X["FIRST_NAME"]);o.LAST_NAME = GV<String>(X["LAST_NAME"]);o.MOBILE = GV<String>(X["MOBILE"]);o.DOB = GV<String>(X["DOB"]);o.USER_TYPE_CODE_ID = GV<Int32>(X["USER_TYPE_CODE_ID"]);o.IS_ACTIVE = GV<Boolean>(X["IS_ACTIVE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -8812,34 +8812,6 @@ oList.Add(o);
 }
 return oList;
 }
-public List<dynamic> UP_Get_Student_By_Email ( string EMAIL)
-{
-List<dynamic> oList = new List<dynamic>();
-dynamic p = new ExpandoObject();
-p.EMAIL = EMAIL;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_Get_Student_By_Email", p);
-if (R != null) {foreach (var X in R) {
-dynamic o = new ExpandoObject();
-o.STUDENT_ID = GV<Int32>(X["STUDENT_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.FIRST_NAME = GV<String>(X["FIRST_NAME"]);o.LAST_NAME = GV<String>(X["LAST_NAME"]);o.USER_TYPE_CODE_ID = GV<Int32>(X["USER_TYPE_CODE_ID"]);o.DOB = GV<String>(X["DOB"]);o.EMAIL = GV<String>(X["EMAIL"]);o.IS_BLOCKED = GV<Boolean>(X["IS_BLOCKED"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.FTS = GV<String>(X["FTS"]);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<dynamic> UP_Get_Teacher_By_Email ( string EMAIL)
-{
-List<dynamic> oList = new List<dynamic>();
-dynamic p = new ExpandoObject();
-p.EMAIL = EMAIL;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_Get_Teacher_By_Email", p);
-if (R != null) {foreach (var X in R) {
-dynamic o = new ExpandoObject();
-o.TEACHER_ID = GV<Int32>(X["TEACHER_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.FIRST_NAME = GV<String>(X["FIRST_NAME"]);o.LAST_NAME = GV<String>(X["LAST_NAME"]);o.IS_VALID = GV<Boolean>(X["IS_VALID"]);o.EMAIL = GV<String>(X["EMAIL"]);o.MOBILE = GV<String>(X["MOBILE"]);o.USER_TYPE_CODE_ID = GV<Int32>(X["USER_TYPE_CODE_ID"]);o.SCORE = GV<Int32>(X["SCORE"]);o.IS_BLOCKED = GV<Boolean>(X["IS_BLOCKED"]);o.CATEGORY_ID = GV<Int32>(X["CATEGORY_ID"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.FTS = GV<String>(X["FTS"]);
-oList.Add(o);
-}
-}
-return oList;
-}
 public List<dynamic> UP_GET_USER_BY_CREDENTIALS ( Int32? OWNER_ID, string USERNAME, string PASSWORD)
 {
 List<dynamic> oList = new List<dynamic>();
@@ -8849,6 +8821,20 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_GET_USER_BY_CREDENTIALS", p)
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
 o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<dynamic> UP_Get_User_By_Email ( string EMAIL)
+{
+List<dynamic> oList = new List<dynamic>();
+dynamic p = new ExpandoObject();
+p.EMAIL = EMAIL;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_Get_User_By_Email", p);
+if (R != null) {foreach (var X in R) {
+dynamic o = new ExpandoObject();
+o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.EMAIL = GV<String>(X["EMAIL"]);o.FIRST_NAME = GV<String>(X["FIRST_NAME"]);o.LAST_NAME = GV<String>(X["LAST_NAME"]);o.MOBILE = GV<String>(X["MOBILE"]);o.DOB = GV<String>(X["DOB"]);o.USER_TYPE_CODE_ID = GV<Int32>(X["USER_TYPE_CODE_ID"]);o.IS_ACTIVE = GV<Boolean>(X["IS_ACTIVE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.FTS = GV<String>(X["FTS"]);
 oList.Add(o);
 }
 }
