@@ -74,13 +74,25 @@ namespace UnitTesting
             //Console.WriteLine(oQuestion.DESCRIPTION);
 
 
-            List<long?> numberList = new List<long?> {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            Params_Get_Teacher_By_USER_ID_List oParams_Get_Teacher_By_USER_ID_List = new Params_Get_Teacher_By_USER_ID_List();
-            oParams_Get_Teacher_By_USER_ID_List.USER_ID_LIST = numberList;
-            Console.WriteLine(oParams_Get_Teacher_By_USER_ID_List);
-            List<Teacher> oListTeacher = new List<Teacher> { };
-            oListTeacher = oBLC.Get_Teacher_By_USER_ID_List(oParams_Get_Teacher_By_USER_ID_List);
-            Console.WriteLine(oListTeacher);
+            //List<long?> numberList = new List<long?> {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            //Params_Get_Teacher_By_USER_ID_List oParams_Get_Teacher_By_USER_ID_List = new Params_Get_Teacher_By_USER_ID_List();
+            //oParams_Get_Teacher_By_USER_ID_List.USER_ID_LIST = numberList;
+            //Console.WriteLine(oParams_Get_Teacher_By_USER_ID_List);
+            //List<Teacher> oListTeacher = new List<Teacher> { };
+            //oListTeacher = oBLC.Get_Teacher_By_USER_ID_List(oParams_Get_Teacher_By_USER_ID_List);
+            //Console.WriteLine(oListTeacher);
+
+
+            List<TopTeachers> oListTopTeachers = new List<TopTeachers> { };
+            Params_Get_Top_N_Teachers oParams_Get_Top_N_Teachers = new Params_Get_Top_N_Teachers();
+            oParams_Get_Top_N_Teachers.NUMBER_OF_TEACHERS = 3;
+            oListTopTeachers = oBLC.GetTopNTeachers(oParams_Get_Top_N_Teachers);
+            Console.WriteLine(oListTopTeachers);
+            Console.WriteLine(oListTopTeachers);
+
+
+
+
             //oQuestion.DESCRIPTION = "new desc5";
             //oBLC.Edit_Question(oQuestion);
 
@@ -94,12 +106,16 @@ namespace UnitTesting
             //oBLC.Edit_Student(oStudent);
             //Console.WriteLine("done");
 
-            Params_Authenticate oParams_Authenticate = new Params_Authenticate();
-            oParams_Authenticate.EMAIL = "email3@gmail.com";
-            oParams_Authenticate.PASSWORD = "malek";
 
-            var result = oBLC.Authenticate(oParams_Authenticate);
-            Console.WriteLine(result);
+
+            //Authinticate
+
+            //Params_Authenticate oParams_Authenticate = new Params_Authenticate();
+            //oParams_Authenticate.EMAIL = "email3@gmail.com";
+            //oParams_Authenticate.PASSWORD = "malek";
+
+            //var result = oBLC.Authenticate(oParams_Authenticate);
+            //Console.WriteLine(result);
 
 
 

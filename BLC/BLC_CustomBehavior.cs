@@ -184,8 +184,8 @@ namespace BLC
         #endregion
 
 
-
-        public User Authenticate(Params_Authenticate i_Params_Authenticate)
+        
+            public User Authenticate(Params_Authenticate i_Params_Authenticate)
         {
             #region declaration
             
@@ -236,6 +236,28 @@ namespace BLC
 
         #endregion
 
+        #region GET_TOP_N_TEACHERS
+        public List<TopTeachers> GetTopNTeachers(Params_Get_Top_N_Teachers i_Params_GetTopNTeachers)
+        {
+            #region declaration
+            List<TopTeachers> oTopTeachers = new List<TopTeachers> { };
+            #endregion
+            List<dynamic> oList = _AppContext.UP_GET_TOP_N_TEACHERS(i_Params_GetTopNTeachers.NUMBER_OF_TEACHERS);
+            if ((oList != null) && (oList.Count > 0))
+            {
+
+                foreach (var X in oList)
+                {
+                    TopTeachers o = new TopTeachers();
+                    oTools.CopyPropValues(X, o);
+                    oTopTeachers.Add(o);
+                }
+
+            }
+            return oTopTeachers;
+        }
+        #endregion
+
     }
 
 
@@ -276,6 +298,26 @@ namespace BLC
         public string myTicket { get; set; }
     }
     #endregion
+    #region get top teachers class
+    public partial class TopTeachers
+    {
+        public string FIRST_NAME { get; set; }
+        public string LAST_NAME { get; set; }
+        public string EMAIL { get; set; }
+        public string MOBILE { get; set; }
+        public string DOB { get; set; }
+        public Int32 TEACHER_ID { get; set; }
+
+        public Int32 CATEGORY_ID { get; set; }
+        public Int64 USER_ID { get; set; }
+        
+
+    }
+    #endregion
+    public class Params_Get_Top_N_Teachers
+    {
+        public int NUMBER_OF_TEACHERS { get; set; }
+    }
     public class Params_Authenticate
     {
         #region Properties

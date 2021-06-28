@@ -1478,11 +1478,7 @@ throw new Exception("Invalid Ticket");
 //-------------------
 
 BLC.BLC oBLC_Default = new BLC.BLC();
-BLCInitializer oBLCInitializer = new BLCInitializer();
-oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
-oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
-oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
-oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.Get_Teacher_By_USER_ID_List);
 using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
 {
 oReturnValue = oBLC.Get_Teacher_By_USER_ID_List(i_Params_Get_Teacher_By_USER_ID_List);
@@ -1690,6 +1686,72 @@ oResult_Get_User_By_USER_ID_Adv.ExceptionMsg = ex.Message;
 #endregion
 #region Return Section
 return oResult_Get_User_By_USER_ID_Adv;
+#endregion
+}
+#endregion
+#region GetTopNTeachers
+[HttpPost]
+[Route("GetTopNTeachers")]
+public Result_GetTopNTeachers GetTopNTeachers(Params_Get_Top_N_Teachers i_Params_GetTopNTeachers)
+{
+#region Declaration And Initialization Section.
+List<TopTeachers>  oReturnValue = new List<TopTeachers> ();
+string i_Ticket = string.Empty;
+Result_GetTopNTeachers oResult_GetTopNTeachers = new Result_GetTopNTeachers();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.GetTopNTeachers(i_Params_GetTopNTeachers);
+oResult_GetTopNTeachers.My_Result = oReturnValue;
+oResult_GetTopNTeachers.My_Params_GetTopNTeachers = i_Params_GetTopNTeachers;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_GetTopNTeachers.ExceptionMsg = string.Format("GetTopNTeachers : {0}", ex.Message);
+}
+else
+{
+oResult_GetTopNTeachers.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_GetTopNTeachers;
 #endregion
 }
 #endregion
@@ -1945,6 +2007,15 @@ public partial class Result_Get_User_By_USER_ID_Adv : Action_Result
 #region Properties.
 public User My_Result { get; set; }
 public Params_Get_User_By_USER_ID My_Params_Get_User_By_USER_ID { get; set; }
+#endregion
+}
+#endregion
+#region Result_GetTopNTeachers
+public partial class Result_GetTopNTeachers : Action_Result
+{
+#region Properties.
+public List<TopTeachers>  My_Result { get; set; }
+public Params_Get_Top_N_Teachers My_Params_GetTopNTeachers { get; set; }
 #endregion
 }
 #endregion

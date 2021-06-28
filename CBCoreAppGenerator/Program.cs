@@ -257,6 +257,9 @@ namespace CodeGenerator
             oCodeBooster.APIMethodsSelection.Add("Delete_User");
             oCodeBooster.APIMethodsSelection.Add("Edit_User");
             oCodeBooster.APIMethodsSelection.Add("Authenticate");
+            oCodeBooster.APIMethodsSelection.Add("GetTopNTeachers");
+
+
             //----------------------------
 
             #endregion
