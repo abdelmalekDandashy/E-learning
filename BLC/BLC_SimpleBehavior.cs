@@ -9363,6 +9363,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_By_USER_TYPE_C
 }
 public void Delete_User_By_EMAIL(Params_Delete_User_By_EMAIL i_Params_Delete_User_By_EMAIL)
 {
+Params_Get_User_By_EMAIL oParams_Get_User_By_EMAIL = new Params_Get_User_By_EMAIL();
+List<User> _List_User = new List<User>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_By_EMAIL");}
 #region Body Section.
 try

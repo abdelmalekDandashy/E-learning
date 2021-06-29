@@ -205,6 +205,11 @@ namespace BLC
                     oUser.FIRST_NAME = oList[0].FIRST_NAME;
                     oUser.LAST_NAME = oList[0].LAST_NAME;
                     oUser.DOB = oList[0].DOB;
+                    oUser.STUDENT_ID = oList[0].STUDENT_ID;
+                    oUser.TEACHER_ID = oList[0].TEACHER_ID;
+                    oUser.USER_TYPE_CODE_ID = oList[0].USER_TYPE_CODE_ID;
+
+
                     //oUser.My_User_type_code = oList[0].My_User_type_code;
 
                     var MinutesEplapsedSinceMidnight = (long?)(DateTime.Now - DateTime.Today).TotalMinutes;
@@ -296,6 +301,8 @@ namespace BLC
     public partial class User
     {
         public string myTicket { get; set; }
+        public int STUDENT_ID { get; set; }
+        public int TEACHER_ID { get; set; }
     }
     #endregion
     #region get top teachers class

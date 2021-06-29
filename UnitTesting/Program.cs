@@ -83,12 +83,12 @@ namespace UnitTesting
             //Console.WriteLine(oListTeacher);
 
 
-            List<TopTeachers> oListTopTeachers = new List<TopTeachers> { };
-            Params_Get_Top_N_Teachers oParams_Get_Top_N_Teachers = new Params_Get_Top_N_Teachers();
-            oParams_Get_Top_N_Teachers.NUMBER_OF_TEACHERS = 3;
-            oListTopTeachers = oBLC.GetTopNTeachers(oParams_Get_Top_N_Teachers);
-            Console.WriteLine(oListTopTeachers);
-            Console.WriteLine(oListTopTeachers);
+            //List<TopTeachers> oListTopTeachers = new List<TopTeachers> { };
+            //Params_Get_Top_N_Teachers oParams_Get_Top_N_Teachers = new Params_Get_Top_N_Teachers();
+            //oParams_Get_Top_N_Teachers.NUMBER_OF_TEACHERS = 3;
+            //oListTopTeachers = oBLC.GetTopNTeachers(oParams_Get_Top_N_Teachers);
+            //Console.WriteLine(oListTopTeachers);
+            //Console.WriteLine(oListTopTeachers);
 
 
 
@@ -110,12 +110,13 @@ namespace UnitTesting
 
             //Authinticate
 
-            //Params_Authenticate oParams_Authenticate = new Params_Authenticate();
-            //oParams_Authenticate.EMAIL = "email3@gmail.com";
-            //oParams_Authenticate.PASSWORD = "malek";
+            Params_Authenticate oParams_Authenticate = new Params_Authenticate();
+            oParams_Authenticate.EMAIL = "email8@gmail.com";
+            oParams_Authenticate.PASSWORD = "1";
 
-            //var result = oBLC.Authenticate(oParams_Authenticate);
-            //Console.WriteLine(result);
+            var result = oBLC.Authenticate(oParams_Authenticate);
+            Console.WriteLine(result);
+            Console.WriteLine(result);
 
 
 
