@@ -220,6 +220,7 @@ namespace CodeGenerator
             //oCodeBooster.APIMethodsSelection.Add("Authenticate");
 
             oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_OWNER_ID");
+            oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_OWNER_ID_Adv");
             oCodeBooster.APIMethodsSelection.Add("Edit_Answer");
             oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_Criteria");
             oCodeBooster.APIMethodsSelection.Add("Delete_Answer");
