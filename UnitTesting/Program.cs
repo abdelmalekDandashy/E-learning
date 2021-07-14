@@ -82,11 +82,11 @@ namespace UnitTesting
             //oListTeacher = oBLC.Get_Teacher_By_USER_ID_List(oParams_Get_Teacher_By_USER_ID_List);
             //Console.WriteLine(oListTeacher);
 
-            List<Answer> oList = new List<Answer> { };
-            Params_Get_Answer_By_QUESTION_ID oParams_Get_Answer_By_QUESTION_ID = new Params_Get_Answer_By_QUESTION_ID();
-            oParams_Get_Answer_By_QUESTION_ID.QUESTION_ID = 4;
+            List<AnswerDetails> oList = new List<AnswerDetails> { };
+            Params_UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID OParams_UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID = new Params_UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID();
+            OParams_UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID.QUESTION_ID = 29;
 
-            var oResult = oBLC.Get_Answer_By_QUESTION_ID_Adv(oParams_Get_Answer_By_QUESTION_ID);
+            var oResult = oBLC.GET_ANSWER_DETAILS(OParams_UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID);
             Console.WriteLine(oResult);
             var jsonString = JsonConvert.SerializeObject(oResult);
             Console.WriteLine(jsonString);

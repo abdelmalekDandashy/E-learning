@@ -263,6 +263,38 @@ namespace BLC
         }
         #endregion
 
+
+
+
+
+
+
+
+
+
+        //////////
+
+        #region GET_ANSWER_DETAILS
+        public List<AnswerDetails> GET_ANSWER_DETAILS(Params_UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID i_Params_UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID)
+        {
+            #region declaration
+            List<AnswerDetails> oAnswerDetails = new List<AnswerDetails> { };
+            #endregion
+            List<dynamic> oList = _AppContext.UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID(i_Params_UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID.QUESTION_ID);
+            if ((oList != null) && (oList.Count > 0))
+            {
+                foreach (var X in oList)
+                {
+                    AnswerDetails o = new AnswerDetails();
+                    oTools.CopyPropValues(X, o);
+                    oAnswerDetails.Add(o);
+                }
+
+            }
+            return oAnswerDetails;
+        }
+        #endregion
+
     }
 
 
@@ -303,6 +335,27 @@ namespace BLC
         public string myTicket { get; set; }
         public int STUDENT_ID { get; set; }
         public int TEACHER_ID { get; set; }
+    }    
+    public partial class AnswerDetails
+    {
+        public string QUESTION_ID { get; set; }
+        public int TEACHER_ID { get; set; }
+        public string ANSWER { get; set; }
+        public int STUDENT_ID { get; set; }
+        public string QUESTION { get; set; }
+        public int CATEGORY_ID { get; set; }
+        public string STUDENT_FIRST_NAME { get; set; }
+        public string STUDENT_LAST_NAME { get; set; }
+        public string TEACHTER_F_NAME { get; set; }
+        public string TEACHER_L_NAME { get; set; }
+        public string TEACHTER_L_NAME { get; set; }
+        public int ANSWER_ID { get; set; }
+        public int USER_ID { get; set; }
+
+
+
+
+
     }
     #endregion
     #region get top teachers class
@@ -324,7 +377,11 @@ namespace BLC
     public class Params_Get_Top_N_Teachers
     {
         public int NUMBER_OF_TEACHERS { get; set; }
+    }    public class Params_UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID
+    {
+        public int QUESTION_ID { get; set; }
     }
+
     public class Params_Authenticate
     {
         #region Properties

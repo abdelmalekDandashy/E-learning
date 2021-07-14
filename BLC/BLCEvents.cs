@@ -15,6 +15,8 @@ public partial class BLC
 public enum Enum_API_Method
 {
 Get_Answer_By_OWNER_ID,
+Get_Answer_By_OWNER_ID_Adv,
+Get_Answer_By_QUESTION_ID_Adv,
 Edit_Answer,
 Get_Answer_By_Criteria,
 Delete_Answer,
@@ -97,13 +99,13 @@ public  delegate void PreEvent_Handler_Edit_Teacher(Teacher i_Teacher,Enum_EditM
 public  delegate void  PostEvent_Handler_Edit_Teacher(Teacher i_Teacher,Enum_EditMode i_Enum_EditMode);
 public event PreEvent_Handler_Edit_Teacher OnPreEvent_Edit_Teacher;
 public event PostEvent_Handler_Edit_Teacher OnPostEvent_Edit_Teacher;
-public  delegate void PreEvent_Handler_Edit_User(User i_User,Enum_EditMode i_Enum_EditMode);
-public  delegate void  PostEvent_Handler_Edit_User(User i_User,Enum_EditMode i_Enum_EditMode);
-public event PreEvent_Handler_Edit_User OnPreEvent_Edit_User;
-public event PostEvent_Handler_Edit_User OnPostEvent_Edit_User;
 public  delegate void PreEvent_Handler_Edit_Answer(Answer i_Answer,Enum_EditMode i_Enum_EditMode);
 public  delegate void  PostEvent_Handler_Edit_Answer(Answer i_Answer,Enum_EditMode i_Enum_EditMode);
 public event PreEvent_Handler_Edit_Answer OnPreEvent_Edit_Answer;
 public event PostEvent_Handler_Edit_Answer OnPostEvent_Edit_Answer;
+public  delegate void PreEvent_Handler_Edit_User(User i_User,Enum_EditMode i_Enum_EditMode);
+public  delegate void  PostEvent_Handler_Edit_User(User i_User,Enum_EditMode i_Enum_EditMode);
+public event PreEvent_Handler_Edit_User OnPreEvent_Edit_User;
+public event PostEvent_Handler_Edit_User OnPostEvent_Edit_User;
 }
 }
