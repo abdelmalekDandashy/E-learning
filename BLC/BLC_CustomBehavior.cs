@@ -275,12 +275,12 @@ namespace BLC
         //////////
 
         #region GET_ANSWER_DETAILS
-        public List<AnswerDetails> GET_ANSWER_DETAILS(Params_UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID i_Params_UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID)
+        public List<AnswerDetails> Get_Answer_Details(Params_Get_Answer_Details i_Params_Get_Answer_Details)
         {
             #region declaration
             List<AnswerDetails> oAnswerDetails = new List<AnswerDetails> { };
             #endregion
-            List<dynamic> oList = _AppContext.UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID(i_Params_UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID.QUESTION_ID);
+            List<dynamic> oList = _AppContext.UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID(i_Params_Get_Answer_Details.QUESTION_ID);
             if ((oList != null) && (oList.Count > 0))
             {
                 foreach (var X in oList)
@@ -347,7 +347,6 @@ namespace BLC
         public string STUDENT_FIRST_NAME { get; set; }
         public string STUDENT_LAST_NAME { get; set; }
         public string TEACHTER_F_NAME { get; set; }
-        public string TEACHER_L_NAME { get; set; }
         public string TEACHTER_L_NAME { get; set; }
         public int ANSWER_ID { get; set; }
         public int USER_ID { get; set; }
@@ -377,7 +376,7 @@ namespace BLC
     public class Params_Get_Top_N_Teachers
     {
         public int NUMBER_OF_TEACHERS { get; set; }
-    }    public class Params_UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID
+    }    public class Params_Get_Answer_Details
     {
         public int QUESTION_ID { get; set; }
     }

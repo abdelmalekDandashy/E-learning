@@ -734,11 +734,7 @@ throw new Exception("Invalid Ticket");
 //-------------------
 
 BLC.BLC oBLC_Default = new BLC.BLC();
-BLCInitializer oBLCInitializer = new BLCInitializer();
-oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
-oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
-oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
-oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.Get_Answer_By_OWNER_ID_Adv);
 using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
 {
 oReturnValue = oBLC.Get_Answer_By_OWNER_ID_Adv(i_Params_Get_Answer_By_OWNER_ID);
@@ -800,11 +796,7 @@ throw new Exception("Invalid Ticket");
 //-------------------
 
 BLC.BLC oBLC_Default = new BLC.BLC();
-BLCInitializer oBLCInitializer = new BLCInitializer();
-oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
-oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
-oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
-oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.Get_Answer_By_QUESTION_ID_Adv);
 using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
 {
 oReturnValue = oBLC.Get_Answer_By_QUESTION_ID_Adv(i_Params_Get_Answer_By_QUESTION_ID);
@@ -888,6 +880,72 @@ oResult_Get_Answer_By_STUDENT_ID_List.ExceptionMsg = ex.Message;
 #endregion
 #region Return Section
 return oResult_Get_Answer_By_STUDENT_ID_List;
+#endregion
+}
+#endregion
+#region Get_Answer_Details
+[HttpPost]
+[Route("Get_Answer_Details")]
+public Result_Get_Answer_Details Get_Answer_Details(Params_Get_Answer_Details i_Params_Get_Answer_Details)
+{
+#region Declaration And Initialization Section.
+List<AnswerDetails>  oReturnValue = new List<AnswerDetails> ();
+string i_Ticket = string.Empty;
+Result_Get_Answer_Details oResult_Get_Answer_Details = new Result_Get_Answer_Details();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_Answer_Details(i_Params_Get_Answer_Details);
+oResult_Get_Answer_Details.My_Result = oReturnValue;
+oResult_Get_Answer_Details.My_Params_Get_Answer_Details = i_Params_Get_Answer_Details;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_Answer_Details.ExceptionMsg = string.Format("Get_Answer_Details : {0}", ex.Message);
+}
+else
+{
+oResult_Get_Answer_Details.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_Answer_Details;
 #endregion
 }
 #endregion
@@ -2018,6 +2076,15 @@ public partial class Result_Get_Answer_By_STUDENT_ID_List : Action_Result
 #region Properties.
 public List<Answer>  My_Result { get; set; }
 public Params_Get_Answer_By_STUDENT_ID_List My_Params_Get_Answer_By_STUDENT_ID_List { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_Answer_Details
+public partial class Result_Get_Answer_Details : Action_Result
+{
+#region Properties.
+public List<AnswerDetails>  My_Result { get; set; }
+public Params_Get_Answer_Details My_Params_Get_Answer_Details { get; set; }
 #endregion
 }
 #endregion

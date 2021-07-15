@@ -225,6 +225,7 @@ namespace CodeGenerator
             oCodeBooster.APIMethodsSelection.Add("Edit_Answer");
             oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_Criteria");
             oCodeBooster.APIMethodsSelection.Add("Delete_Answer");
+            oCodeBooster.APIMethodsSelection.Add("Get_Answer_Details");
 
 
             
