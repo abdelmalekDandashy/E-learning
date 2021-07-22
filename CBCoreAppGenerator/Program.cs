@@ -89,6 +89,7 @@ namespace CodeGenerator
             oCodeBooster.Methods_With_Events.Add("Edit_Student");
             oCodeBooster.Methods_With_Events.Add("Edit_Teacher");
             oCodeBooster.Methods_With_Events.Add("Edit_User");
+            oCodeBooster.Methods_With_Events.Add("Get_Question_By_OWNER_ID");
 
             #endregion
             #region Excluding Tables From 12M Hanlder

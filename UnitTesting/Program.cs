@@ -43,6 +43,17 @@ namespace UnitTesting
             //oBLC.Edit_Question(oQuestion);
             //var jsonString = JsonConvert.SerializeObject(oQuestion);
 
+            Answer oAnswer = new Answer();
+            oTools.SetPropertiesDefaultValue(oAnswer);
+            oAnswer.ANSWER_ID = -1;
+            oAnswer.QUESTION_ID = 12;
+            oAnswer.TEACHER_ID = 7;
+            oAnswer.DESCRIPTION = "answer from blc after event";
+            oAnswer.ENTRY_USER_ID = 1;
+            oBLC.Edit_Answer(oAnswer);
+
+            
+
             //User oUser = new User();
             //oTools.SetPropertiesDefaultValue(oUser);
             //oUser.USER_ID = -1;

@@ -357,6 +357,16 @@ namespace BLC
 
     }
     #endregion
+
+    public partial class Question
+    {
+
+        public Student mystudent { get; set; }
+        public Category mycategory { get; set; }
+
+    }
+
+
     #region get top teachers class
     public partial class TopTeachers
     {

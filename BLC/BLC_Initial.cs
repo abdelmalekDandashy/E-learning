@@ -111,9 +111,50 @@ namespace BLC
             this.OnPreEvent_Edit_User += BLC_OnPreEvent_Edit_User;
             this.OnPreEvent_Edit_Teacher += BLC_OnPreEvent_Edit_Teacher;
             this.OnPreEvent_Edit_Student += BLC_OnPreEvent_Edit_Student;
+
+            this.OnPostEvent_Get_Question_By_OWNER_ID += BLC_OnPostEvent_Get_Question_By_OWNER_ID;
             #endregion
             #region Body Section.
             #endregion
+        }
+
+        private void BLC_OnPostEvent_Get_Question_By_OWNER_ID(List<Question> i_Result, Params_Get_Question_By_OWNER_ID i_Params_Get_Question_By_OWNER_ID)
+        {
+
+
+            if (i_Result != null)
+            {
+
+                foreach (Question item in i_Result)
+                { 
+                   Params_Get_Student_By_STUDENT_ID oParams_Get_Student_By_STUDENT_ID = new Params_Get_Student_By_STUDENT_ID();
+                   oParams_Get_Student_By_STUDENT_ID.STUDENT_ID  = item.STUDENT_ID;
+
+                      var oStudent = this.Get_Student_By_STUDENT_ID_Adv(oParams_Get_Student_By_STUDENT_ID);
+                    item.mystudent = oStudent;
+                } 
+                
+                foreach (Question item in i_Result)
+                { 
+                   Params_Get_Category_By_CATEGORY_ID oParams_Get_Category_By_CATEGORY_ID = new Params_Get_Category_By_CATEGORY_ID();
+                    oParams_Get_Category_By_CATEGORY_ID.CATEGORY_ID  = item.CATEGORY_ID;
+
+                      var oCategory = this.Get_Category_By_CATEGORY_ID_Adv(oParams_Get_Category_By_CATEGORY_ID);
+                    item.mycategory = oCategory;
+                }
+
+
+
+            }
+
+
+            else
+            {
+
+            throw new NotImplementedException();
+
+            }
+           
         }
 
 
@@ -222,7 +263,36 @@ namespace BLC
 
         private void BLC_OnPostEvent_Edit_Answer(Answer i_Answer, Enum_EditMode i_Enum_EditMode)
         {
-            throw new NotImplementedException();
+
+            Params_Get_Question_By_QUESTION_ID oParams_Get_Question_By_QUESTION_ID = new Params_Get_Question_By_QUESTION_ID();
+            oParams_Get_Question_By_QUESTION_ID.QUESTION_ID = i_Answer.QUESTION_ID;
+            var oQuestion = this.Get_Question_By_QUESTION_ID(oParams_Get_Question_By_QUESTION_ID);
+
+            if (oQuestion != null)
+            {
+            oQuestion.IS_ANSWERED = true;
+
+            this.Edit_Question(oQuestion);
+
+            }
+            else
+            {
+
+            throw new Exception("couldnt change question's is_answered to true");
+            }
+            //Question myQuestion = new Question();
+            //oTools.SetPropertiesDefaultValue(oQuestion);
+
+            //oQuestion.QUESTION_ID = i_Answer.QUESTION_ID;
+            //oQuestion.CATEGORY_ID = oQuestion.CATEGORY_ID;
+            //oQuestion.DESCRIPTION = oQuestion.DESCRIPTION;
+            //oQuestion.STUDENT_ID = oQuestion.STUDENT_ID;
+            //oQuestion.IS_ANSWERED = true;
+            //oQuestion.IS_PUBLIC = oQuestion.IS_PUBLIC;
+            //oQuestion.IS_SELF_CLOSED = oQuestion.IS_SELF_CLOSED;
+            //oQuestion.OWNER_ID = oQuestion.OWNER_ID;
+            //oQuestion.ENTRY_USER_ID = oQuestion.ENTRY_USER_ID;
+            //oQuestion.TEACHER_ID = oQuestion.TEACHER_ID;
         }
 
         private void BLC_OnPreEvent_Edit_Student(Student i_Student, Enum_EditMode i_Enum_EditMode)

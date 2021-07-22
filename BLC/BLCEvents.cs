@@ -20,6 +20,7 @@ Get_Answer_By_QUESTION_ID_Adv,
 Edit_Answer,
 Get_Answer_By_Criteria,
 Delete_Answer,
+Get_Answer_Details,
 Get_Answer_By_STUDENT_ID_List,
 Edit_Question,
 Get_Question_By_CATEGORY_ID_List,
@@ -107,5 +108,9 @@ public  delegate void PreEvent_Handler_Edit_User(User i_User,Enum_EditMode i_Enu
 public  delegate void  PostEvent_Handler_Edit_User(User i_User,Enum_EditMode i_Enum_EditMode);
 public event PreEvent_Handler_Edit_User OnPreEvent_Edit_User;
 public event PostEvent_Handler_Edit_User OnPostEvent_Edit_User;
+public  delegate void PreEvent_Handler_Get_Question_By_OWNER_ID(Params_Get_Question_By_OWNER_ID i_Params_Get_Question_By_OWNER_ID);
+public  delegate void  PostEvent_Handler_Get_Question_By_OWNER_ID(List<Question>  i_Result, Params_Get_Question_By_OWNER_ID i_Params_Get_Question_By_OWNER_ID);
+public event PreEvent_Handler_Get_Question_By_OWNER_ID OnPreEvent_Get_Question_By_OWNER_ID;
+public event PostEvent_Handler_Get_Question_By_OWNER_ID OnPostEvent_Get_Question_By_OWNER_ID;
 }
 }
