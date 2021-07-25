@@ -103,6 +103,7 @@ namespace BLC
         public void SubscribeToEvents()
         {
             #region Declaration And Initialization Section.
+            this.OnPostEvent_Edit_User += BLC_OnPostEvent_Edit_User;
             this.OnPostEvent_Edit_Answer += BLC_OnPostEvent_Edit_Answer;
 
             this.OnPostEvent_Edit_Question += BLC_OnPostEvent_Edit_Question;
@@ -116,6 +117,42 @@ namespace BLC
             #endregion
             #region Body Section.
             #endregion
+        }
+
+        private void BLC_OnPostEvent_Edit_User(User i_User, Enum_EditMode i_Enum_EditMode)
+        {   
+
+            
+            Tools.Tools oTools = new Tools.Tools();
+                Teacher i_Teacher = new Teacher();
+                Student i_Student = new Student();
+
+
+            if (i_User.USER_TYPE_CODE_ID == 3)
+            {
+                oTools.SetPropertiesDefaultValue(i_Student);
+
+                i_Student.USER_ID = i_User.USER_ID;
+                i_Student.STUDENT_ID = -1;
+                i_Student.USER_TYPE_CODE_ID = i_User.USER_TYPE_CODE_ID;
+                i_Student.IS_BLOCKED = false;
+                this.Edit_Student(i_Student);
+            }
+             if (i_User.USER_TYPE_CODE_ID == 2)
+            {
+                oTools.SetPropertiesDefaultValue(i_Teacher);
+                i_Teacher.TEACHER_ID = -1;
+                i_Teacher.OWNER_ID = 1;
+                i_Teacher.USER_ID = i_User.USER_ID;
+                i_Teacher.USER_TYPE_CODE_ID = i_User.USER_TYPE_CODE_ID;
+                i_Teacher.IS_BLOCKED = false;
+                i_Teacher.IS_VALID = true;
+                i_Teacher.CATEGORY_ID = i_User.IF_USER_TEACHER_ID;
+
+                this.Edit_Teacher(i_Teacher);
+            }
+
+
         }
 
         private void BLC_OnPostEvent_Get_Question_By_OWNER_ID(List<Question> i_Result, Params_Get_Question_By_OWNER_ID i_Params_Get_Question_By_OWNER_ID)
@@ -297,12 +334,10 @@ namespace BLC
 
         private void BLC_OnPreEvent_Edit_Student(Student i_Student, Enum_EditMode i_Enum_EditMode)
         {
-            throw new NotImplementedException();
         }
 
         private void BLC_OnPreEvent_Edit_Teacher(Teacher i_Teacher, Enum_EditMode i_Enum_EditMode)
         {
-            throw new NotImplementedException();
         }
 
         private void BLC_OnPreEvent_Edit_User(User i_User, Enum_EditMode i_Enum_EditMode)

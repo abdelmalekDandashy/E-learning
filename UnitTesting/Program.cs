@@ -43,29 +43,33 @@ namespace UnitTesting
             //oBLC.Edit_Question(oQuestion);
             //var jsonString = JsonConvert.SerializeObject(oQuestion);
 
-            Answer oAnswer = new Answer();
-            oTools.SetPropertiesDefaultValue(oAnswer);
-            oAnswer.ANSWER_ID = -1;
-            oAnswer.QUESTION_ID = 12;
-            oAnswer.TEACHER_ID = 7;
-            oAnswer.DESCRIPTION = "answer from blc after event";
-            oAnswer.ENTRY_USER_ID = 1;
-            oBLC.Edit_Answer(oAnswer);
+            //Answer oAnswer = new Answer();
+            //oTools.SetPropertiesDefaultValue(oAnswer);
+            //oAnswer.ANSWER_ID = -1;
+            //oAnswer.QUESTION_ID = 12;
+            //oAnswer.TEACHER_ID = 7;
+            //oAnswer.DESCRIPTION = "answer from blc after event";
+            //oAnswer.ENTRY_USER_ID = 1;
+            //oBLC.Edit_Answer(oAnswer);
 
-            
 
-            //User oUser = new User();
-            //oTools.SetPropertiesDefaultValue(oUser);
-            //oUser.USER_ID = -1;
-            //oUser.OWNER_ID = 1;
-            //oUser.IS_ACTIVE = true;
-            //oUser.USERNAME = "rafik";
-            //oUser.PASSWORD = "asadhkajshdk";
-            //oUser.USER_TYPE_CODE_ID = 2;
-            ////oBLC.Edit_User(oUser);
-            //var jsonString = JsonConvert.SerializeObject(oUser);
-            //Console.WriteLine(jsonString);
-            //Console.WriteLine("user added");
+
+            User oUser = new User();
+            oTools.SetPropertiesDefaultValue(oUser);
+            oUser.USER_ID = -1;
+            oUser.OWNER_ID = 1;
+            oUser.IS_ACTIVE = true;
+            oUser.USERNAME = "kajsdASD12314";      //1
+            oUser.PASSWORD = "alkjsdklKAJDKL232@";  //2
+            oUser.EMAIL = "test post event add user"; //3
+             oUser.MOBILE = "70707070";   //4
+            oUser.DOB = "1990-05-31";  //5
+            oUser.USER_TYPE_CODE_ID = 3;  // boolean
+            oUser.IS_ACTIVE = true;  
+            oBLC.Edit_User(oUser);
+            var jsonString = JsonConvert.SerializeObject(oUser);
+            Console.WriteLine(jsonString);
+            Console.WriteLine("user added");
 
 
             //List<dynamic> oTeachers = null;
@@ -99,8 +103,6 @@ namespace UnitTesting
 
             var oResult = oBLC.Get_Answer_Details(oParams_Get_Answer_Details);
             Console.WriteLine(oResult);
-            var jsonString = JsonConvert.SerializeObject(oResult);
-            Console.WriteLine(jsonString);
             Console.WriteLine(jsonString);
 
 

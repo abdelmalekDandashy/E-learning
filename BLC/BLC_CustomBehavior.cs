@@ -335,6 +335,7 @@ namespace BLC
         public string myTicket { get; set; }
         public int STUDENT_ID { get; set; }
         public int TEACHER_ID { get; set; }
+        public int IF_USER_TEACHER_ID { get; set; }
     }    
     public partial class AnswerDetails
     {
