@@ -10,7 +10,7 @@ namespace UnitTesting
     {
         static void Main(string[] args)
         {
-
+            
             #region Declaration And Initialization Section.
             string _ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
             BLC.BLCInitializer oBLCInitializer = new BLC.BLCInitializer();
@@ -138,6 +138,7 @@ namespace UnitTesting
             oParams_Authenticate.PASSWORD = "1";
 
             var result = oBLC.Authenticate(oParams_Authenticate);
+            //Console.WriteLine(result);
             Console.WriteLine(result);
             Console.WriteLine(result);
 
