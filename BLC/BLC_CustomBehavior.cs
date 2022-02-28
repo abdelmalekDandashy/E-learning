@@ -186,58 +186,58 @@ namespace BLC
 
         
             public User Authenticate(Params_Authenticate i_Params_Authenticate)
-        {
-            #region declaration
+            {
+                #region declaration
             
-            User oUser = new User();
-            #endregion
+                User oUser = new User();
+                #endregion
 
-            List<dynamic> oList = _AppContext.UP_Get_User_By_Email(i_Params_Authenticate.EMAIL);
-            if ((oList != null) && (oList.Count > 0))
-            {   
-                if (i_Params_Authenticate.PASSWORD == oList[0].PASSWORD)
-                {
-                    oUser.USER_ID = oList[0].USER_ID;
-                    oUser.OWNER_ID = oList[0].OWNER_ID;
-                    oUser.USERNAME = oList[0].USERNAME;
-                    oUser.EMAIL = oList[0].EMAIL;
-                    oUser.MOBILE = oList[0].MOBILE;
-                    oUser.FIRST_NAME = oList[0].FIRST_NAME;
-                    oUser.LAST_NAME = oList[0].LAST_NAME;
-                    oUser.DOB = oList[0].DOB;
-                    oUser.STUDENT_ID = oList[0].STUDENT_ID;
-                    oUser.TEACHER_ID = oList[0].TEACHER_ID;
-                    oUser.USER_TYPE_CODE_ID = oList[0].USER_TYPE_CODE_ID;
+                List<dynamic> oList = _AppContext.UP_Get_User_By_Email(i_Params_Authenticate.EMAIL);
+                if ((oList != null) && (oList.Count > 0))
+                {   
+                    if (i_Params_Authenticate.PASSWORD == oList[0].PASSWORD)
+                    {
+                        oUser.USER_ID = oList[0].USER_ID;
+                        oUser.OWNER_ID = oList[0].OWNER_ID;
+                        oUser.USERNAME = oList[0].USERNAME;
+                        oUser.EMAIL = oList[0].EMAIL;
+                        oUser.MOBILE = oList[0].MOBILE;
+                        oUser.FIRST_NAME = oList[0].FIRST_NAME;
+                        oUser.LAST_NAME = oList[0].LAST_NAME;
+                        oUser.DOB = oList[0].DOB;
+                        oUser.STUDENT_ID = oList[0].STUDENT_ID;
+                        oUser.TEACHER_ID = oList[0].TEACHER_ID;
+                        oUser.USER_TYPE_CODE_ID = oList[0].USER_TYPE_CODE_ID;
 
 
-                    //oUser.My_User_type_code = oList[0].My_User_type_code;
+                        //oUser.My_User_type_code = oList[0].My_User_type_code;
 
-                    var MinutesEplapsedSinceMidnight = (long?)(DateTime.Now - DateTime.Today).TotalMinutes;
-                    var TicketText = string.Format
-                        (
-                        "USER_ID:{0}[~!@]OWNER_ID:{1}[~!@]START_DATE:{2}[~!@]START_MINUTE:{3}[~!@]SESSION_PERIOD:{4}",
-                        oUser.USER_ID,
-                        oUser.OWNER_ID,
-                        oTools.GetDateString(DateTime.Today),
-                        MinutesEplapsedSinceMidnight.ToString(),
-                        60
-                        );
-                    oUser.myTicket = TicketText;
+                        var MinutesEplapsedSinceMidnight = (long?)(DateTime.Now - DateTime.Today).TotalMinutes;
+                        var TicketText = string.Format
+                            (
+                            "USER_ID:{0}[~!@]OWNER_ID:{1}[~!@]START_DATE:{2}[~!@]START_MINUTE:{3}[~!@]SESSION_PERIOD:{4}",
+                            oUser.USER_ID,
+                            oUser.OWNER_ID,
+                            oTools.GetDateString(DateTime.Today),
+                            MinutesEplapsedSinceMidnight.ToString(),
+                            60
+                            );
+                        oUser.myTicket = TicketText;
+                    }
+                    else
+                    {
+                        throw new BLCException(GetMessageContent(Enum_BR_Codes.BR_0002));
+                    }
+
                 }
                 else
                 {
-                    throw new BLCException(GetMessageContent(Enum_BR_Codes.BR_0002));
+                    throw new BLCException(GetMessageContent(Enum_BR_Codes.BR_9999));
                 }
 
-            }
-            else
-            {
-                throw new BLCException(GetMessageContent(Enum_BR_Codes.BR_9999));
-            }
+                return oUser;
 
-            return oUser;
-
-        }
+            }
 
         #endregion
 
@@ -281,6 +281,7 @@ namespace BLC
             List<AnswerDetails> oAnswerDetails = new List<AnswerDetails> { };
             #endregion
             List<dynamic> oList = _AppContext.UP_GET_ANSWER_WITH_NAMES_BY_QUESTION_ID(i_Params_Get_Answer_Details.QUESTION_ID);
+            Console.WriteLine(oList);
             if ((oList != null) && (oList.Count > 0))
             {
                 foreach (var X in oList)

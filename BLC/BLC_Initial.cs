@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using Newtonsoft.Json;
+
 
 namespace BLC
 {
@@ -109,14 +111,23 @@ namespace BLC
             this.OnPostEvent_Edit_Question += BLC_OnPostEvent_Edit_Question;
             this.OnPreEvent_Edit_Question += BLC_OnPreEvent_Edit_Question;
 
+
             this.OnPreEvent_Edit_User += BLC_OnPreEvent_Edit_User;
             this.OnPreEvent_Edit_Teacher += BLC_OnPreEvent_Edit_Teacher;
             this.OnPreEvent_Edit_Student += BLC_OnPreEvent_Edit_Student;
+            this.OnPreEvent_Edit_Answer += BLC_OnPreEvent_Edit_Answer;
 
             this.OnPostEvent_Get_Question_By_OWNER_ID += BLC_OnPostEvent_Get_Question_By_OWNER_ID;
             #endregion
             #region Body Section.
             #endregion
+        }
+
+        private void BLC_OnPreEvent_Edit_Answer(Answer i_Answer, Enum_EditMode i_Enum_EditMode)
+        {
+            //throw new NotImplementedException();
+            Console.WriteLine(i_Answer);
+            Console.WriteLine(i_Answer);
         }
 
         private void BLC_OnPostEvent_Edit_User(User i_User, Enum_EditMode i_Enum_EditMode)
@@ -282,19 +293,63 @@ namespace BLC
         {
             if (i_Question.DESCRIPTION.Length < 5)
             {
-                Console.WriteLine("dreamer");
-                throw new BLCException("question should be at least 5 characters MF");
+                //Console.WriteLine("dreamer");
+                throw new BLCException("question should be at least 5 characters ah");
 
             }
         }
 
         private void BLC_OnPostEvent_Edit_Question(Question i_Question, Enum_EditMode i_Enum_EditMode)
         {
-            if (i_Question.DESCRIPTION.Length < 5)
+            #region sendEmail
+            Tools.Tools oTools = new Tools.Tools();
+
+
+           
+
+            Params_Get_Teacher_By_CATEGORY_ID oParams_Get_Teacher_By_CATEGORY_ID = new Params_Get_Teacher_By_CATEGORY_ID();
+            oParams_Get_Teacher_By_CATEGORY_ID.CATEGORY_ID = i_Question.CATEGORY_ID;
+            List<Teacher> oList_Teacher = new List<Teacher>();
+            oList_Teacher = this.Get_Teacher_By_CATEGORY_ID_Adv(oParams_Get_Teacher_By_CATEGORY_ID);
+            var jsonString = JsonConvert.SerializeObject(oList_Teacher);
+            Console.WriteLine(jsonString);
+
+            var content = "a student asked a question you may want to answer: " + i_Question.DESCRIPTION;
+
+
+            if (oList_Teacher != null && oList_Teacher.Count > 0)
             {
-            throw new NotImplementedException();
+                foreach (var teacher in oList_Teacher) 
+                {
+                    string email = teacher.My_User.EMAIL;
+                    Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+                    Match match = regex.Match(email);
+
+
+                    if (match.Success) {
+                        //oTools.SendEmail("dandasheh5@gmail.com", "enteryoupasswordhere", true, 2000000, "smtp.gmail.com", 587, "dandasheh5@gmail.com", teacher.My_User.EMAIL, "subject", content,
+                        //   new List<string> { }, new List<string> { }, new List<string> { }, "welcome", true);
+                        Console.WriteLine("email was sent to " + teacher.My_User.EMAIL);
+
+                    }
+                    else
+                        Console.WriteLine(email + " is incorrect");
+
+
+                    
+                }
 
             }
+
+
+
+            #endregion
+
+
+
+
+
+
         }
 
 
@@ -363,8 +418,8 @@ namespace BLC
                 //minimum lenght of username
                 if (i_User.USERNAME.Length < 3)
                 {
-                    Console.WriteLine("usernma must be at least 3 characters ");
-                    throw new BLCException("usernma must be at least 3 characters ");
+                    Console.WriteLine("username must be at least 3 characters ");
+                    throw new BLCException("username must be at least 3 characters ");
                 }
 
 

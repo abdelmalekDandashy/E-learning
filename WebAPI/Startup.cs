@@ -55,7 +55,10 @@ namespace WebAPI
 
             app.UseCors(MyAllowSpecificOrigins);
 
+            //app.UseHttpsRedirection();
+
             app.UseRouting();
+
 
             app.UseAuthorization();
 

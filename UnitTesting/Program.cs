@@ -26,22 +26,26 @@ namespace UnitTesting
             string str_Main_Folder_Path = string.Empty;
             Tools.Tools oTools = new Tools.Tools();
             #endregion
+            for (int i = 0; i <= 200; i++)
+            {
 
-            //Question oQuestion = new Question();
-            //oTools.SetPropertiesDefaultValue(oQuestion);
+                Question oQuestion = new Question();
+                oTools.SetPropertiesDefaultValue(oQuestion);
 
-            //oQuestion.QUESTION_ID = -1;
-            //oQuestion.CATEGORY_ID = 1;
-            //oQuestion.DESCRIPTION = "1233";
-            //oQuestion.STUDENT_ID = 1;
-            //oQuestion.IS_ANSWERED = true;
-            //oQuestion.IS_PUBLIC = true;
-            //oQuestion.IS_SELF_CLOSED = false;
-            //oQuestion.OWNER_ID = 1;
-            //oQuestion.ENTRY_USER_ID = 1;
-            //oQuestion.TEACHER_ID = 2;
-            //oBLC.Edit_Question(oQuestion);
-            //var jsonString = JsonConvert.SerializeObject(oQuestion);
+                oQuestion.QUESTION_ID = -1;
+                oQuestion.CATEGORY_ID = 1;
+                oQuestion.DESCRIPTION = "1233asdasd";
+                oQuestion.STUDENT_ID = 1;
+                oQuestion.IS_ANSWERED = true;
+                oQuestion.IS_PUBLIC = true;
+                oQuestion.IS_SELF_CLOSED = false;
+                oQuestion.OWNER_ID = 1;
+                oQuestion.ENTRY_USER_ID = 1;
+                oQuestion.TEACHER_ID = 2;
+                oBLC.Edit_Question(oQuestion);
+            var jsonString = JsonConvert.SerializeObject(oQuestion.QUESTION_ID);
+                Console.WriteLine(jsonString);
+            }
 
             //Answer oAnswer = new Answer();
             //oTools.SetPropertiesDefaultValue(oAnswer);
@@ -54,22 +58,22 @@ namespace UnitTesting
 
 
 
-            User oUser = new User();
-            oTools.SetPropertiesDefaultValue(oUser);
-            oUser.USER_ID = -1;
-            oUser.OWNER_ID = 1;
-            oUser.IS_ACTIVE = true;
-            oUser.USERNAME = "kajsdASD12314";      //1
-            oUser.PASSWORD = "alkjsdklKAJDKL232@";  //2
-            oUser.EMAIL = "test post event add user"; //3
-             oUser.MOBILE = "70707070";   //4
-            oUser.DOB = "1990-05-31";  //5
-            oUser.USER_TYPE_CODE_ID = 3;  // boolean
-            oUser.IS_ACTIVE = true;  
-            oBLC.Edit_User(oUser);
-            var jsonString = JsonConvert.SerializeObject(oUser);
-            Console.WriteLine(jsonString);
-            Console.WriteLine("user added");
+            //User oUser = new User();
+            //oTools.SetPropertiesDefaultValue(oUser);
+            //oUser.USER_ID = -1;
+            //oUser.OWNER_ID = 1;
+            //oUser.IS_ACTIVE = true;
+            //oUser.USERNAME = "kajsdASD12314";      //1
+            //oUser.PASSWORD = "alkjsdklKAJDKL232@";  //2
+            //oUser.EMAIL = "test post event add user"; //3
+            // oUser.MOBILE = "70707070";   //4
+            //oUser.DOB = "1990-05-31";  //5
+            //oUser.USER_TYPE_CODE_ID = 3;  // boolean
+            //oUser.IS_ACTIVE = true;  
+            //oBLC.Edit_User(oUser);
+            //var jsonString = JsonConvert.SerializeObject(oUser);
+            //Console.WriteLine(jsonString);
+            //Console.WriteLine("user added");
 
 
             //List<dynamic> oTeachers = null;
@@ -81,7 +85,6 @@ namespace UnitTesting
             //Console.WriteLine(oTeachers);
 
             //Console.WriteLine(jsonString);
-
             //Params_Get_Question_By_QUESTION_ID oParams_Get_Question_By_QUESTION_ID = new Params_Get_Question_By_QUESTION_ID();
             //oParams_Get_Question_By_QUESTION_ID.QUESTION_ID = 39;
             //Question oQuestion = oBLC.Get_Question_By_QUESTION_ID(oParams_Get_Question_By_QUESTION_ID);
@@ -101,9 +104,9 @@ namespace UnitTesting
             Params_Get_Answer_Details oParams_Get_Answer_Details = new Params_Get_Answer_Details();
             oParams_Get_Answer_Details.QUESTION_ID = 29;
 
-            var oResult = oBLC.Get_Answer_Details(oParams_Get_Answer_Details);
-            Console.WriteLine(oResult);
-            Console.WriteLine(jsonString);
+            //var oResult = oBLC.Get_Answer_Details(oParams_Get_Answer_Details);
+            //Console.WriteLine(oResult);
+            //Console.WriteLine(jsonString);
 
 
             //List<TopTeachers> oListTopTeachers = new List<TopTeachers> { };
@@ -133,14 +136,14 @@ namespace UnitTesting
 
             //Authinticate
 
-            Params_Authenticate oParams_Authenticate = new Params_Authenticate();
-            oParams_Authenticate.EMAIL = "email8@gmail.com";
-            oParams_Authenticate.PASSWORD = "1";
+            //Params_Authenticate oParams_Authenticate = new Params_Authenticate();
+            //oParams_Authenticate.EMAIL = "email8@gmail.com";
+            //oParams_Authenticate.PASSWORD = "1";
 
-            var result = oBLC.Authenticate(oParams_Authenticate);
+            //var result = oBLC.Authenticate(oParams_Authenticate);
+            ////Console.WriteLine(result);
             //Console.WriteLine(result);
-            Console.WriteLine(result);
-            Console.WriteLine(result);
+            //Console.WriteLine(result);
 
 
 

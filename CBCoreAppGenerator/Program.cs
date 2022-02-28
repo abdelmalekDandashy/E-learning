@@ -222,6 +222,8 @@ namespace CodeGenerator
 
             oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_OWNER_ID");
             oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_OWNER_ID_Adv");
+            oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_TEACHER_ID_Adv");
+
             oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_QUESTION_ID_Adv");
             oCodeBooster.APIMethodsSelection.Add("Edit_Answer");
             oCodeBooster.APIMethodsSelection.Add("Get_Answer_By_Criteria");
